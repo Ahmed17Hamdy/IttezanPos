@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IttezanPos.Views.MainPage.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="ForestGreen"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Frame
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="5,5,2.5,2.5"
+                Padding="5"
+                CornerRadius="5">
+                <Grid HorizontalOptions="Center" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Margin="5,10,5,0"
+                        Aspect="AspectFit"
+                        Source="SALES.png" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="المشتريات"
+                        TextColor="ForestGreen"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+            <Frame
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="2.5,5,5,2.5"
+                Padding="5"
+                CornerRadius="5">
+                <Grid HorizontalOptions="Center" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Margin="5,10,5,0"
+                        Aspect="AspectFit"
+                        Source="Purchase.png" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="المبيعات"
+                        TextColor="ForestGreen"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+            <Frame
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="5,2.5,2.5,2.5"
+                Padding="5"
+                CornerRadius="5">
+                <Grid HorizontalOptions="Center" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Margin="5,10,5,0"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        Source="Suppliers.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="الموردين"
+                        TextColor="ForestGreen"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+            <Frame
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="2.5,2.5,5,2.5"
+                Padding="5"
+                CornerRadius="5">
+                <Grid HorizontalOptions="Center" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Margin="5,10,5,0"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        Source="Clients.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="العملاء"
+                        TextColor="ForestGreen"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+            <Frame
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="5,2.5,2.5,2.5"
+                Padding="5"
+                CornerRadius="5">
+                <Grid HorizontalOptions="Center" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Margin="5,10,5,0"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        Source="Expenses.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="المصروفات"
+                        TextColor="ForestGreen"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+            <Frame
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="2.5,2.5,5,2.5"
+                Padding="5"
+                CornerRadius="5">
+                <Grid HorizontalOptions="Center" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Margin="5,10,5,0"
+                        HorizontalOptions="Center"
+                        Source="Box.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="الصندوق"
+                        TextColor="ForestGreen"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+            <Frame
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="5,2.5,2.5,2.5"
+                Padding="5"
+                CornerRadius="5">
+                <Grid HorizontalOptions="Center" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Margin="5,10,5,0"
+                        HorizontalOptions="Center"
+                        Source="Reports.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="التقارير"
+                        TextColor="ForestGreen"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+            <Frame
+                Grid.Row="3"
+                Grid.Column="1"
+                Margin="2.5,2.5,5,2.5"
+                Padding="5"
+                CornerRadius="5">
+                <Grid HorizontalOptions="Center" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Margin="5,10,5,0"
+                        HorizontalOptions="Center"
+                        Source="Inventory.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="المخزون"
+                        TextColor="ForestGreen"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

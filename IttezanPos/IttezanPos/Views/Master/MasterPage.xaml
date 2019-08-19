@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    x:Class="IttezanPos.Views.Master.MasterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Menu="clr-namespace:IttezanPos.Views.Master"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:locals="clr-namespace:IttezanPos.Views.MainPage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <MasterDetailPage.Master>
+        <Menu:SideMenuPage x:Name="masterPage" />
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <locals:HomePage Title="الصفحة الرئيسية" />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

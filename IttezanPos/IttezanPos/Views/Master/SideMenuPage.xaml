@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IttezanPos.Views.Master.SideMenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Pages="clr-namespace:IttezanPos.Views.MainPage"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:IttezanPos.Views.Master"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Title"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0">
+                <Grid Margin="0">
+                    <Image
+                        Margin="0"
+                        Aspect="AspectFill"
+                        Source="menubg.png" />
+                </Grid>
+                <ListView
+                    x:Name="listhelp"
+                    x:FieldModifier="public"
+                    HasUnevenRows="False"
+                    HeightRequest="130"
+                    SeparatorVisibility="None">
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type local:MasterPageItem}">
+                            <local:MasterPageItem
+                                Title="Recipts"
+                                IconSource="receipt.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Feedback"
+                                IconSource="feedback.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Help"
+                                IconSource="help.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="10" ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="5*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        HorizontalOptions="Start"
+                                        Source="{Binding IconSource}" />
+                                    <Label
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Title}"
+                                        TextColor="Black" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <BoxView BackgroundColor="LightGray" HeightRequest="1" />
+                <Label
+                    Margin="10,0"
+                    Text="Management"
+                    TextColor="Black" />
+                <ListView
+                    x:Name="listView"
+                    x:FieldModifier="public"
+                    HasUnevenRows="False"
+                    HeightRequest="350"
+                    SeparatorVisibility="None">
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type local:MasterPageItem}">
+                            <local:MasterPageItem
+                                Title="Sales"
+                                IconSource="salesmenu.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Purchase"
+                                IconSource="purchasemenu.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Suppliers"
+                                IconSource="suppliermenu.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Customers"
+                                IconSource="customermenu.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Expense"
+                                IconSource="expensemenu.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Reservoir"
+                                IconSource="reservoirmenu.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Inventory"
+                                IconSource="inventorymenu.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Staff Management"
+                                IconSource="staff_managment.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="10" ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="5*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        HorizontalOptions="Start"
+                                        Source="{Binding IconSource}" />
+                                    <Label
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Title}"
+                                        TextColor="Black" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <BoxView BackgroundColor="LightGray" HeightRequest="1" />
+                <Label
+                    Margin="10,0"
+                    Text="Settings"
+                    TextColor="Black" />
+                <ListView
+                    x:Name="newlist"
+                    x:FieldModifier="public"
+                    HasUnevenRows="False"
+                    HeightRequest="250"
+                    SeparatorVisibility="None">
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type local:MasterPageItem}">
+                            <local:MasterPageItem
+                                Title="Business Settings"
+                                IconSource="business_setting.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="General"
+                                IconSource="general.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Printer"
+                                IconSource="printer.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Back Office"
+                                IconSource="backoffice.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+                            <local:MasterPageItem
+                                Title="Log Out"
+                                IconSource="logout.png"
+                                TargetType="{x:Type Pages:HomePage}" />
+
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="10" ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="5*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        HorizontalOptions="Start"
+                                        Source="{Binding IconSource}" />
+                                    <Label
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Title}"
+                                        TextColor="Black" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
