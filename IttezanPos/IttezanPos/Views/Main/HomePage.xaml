@@ -5,9 +5,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    BackgroundColor="ForestGreen"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    BackgroundColor="#33b54b"
+    FlowDirection="MatchParent"
     mc:Ignorable="d">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NormalTextColor">Black</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
+
         <Grid ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -21,13 +29,13 @@
             </Grid.ColumnDefinitions>
             <Frame
                 Grid.Row="0"
-                Grid.Column="0"
+                Grid.Column="1"
                 Margin="5,5,2.5,2.5"
                 Padding="5"
                 CornerRadius="5">
                 <Grid HorizontalOptions="Center" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="2.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -39,20 +47,20 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="المشتريات"
-                        TextColor="ForestGreen"
+                        Text="{tr:Translate Purchase}"
+                        TextColor="{StaticResource NormalTextColor}"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
             <Frame
                 Grid.Row="0"
-                Grid.Column="1"
+                Grid.Column="0"
                 Margin="2.5,5,5,2.5"
                 Padding="5"
                 CornerRadius="5">
                 <Grid HorizontalOptions="Center" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="2.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -64,20 +72,20 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="المبيعات"
-                        TextColor="ForestGreen"
+                        Text="{tr:Translate Sales}"
+                        TextColor="{StaticResource NormalTextColor}"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
             <Frame
                 Grid.Row="1"
-                Grid.Column="0"
+                Grid.Column="1"
                 Margin="5,2.5,2.5,2.5"
                 Padding="5"
                 CornerRadius="5">
                 <Grid HorizontalOptions="Center" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="2.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -91,20 +99,22 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="الموردين"
-                        TextColor="ForestGreen"
+                        Text="{tr:Translate Suppliers}"
+                        TextColor="{StaticResource NormalTextColor}"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
             <Frame
+                x:Name="ClientFrame"
                 Grid.Row="1"
-                Grid.Column="1"
+                Grid.Column="0"
                 Margin="2.5,2.5,5,2.5"
                 Padding="5"
                 CornerRadius="5">
+
                 <Grid HorizontalOptions="Center" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="2.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -118,20 +128,23 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="العملاء"
-                        TextColor="ForestGreen"
+                        Text="{tr:Translate Customers}"
+                        TextColor="{StaticResource NormalTextColor}"
                         VerticalOptions="Center" />
                 </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Client_Tapped" />
+                </Frame.GestureRecognizers>
             </Frame>
             <Frame
                 Grid.Row="2"
-                Grid.Column="0"
+                Grid.Column="1"
                 Margin="5,2.5,2.5,2.5"
                 Padding="5"
                 CornerRadius="5">
                 <Grid HorizontalOptions="Center" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="2.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -145,20 +158,20 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="المصروفات"
-                        TextColor="ForestGreen"
+                        Text="{tr:Translate Expense}"
+                        TextColor="{StaticResource NormalTextColor}"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
             <Frame
                 Grid.Row="2"
-                Grid.Column="1"
+                Grid.Column="0"
                 Margin="2.5,2.5,5,2.5"
                 Padding="5"
                 CornerRadius="5">
                 <Grid HorizontalOptions="Center" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="2.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -171,20 +184,20 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="الصندوق"
-                        TextColor="ForestGreen"
+                        Text="{tr:Translate Reservoir}"
+                        TextColor="{StaticResource NormalTextColor}"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
             <Frame
                 Grid.Row="3"
-                Grid.Column="0"
+                Grid.Column="1"
                 Margin="5,2.5,2.5,2.5"
                 Padding="5"
                 CornerRadius="5">
                 <Grid HorizontalOptions="Center" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="2.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -197,20 +210,20 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="التقارير"
-                        TextColor="ForestGreen"
+                        Text="{tr:Translate Reports}"
+                        TextColor="{StaticResource NormalTextColor}"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
             <Frame
                 Grid.Row="3"
-                Grid.Column="1"
+                Grid.Column="0"
                 Margin="2.5,2.5,5,2.5"
                 Padding="5"
                 CornerRadius="5">
                 <Grid HorizontalOptions="Center" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3.5*" />
+                        <RowDefinition Height="2.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -223,8 +236,8 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="المخزون"
-                        TextColor="ForestGreen"
+                        Text="{tr:Translate Inventory}"
+                        TextColor="{StaticResource NormalTextColor}"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IttezanPos.Views.SettingsPages.GeneralSettings"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button
+                Clicked="Button_Clicked"
+                HorizontalOptions="CenterAndExpand"
+                Text="English"
+                VerticalOptions="CenterAndExpand" />
+            <Button
+                Clicked="Button_Clicked_1"
+                HorizontalOptions="CenterAndExpand"
+                Text="عربي"
+                VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

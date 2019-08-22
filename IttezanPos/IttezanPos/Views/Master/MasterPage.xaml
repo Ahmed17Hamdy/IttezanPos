@@ -7,14 +7,15 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:locals="clr-namespace:IttezanPos.Views.MainPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
     mc:Ignorable="d">
     <MasterDetailPage.Master>
         <Menu:SideMenuPage x:Name="masterPage" />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage>
+        <NavigationPage FlowDirection="MatchParent">
             <x:Arguments>
-                <locals:HomePage Title="الصفحة الرئيسية" />
+                <locals:HomePage Title="{tr:Translate MainPage}" />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

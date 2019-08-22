@@ -3,10 +3,13 @@
     x:Class="IttezanPos.Views.Master.SideMenuPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Client="clr-namespace:IttezanPos.Views.ClientPages"
     xmlns:Pages="clr-namespace:IttezanPos.Views.MainPage"
+    xmlns:SettingPages="clr-namespace:IttezanPos.Views.SettingsPages"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:local="clr-namespace:IttezanPos.Views.Master"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
     Title="Title"
     mc:Ignorable="d">
     <ContentPage.Content>
@@ -27,15 +30,15 @@
                     <ListView.ItemsSource>
                         <x:Array Type="{x:Type local:MasterPageItem}">
                             <local:MasterPageItem
-                                Title="Recipts"
+                                Title="{tr:Translate Recipts}"
                                 IconSource="receipt.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="Feedback"
+                                Title="{tr:Translate Feedback}"
                                 IconSource="feedback.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="Help"
+                                Title="{tr:Translate Help}"
                                 IconSource="help.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                         </x:Array>
@@ -65,7 +68,7 @@
                 <BoxView BackgroundColor="LightGray" HeightRequest="1" />
                 <Label
                     Margin="10,0"
-                    Text="Management"
+                    Text="{tr:Translate Management}"
                     TextColor="Black" />
                 <ListView
                     x:Name="listView"
@@ -76,35 +79,35 @@
                     <ListView.ItemsSource>
                         <x:Array Type="{x:Type local:MasterPageItem}">
                             <local:MasterPageItem
-                                Title="Sales"
+                                Title="{tr:Translate Sales}"
                                 IconSource="salesmenu.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="Purchase"
+                                Title="{tr:Translate Purchase}"
                                 IconSource="purchasemenu.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="Suppliers"
+                                Title="{tr:Translate Suppliers}"
                                 IconSource="suppliermenu.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="Customers"
+                                Title="{tr:Translate Customers}"
                                 IconSource="customermenu.png"
-                                TargetType="{x:Type Pages:HomePage}" />
+                                TargetType="{x:Type Client:MainClientsPage}" />
                             <local:MasterPageItem
-                                Title="Expense"
+                                Title="{tr:Translate Expense}"
                                 IconSource="expensemenu.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="Reservoir"
+                                Title="{tr:Translate Reservoir}"
                                 IconSource="reservoirmenu.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="Inventory"
+                                Title="{tr:Translate Inventory}"
                                 IconSource="inventorymenu.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="Staff Management"
+                                Title="{tr:Translate StaffManagement}"
                                 IconSource="staff_managment.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                         </x:Array>
@@ -134,7 +137,7 @@
                 <BoxView BackgroundColor="LightGray" HeightRequest="1" />
                 <Label
                     Margin="10,0"
-                    Text="Settings"
+                    Text="{tr:Translate Settings}"
                     TextColor="Black" />
                 <ListView
                     x:Name="newlist"
@@ -145,23 +148,23 @@
                     <ListView.ItemsSource>
                         <x:Array Type="{x:Type local:MasterPageItem}">
                             <local:MasterPageItem
-                                Title="Business Settings"
+                                Title="{tr:Translate BusinessSettings}"
                                 IconSource="business_setting.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="General"
+                                Title="{tr:Translate General}"
                                 IconSource="general.png"
-                                TargetType="{x:Type Pages:HomePage}" />
+                                TargetType="{x:Type SettingPages:GeneralSettings}" />
                             <local:MasterPageItem
-                                Title="Printer"
+                                Title="{tr:Translate Printer}"
                                 IconSource="printer.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="Back Office"
+                                Title="{tr:Translate BackOffice}"
                                 IconSource="backoffice.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="Log Out"
+                                Title="{tr:Translate LogOut}"
                                 IconSource="logout.png"
                                 TargetType="{x:Type Pages:HomePage}" />
 

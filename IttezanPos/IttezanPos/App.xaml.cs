@@ -1,11 +1,9 @@
-﻿using IttezanPos.Views;
-using IttezanPos.Views.Intro;
-using IttezanPos.Views.MainPage;
-using IttezanPos.Views.Master;
-using System;
+﻿using IttezanPos.Views.Master;
+using Plugin.Connectivity;
+using Plugin.Multilingual;
+using System.Linq;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
+using IttezanPos.Helpers;
 namespace IttezanPos
 {
     public partial class App : Application
@@ -13,10 +11,20 @@ namespace IttezanPos
         public App()
         {
             InitializeComponent();
-
+            FlowDirectionPage();
             MainPage = new MasterPage();
         }
+        private void FlowDirectionPage()
+        {
 
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().
+             First(element => element.EnglishName.Contains(Settings.LastUserGravity));
+                AppResources.Culture = CrossMultilingual.Current.CurrentCultureInfo;
+            }
+
+        }
         protected override void OnStart()
         {
             // Handle when your app starts
