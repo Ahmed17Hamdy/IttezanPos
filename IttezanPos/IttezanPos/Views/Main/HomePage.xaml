@@ -9,11 +9,7 @@
     BackgroundColor="#33b54b"
     FlowDirection="MatchParent"
     mc:Ignorable="d">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="NormalTextColor">Black</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+
     <ContentPage.Content>
 
         <Grid ColumnSpacing="0" RowSpacing="0">
@@ -42,13 +38,13 @@
                         Grid.Row="0"
                         Margin="5,10,5,0"
                         Aspect="AspectFit"
-                        Source="SALES.png" />
+                        Source="Purchase.png" />
                     <Label
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Purchase}"
-                        TextColor="{StaticResource NormalTextColor}"
+                        TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
@@ -67,13 +63,13 @@
                         Grid.Row="0"
                         Margin="5,10,5,0"
                         Aspect="AspectFit"
-                        Source="Purchase.png" />
+                        Source="SALES.png" />
                     <Label
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Sales}"
-                        TextColor="{StaticResource NormalTextColor}"
+                        TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
@@ -93,19 +89,18 @@
                         Margin="5,10,5,0"
                         Aspect="AspectFit"
                         HorizontalOptions="Center"
-                        Source="Suppliers.png"
+                        Source="supplier.png"
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Suppliers}"
-                        TextColor="{StaticResource NormalTextColor}"
+                        TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
             <Frame
-                x:Name="ClientFrame"
                 Grid.Row="1"
                 Grid.Column="0"
                 Margin="2.5,2.5,5,2.5"
@@ -122,14 +117,14 @@
                         Margin="5,10,5,0"
                         Aspect="AspectFit"
                         HorizontalOptions="Center"
-                        Source="Clients.png"
+                        Source="Client.png"
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Customers}"
-                        TextColor="{StaticResource NormalTextColor}"
+                        TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
                 <Frame.GestureRecognizers>
@@ -159,7 +154,7 @@
                         FontSize="Large"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Expense}"
-                        TextColor="{StaticResource NormalTextColor}"
+                        TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
@@ -185,7 +180,7 @@
                         FontSize="Large"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Reservoir}"
-                        TextColor="{StaticResource NormalTextColor}"
+                        TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
@@ -211,7 +206,7 @@
                         FontSize="Large"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Reports}"
-                        TextColor="{StaticResource NormalTextColor}"
+                        TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>
@@ -237,7 +232,7 @@
                         FontSize="Large"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Inventory}"
-                        TextColor="{StaticResource NormalTextColor}"
+                        TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
             </Frame>

@@ -61,11 +61,74 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AddAddress.
+        /// </summary>
+        internal static string AddAddress {
+            get {
+                return ResourceManager.GetString("AddAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Client Limit.
+        /// </summary>
+        internal static string AddClientLimit {
+            get {
+                return ResourceManager.GetString("AddClientLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Client Name.
+        /// </summary>
+        internal static string AddClientName {
+            get {
+                return ResourceManager.GetString("AddClientName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Email Address.
+        /// </summary>
+        internal static string AddEmailAddress {
+            get {
+                return ResourceManager.GetString("AddEmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New Client.
         /// </summary>
         internal static string AddNewClient {
             get {
                 return ResourceManager.GetString("AddNewClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Notes.
+        /// </summary>
+        internal static string AddNotes {
+            get {
+                return ResourceManager.GetString("AddNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Phone Number.
+        /// </summary>
+        internal static string AddPhoneNumber {
+            get {
+                return ResourceManager.GetString("AddPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        internal static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
             }
         }
         
@@ -84,6 +147,24 @@ namespace IttezanPos {
         internal static string BusinessSettings {
             get {
                 return ResourceManager.GetString("BusinessSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client Limit.
+        /// </summary>
+        internal static string ClientLimit {
+            get {
+                return ResourceManager.GetString("ClientLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client Name.
+        /// </summary>
+        internal static string ClientName {
+            get {
+                return ResourceManager.GetString("ClientName", resourceCulture);
             }
         }
         
@@ -111,6 +192,15 @@ namespace IttezanPos {
         internal static string Customers {
             get {
                 return ResourceManager.GetString("Customers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email Address.
+        /// </summary>
+        internal static string EmailAddress {
+            get {
+                return ResourceManager.GetString("EmailAddress", resourceCulture);
             }
         }
         
@@ -187,7 +277,7 @@ namespace IttezanPos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MainPage.
+        ///   Looks up a localized string similar to Main Page.
         /// </summary>
         internal static string MainPage {
             get {
@@ -205,11 +295,29 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        internal static string Notes {
+            get {
+                return ResourceManager.GetString("Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         internal static string Ok {
             get {
                 return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone Number.
+        /// </summary>
+        internal static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
             }
         }
         

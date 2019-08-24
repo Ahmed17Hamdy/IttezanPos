@@ -92,7 +92,7 @@
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
                                 Title="{tr:Translate Customers}"
-                                IconSource="customermenu.png"
+                                IconSource="Clients.png"
                                 TargetType="{x:Type Client:MainClientsPage}" />
                             <local:MasterPageItem
                                 Title="{tr:Translate Expense}"

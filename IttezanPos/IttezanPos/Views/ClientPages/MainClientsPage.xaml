@@ -22,7 +22,7 @@
                 Padding="5"
                 HorizontalOptions="Center"
                 Orientation="Horizontal">
-                <Image Aspect="AspectFit" Source="Client.png" />
+                <Image Aspect="AspectFit" Source="ClientUser.png" />
                 <Label
                     FontSize="48"
                     HorizontalOptions="Center"
@@ -132,6 +132,5 @@
                 </Grid>
             </Grid>
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>

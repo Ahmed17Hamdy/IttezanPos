@@ -117,14 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddAddress" xml:space="preserve">
+    <value>أدخل العنوان</value>
+  </data>
+  <data name="AddClientLimit" xml:space="preserve">
+    <value>أدخل سقف العميل</value>
+  </data>
+  <data name="AddClientName" xml:space="preserve">
+    <value>أضف إسم العميل</value>
+  </data>
+  <data name="AddEmailAddress" xml:space="preserve">
+    <value>أدخل البريد الإلكتروني</value>
+  </data>
   <data name="AddNewClient" xml:space="preserve">
     <value>إضافة عميل جديد</value>
+  </data>
+  <data name="AddNotes" xml:space="preserve">
+    <value>إضافة ملاحظات</value>
+  </data>
+  <data name="AddPhoneNumber" xml:space="preserve">
+    <value>أدخل رقم الجوال</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان</value>
   </data>
   <data name="BackOffice" xml:space="preserve">
     <value>المكتب الخلفي</value>
   </data>
   <data name="BusinessSettings" xml:space="preserve">
     <value>إعدادات العمل</value>
+  </data>
+  <data name="ClientLimit" xml:space="preserve">
+    <value>سقف العميل</value>
+  </data>
+  <data name="ClientName" xml:space="preserve">
+    <value>إسم العميل</value>
   </data>
   <data name="Customeropeningbalances" xml:space="preserve">
     <value>الأرصدة الإفتتاحية للعملاء</value>
@@ -134,6 +161,9 @@
   </data>
   <data name="Customers" xml:space="preserve">
     <value>العملاء</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>خطأ</value>
@@ -165,8 +195,14 @@
   <data name="Management" xml:space="preserve">
     <value>الإدارة</value>
   </data>
+  <data name="Notes" xml:space="preserve">
+    <value>ملاحظات</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>حسناً</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>رقم الجوال</value>
   </data>
   <data name="Printer" xml:space="preserve">
     <value>الطابعة</value>

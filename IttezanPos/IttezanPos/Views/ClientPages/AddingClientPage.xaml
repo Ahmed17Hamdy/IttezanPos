@@ -1,15 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="IttezanPos.Views.ClientPages.AddingClientPage">
+<ContentPage
+    x:Class="IttezanPos.Views.ClientPages.AddingClientPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customcontrols="clr-namespace:IttezanPos.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid
+            Margin="10"
+            Padding="0"
+            RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="0"
+                Text="{tr:Translate ClientName}"
+                VerticalOptions="End" />
+            <customcontrols:CustomEntry
+                Grid.Row="1"
+                Margin="0"
+                ef:Border.Color="#34b44c"
+                ef:Border.Radius="25"
+                ef:Border.Width="1"
+                FontSize="Small"
+                HorizontalTextAlignment="Center"
+                IsTextPredictionEnabled="True" />
+            <Label
+                Grid.Row="2"
+                Text="{tr:Translate Address}"
+                VerticalOptions="End" />
+            <customcontrols:CustomEditor
+                Grid.Row="3"
+                ef:Border.Color="#34b44c"
+                ef:Border.Radius="25"
+                ef:Border.Width="1"
+                BackgroundColor="White"
+                FontSize="Small"
+                IsTextPredictionEnabled="True" />
+            <Label
+                Grid.Row="4"
+                Text="{tr:Translate PhoneNumber}"
+                VerticalOptions="End" />
+            <customcontrols:CustomEntry
+                Grid.Row="5"
+                ef:Border.Color="#34b44c"
+                ef:Border.Radius="25"
+                ef:Border.Width="1" />
+            <Label
+                Grid.Row="6"
+                Text="{tr:Translate EmailAddress}"
+                VerticalOptions="End" />
+            <customcontrols:CustomEntry
+                Grid.Row="7"
+                ef:Border.Color="#34b44c"
+                ef:Border.Radius="25"
+                ef:Border.Width="1" />
+            <Label
+                Grid.Row="8"
+                Text="{tr:Translate Notes}"
+                VerticalOptions="End" />
+            <customcontrols:CustomEditor
+                Grid.Row="9"
+                ef:Border.Color="#34b44c"
+                ef:Border.Radius="25"
+                ef:Border.Width="1" />
+            <Label
+                Grid.Row="10"
+                Text="{tr:Translate ClientLimit}"
+                VerticalOptions="End" />
+            <customcontrols:CustomEditor
+                Grid.Row="11"
+                ef:Border.Color="#34b44c"
+                ef:Border.Radius="25"
+                ef:Border.Width="1" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
