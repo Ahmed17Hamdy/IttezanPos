@@ -3,6 +3,8 @@
     x:Class="IttezanPos.Views.ClientPages.AddingClientPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behaviors="clr-namespace:IttezanPos.Behaviors"
+    xmlns:Validators="clr-namespace:IttezanPos.Models.BModel"
     xmlns:customcontrols="clr-namespace:IttezanPos.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
@@ -16,9 +18,10 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid
-            Margin="10"
+            Margin="10,10,10,0"
             Padding="0"
             RowSpacing="0">
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -32,68 +35,134 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
-            <Label
-                Grid.Row="0"
-                Text="{tr:Translate ClientName}"
-                VerticalOptions="End" />
-            <customcontrols:CustomEntry
-                Grid.Row="1"
-                Margin="0"
-                ef:Border.Color="#34b44c"
-                ef:Border.Radius="25"
-                ef:Border.Width="1"
-                FontSize="Small"
-                HorizontalTextAlignment="Center"
-                IsTextPredictionEnabled="True" />
-            <Label
-                Grid.Row="2"
-                Text="{tr:Translate Address}"
-                VerticalOptions="End" />
-            <customcontrols:CustomEditor
-                Grid.Row="3"
-                ef:Border.Color="#34b44c"
-                ef:Border.Radius="25"
-                ef:Border.Width="1"
-                BackgroundColor="White"
-                FontSize="Small"
-                IsTextPredictionEnabled="True" />
-            <Label
-                Grid.Row="4"
-                Text="{tr:Translate PhoneNumber}"
-                VerticalOptions="End" />
-            <customcontrols:CustomEntry
-                Grid.Row="5"
-                ef:Border.Color="#34b44c"
-                ef:Border.Radius="25"
-                ef:Border.Width="1" />
-            <Label
-                Grid.Row="6"
-                Text="{tr:Translate EmailAddress}"
-                VerticalOptions="End" />
-            <customcontrols:CustomEntry
-                Grid.Row="7"
-                ef:Border.Color="#34b44c"
-                ef:Border.Radius="25"
-                ef:Border.Width="1" />
-            <Label
-                Grid.Row="8"
-                Text="{tr:Translate Notes}"
-                VerticalOptions="End" />
-            <customcontrols:CustomEditor
-                Grid.Row="9"
-                ef:Border.Color="#34b44c"
-                ef:Border.Radius="25"
-                ef:Border.Width="1" />
-            <Label
-                Grid.Row="10"
-                Text="{tr:Translate ClientLimit}"
-                VerticalOptions="End" />
-            <customcontrols:CustomEditor
-                Grid.Row="11"
-                ef:Border.Color="#34b44c"
-                ef:Border.Radius="25"
-                ef:Border.Width="1" />
+            <ScrollView Grid.RowSpan="14">
+                <StackLayout>
+                    <StackLayout.Behaviors>
+                        <Validators:ValidationGroupBehavior x:Name="form" />
+                    </StackLayout.Behaviors>
+                    <Label
+                        Grid.Row="0"
+                        Text="{tr:Translate ClientName}"
+                        VerticalOptions="End" />
+                    <StackLayout Grid.Row="1">
+                        <customcontrols:CustomEntry
+                            Grid.Row="1"
+                            Margin="0"
+                            ef:Border.Color="#33b54b"
+                            ef:Border.Radius="25"
+                            ef:Border.Width="1"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsTextPredictionEnabled="True">
+                            <customcontrols:CustomEntry.Behaviors>
+                                <Behaviors:ValidationBehavior PropertyName="Text">
+                                    <Behaviors:ValidationBehavior.Validators>
+                                        <Validators:RequiredValidator />
+
+                                    </Behaviors:ValidationBehavior.Validators>
+                                </Behaviors:ValidationBehavior>
+
+                            </customcontrols:CustomEntry.Behaviors>
+                        </customcontrols:CustomEntry>
+                    </StackLayout>
+                    <Label
+                        Grid.Row="2"
+                        Text="{tr:Translate Address}"
+                        VerticalOptions="End" />
+                    <customcontrols:CustomEntry
+                        Grid.Row="3"
+                        ef:Border.Color="#33b54b"
+                        ef:Border.Radius="25"
+                        ef:Border.Width="1"
+                        BackgroundColor="White"
+                        FontSize="Small"
+                        HeightRequest="100"
+                        HorizontalTextAlignment="Center"
+                        IsTextPredictionEnabled="True">
+                        <customcontrols:CustomEntry.Behaviors>
+                            <Behaviors:ValidationBehavior PropertyName="Text">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+
+                        </customcontrols:CustomEntry.Behaviors>
+                    </customcontrols:CustomEntry>
+                    <Label
+                        Grid.Row="4"
+                        Text="{tr:Translate PhoneNumber}"
+                        VerticalOptions="End" />
+                    <customcontrols:CustomEntry
+                        Grid.Row="5"
+                        ef:Border.Color="#33b54b"
+                        ef:Border.Radius="25"
+                        ef:Border.Width="1"
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Telephone"
+                        MaxLength="10">
+                        <customcontrols:CustomEntry.Behaviors>
+                            <Behaviors:ValidationBehavior PropertyName="Text">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </customcontrols:CustomEntry.Behaviors>
+                    </customcontrols:CustomEntry>
+                    <Label
+                        Grid.Row="6"
+                        Text="{tr:Translate EmailAddress}"
+                        VerticalOptions="End" />
+                    <customcontrols:CustomEntry
+                        Grid.Row="7"
+                        ef:Border.Color="#33b54b"
+                        ef:Border.Radius="25"
+                        ef:Border.Width="1"
+                        Keyboard="Email">
+                        <customcontrols:CustomEntry.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                    <Behaviors:FormatValidator Format="^(?:[a-zA-Z0-9_'^&amp;/+-])+(?:\.(?:[a-zA-Z0-9_'^&amp;/+-])+)*@(?:(?:\[?(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\.){3}(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\]?)|(?:[a-zA-Z0-9-]+\.)+(?:[a-zA-Z]){2,}\.?)$" Message="{tr:Translate InvalidMail}" />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </customcontrols:CustomEntry.Behaviors>
+                    </customcontrols:CustomEntry>
+                    <Label
+                        Grid.Row="8"
+                        Text="{tr:Translate Notes}"
+                        VerticalOptions="End" />
+                    <customcontrols:CustomEntry
+                        Grid.Row="9"
+                        ef:Border.Color="#33b54b"
+                        ef:Border.Radius="25"
+                        ef:Border.Width="1"
+                        HeightRequest="100"
+                        HorizontalTextAlignment="Center" />
+                    <Label
+                        Grid.Row="10"
+                        Text="{tr:Translate ClientLimit}"
+                        VerticalOptions="End" />
+                    <customcontrols:CustomEntry
+                        Grid.Row="11"
+                        ef:Border.Color="#33b54b"
+                        ef:Border.Radius="25"
+                        ef:Border.Width="1"
+                        HeightRequest="100"
+                        HorizontalTextAlignment="Center"
+                        Text="{tr:Translate Zero}" />
+                    <Button
+                        Grid.Row="12"
+                        Margin="0,5,0,0"
+                        BackgroundColor="#33b54b"
+                        CornerRadius="25"
+                        IsVisible="{Binding Source={x:Reference form}, Path=IsValid}"
+                        Text="{tr:Translate Save}"
+                        TextColor="White" />
+                </StackLayout>
+            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

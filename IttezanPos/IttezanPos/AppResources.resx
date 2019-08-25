@@ -141,6 +141,15 @@
   <data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="Amountowed" xml:space="preserve">
+    <value>Amount owed</value>
+  </data>
+  <data name="Amountpaid" xml:space="preserve">
+    <value>Paid Amount</value>
+  </data>
+  <data name="Amountpayable" xml:space="preserve">
+    <value>Amount payable</value>
+  </data>
   <data name="BackOffice" xml:space="preserve">
     <value>Back Office</value>
   </data>
@@ -152,6 +161,9 @@
   </data>
   <data name="ClientName" xml:space="preserve">
     <value>Client Name</value>
+  </data>
+  <data name="ClientsData" xml:space="preserve">
+    <value>Client's Data</value>
   </data>
   <data name="Customeropeningbalances" xml:space="preserve">
     <value>Client's Opening Balances</value>
@@ -177,11 +189,17 @@
   <data name="Feedback" xml:space="preserve">
     <value>Feedback</value>
   </data>
+  <data name="FieldReq" xml:space="preserve">
+    <value>This Field is required</value>
+  </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Help</value>
+  </data>
+  <data name="InvalidMail" xml:space="preserve">
+    <value>Invalid Mail Format</value>
   </data>
   <data name="Inventory" xml:space="preserve">
     <value>Inventory</value>
@@ -201,6 +219,9 @@
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="Openingbalanceforcustomers" xml:space="preserve">
+    <value>Opening balance for Clients</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
   </data>
@@ -213,14 +234,29 @@
   <data name="Recipts" xml:space="preserve">
     <value>Recipts</value>
   </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
   <data name="Reports" xml:space="preserve">
     <value>Reports</value>
   </data>
   <data name="Reservoir" xml:space="preserve">
     <value>Reservoir</value>
   </data>
+  <data name="residualamounts" xml:space="preserve">
+    <value>Customer receivables - residual amounts at customers</value>
+  </data>
   <data name="Sales" xml:space="preserve">
     <value>Sales</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search </value>
+  </data>
+  <data name="SearchClient" xml:space="preserve">
+    <value>Search Client's Name</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -231,10 +267,16 @@
   <data name="Suppliers" xml:space="preserve">
     <value>Suppliers</value>
   </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
   <data name="ViewClient" xml:space="preserve">
     <value>View Clients</value>
   </data>
   <data name="ViewCustomerreceivables" xml:space="preserve">
     <value>View Client Receivables</value>
+  </data>
+  <data name="Zero" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

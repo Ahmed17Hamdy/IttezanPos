@@ -17,7 +17,17 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="SearchBar">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="Changa-Regular.ttf#Changa-Regular "
+                        iOS="Changa-Regular" />
+                </Setter.Value>
+            </Setter>
 
+        </Style>
         <Style TargetType="Entry">
             <Setter Property="FontFamily">
                 <Setter.Value>
@@ -27,6 +37,7 @@
                         iOS="Changa-Regular" />
                 </Setter.Value>
             </Setter>
+
         </Style>
         <Style TargetType="Button">
             <Setter Property="FontFamily">

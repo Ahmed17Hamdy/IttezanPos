@@ -29,6 +29,7 @@ namespace IttezanPos.Droid.Renderers
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {
             base.OnElementChanged(e);
+           
             if (e.OldElement == null)
             {
                 Control.Background = null;

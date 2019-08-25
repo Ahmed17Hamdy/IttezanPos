@@ -133,6 +133,33 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount owed.
+        /// </summary>
+        internal static string Amountowed {
+            get {
+                return ResourceManager.GetString("Amountowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paid Amount.
+        /// </summary>
+        internal static string Amountpaid {
+            get {
+                return ResourceManager.GetString("Amountpaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount payable.
+        /// </summary>
+        internal static string Amountpayable {
+            get {
+                return ResourceManager.GetString("Amountpayable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back Office.
         /// </summary>
         internal static string BackOffice {
@@ -165,6 +192,15 @@ namespace IttezanPos {
         internal static string ClientName {
             get {
                 return ResourceManager.GetString("ClientName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client&apos;s Data.
+        /// </summary>
+        internal static string ClientsData {
+            get {
+                return ResourceManager.GetString("ClientsData", resourceCulture);
             }
         }
         
@@ -241,6 +277,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This Field is required.
+        /// </summary>
+        internal static string FieldReq {
+            get {
+                return ResourceManager.GetString("FieldReq", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
         internal static string General {
@@ -255,6 +300,15 @@ namespace IttezanPos {
         internal static string Help {
             get {
                 return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Mail Format.
+        /// </summary>
+        internal static string InvalidMail {
+            get {
+                return ResourceManager.GetString("InvalidMail", resourceCulture);
             }
         }
         
@@ -313,6 +367,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Opening balance for Clients.
+        /// </summary>
+        internal static string Openingbalanceforcustomers {
+            get {
+                return ResourceManager.GetString("Openingbalanceforcustomers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone Number.
         /// </summary>
         internal static string PhoneNumber {
@@ -349,6 +412,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report.
+        /// </summary>
+        internal static string Report {
+            get {
+                return ResourceManager.GetString("Report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
         internal static string Reports {
@@ -367,11 +439,47 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer receivables - residual amounts at customers.
+        /// </summary>
+        internal static string residualamounts {
+            get {
+                return ResourceManager.GetString("residualamounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales.
         /// </summary>
         internal static string Sales {
             get {
                 return ResourceManager.GetString("Sales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search .
+        /// </summary>
+        internal static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Client&apos;s Name.
+        /// </summary>
+        internal static string SearchClient {
+            get {
+                return ResourceManager.GetString("SearchClient", resourceCulture);
             }
         }
         
@@ -403,6 +511,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Amount.
+        /// </summary>
+        internal static string TotalAmount {
+            get {
+                return ResourceManager.GetString("TotalAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View Clients.
         /// </summary>
         internal static string ViewClient {
@@ -417,6 +534,15 @@ namespace IttezanPos {
         internal static string ViewCustomerreceivables {
             get {
                 return ResourceManager.GetString("ViewCustomerreceivables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0.
+        /// </summary>
+        internal static string Zero {
+            get {
+                return ResourceManager.GetString("Zero", resourceCulture);
             }
         }
     }

@@ -1,15 +1,98 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="IttezanPos.Views.ClientPages.ClientsPage">
+<ContentPage
+    x:Class="IttezanPos.Views.ClientPages.ClientsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    mc:Ignorable="d">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="5">
+            <Label
+                Margin="0,10,0,0"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                Text="{tr:Translate ViewClient}"
+                TextColor="#33b54b"
+                VerticalOptions="Center" />
+            <Grid
+                Margin="10"
+                ef:Border.Color="Black"
+                ef:Border.Radius="1"
+                ef:Border.Width="1"
+                BackgroundColor="#eaebe5"
+                ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <SearchBar
+                    Grid.Column="0"
+                    Margin="5"
+                    ef:Border.Color="LightGray"
+                    ef:Border.Radius="20"
+                    ef:Border.Width="1"
+                    CancelButtonColor="Red"
+                    Placeholder="{tr:Translate SearchClient}" />
+                <Button
+                    Grid.Column="1"
+                    Margin="2,5"
+                    BackgroundColor="#33b54b"
+                    CornerRadius="25"
+                    Text="{tr:Translate Report}" />
+            </Grid>
+            <Grid
+                Margin="10,-17,10,-10"
+                Padding="0,10"
+                ef:Border.Color="Black"
+                ef:Border.Radius="1"
+                ef:Border.Width="1"
+                BackgroundColor="#eaebe5"
+                ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Margin="2,0,2,0"
+                    FontSize="Small"
+                    HorizontalOptions="Start"
+                    Text="{tr:Translate ClientsData}"
+                    TextColor="Black" />
+
+                <Label
+                    Grid.Column="1"
+                    FontSize="13"
+                    Text="{tr:Translate PhoneNumber}"
+                    TextColor="Black" />
+            </Grid>
+            <ListView Margin="10,-17,10,-10">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="2,0,2,0"
+                                    FontSize="Small"
+                                    HorizontalOptions="Start"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="13"
+                                    TextColor="Black" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

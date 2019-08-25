@@ -46,7 +46,7 @@
                     ef:Border.Radius="25"
                     ef:Border.Width="1"
                     xe:TouchEffect.Color="Gray"
-                    BackgroundColor="#34b44c"
+                    BackgroundColor="#33b54b"
                     InputTransparent="True">
                     <Image HorizontalOptions="Start" Source="Add.png" />
                     <Label
@@ -64,7 +64,7 @@
                     ef:Border.Radius="25"
                     ef:Border.Width="1"
                     xe:TouchEffect.Color="Gray"
-                    BackgroundColor="#34b44c"
+                    BackgroundColor="#33b54b"
                     InputTransparent="True">
                     <Image HorizontalOptions="Start" Source="OpeningBalance.png" />
                     <Label
@@ -82,7 +82,7 @@
                     ef:Border.Radius="25"
                     ef:Border.Width="1"
                     xe:TouchEffect.Color="Gray"
-                    BackgroundColor="#34b44c"
+                    BackgroundColor="#33b54b"
                     InputTransparent="True">
                     <Image HorizontalOptions="Start" Source="Customer_receivables.png" />
                     <Label
@@ -100,7 +100,7 @@
                     ef:Border.Radius="25"
                     ef:Border.Width="1"
                     xe:TouchEffect.Color="Gray"
-                    BackgroundColor="#34b44c"
+                    BackgroundColor="#33b54b"
                     InputTransparent="True">
                     <Image HorizontalOptions="Start" Source="ClientReport.png" />
                     <Label
@@ -118,7 +118,7 @@
                     ef:Border.Radius="25"
                     ef:Border.Width="1"
                     xe:TouchEffect.Color="Gray"
-                    BackgroundColor="#34b44c"
+                    BackgroundColor="#33b54b"
                     InputTransparent="True">
                     <Image HorizontalOptions="Start" Source="ShowClients.png" />
                     <Label
