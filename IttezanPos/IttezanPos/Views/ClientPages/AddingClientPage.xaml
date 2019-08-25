@@ -21,7 +21,6 @@
             Margin="10,10,10,0"
             Padding="0"
             RowSpacing="0">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -37,7 +36,7 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
-            <ScrollView Grid.RowSpan="14">
+            <ScrollView Grid.RowSpan="14" Margin="5">
                 <StackLayout>
                     <StackLayout.Behaviors>
                         <Validators:ValidationGroupBehavior x:Name="form" />

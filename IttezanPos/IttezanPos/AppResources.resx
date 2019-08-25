@@ -244,7 +244,7 @@
     <value>Reservoir</value>
   </data>
   <data name="residualamounts" xml:space="preserve">
-    <value>Customer receivables - residual amounts at customers</value>
+    <value>Customer receivables - residual amounts</value>
   </data>
   <data name="Sales" xml:space="preserve">
     <value>Sales</value>

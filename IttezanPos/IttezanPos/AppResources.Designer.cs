@@ -439,7 +439,7 @@ namespace IttezanPos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customer receivables - residual amounts at customers.
+        ///   Looks up a localized string similar to Customer receivables - residual amounts.
         /// </summary>
         internal static string residualamounts {
             get {
