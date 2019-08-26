@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="IttezanPos.Views.ClientPages.AddingClientPage"
+    x:Class="IttezanPos.Views.SupplierPages.AddingSupplierPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Behaviors="clr-namespace:IttezanPos.Behaviors"
@@ -32,18 +32,16 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="2*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="2*" />
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
-            <ScrollView Grid.RowSpan="13" Margin="5">
+            <ScrollView Grid.RowSpan="11" Margin="5">
                 <StackLayout>
                     <StackLayout.Behaviors>
                         <Validators:ValidationGroupBehavior x:Name="form" />
                     </StackLayout.Behaviors>
                     <Label
                         Grid.Row="0"
-                        Text="{tr:Translate ClientName}"
+                        Text="{tr:Translate SupplierName}"
                         VerticalOptions="End" />
                     <StackLayout Grid.Row="1">
                         <customcontrols:CustomEntry
@@ -140,20 +138,8 @@
                         ef:Border.Width="1"
                         HeightRequest="100"
                         HorizontalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="10"
-                        Text="{tr:Translate ClientLimit}"
-                        VerticalOptions="End" />
-                    <customcontrols:CustomEntry
-                        Grid.Row="11"
-                        ef:Border.Color="#33b54b"
-                        ef:Border.Radius="25"
-                        ef:Border.Width="1"
-                        HeightRequest="100"
-                        HorizontalTextAlignment="Center"
-                        Text="{tr:Translate Zero}" />
                     <Button
-                        Grid.Row="12"
+                        Grid.Row="10"
                         Margin="0,5,0,0"
                         BackgroundColor="#33b54b"
                         CornerRadius="25"

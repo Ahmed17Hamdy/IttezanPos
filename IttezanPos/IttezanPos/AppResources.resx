@@ -132,6 +132,9 @@
   <data name="AddNewClient" xml:space="preserve">
     <value>Add New Client</value>
   </data>
+  <data name="AddNewSupplier" xml:space="preserve">
+    <value>Add New Supplier</value>
+  </data>
   <data name="AddNotes" xml:space="preserve">
     <value>Add Notes</value>
   </data>
@@ -244,7 +247,8 @@
     <value>Reservoir</value>
   </data>
   <data name="residualamounts" xml:space="preserve">
-    <value>Customer receivables - residual amounts</value>
+    <value>Customer receivables
+ - residual amounts</value>
   </data>
   <data name="Sales" xml:space="preserve">
     <value>Sales</value>
@@ -258,11 +262,29 @@
   <data name="SearchClient" xml:space="preserve">
     <value>Search Client's Name</value>
   </data>
+  <data name="SearchSupplier" xml:space="preserve">
+    <value>Search Supplier's Name</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="StaffManagement" xml:space="preserve">
     <value>Staff Management</value>
+  </data>
+  <data name="SupplierData" xml:space="preserve">
+    <value>Supplier's Data</value>
+  </data>
+  <data name="SupplierName" xml:space="preserve">
+    <value>Supplier Name</value>
+  </data>
+  <data name="Supplieropeningbalances" xml:space="preserve">
+    <value>Supplier's Opening Balances</value>
+  </data>
+  <data name="Supplierreceivables" xml:space="preserve">
+    <value>Supplier's Receivables - Reports</value>
+  </data>
+  <data name="Supplierresidualamounts" xml:space="preserve">
+    <value>Residual amounts to suppliers</value>
   </data>
   <data name="Suppliers" xml:space="preserve">
     <value>Suppliers</value>
@@ -275,6 +297,12 @@
   </data>
   <data name="ViewCustomerreceivables" xml:space="preserve">
     <value>View Client Receivables</value>
+  </data>
+  <data name="ViewSupplier" xml:space="preserve">
+    <value>View Suppliers</value>
+  </data>
+  <data name="ViewSupplierreceivables" xml:space="preserve">
+    <value>View Supplier Receivables</value>
   </data>
   <data name="Zero" xml:space="preserve">
     <value>0</value>

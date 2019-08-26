@@ -6,6 +6,7 @@
     xmlns:Client="clr-namespace:IttezanPos.Views.ClientPages"
     xmlns:Pages="clr-namespace:IttezanPos.Views.MainPage"
     xmlns:SettingPages="clr-namespace:IttezanPos.Views.SettingsPages"
+    xmlns:Supplier="clr-namespace:IttezanPos.Views.SupplierPages"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:local="clr-namespace:IttezanPos.Views.Master"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -89,7 +90,7 @@
                             <local:MasterPageItem
                                 Title="{tr:Translate Suppliers}"
                                 IconSource="suppliermenu.png"
-                                TargetType="{x:Type Pages:HomePage}" />
+                                TargetType="{x:Type Supplier:MainSuppliersPage}" />
                             <local:MasterPageItem
                                 Title="{tr:Translate Customers}"
                                 IconSource="Clients.png"

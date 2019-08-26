@@ -99,6 +99,9 @@
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Supplier_Tapped" />
+                </Frame.GestureRecognizers>
             </Frame>
             <Frame
                 Grid.Row="1"
@@ -117,7 +120,7 @@
                         Margin="5,10,5,0"
                         Aspect="AspectFit"
                         HorizontalOptions="Center"
-                        Source="Client.png"
+                        Source="ClientUser.png"
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
@@ -237,5 +240,6 @@
                 </Grid>
             </Frame>
         </Grid>
+
     </ContentPage.Content>
 </ContentPage>

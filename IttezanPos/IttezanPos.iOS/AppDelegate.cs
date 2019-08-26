@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.XForms.iOS.Buttons;
 using UIKit;
 
 namespace IttezanPos.iOS
@@ -23,6 +24,7 @@ namespace IttezanPos.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SfRadioButtonRenderer.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }

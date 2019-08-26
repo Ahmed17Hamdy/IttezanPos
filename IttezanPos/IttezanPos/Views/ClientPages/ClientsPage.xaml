@@ -28,7 +28,6 @@
                         ef:Border.Color="Black"
                         ef:Border.Radius="1"
                         ef:Border.Width="1"
-                        BackgroundColor="#534750"
                         ColumnSpacing="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*" />
@@ -55,7 +54,6 @@
                         ef:Border.Color="Black"
                         ef:Border.Radius="1"
                         ef:Border.Width="1"
-                        BackgroundColor="#534750"
                         ColumnSpacing="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*" />

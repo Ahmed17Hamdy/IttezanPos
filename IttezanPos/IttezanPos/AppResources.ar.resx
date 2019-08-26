@@ -132,6 +132,9 @@
   <data name="AddNewClient" xml:space="preserve">
     <value>إضافة عميل جديد</value>
   </data>
+  <data name="AddNewSupplier" xml:space="preserve">
+    <value>إضافة مورد جديد</value>
+  </data>
   <data name="AddNotes" xml:space="preserve">
     <value>إضافة ملاحظات</value>
   </data>
@@ -258,11 +261,29 @@
   <data name="SearchClient" xml:space="preserve">
     <value>بحث بإسم العميل</value>
   </data>
+  <data name="SearchSupplier" xml:space="preserve">
+    <value>بحث بإسم المورد</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>الإعدادات</value>
   </data>
   <data name="StaffManagement" xml:space="preserve">
     <value>إدارة الموظفين</value>
+  </data>
+  <data name="SupplierData" xml:space="preserve">
+    <value>بيانات المورد</value>
+  </data>
+  <data name="SupplierName" xml:space="preserve">
+    <value>إسم المورد</value>
+  </data>
+  <data name="Supplieropeningbalances" xml:space="preserve">
+    <value>الأرصدة الإفتتاحية للموردين</value>
+  </data>
+  <data name="Supplierreceivables" xml:space="preserve">
+    <value>ذمم الموردين - تقارير</value>
+  </data>
+  <data name="Supplierresidualamounts" xml:space="preserve">
+    <value>المبالغ المتبقية للموردين</value>
   </data>
   <data name="Suppliers" xml:space="preserve">
     <value>الموردين</value>
@@ -275,6 +296,12 @@
   </data>
   <data name="ViewCustomerreceivables" xml:space="preserve">
     <value>عرض ذمم العملاء</value>
+  </data>
+  <data name="ViewSupplier" xml:space="preserve">
+    <value>عرض الموردين</value>
+  </data>
+  <data name="ViewSupplierreceivables" xml:space="preserve">
+    <value>عرض ذمم الموردين</value>
   </data>
   <data name="Zero" xml:space="preserve">
     <value>0</value>

@@ -2,6 +2,7 @@
 using System.Linq;
 using IttezanPos.Helpers;
 using IttezanPos.Views.ClientPages;
+using IttezanPos.Views.SupplierPages;
 using Plugin.Connectivity;
 using Plugin.Multilingual;
 using Xamarin.Forms;
@@ -38,6 +39,11 @@ namespace IttezanPos.Views.MainPage
         private async void Client_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainClientsPage());
+        }
+
+        private async void Supplier_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainSuppliersPage());
         }
     }
 }

@@ -106,6 +106,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Supplier.
+        /// </summary>
+        internal static string AddNewSupplier {
+            get {
+                return ResourceManager.GetString("AddNewSupplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Notes.
         /// </summary>
         internal static string AddNotes {
@@ -439,7 +448,8 @@ namespace IttezanPos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customer receivables - residual amounts.
+        ///   Looks up a localized string similar to Customer receivables
+        /// - residual amounts.
         /// </summary>
         internal static string residualamounts {
             get {
@@ -484,6 +494,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search Supplier&apos;s Name.
+        /// </summary>
+        internal static string SearchSupplier {
+            get {
+                return ResourceManager.GetString("SearchSupplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string Settings {
@@ -498,6 +517,51 @@ namespace IttezanPos {
         internal static string StaffManagement {
             get {
                 return ResourceManager.GetString("StaffManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier&apos;s Data.
+        /// </summary>
+        internal static string SupplierData {
+            get {
+                return ResourceManager.GetString("SupplierData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier Name.
+        /// </summary>
+        internal static string SupplierName {
+            get {
+                return ResourceManager.GetString("SupplierName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier&apos;s Opening Balances.
+        /// </summary>
+        internal static string Supplieropeningbalances {
+            get {
+                return ResourceManager.GetString("Supplieropeningbalances", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier&apos;s Receivables - Reports.
+        /// </summary>
+        internal static string Supplierreceivables {
+            get {
+                return ResourceManager.GetString("Supplierreceivables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Residual amounts to suppliers.
+        /// </summary>
+        internal static string Supplierresidualamounts {
+            get {
+                return ResourceManager.GetString("Supplierresidualamounts", resourceCulture);
             }
         }
         
@@ -534,6 +598,24 @@ namespace IttezanPos {
         internal static string ViewCustomerreceivables {
             get {
                 return ResourceManager.GetString("ViewCustomerreceivables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Suppliers.
+        /// </summary>
+        internal static string ViewSupplier {
+            get {
+                return ResourceManager.GetString("ViewSupplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Supplier Receivables.
+        /// </summary>
+        internal static string ViewSupplierreceivables {
+            get {
+                return ResourceManager.GetString("ViewSupplierreceivables", resourceCulture);
             }
         }
         
