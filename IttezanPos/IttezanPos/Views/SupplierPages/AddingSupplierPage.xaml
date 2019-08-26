@@ -57,7 +57,6 @@
                                 <Behaviors:ValidationBehavior PropertyName="Text">
                                     <Behaviors:ValidationBehavior.Validators>
                                         <Validators:RequiredValidator />
-
                                     </Behaviors:ValidationBehavior.Validators>
                                 </Behaviors:ValidationBehavior>
 

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IttezanPos.Views.ReservoirPages.ReservoirPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behaviors="clr-namespace:IttezanPos.Behaviors"
+    xmlns:Validators="clr-namespace:IttezanPos.Models.BModel"
+    xmlns:customcontrols="clr-namespace:IttezanPos.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView Margin="10">
+            <AbsoluteLayout>
+                <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <StackLayout
+                        HorizontalOptions="StartAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="50" />
+                    <input:RadioButtonGroupView Orientation="Horizontal" Spacing="50">
+                        <input:RadioButton CircleColor="#33b54b" Text="Option 1" />
+                        <input:RadioButton Text="Option 2" />
+                    </input:RadioButtonGroupView>
+                    <StackLayout>
+                        <Label Text="{tr:Translate Entertheamount}" />
+                        <customcontrols:CustomEntry
+                            Grid.Row="1"
+                            Margin="0"
+                            ef:Border.Color="#33b54b"
+                            ef:Border.Radius="15"
+                            ef:Border.Width="1"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsTextPredictionEnabled="True">
+                            <customcontrols:CustomEntry.Behaviors>
+                                <Behaviors:ValidationBehavior PropertyName="Text">
+                                    <Behaviors:ValidationBehavior.Validators>
+                                        <Validators:RequiredValidator />
+                                    </Behaviors:ValidationBehavior.Validators>
+                                </Behaviors:ValidationBehavior>
+                            </customcontrols:CustomEntry.Behaviors>
+                        </customcontrols:CustomEntry>
+                        <Label Text="{tr:Translate Zero}" />
+                        <Grid>
+                            <Label HorizontalOptions="Center" Text="Date" />
+                            <DatePicker
+                                ef:Border.Color="#33b54b"
+                                ef:Border.Radius="15"
+                                ef:Border.Width="1"
+                                ef:Placeholder.Text="Date" />
+
+                        </Grid>
+                        <Label Text="البيان" />
+                        <customcontrols:CustomEntry
+                            Grid.Row="1"
+                            Margin="0"
+                            ef:Border.Color="#33b54b"
+                            ef:Border.Radius="15"
+                            ef:Border.Width="1"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsTextPredictionEnabled="True">
+                            <customcontrols:CustomEntry.Behaviors>
+                                <Behaviors:ValidationBehavior PropertyName="Text">
+                                    <Behaviors:ValidationBehavior.Validators>
+                                        <Validators:RequiredValidator />
+                                    </Behaviors:ValidationBehavior.Validators>
+                                </Behaviors:ValidationBehavior>
+                            </customcontrols:CustomEntry.Behaviors>
+                        </customcontrols:CustomEntry>
+                        <StackLayout Orientation="Horizontal" Spacing="50">
+                            <Label Text="AddMoney" />
+                            <Switch />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="50">
+                            <Label Text="AddMoney" />
+                            <Switch />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="50">
+                            <Label Text="AddMoney" />
+                            <Switch />
+                        </StackLayout>
+                        <Button HorizontalOptions="Center" />
+                    </StackLayout>
+                </StackLayout>
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

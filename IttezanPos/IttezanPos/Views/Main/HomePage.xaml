@@ -11,8 +11,11 @@
     mc:Ignorable="d">
 
     <ContentPage.Content>
-
-        <Grid ColumnSpacing="0" RowSpacing="0">
+        <Grid
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            ColumnSpacing="0"
+            RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -240,6 +243,5 @@
                 </Grid>
             </Frame>
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>

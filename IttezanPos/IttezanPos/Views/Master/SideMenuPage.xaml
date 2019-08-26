@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Client="clr-namespace:IttezanPos.Views.ClientPages"
     xmlns:Pages="clr-namespace:IttezanPos.Views.MainPage"
+    xmlns:Reservoir="clr-namespace:IttezanPos.Views.ReservoirPages"
     xmlns:SettingPages="clr-namespace:IttezanPos.Views.SettingsPages"
     xmlns:Supplier="clr-namespace:IttezanPos.Views.SupplierPages"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -102,7 +103,7 @@
                             <local:MasterPageItem
                                 Title="{tr:Translate Reservoir}"
                                 IconSource="reservoirmenu.png"
-                                TargetType="{x:Type Pages:HomePage}" />
+                                TargetType="{x:Type Reservoir:ReservoirPage}" />
                             <local:MasterPageItem
                                 Title="{tr:Translate Inventory}"
                                 IconSource="inventorymenu.png"

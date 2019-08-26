@@ -250,6 +250,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the amount.
+        /// </summary>
+        internal static string Entertheamount {
+            get {
+                return ResourceManager.GetString("Entertheamount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string Error {
