@@ -61,6 +61,87 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Two Hundred.
+        /// </summary>
+        internal static string _2Hundred {
+            get {
+                return ResourceManager.GetString("2Hundred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Three Hundred.
+        /// </summary>
+        internal static string _3Hundred {
+            get {
+                return ResourceManager.GetString("3Hundred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Four Hundred.
+        /// </summary>
+        internal static string _4Hundred {
+            get {
+                return ResourceManager.GetString("4Hundred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Five Hundred.
+        /// </summary>
+        internal static string _5Hundred {
+            get {
+                return ResourceManager.GetString("5Hundred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Six Hundred.
+        /// </summary>
+        internal static string _6Hundred {
+            get {
+                return ResourceManager.GetString("6Hundred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seven Hundred.
+        /// </summary>
+        internal static string _7Hundred {
+            get {
+                return ResourceManager.GetString("7Hundred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eight Hundred.
+        /// </summary>
+        internal static string _8Hundred {
+            get {
+                return ResourceManager.GetString("8Hundred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nine Hundred.
+        /// </summary>
+        internal static string _9Hundred {
+            get {
+                return ResourceManager.GetString("9Hundred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string AAn {
+            get {
+                return ResourceManager.GetString("AAn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AddAddress.
         /// </summary>
         internal static string AddAddress {
@@ -187,6 +268,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to And.
+        /// </summary>
+        internal static string And {
+            get {
+                return ResourceManager.GetString("And", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back Office.
         /// </summary>
         internal static string BackOffice {
@@ -201,6 +291,24 @@ namespace IttezanPos {
         internal static string Balance {
             get {
                 return ResourceManager.GetString("Balance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Billion.
+        /// </summary>
+        internal static string Billion {
+            get {
+                return ResourceManager.GetString("Billion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Billions.
+        /// </summary>
+        internal static string Billions {
+            get {
+                return ResourceManager.GetString("Billions", resourceCulture);
             }
         }
         
@@ -313,6 +421,33 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Eight.
+        /// </summary>
+        internal static string Eight {
+            get {
+                return ResourceManager.GetString("Eight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eighty.
+        /// </summary>
+        internal static string Eighty {
+            get {
+                return ResourceManager.GetString("Eighty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eleven.
+        /// </summary>
+        internal static string Eleven {
+            get {
+                return ResourceManager.GetString("Eleven", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email Address.
         /// </summary>
         internal static string EmailAddress {
@@ -376,6 +511,42 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fifty.
+        /// </summary>
+        internal static string Fifty {
+            get {
+                return ResourceManager.GetString("Fifty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Five.
+        /// </summary>
+        internal static string Five {
+            get {
+                return ResourceManager.GetString("Five", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Four.
+        /// </summary>
+        internal static string Four {
+            get {
+                return ResourceManager.GetString("Four", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fourty.
+        /// </summary>
+        internal static string Fourty {
+            get {
+                return ResourceManager.GetString("Fourty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
         internal static string General {
@@ -390,6 +561,15 @@ namespace IttezanPos {
         internal static string Help {
             get {
                 return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hundred.
+        /// </summary>
+        internal static string Hundred {
+            get {
+                return ResourceManager.GetString("Hundred", resourceCulture);
             }
         }
         
@@ -439,6 +619,42 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Million.
+        /// </summary>
+        internal static string Million {
+            get {
+                return ResourceManager.GetString("Million", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Millions.
+        /// </summary>
+        internal static string Millions {
+            get {
+                return ResourceManager.GetString("Millions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nine.
+        /// </summary>
+        internal static string Nine {
+            get {
+                return ResourceManager.GetString("Nine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ninety.
+        /// </summary>
+        internal static string Ninety {
+            get {
+                return ResourceManager.GetString("Ninety", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
         internal static string Notes {
@@ -453,6 +669,15 @@ namespace IttezanPos {
         internal static string Ok {
             get {
                 return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One.
+        /// </summary>
+        internal static string One {
+            get {
+                return ResourceManager.GetString("One", resourceCulture);
             }
         }
         
@@ -489,6 +714,24 @@ namespace IttezanPos {
         internal static string Purchase {
             get {
                 return ResourceManager.GetString("Purchase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quadrillion.
+        /// </summary>
+        internal static string Quadrillion {
+            get {
+                return ResourceManager.GetString("Quadrillion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quadrillions.
+        /// </summary>
+        internal static string Quadrillions {
+            get {
+                return ResourceManager.GetString("Quadrillions", resourceCulture);
             }
         }
         
@@ -593,6 +836,51 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Seven.
+        /// </summary>
+        internal static string Seven {
+            get {
+                return ResourceManager.GetString("Seven", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seventy.
+        /// </summary>
+        internal static string Seventy {
+            get {
+                return ResourceManager.GetString("Seventy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Six.
+        /// </summary>
+        internal static string Six {
+            get {
+                return ResourceManager.GetString("Six", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sixty.
+        /// </summary>
+        internal static string Sixty {
+            get {
+                return ResourceManager.GetString("Sixty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SR.
+        /// </summary>
+        internal static string SR {
+            get {
+                return ResourceManager.GetString("SR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Staff Management.
         /// </summary>
         internal static string StaffManagement {
@@ -665,11 +953,101 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ten.
+        /// </summary>
+        internal static string Ten {
+            get {
+                return ResourceManager.GetString("Ten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thirty.
+        /// </summary>
+        internal static string Thirty {
+            get {
+                return ResourceManager.GetString("Thirty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thousand.
+        /// </summary>
+        internal static string Thousand {
+            get {
+                return ResourceManager.GetString("Thousand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thousands.
+        /// </summary>
+        internal static string Thousands {
+            get {
+                return ResourceManager.GetString("Thousands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Three.
+        /// </summary>
+        internal static string Three {
+            get {
+                return ResourceManager.GetString("Three", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Amount.
         /// </summary>
         internal static string TotalAmount {
             get {
                 return ResourceManager.GetString("TotalAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trillion.
+        /// </summary>
+        internal static string Trillion {
+            get {
+                return ResourceManager.GetString("Trillion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trillions.
+        /// </summary>
+        internal static string Trillions {
+            get {
+                return ResourceManager.GetString("Trillions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twelve.
+        /// </summary>
+        internal static string Twelve {
+            get {
+                return ResourceManager.GetString("Twelve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twenty.
+        /// </summary>
+        internal static string Twenty {
+            get {
+                return ResourceManager.GetString("Twenty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two.
+        /// </summary>
+        internal static string Two {
+            get {
+                return ResourceManager.GetString("Two", resourceCulture);
             }
         }
         

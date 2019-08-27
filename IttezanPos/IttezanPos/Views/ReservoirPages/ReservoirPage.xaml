@@ -67,7 +67,8 @@
                             ef:Border.Width="1"
                             FontSize="Small"
                             HorizontalTextAlignment="Center"
-                            IsTextPredictionEnabled="True">
+                            IsTextPredictionEnabled="True"
+                            TextChanged="CustomEntry_TextChanged">
                             <customcontrols:CustomEntry.Behaviors>
                                 <Behaviors:ValidationBehavior PropertyName="Text">
                                     <Behaviors:ValidationBehavior.Validators>
@@ -76,7 +77,10 @@
                                 </Behaviors:ValidationBehavior>
                             </customcontrols:CustomEntry.Behaviors>
                         </customcontrols:CustomEntry>
-                        <Label Margin="0,-5,0,5" Text="{tr:Translate ZeroText}" />
+                        <Label
+                            x:Name="NumbertoTextlbl"
+                            Margin="0,-5,0,5"
+                            Text="{tr:Translate ZeroText}" />
                         <Grid>
                             <Label
                                 Margin="20,10"

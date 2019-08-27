@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="2Hundred" xml:space="preserve">
+    <value>Two Hundred</value>
+  </data>
+  <data name="3Hundred" xml:space="preserve">
+    <value>Three Hundred</value>
+  </data>
+  <data name="4Hundred" xml:space="preserve">
+    <value>Four Hundred</value>
+  </data>
+  <data name="5Hundred" xml:space="preserve">
+    <value>Five Hundred</value>
+  </data>
+  <data name="6Hundred" xml:space="preserve">
+    <value>Six Hundred</value>
+  </data>
+  <data name="7Hundred" xml:space="preserve">
+    <value>Seven Hundred</value>
+  </data>
+  <data name="8Hundred" xml:space="preserve">
+    <value>Eight Hundred</value>
+  </data>
+  <data name="9Hundred" xml:space="preserve">
+    <value>Nine Hundred</value>
+  </data>
+  <data name="AAn" xml:space="preserve">
+    <value />
+  </data>
   <data name="AddAddress" xml:space="preserve">
     <value>AddAddress</value>
   </data>
@@ -159,11 +186,20 @@
   <data name="Amountpayable" xml:space="preserve">
     <value>Amount payable</value>
   </data>
+  <data name="And" xml:space="preserve">
+    <value>And</value>
+  </data>
   <data name="BackOffice" xml:space="preserve">
     <value>Back Office</value>
   </data>
   <data name="Balance" xml:space="preserve">
     <value>Balance</value>
+  </data>
+  <data name="Billion" xml:space="preserve">
+    <value>Billion</value>
+  </data>
+  <data name="Billions" xml:space="preserve">
+    <value>Billions</value>
   </data>
   <data name="BusinessSettings" xml:space="preserve">
     <value>Business Settings</value>
@@ -201,6 +237,15 @@
   <data name="DeductOfFund" xml:space="preserve">
     <value>Deduct of Fund</value>
   </data>
+  <data name="Eight" xml:space="preserve">
+    <value>Eight</value>
+  </data>
+  <data name="Eighty" xml:space="preserve">
+    <value>Eighty</value>
+  </data>
+  <data name="Eleven" xml:space="preserve">
+    <value>Eleven</value>
+  </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>Email Address</value>
   </data>
@@ -222,11 +267,26 @@
   <data name="FieldReq" xml:space="preserve">
     <value>This Field is required</value>
   </data>
+  <data name="Fifty" xml:space="preserve">
+    <value>Fifty</value>
+  </data>
+  <data name="Five" xml:space="preserve">
+    <value>Five</value>
+  </data>
+  <data name="Four" xml:space="preserve">
+    <value>Four</value>
+  </data>
+  <data name="Fourty" xml:space="preserve">
+    <value>Fourty</value>
+  </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Help</value>
+  </data>
+  <data name="Hundred" xml:space="preserve">
+    <value>Hundred</value>
   </data>
   <data name="InvalidMail" xml:space="preserve">
     <value>Invalid Mail Format</value>
@@ -243,11 +303,26 @@
   <data name="Management" xml:space="preserve">
     <value>Management</value>
   </data>
+  <data name="Million" xml:space="preserve">
+    <value>Million</value>
+  </data>
+  <data name="Millions" xml:space="preserve">
+    <value>Millions</value>
+  </data>
+  <data name="Nine" xml:space="preserve">
+    <value>Nine</value>
+  </data>
+  <data name="Ninety" xml:space="preserve">
+    <value>Ninety</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>Notes</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="One" xml:space="preserve">
+    <value>One</value>
   </data>
   <data name="Openingbalanceforcustomers" xml:space="preserve">
     <value>Opening balance for Clients</value>
@@ -260,6 +335,12 @@
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>Purchases</value>
+  </data>
+  <data name="Quadrillion" xml:space="preserve">
+    <value>Quadrillion</value>
+  </data>
+  <data name="Quadrillions" xml:space="preserve">
+    <value>Quadrillions</value>
   </data>
   <data name="Recipts" xml:space="preserve">
     <value>Recipts</value>
@@ -295,6 +376,21 @@
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Seven" xml:space="preserve">
+    <value>Seven</value>
+  </data>
+  <data name="Seventy" xml:space="preserve">
+    <value>Seventy</value>
+  </data>
+  <data name="Six" xml:space="preserve">
+    <value>Six</value>
+  </data>
+  <data name="Sixty" xml:space="preserve">
+    <value>Sixty</value>
+  </data>
+  <data name="SR" xml:space="preserve">
+    <value>SR</value>
+  </data>
   <data name="StaffManagement" xml:space="preserve">
     <value>Staff Management</value>
   </data>
@@ -319,8 +415,38 @@
   <data name="Suppliers" xml:space="preserve">
     <value>Suppliers</value>
   </data>
+  <data name="Ten" xml:space="preserve">
+    <value>Ten</value>
+  </data>
+  <data name="Thirty" xml:space="preserve">
+    <value>Thirty</value>
+  </data>
+  <data name="Thousand" xml:space="preserve">
+    <value>Thousand</value>
+  </data>
+  <data name="Thousands" xml:space="preserve">
+    <value>Thousands</value>
+  </data>
+  <data name="Three" xml:space="preserve">
+    <value>Three</value>
+  </data>
   <data name="TotalAmount" xml:space="preserve">
     <value>Total Amount</value>
+  </data>
+  <data name="Trillion" xml:space="preserve">
+    <value>Trillion</value>
+  </data>
+  <data name="Trillions" xml:space="preserve">
+    <value>Trillions</value>
+  </data>
+  <data name="Twelve" xml:space="preserve">
+    <value>Twelve</value>
+  </data>
+  <data name="Twenty" xml:space="preserve">
+    <value>Twenty</value>
+  </data>
+  <data name="Two" xml:space="preserve">
+    <value>Two</value>
   </data>
   <data name="ViewClient" xml:space="preserve">
     <value>View Clients</value>

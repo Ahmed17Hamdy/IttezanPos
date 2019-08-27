@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="2Hundred" xml:space="preserve">
+    <value>مائتان</value>
+  </data>
+  <data name="3Hundred" xml:space="preserve">
+    <value>ثلاثمائة</value>
+  </data>
+  <data name="4Hundred" xml:space="preserve">
+    <value>أربعمائة</value>
+  </data>
+  <data name="5Hundred" xml:space="preserve">
+    <value>خمسمائة</value>
+  </data>
+  <data name="6Hundred" xml:space="preserve">
+    <value>ستمائة</value>
+  </data>
+  <data name="7Hundred" xml:space="preserve">
+    <value>سبعمائة</value>
+  </data>
+  <data name="8Hundred" xml:space="preserve">
+    <value>ثمنمائة</value>
+  </data>
+  <data name="9Hundred" xml:space="preserve">
+    <value>تسعمائة</value>
+  </data>
+  <data name="AAn" xml:space="preserve">
+    <value>ان</value>
+  </data>
   <data name="AddAddress" xml:space="preserve">
     <value>أدخل العنوان</value>
   </data>
@@ -159,11 +186,20 @@
   <data name="Amountpayable" xml:space="preserve">
     <value>المبلغ الدائن / له</value>
   </data>
+  <data name="And" xml:space="preserve">
+    <value> و</value>
+  </data>
   <data name="BackOffice" xml:space="preserve">
     <value>المكتب الخلفي</value>
   </data>
   <data name="Balance" xml:space="preserve">
     <value>الرصيد</value>
+  </data>
+  <data name="Billion" xml:space="preserve">
+    <value>مليار</value>
+  </data>
+  <data name="Billions" xml:space="preserve">
+    <value>مليارات</value>
   </data>
   <data name="BusinessSettings" xml:space="preserve">
     <value>إعدادات العمل</value>
@@ -201,6 +237,15 @@
   <data name="DeductOfFund" xml:space="preserve">
     <value>خصم من الصندوق</value>
   </data>
+  <data name="Eight" xml:space="preserve">
+    <value>ثمانية</value>
+  </data>
+  <data name="Eighty" xml:space="preserve">
+    <value>ثمانون</value>
+  </data>
+  <data name="Eleven" xml:space="preserve">
+    <value>إحدى عشر</value>
+  </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>البريد الإلكتروني</value>
   </data>
@@ -222,11 +267,26 @@
   <data name="FieldReq" xml:space="preserve">
     <value>هذا الحقل مطلوب</value>
   </data>
+  <data name="Fifty" xml:space="preserve">
+    <value>خمسون</value>
+  </data>
+  <data name="Five" xml:space="preserve">
+    <value>خمسة</value>
+  </data>
+  <data name="Four" xml:space="preserve">
+    <value>أربعة</value>
+  </data>
+  <data name="Fourty" xml:space="preserve">
+    <value>أربعون</value>
+  </data>
   <data name="General" xml:space="preserve">
     <value>إعدادات عامة</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>المساعدة</value>
+  </data>
+  <data name="Hundred" xml:space="preserve">
+    <value>مائة</value>
   </data>
   <data name="InvalidMail" xml:space="preserve">
     <value>صيغة البريد الإلكتروني غير صحيحة</value>
@@ -243,11 +303,26 @@
   <data name="Management" xml:space="preserve">
     <value>الإدارة</value>
   </data>
+  <data name="Million" xml:space="preserve">
+    <value>مليون</value>
+  </data>
+  <data name="Millions" xml:space="preserve">
+    <value>ملايين</value>
+  </data>
+  <data name="Nine" xml:space="preserve">
+    <value>تسعة</value>
+  </data>
+  <data name="Ninety" xml:space="preserve">
+    <value>تسعون</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>ملاحظات</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>حسناً</value>
+  </data>
+  <data name="One" xml:space="preserve">
+    <value>واحد</value>
   </data>
   <data name="Openingbalanceforcustomers" xml:space="preserve">
     <value>الأرصدة الإفتتاحية للعملاء</value>
@@ -260,6 +335,15 @@
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>المشتريات</value>
+  </data>
+  <data name="Quadrillion" xml:space="preserve">
+    <value>كوادريليون</value>
+  </data>
+  <data name="Quadrillions" xml:space="preserve">
+    <value>كوادريليونات</value>
+  </data>
+  <data name="Quat" xml:space="preserve">
+    <value>""</value>
   </data>
   <data name="Recipts" xml:space="preserve">
     <value>الفاتورة</value>
@@ -294,6 +378,21 @@
   <data name="Settings" xml:space="preserve">
     <value>الإعدادات</value>
   </data>
+  <data name="Seven" xml:space="preserve">
+    <value>سبعة</value>
+  </data>
+  <data name="Seventy" xml:space="preserve">
+    <value>سبعون</value>
+  </data>
+  <data name="Six" xml:space="preserve">
+    <value>ستة</value>
+  </data>
+  <data name="Sixty" xml:space="preserve">
+    <value>ستون</value>
+  </data>
+  <data name="SR" xml:space="preserve">
+    <value>ريال سعودي</value>
+  </data>
   <data name="StaffManagement" xml:space="preserve">
     <value>إدارة الموظفين</value>
   </data>
@@ -318,8 +417,38 @@
   <data name="Suppliers" xml:space="preserve">
     <value>الموردين</value>
   </data>
+  <data name="Ten" xml:space="preserve">
+    <value>عشرة</value>
+  </data>
+  <data name="Thirty" xml:space="preserve">
+    <value>ثلاثون</value>
+  </data>
+  <data name="Thousand" xml:space="preserve">
+    <value>ألف</value>
+  </data>
+  <data name="Thousands" xml:space="preserve">
+    <value>آلاف</value>
+  </data>
+  <data name="Three" xml:space="preserve">
+    <value>ثلاثة</value>
+  </data>
   <data name="TotalAmount" xml:space="preserve">
     <value>إجمالى المبلغ</value>
+  </data>
+  <data name="Trillion" xml:space="preserve">
+    <value>تريليون</value>
+  </data>
+  <data name="Trillions" xml:space="preserve">
+    <value>تريليونات</value>
+  </data>
+  <data name="Twelve" xml:space="preserve">
+    <value>إثنا عشر</value>
+  </data>
+  <data name="Twenty" xml:space="preserve">
+    <value>عشرون</value>
+  </data>
+  <data name="Two" xml:space="preserve">
+    <value>إثنان</value>
   </data>
   <data name="ViewClient" xml:space="preserve">
     <value>عرض العملاء</value>

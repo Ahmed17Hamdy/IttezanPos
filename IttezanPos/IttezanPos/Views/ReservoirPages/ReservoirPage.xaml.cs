@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IttezanPos.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,20 @@ namespace IttezanPos.Views.ReservoirPages
         {
             Addingbtn.IsVisible = false;
             Deductionbtn.IsVisible = true;
+        }
+
+        private void CustomEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           
+            if (e.NewTextValue != "" && e.NewTextValue.ToCharArray().All(x => char.IsDigit(x)))
+            {
+                NumbertoTextlbl.Text = ConvertNumberToText.ConvertToArabic(Convert.ToDouble(e.NewTextValue))+ " "+ AppResources.SR;
+
+            }
+            else
+            {
+                NumbertoTextlbl.Text = AppResources.ZeroText + " "+ AppResources.SR;
+            }
         }
     }
 }
