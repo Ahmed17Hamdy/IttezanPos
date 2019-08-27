@@ -16,5 +16,17 @@ namespace IttezanPos.Views.ReservoirPages
         {
             InitializeComponent();
         }
+
+        private  void Addrdbtn_Checked(object sender, EventArgs e)
+        {
+            Deductionbtn.IsVisible = false;
+            Addingbtn.IsVisible = true;          
+        }
+
+        private void Deductrdbtn_Checked(object sender, EventArgs e)
+        {
+            Addingbtn.IsVisible = false;
+            Deductionbtn.IsVisible = true;
+        }
     }
 }

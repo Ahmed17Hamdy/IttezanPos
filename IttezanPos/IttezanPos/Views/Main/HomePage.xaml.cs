@@ -2,6 +2,7 @@
 using System.Linq;
 using IttezanPos.Helpers;
 using IttezanPos.Views.ClientPages;
+using IttezanPos.Views.ReservoirPages;
 using IttezanPos.Views.SupplierPages;
 using Plugin.Connectivity;
 using Plugin.Multilingual;
@@ -44,6 +45,12 @@ namespace IttezanPos.Views.MainPage
         private async void Supplier_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainSuppliersPage());
+        }
+
+        private async void Resrvoir_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ReservoirPage());
+
         }
     }
 }

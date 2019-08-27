@@ -144,6 +144,12 @@
   <data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="Addsalesandcustomeramountstothefund" xml:space="preserve">
+    <value>Add sales and customer amounts to the fund</value>
+  </data>
+  <data name="AddToFund" xml:space="preserve">
+    <value>Add To Fund</value>
+  </data>
   <data name="Amountowed" xml:space="preserve">
     <value>Amount owed</value>
   </data>
@@ -155,6 +161,9 @@
   </data>
   <data name="BackOffice" xml:space="preserve">
     <value>Back Office</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Balance</value>
   </data>
   <data name="BusinessSettings" xml:space="preserve">
     <value>Business Settings</value>
@@ -176,6 +185,21 @@
   </data>
   <data name="Customers" xml:space="preserve">
     <value>Clients</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DeductionfromtheFund" xml:space="preserve">
+    <value>Deduction from the Fund</value>
+  </data>
+  <data name="DeductionofexpensesfromtheFund" xml:space="preserve">
+    <value>Deduction of expenses from the Fund</value>
+  </data>
+  <data name="DeductionoftheamountsofpurchasesandsuppliersfromtheFund" xml:space="preserve">
+    <value>Deduction of the amounts of purchases and suppliers from the Fund</value>
+  </data>
+  <data name="DeductOfFund" xml:space="preserve">
+    <value>Deduct of Fund</value>
   </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>Email Address</value>
@@ -274,6 +298,9 @@
   <data name="StaffManagement" xml:space="preserve">
     <value>Staff Management</value>
   </data>
+  <data name="Statement" xml:space="preserve">
+    <value>Statement</value>
+  </data>
   <data name="SupplierData" xml:space="preserve">
     <value>Supplier's Data</value>
   </data>
@@ -308,6 +335,9 @@
     <value>View Supplier Receivables</value>
   </data>
   <data name="Zero" xml:space="preserve">
-    <value>0</value>
+    <value>0.0</value>
+  </data>
+  <data name="ZeroText" xml:space="preserve">
+    <value>Zero</value>
   </data>
 </root>

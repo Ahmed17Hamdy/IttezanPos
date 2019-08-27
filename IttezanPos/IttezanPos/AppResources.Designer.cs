@@ -142,6 +142,24 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add sales and customer amounts to the fund.
+        /// </summary>
+        internal static string Addsalesandcustomeramountstothefund {
+            get {
+                return ResourceManager.GetString("Addsalesandcustomeramountstothefund", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add To Fund.
+        /// </summary>
+        internal static string AddToFund {
+            get {
+                return ResourceManager.GetString("AddToFund", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount owed.
         /// </summary>
         internal static string Amountowed {
@@ -174,6 +192,15 @@ namespace IttezanPos {
         internal static string BackOffice {
             get {
                 return ResourceManager.GetString("BackOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Balance.
+        /// </summary>
+        internal static string Balance {
+            get {
+                return ResourceManager.GetString("Balance", resourceCulture);
             }
         }
         
@@ -237,6 +264,51 @@ namespace IttezanPos {
         internal static string Customers {
             get {
                 return ResourceManager.GetString("Customers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deduction from the Fund.
+        /// </summary>
+        internal static string DeductionfromtheFund {
+            get {
+                return ResourceManager.GetString("DeductionfromtheFund", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deduction of expenses from the Fund.
+        /// </summary>
+        internal static string DeductionofexpensesfromtheFund {
+            get {
+                return ResourceManager.GetString("DeductionofexpensesfromtheFund", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deduction of the amounts of purchases and suppliers from the Fund.
+        /// </summary>
+        internal static string DeductionoftheamountsofpurchasesandsuppliersfromtheFund {
+            get {
+                return ResourceManager.GetString("DeductionoftheamountsofpurchasesandsuppliersfromtheFund", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deduct of Fund.
+        /// </summary>
+        internal static string DeductOfFund {
+            get {
+                return ResourceManager.GetString("DeductOfFund", resourceCulture);
             }
         }
         
@@ -530,6 +602,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Statement.
+        /// </summary>
+        internal static string Statement {
+            get {
+                return ResourceManager.GetString("Statement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Supplier&apos;s Data.
         /// </summary>
         internal static string SupplierData {
@@ -629,11 +710,20 @@ namespace IttezanPos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.
+        ///   Looks up a localized string similar to 0.0.
         /// </summary>
         internal static string Zero {
             get {
                 return ResourceManager.GetString("Zero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zero.
+        /// </summary>
+        internal static string ZeroText {
+            get {
+                return ResourceManager.GetString("ZeroText", resourceCulture);
             }
         }
     }
