@@ -90,7 +90,7 @@
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
                                 Title="{tr:Translate Suppliers}"
-                                IconSource="suppliermenu.png"
+                                IconSource="supplierMainpage.png"
                                 TargetType="{x:Type Supplier:MainSuppliersPage}" />
                             <local:MasterPageItem
                                 Title="{tr:Translate Customers}"

@@ -92,7 +92,7 @@
                         Margin="5,10,5,0"
                         Aspect="AspectFit"
                         HorizontalOptions="Center"
-                        Source="supplier.png"
+                        Source="supplierMainpage.png"
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
