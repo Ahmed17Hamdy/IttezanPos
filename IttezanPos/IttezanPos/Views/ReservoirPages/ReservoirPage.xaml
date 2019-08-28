@@ -68,8 +68,11 @@
                             FontSize="Small"
                             HorizontalTextAlignment="Center"
                             IsTextPredictionEnabled="True"
+                            Keyboard="Numeric"
+                            MaxLength="9"
                             TextChanged="CustomEntry_TextChanged">
                             <customcontrols:CustomEntry.Behaviors>
+                                <Behaviors:NumberValidationBehavior />
                                 <Behaviors:ValidationBehavior PropertyName="Text">
                                     <Behaviors:ValidationBehavior.Validators>
                                         <Validators:RequiredValidator />

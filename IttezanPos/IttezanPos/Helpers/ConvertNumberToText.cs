@@ -32,17 +32,17 @@ namespace IttezanPos.Helpers
                 //
                 switch (parts.Length - i)
                 {
-                    case 2: t = (b ? AppResources.Thousands : AppResources.Thousand); break;
-                    case 3: t = (b ? AppResources.Millions :AppResources.Million); break;
-                    case 4: t = (b ? AppResources.Billions :AppResources.Billion); break;
-                    case 5: t = (b ?AppResources.Trillions : AppResources.Trillion); break;
-                    case 6: t = (b ?AppResources.Quadrillions : AppResources.Quadrillion); break;
+                    case 2: t = (b ? AppResources.Thousands : AppResources.Thousand) +" "; break;
+                    case 3: t = (b ? AppResources.Millions :AppResources.Million) + " "; break;
+                    case 4: t = (b ? AppResources.Billions :AppResources.Billion) + " "; break;
+                    case 5: t = (b ?AppResources.Trillions : AppResources.Trillion) + " "; break;
+                    case 6: t = (b ?AppResources.Quadrillions : AppResources.Quadrillion) + " "; break;
                     
                 }
-                num += (i != 0 && current_part != 0 ? AppResources.And : " ");
+                num += (i != 0 && current_part != 0 ?  AppResources.And : " ");
                 if (current_part == 1 && parts.Length - i > 1)
                 {
-                    num += t;
+                    num += t + " ";
                 }
                 else if (current_part == 2 && parts.Length - i > 1)
                 {
@@ -53,17 +53,17 @@ namespace IttezanPos.Helpers
                     switch (current_part.ToString().Length)
                     {
                         case 1:
-                            num += convertOneDigits(current_part);
+                            num += convertOneDigits(current_part) + " ";
                             break;
                         case 2:
-                            num += convertTwoDigits(current_part);
+                            num += convertTwoDigits(current_part) + " ";
                             break;
                         case 3:
-                            num += convertThreeDigit(current_part);
+                            num += convertThreeDigit(current_part) + " ";
                             break;
                     }
                     //اضافة التمييز للعدد (هل هو الاف أم ملايين أم غير ذلك
-                    num += (current_part != 0 ? t : " " + " ");
+                    num += (current_part != 0 ? t : " ");
                 }
 
             }
@@ -87,13 +87,13 @@ namespace IttezanPos.Helpers
                 if (x / 10 == 1)
                     return digit_1[x % 10] + " عشر";
                 else
-                    return digit_1[x % 10] + (x % 10 == 0 ? " " : AppResources.And) + digit_2[x / 10];
+                    return digit_1[x % 10]+" "+(x % 10 == 0 ? " " : AppResources.And)+ digit_2[x / 10];
             }
         }
         static string convertThreeDigit(ulong x)
         {
             ulong last_two = x % 100;
-            return digit_3[x / 100] + (last_two == 0 ? " " :AppResources.And) +
+            return digit_3[x / 100]+" " + (last_two == 0 ? " " :AppResources.And)  +
                 (last_two < 10 ? convertOneDigits(last_two) : convertTwoDigits(last_two));
         }
         static bool custom(ulong x)

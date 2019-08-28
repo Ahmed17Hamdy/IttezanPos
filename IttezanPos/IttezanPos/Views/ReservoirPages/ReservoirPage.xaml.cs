@@ -35,7 +35,15 @@ namespace IttezanPos.Views.ReservoirPages
            
             if (e.NewTextValue != "" && e.NewTextValue.ToCharArray().All(x => char.IsDigit(x)))
             {
-                NumbertoTextlbl.Text = ConvertNumberToText.ConvertToArabic(Convert.ToDouble(e.NewTextValue))+ " "+ AppResources.SR;
+                switch (Settings.LastUserGravity)
+                {
+                    case "Arabic":
+                        NumbertoTextlbl.Text = ConvertNumberToText.ConvertToArabic(Convert.ToDouble(e.NewTextValue)) + " " + AppResources.SR;
+                        break;
+                    case "English":
+                        NumbertoTextlbl.Text = NumbersToEnglishText.ConvertNumberAsText(Convert.ToInt32(e.NewTextValue)) + " " + AppResources.SR;
+                        break;
+                }
 
             }
             else
