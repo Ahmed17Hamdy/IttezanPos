@@ -463,7 +463,7 @@
     <value>عرض ذمم الموردين</value>
   </data>
   <data name="Zero" xml:space="preserve">
-    <value>۰.۰</value>
+    <value>0.0</value>
   </data>
   <data name="ZeroText" xml:space="preserve">
     <value>صفر</value>

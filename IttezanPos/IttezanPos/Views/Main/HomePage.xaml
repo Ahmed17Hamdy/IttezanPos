@@ -163,6 +163,9 @@
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Expanse_Tapped" />
+                </Frame.GestureRecognizers>
             </Frame>
             <Frame
                 Grid.Row="2"

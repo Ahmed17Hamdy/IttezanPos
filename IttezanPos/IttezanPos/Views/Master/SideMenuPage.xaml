@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Client="clr-namespace:IttezanPos.Views.ClientPages"
+    xmlns:Expense="clr-namespace:IttezanPos.Views.ExpensesPages"
     xmlns:Pages="clr-namespace:IttezanPos.Views.MainPage"
     xmlns:Reservoir="clr-namespace:IttezanPos.Views.ReservoirPages"
     xmlns:SettingPages="clr-namespace:IttezanPos.Views.SettingsPages"
@@ -99,7 +100,7 @@
                             <local:MasterPageItem
                                 Title="{tr:Translate Expense}"
                                 IconSource="expensemenu.png"
-                                TargetType="{x:Type Pages:HomePage}" />
+                                TargetType="{x:Type Expense:ExpensePage}" />
                             <local:MasterPageItem
                                 Title="{tr:Translate Reservoir}"
                                 IconSource="reservoirmenu.png"
