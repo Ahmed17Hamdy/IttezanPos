@@ -178,11 +178,29 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Category.
+        /// </summary>
+        internal static string AddingNewClassification {
+            get {
+                return ResourceManager.GetString("AddingNewClassification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New Client.
         /// </summary>
         internal static string AddNewClient {
             get {
                 return ResourceManager.GetString("AddNewClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AddNewProduct.
+        /// </summary>
+        internal static string AddNewProduct {
+            get {
+                return ResourceManager.GetString("AddNewProduct", resourceCulture);
             }
         }
         
@@ -421,6 +439,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editting Salaries.
+        /// </summary>
+        internal static string EdittingSalaries {
+            get {
+                return ResourceManager.GetString("EdittingSalaries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Eight.
         /// </summary>
         internal static string Eight {
@@ -570,6 +597,15 @@ namespace IttezanPos {
         internal static string Hundred {
             get {
                 return ResourceManager.GetString("Hundred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Product Data From Excel.
+        /// </summary>
+        internal static string ImportProductData {
+            get {
+                return ResourceManager.GetString("ImportProductData", resourceCulture);
             }
         }
         
@@ -1066,6 +1102,15 @@ namespace IttezanPos {
         internal static string ViewCustomerreceivables {
             get {
                 return ResourceManager.GetString("ViewCustomerreceivables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Products.
+        /// </summary>
+        internal static string ViewProducts {
+            get {
+                return ResourceManager.GetString("ViewProducts", resourceCulture);
             }
         }
         

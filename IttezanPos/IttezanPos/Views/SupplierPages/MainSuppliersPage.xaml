@@ -28,11 +28,11 @@
                     Orientation="Horizontal">
                     <Image Aspect="AspectFit" Source="supplierMainpage.png" />
                     <Label
-                        FontSize="48"
+                        FontSize="Title"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Suppliers}"
                         TextColor="#34b44c"
-                        VerticalOptions="Start" />
+                        VerticalOptions="Center" />
                 </StackLayout>
                 <Grid
                     Grid.Row="1"

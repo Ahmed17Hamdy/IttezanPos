@@ -156,8 +156,14 @@
   <data name="AddEmailAddress" xml:space="preserve">
     <value>Add Email Address</value>
   </data>
+  <data name="AddingNewClassification" xml:space="preserve">
+    <value>Add New Category</value>
+  </data>
   <data name="AddNewClient" xml:space="preserve">
     <value>Add New Client</value>
+  </data>
+  <data name="AddNewProduct" xml:space="preserve">
+    <value>AddNewProduct</value>
   </data>
   <data name="AddNewSupplier" xml:space="preserve">
     <value>Add New Supplier</value>
@@ -237,6 +243,9 @@
   <data name="DeductOfFund" xml:space="preserve">
     <value>Deduct of Fund</value>
   </data>
+  <data name="EdittingSalaries" xml:space="preserve">
+    <value>Editting Salaries</value>
+  </data>
   <data name="Eight" xml:space="preserve">
     <value>Eight</value>
   </data>
@@ -287,6 +296,9 @@
   </data>
   <data name="Hundred" xml:space="preserve">
     <value>Hundred</value>
+  </data>
+  <data name="ImportProductData" xml:space="preserve">
+    <value>Import Product Data From Excel</value>
   </data>
   <data name="InvalidMail" xml:space="preserve">
     <value>Invalid Mail Format</value>
@@ -453,6 +465,9 @@
   </data>
   <data name="ViewCustomerreceivables" xml:space="preserve">
     <value>View Client Receivables</value>
+  </data>
+  <data name="ViewProducts" xml:space="preserve">
+    <value>View Products</value>
   </data>
   <data name="ViewSupplier" xml:space="preserve">
     <value>View Suppliers</value>

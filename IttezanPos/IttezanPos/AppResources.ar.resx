@@ -156,8 +156,14 @@
   <data name="AddEmailAddress" xml:space="preserve">
     <value>أدخل البريد الإلكتروني</value>
   </data>
+  <data name="AddingNewClassification" xml:space="preserve">
+    <value>أضف تصنيف جديد</value>
+  </data>
   <data name="AddNewClient" xml:space="preserve">
     <value>إضافة عميل جديد</value>
+  </data>
+  <data name="AddNewProduct" xml:space="preserve">
+    <value>أضف منتج جديد</value>
   </data>
   <data name="AddNewSupplier" xml:space="preserve">
     <value>إضافة مورد جديد</value>
@@ -237,6 +243,9 @@
   <data name="DeductOfFund" xml:space="preserve">
     <value>خصم من الصندوق</value>
   </data>
+  <data name="EdittingSalaries" xml:space="preserve">
+    <value>تعديل الأسعار</value>
+  </data>
   <data name="Eight" xml:space="preserve">
     <value>ثمانية</value>
   </data>
@@ -287,6 +296,9 @@
   </data>
   <data name="Hundred" xml:space="preserve">
     <value>مائة</value>
+  </data>
+  <data name="ImportProductData" xml:space="preserve">
+    <value>إستيراد بيانات المنتجات من ملف أكسل</value>
   </data>
   <data name="InvalidMail" xml:space="preserve">
     <value>صيغة البريد الإلكتروني غير صحيحة</value>
@@ -455,6 +467,9 @@
   </data>
   <data name="ViewCustomerreceivables" xml:space="preserve">
     <value>عرض ذمم العملاء</value>
+  </data>
+  <data name="ViewProducts" xml:space="preserve">
+    <value>عرض المنتجات</value>
   </data>
   <data name="ViewSupplier" xml:space="preserve">
     <value>عرض الموردين</value>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="IttezanPos.Views.ClientPages.MainClientsPage"
+    x:Class="IttezanPos.Views.InventoryPages.InventoryMainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tr="clr-namespace:IttezanPos.Helpers"
     xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
-    BackgroundColor="White"
     mc:Ignorable="d">
     <ContentPage.Content>
         <Grid Margin="5">
@@ -16,19 +15,24 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0" Grid.RowSpan="2" />
             <StackLayout
                 Grid.Row="0"
                 Margin="10"
                 Padding="5"
                 HorizontalOptions="Center"
                 Orientation="Horizontal">
-                <Image Aspect="AspectFit" Source="ClientUser.png" />
-                <Label
-                    FontSize="48"
+                <Image
+                    Aspect="AspectFit"
                     HorizontalOptions="Center"
-                    Text="{tr:Translate Customers}"
+                    Source="InventoryMain.png"
+                    VerticalOptions="Center" />
+                <Label
+                    FontSize="Title"
+                    HorizontalOptions="Center"
+                    Text="{tr:Translate Inventory}"
                     TextColor="#34b44c"
-                    VerticalOptions="Start" />
+                    VerticalOptions="Center" />
             </StackLayout>
             <Grid
                 Grid.Row="1"
@@ -43,7 +47,7 @@
                     <RowDefinition Height="5*" />
                 </Grid.RowDefinitions>
                 <Grid
-                    x:Name="AddClientGrid"
+                    x:Name="AddProductGrid"
                     Grid.Row="0"
                     Padding="5"
                     ef:Border.Radius="25"
@@ -56,12 +60,12 @@
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate AddNewClient}"
+                        Text="{tr:Translate AddNewProduct}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
                 <Grid
-                    x:Name="CustomeropeningbalancesGrid"
+                    x:Name="ViewProductsGrid"
                     Grid.Row="1"
                     Padding="5"
                     ef:Border.Radius="25"
@@ -69,17 +73,17 @@
                     xe:TouchEffect.Color="Gray"
                     BackgroundColor="#33b54b"
                     InputTransparent="True">
-                    <Image HorizontalOptions="Start" Source="OpeningBalance.png" />
+                    <Image HorizontalOptions="Start" Source="ShowClients.png" />
                     <Label
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate Customeropeningbalances}"
+                        Text="{tr:Translate ViewProducts}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
                 <Grid
-                    x:Name="ViewCustomerreceivablesGrid"
+                    x:Name="AddingNewClassificationGrid"
                     Grid.Row="2"
                     Padding="5"
                     ef:Border.Radius="25"
@@ -87,17 +91,17 @@
                     xe:TouchEffect.Color="Gray"
                     BackgroundColor="#33b54b"
                     InputTransparent="True">
-                    <Image HorizontalOptions="Start" Source="Customer_receivables.png" />
+                    <Image HorizontalOptions="Start" Source="supplierrec.png" />
                     <Label
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate ViewCustomerreceivables}"
+                        Text="{tr:Translate AddingNewClassification}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
                 <Grid
-                    x:Name="CustomerreceivablesGrid"
+                    x:Name="EdittingSalariesGrid"
                     Grid.Row="3"
                     Padding="5"
                     ef:Border.Radius="25"
@@ -105,12 +109,12 @@
                     xe:TouchEffect.Color="Gray"
                     BackgroundColor="#33b54b"
                     InputTransparent="True">
-                    <Image HorizontalOptions="Start" Source="ClientReport.png" />
+                    <Image HorizontalOptions="Start" Source="Editesal.png" />
                     <Label
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate Customerreceivables}"
+                        Text="{tr:Translate EdittingSalaries}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
@@ -123,21 +127,17 @@
                     xe:TouchEffect.Color="Gray"
                     BackgroundColor="#33b54b"
                     InputTransparent="True">
-                    <Image HorizontalOptions="Start" Source="ShowClients.png" />
+                    <Image HorizontalOptions="Start" Source="excel.png" />
                     <Label
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate ViewClient}"
+                        Text="{tr:Translate ImportProductData}"
                         TextColor="White"
                         VerticalOptions="Center" />
 
                 </Grid>
             </Grid>
         </Grid>
-
-
-
-
     </ContentPage.Content>
 </ContentPage>
