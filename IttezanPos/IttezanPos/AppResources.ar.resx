@@ -156,6 +156,9 @@
   <data name="AddEmailAddress" xml:space="preserve">
     <value>أدخل البريد الإلكتروني</value>
   </data>
+  <data name="AddImage" xml:space="preserve">
+    <value>أضف صورة المنتج</value>
+  </data>
   <data name="AddingNewClassification" xml:space="preserve">
     <value>أضف تصنيف جديد</value>
   </data>
@@ -201,6 +204,9 @@
   <data name="Balance" xml:space="preserve">
     <value>الرصيد</value>
   </data>
+  <data name="BarCode" xml:space="preserve">
+    <value>الباركود</value>
+  </data>
   <data name="Billion" xml:space="preserve">
     <value>مليار</value>
   </data>
@@ -209,6 +215,18 @@
   </data>
   <data name="BusinessSettings" xml:space="preserve">
     <value>إعدادات العمل</value>
+  </data>
+  <data name="ByQuantity" xml:space="preserve">
+    <value>بالكمية</value>
+  </data>
+  <data name="ByUnit" xml:space="preserve">
+    <value>بالوحدة</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>التصنيف</value>
+  </data>
+  <data name="ChooseCategory" xml:space="preserve">
+    <value>إختر التصنيف</value>
   </data>
   <data name="ClientLimit" xml:space="preserve">
     <value>سقف العميل</value>
@@ -269,6 +287,9 @@
   </data>
   <data name="Expense" xml:space="preserve">
     <value>المصروفات</value>
+  </data>
+  <data name="Expirationdate" xml:space="preserve">
+    <value>تاريخ إنتهاء الصلاحية</value>
   </data>
   <data name="Feedback" xml:space="preserve">
     <value>الإنطباع</value>
@@ -342,17 +363,32 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>رقم الجوال</value>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>السعر</value>
+  </data>
   <data name="Printer" xml:space="preserve">
     <value>الطابعة</value>
   </data>
+  <data name="Product" xml:space="preserve">
+    <value>المنتج</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>إسم المنتج</value>
+  </data>
   <data name="Purchase" xml:space="preserve">
     <value>المشتريات</value>
+  </data>
+  <data name="Purchasingprice" xml:space="preserve">
+    <value>سعر الشراء</value>
   </data>
   <data name="Quadrillion" xml:space="preserve">
     <value>كوادريليون</value>
   </data>
   <data name="Quadrillions" xml:space="preserve">
     <value>كوادريليونات</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>الكمية</value>
   </data>
   <data name="Quat" xml:space="preserve">
     <value>""</value>
@@ -386,6 +422,9 @@
   </data>
   <data name="SearchSupplier" xml:space="preserve">
     <value>بحث بإسم المورد</value>
+  </data>
+  <data name="sellingprice" xml:space="preserve">
+    <value>سعر البيع</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>الإعدادات</value>
@@ -447,6 +486,9 @@
   <data name="TotalAmount" xml:space="preserve">
     <value>إجمالى المبلغ</value>
   </data>
+  <data name="TrackinStore" xml:space="preserve">
+    <value>تتبع في المخزون</value>
+  </data>
   <data name="Trillion" xml:space="preserve">
     <value>تريليون</value>
   </data>
@@ -467,6 +509,9 @@
   </data>
   <data name="ViewCustomerreceivables" xml:space="preserve">
     <value>عرض ذمم العملاء</value>
+  </data>
+  <data name="ViewExpirationdate" xml:space="preserve">
+    <value>عرض حسب تاريخ الصلاحية</value>
   </data>
   <data name="ViewProducts" xml:space="preserve">
     <value>عرض المنتجات</value>

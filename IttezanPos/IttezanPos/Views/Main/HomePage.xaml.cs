@@ -3,6 +3,7 @@ using System.Linq;
 using IttezanPos.Helpers;
 using IttezanPos.Views.ClientPages;
 using IttezanPos.Views.ExpensesPages;
+using IttezanPos.Views.InventoryPages;
 using IttezanPos.Views.ReservoirPages;
 using IttezanPos.Views.SupplierPages;
 using Plugin.Connectivity;
@@ -57,6 +58,11 @@ namespace IttezanPos.Views.MainPage
         private async void Expanse_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ExpensePage());
+        }
+
+        private async void Inventory_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new InventoryMainPage());
         }
     }
 }

@@ -247,6 +247,9 @@
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Inventory_Tapped" />
+                </Frame.GestureRecognizers>
             </Frame>
         </Grid>
     </ContentPage.Content>

@@ -156,6 +156,9 @@
   <data name="AddEmailAddress" xml:space="preserve">
     <value>Add Email Address</value>
   </data>
+  <data name="AddImage" xml:space="preserve">
+    <value>Add Product's Image</value>
+  </data>
   <data name="AddingNewClassification" xml:space="preserve">
     <value>Add New Category</value>
   </data>
@@ -201,6 +204,9 @@
   <data name="Balance" xml:space="preserve">
     <value>Balance</value>
   </data>
+  <data name="BarCode" xml:space="preserve">
+    <value>BarCode</value>
+  </data>
   <data name="Billion" xml:space="preserve">
     <value>Billion</value>
   </data>
@@ -209,6 +215,18 @@
   </data>
   <data name="BusinessSettings" xml:space="preserve">
     <value>Business Settings</value>
+  </data>
+  <data name="ByQuantity" xml:space="preserve">
+    <value>By Quantity</value>
+  </data>
+  <data name="ByUnit" xml:space="preserve">
+    <value>By Unit</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="ChooseCategory" xml:space="preserve">
+    <value>Choose Category</value>
   </data>
   <data name="ClientLimit" xml:space="preserve">
     <value>Client Limit</value>
@@ -244,7 +262,7 @@
     <value>Deduct of Fund</value>
   </data>
   <data name="EdittingSalaries" xml:space="preserve">
-    <value>Editting Salaries</value>
+    <value>Editting Prices</value>
   </data>
   <data name="Eight" xml:space="preserve">
     <value>Eight</value>
@@ -269,6 +287,9 @@
   </data>
   <data name="Expense" xml:space="preserve">
     <value>Expenses</value>
+  </data>
+  <data name="Expirationdate" xml:space="preserve">
+    <value>Expiration date</value>
   </data>
   <data name="Feedback" xml:space="preserve">
     <value>Feedback</value>
@@ -342,17 +363,32 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
   <data name="Printer" xml:space="preserve">
     <value>Printer</value>
   </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
   <data name="Purchase" xml:space="preserve">
     <value>Purchases</value>
+  </data>
+  <data name="Purchasingprice" xml:space="preserve">
+    <value>Purchasing price</value>
   </data>
   <data name="Quadrillion" xml:space="preserve">
     <value>Quadrillion</value>
   </data>
   <data name="Quadrillions" xml:space="preserve">
     <value>Quadrillions</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
   </data>
   <data name="Recipts" xml:space="preserve">
     <value>Recipts</value>
@@ -384,6 +420,9 @@
   </data>
   <data name="SearchSupplier" xml:space="preserve">
     <value>Search Supplier's Name</value>
+  </data>
+  <data name="sellingprice" xml:space="preserve">
+    <value>Selling price</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -445,6 +484,9 @@
   <data name="TotalAmount" xml:space="preserve">
     <value>Total Amount</value>
   </data>
+  <data name="TrackinStore" xml:space="preserve">
+    <value>TrackinStore</value>
+  </data>
   <data name="Trillion" xml:space="preserve">
     <value>Trillion</value>
   </data>
@@ -465,6 +507,9 @@
   </data>
   <data name="ViewCustomerreceivables" xml:space="preserve">
     <value>View Client Receivables</value>
+  </data>
+  <data name="ViewExpirationdate" xml:space="preserve">
+    <value>View By Expiration date</value>
   </data>
   <data name="ViewProducts" xml:space="preserve">
     <value>View Products</value>

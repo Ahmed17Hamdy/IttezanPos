@@ -16,5 +16,28 @@ namespace IttezanPos.Views.InventoryPages
         {
             InitializeComponent();
         }
+
+        private void ByQuantity_Tapped(object sender, EventArgs e)
+        {
+            ByQuantitystk.BackgroundColor = Color.FromHex("#33b54b");
+            ByQuantitylbl.TextColor = Color.White;
+            ByQuantityimg.Source = "waitwhit.png";
+           
+            ByUnitstk.BackgroundColor = Color.Default;
+            ByUnitlbl.TextColor = Color.FromHex("#33b54b");
+            ByUniteimg.Source = "unitgreen.png";
+        
+        }
+
+        private void ByUnit_Tapped(object sender, EventArgs e)
+        {
+            ByQuantitystk.BackgroundColor = Color.Default;
+            ByQuantitylbl.TextColor = Color.FromHex("#33b54b");
+            ByQuantityimg.Source = "waitgreen.png";
+
+            ByUnitstk.BackgroundColor = Color.FromHex("#33b54b");
+            ByUnitlbl.TextColor = Color.White;
+            ByUniteimg.Source = "unitWhit.png";
+        }
     }
 }

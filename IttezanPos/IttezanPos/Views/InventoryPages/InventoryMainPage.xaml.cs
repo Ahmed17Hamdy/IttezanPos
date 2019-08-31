@@ -23,7 +23,7 @@ namespace IttezanPos.Views.InventoryPages
             Commands.SetTap(AddProductGrid, new Command(() => {
                 AddingProductPageNav();
             }));
-            Commands.SetTap(ViewClientGrid, new Command(() => {
+            Commands.SetTap(ViewProductsGrid, new Command(() => {
                 ProductsPageNav();
             }));
             Commands.SetTap(AddingNewClassificationGrid, new Command(() => {

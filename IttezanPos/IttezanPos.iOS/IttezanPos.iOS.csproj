@@ -67,6 +67,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CustomEditorRenderer.cs" />
+    <Compile Include="Renderers\CustomPickerRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,9 +159,6 @@
     <PackageReference Include="Plugin.Multilingual">
       <Version>1.0.2</Version>
     </PackageReference>
-    <PackageReference Include="Syncfusion.Xamarin.Pdf">
-      <Version>17.2.0.46</Version>
-    </PackageReference>
     <PackageReference Include="TouchView">
       <Version>4.0.21</Version>
     </PackageReference>
@@ -171,6 +169,12 @@
     </PackageReference>
     <PackageReference Include="XamEffects">
       <Version>1.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile">
+      <Version>2.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile.Forms">
+      <Version>2.4.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Client="clr-namespace:IttezanPos.Views.ClientPages"
     xmlns:Expense="clr-namespace:IttezanPos.Views.ExpensesPages"
+    xmlns:Inventory="clr-namespace:IttezanPos.Views.InventoryPages"
     xmlns:Pages="clr-namespace:IttezanPos.Views.MainPage"
     xmlns:Reservoir="clr-namespace:IttezanPos.Views.ReservoirPages"
     xmlns:SettingPages="clr-namespace:IttezanPos.Views.SettingsPages"
@@ -108,7 +109,7 @@
                             <local:MasterPageItem
                                 Title="{tr:Translate Inventory}"
                                 IconSource="inventorymenu.png"
-                                TargetType="{x:Type Pages:HomePage}" />
+                                TargetType="{x:Type Inventory:InventoryMainPage}" />
                             <local:MasterPageItem
                                 Title="{tr:Translate StaffManagement}"
                                 IconSource="staff_managment.png"
