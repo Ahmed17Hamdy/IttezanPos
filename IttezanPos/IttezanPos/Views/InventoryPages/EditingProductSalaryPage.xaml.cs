@@ -16,5 +16,6 @@ namespace IttezanPos.Views.InventoryPages
         {
             InitializeComponent();
         }
+
     }
 }

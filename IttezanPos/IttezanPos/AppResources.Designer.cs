@@ -268,6 +268,24 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        internal static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        internal static string Amount {
+            get {
+                return ResourceManager.GetString("Amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount owed.
         /// </summary>
         internal static string Amountowed {
@@ -457,6 +475,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Decrease.
+        /// </summary>
+        internal static string Decrease {
+            get {
+                return ResourceManager.GetString("Decrease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deduction from the Fund.
         /// </summary>
         internal static string DeductionfromtheFund {
@@ -489,6 +516,24 @@ namespace IttezanPos {
         internal static string DeductOfFund {
             get {
                 return ResourceManager.GetString("DeductOfFund", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edite By Category.
+        /// </summary>
+        internal static string EditeByCategory {
+            get {
+                return ResourceManager.GetString("EditeByCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edite Price.
+        /// </summary>
+        internal static string EditePrice {
+            get {
+                return ResourceManager.GetString("EditePrice", resourceCulture);
             }
         }
         
@@ -664,11 +709,29 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Impact on prices.
+        /// </summary>
+        internal static string Impactonprices {
+            get {
+                return ResourceManager.GetString("Impactonprices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import Product Data From Excel.
         /// </summary>
         internal static string ImportProductData {
             get {
                 return ResourceManager.GetString("ImportProductData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Increase.
+        /// </summary>
+        internal static string Increase {
+            get {
+                return ResourceManager.GetString("Increase", resourceCulture);
             }
         }
         
@@ -790,6 +853,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Percentage %.
+        /// </summary>
+        internal static string Percentage {
+            get {
+                return ResourceManager.GetString("Percentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone Number.
         /// </summary>
         internal static string PhoneNumber {
@@ -840,6 +912,15 @@ namespace IttezanPos {
         internal static string Purchase {
             get {
                 return ResourceManager.GetString("Purchase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchasing.
+        /// </summary>
+        internal static string Purchasing {
+            get {
+                return ResourceManager.GetString("Purchasing", resourceCulture);
             }
         }
         
@@ -967,6 +1048,15 @@ namespace IttezanPos {
         internal static string SearchSupplier {
             get {
                 return ResourceManager.GetString("SearchSupplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selling.
+        /// </summary>
+        internal static string Selling {
+            get {
+                return ResourceManager.GetString("Selling", resourceCulture);
             }
         }
         
@@ -1111,6 +1201,15 @@ namespace IttezanPos {
         internal static string Ten {
             get {
                 return ResourceManager.GetString("Ten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Method.
+        /// </summary>
+        internal static string TheMethod {
+            get {
+                return ResourceManager.GetString("TheMethod", resourceCulture);
             }
         }
         

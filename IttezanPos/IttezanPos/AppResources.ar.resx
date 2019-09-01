@@ -186,6 +186,12 @@
   <data name="AddToFund" xml:space="preserve">
     <value>أضف للصندوق</value>
   </data>
+  <data name="All" xml:space="preserve">
+    <value>الكل</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>مبلغ</value>
+  </data>
   <data name="Amountowed" xml:space="preserve">
     <value>المبلغ المدين / عليه</value>
   </data>
@@ -249,6 +255,9 @@
   <data name="Date" xml:space="preserve">
     <value>التاريخ</value>
   </data>
+  <data name="Decrease" xml:space="preserve">
+    <value>بالنقصان</value>
+  </data>
   <data name="DeductionfromtheFund" xml:space="preserve">
     <value>خصم من الصندوق</value>
   </data>
@@ -260,6 +269,12 @@
   </data>
   <data name="DeductOfFund" xml:space="preserve">
     <value>خصم من الصندوق</value>
+  </data>
+  <data name="EditeByCategory" xml:space="preserve">
+    <value>التعديل حسب التصنيف</value>
+  </data>
+  <data name="EditePrice" xml:space="preserve">
+    <value>تعديل سعر</value>
   </data>
   <data name="EdittingSalaries" xml:space="preserve">
     <value>تعديل الأسعار</value>
@@ -318,8 +333,14 @@
   <data name="Hundred" xml:space="preserve">
     <value>مائة</value>
   </data>
+  <data name="Impactonprices" xml:space="preserve">
+    <value>التأثير على الأسعار</value>
+  </data>
   <data name="ImportProductData" xml:space="preserve">
     <value>إستيراد بيانات المنتجات من ملف أكسل</value>
+  </data>
+  <data name="Increase" xml:space="preserve">
+    <value>بالزيادة</value>
   </data>
   <data name="InvalidMail" xml:space="preserve">
     <value>صيغة البريد الإلكتروني غير صحيحة</value>
@@ -360,6 +381,9 @@
   <data name="Openingbalanceforcustomers" xml:space="preserve">
     <value>الأرصدة الإفتتاحية للعملاء</value>
   </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>% نسبة</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>رقم الجوال</value>
   </data>
@@ -377,6 +401,9 @@
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>المشتريات</value>
+  </data>
+  <data name="Purchasing" xml:space="preserve">
+    <value>الشراء</value>
   </data>
   <data name="Purchasingprice" xml:space="preserve">
     <value>سعر الشراء</value>
@@ -422,6 +449,9 @@
   </data>
   <data name="SearchSupplier" xml:space="preserve">
     <value>بحث بإسم المورد</value>
+  </data>
+  <data name="Selling" xml:space="preserve">
+    <value>البيع</value>
   </data>
   <data name="sellingprice" xml:space="preserve">
     <value>سعر البيع</value>
@@ -470,6 +500,9 @@
   </data>
   <data name="Ten" xml:space="preserve">
     <value>عشرة</value>
+  </data>
+  <data name="TheMethod" xml:space="preserve">
+    <value>الطريقة</value>
   </data>
   <data name="Thirty" xml:space="preserve">
     <value>ثلاثون</value>

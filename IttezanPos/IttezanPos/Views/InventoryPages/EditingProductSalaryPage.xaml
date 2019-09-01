@@ -1,15 +1,163 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="IttezanPos.Views.InventoryPages.EditingProductSalaryPage">
+<ContentPage
+    x:Class="IttezanPos.Views.InventoryPages.EditingProductSalaryPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behaviors="clr-namespace:IttezanPos.Behaviors"
+    xmlns:CustomControls="clr-namespace:IttezanPos.CustomControls"
+    xmlns:Validators="clr-namespace:IttezanPos.Models.BModel"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
+        <Style TargetType="input:RadioButton">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="Changa-Regular.ttf#Changa-Regular "
+                        iOS="Changa-Regular" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="CustomControls:CustomPicker">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="Changa-Regular.ttf#Changa-Regular "
+                        iOS="Changa-Regular" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Frame
+            Margin="10"
+            Padding="2"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            Visual="Material">
+            <StackLayout Visual="Material">
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        Source="Editesal.png" />
+                    <Label
+                        FontSize="Title"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{tr:Translate EdittingSalaries}"
+                        VerticalOptions="Center" />
+                </StackLayout>
+                <Label Text="{tr:Translate Impactonprices}" />
+                <Frame
+                    Padding="10"
+                    BackgroundColor="#eaecee"
+                    Visual="Material">
+                    <input:RadioButtonGroupView Orientation="Horizontal" Visual="Material">
+                        <input:RadioButton
+                            CircleColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate Increase}"
+                            TextColor="#33b54b"
+                            TextFontSize="15"
+                            Color="#33b54b" />
+                        <input:RadioButton
+                            Grid.Column="1"
+                            CircleColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate Decrease}"
+                            TextColor="Red"
+                            TextFontSize="15"
+                            Color="#33b54b" />
+                    </input:RadioButtonGroupView>
+                </Frame>
+                <Label Text="{tr:Translate EditePrice}" />
+                <Frame Padding="10" BackgroundColor="#eaecee">
+                    <input:RadioButtonGroupView Orientation="Horizontal">
+                        <input:RadioButton
+                            CircleColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate Selling}"
+                            TextColor="#33b54b"
+                            TextFontSize="15"
+                            Color="#33b54b" />
+                        <input:RadioButton
+                            CircleColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate Purchasing}"
+                            TextColor="Red"
+                            TextFontSize="15"
+                            Color="#33b54b" />
+                    </input:RadioButtonGroupView>
+                </Frame>
+                <Label Text="{tr:Translate EditeByCategory}" />
+                <Frame Padding="0" BackgroundColor="#eaecee">
+                    <CustomControls:CustomPicker Title="{tr:Translate All}" TitleColor="Black" />
+                </Frame>
+                <Label Text="{tr:Translate TheMethod}" />
+                <Frame Padding="10" BackgroundColor="#eaecee">
+                    <input:RadioButtonGroupView Orientation="Horizontal">
+                        <input:RadioButton
+                            CircleColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate Amount}"
+                            TextColor="#33b54b"
+                            TextFontSize="15"
+                            Color="#33b54b" />
+                        <input:RadioButton
+                            CircleColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate Percentage}"
+                            TextColor="Red"
+                            TextFontSize="15"
+                            Color="#33b54b" />
+                    </input:RadioButtonGroupView>
+                </Frame>
+                <StackLayout Margin="20" Orientation="Horizontal">
+                    <Label
+                        HorizontalOptions="End"
+                        Text="{tr:Translate Amount}"
+                        VerticalOptions="Center" />
+                    <CustomControls:CustomEntry
+                        Grid.Row="1"
+                        Margin="0"
+                        ef:Border.Color="#33b54b"
+                        ef:Border.Radius="10"
+                        ef:Border.Width="1"
+                        FontSize="Small"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        IsTextPredictionEnabled="True"
+                        Keyboard="Numeric"
+                        MaxLength="9"
+                        Placeholder="{tr:Translate Zero}"
+                        PlaceholderColor="Red">
+                        <CustomControls:CustomEntry.Behaviors>
+                            <Behaviors:NumberValidationBehavior />
+                            <Behaviors:ValidationBehavior PropertyName="Text">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </CustomControls:CustomEntry.Behaviors>
+                    </CustomControls:CustomEntry>
+                </StackLayout>
+                <Button
+                    Margin="20"
+                    BackgroundColor="#33b54b"
+                    CornerRadius="10"
+                    Text="{tr:Translate Save}"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+        </Frame>
     </ContentPage.Content>
 </ContentPage>

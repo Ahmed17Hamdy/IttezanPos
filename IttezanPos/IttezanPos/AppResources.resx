@@ -186,6 +186,12 @@
   <data name="AddToFund" xml:space="preserve">
     <value>Add To Fund</value>
   </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
   <data name="Amountowed" xml:space="preserve">
     <value>Amount owed</value>
   </data>
@@ -249,6 +255,9 @@
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="Decrease" xml:space="preserve">
+    <value>Decrease</value>
+  </data>
   <data name="DeductionfromtheFund" xml:space="preserve">
     <value>Deduction from the Fund</value>
   </data>
@@ -260,6 +269,12 @@
   </data>
   <data name="DeductOfFund" xml:space="preserve">
     <value>Deduct of Fund</value>
+  </data>
+  <data name="EditeByCategory" xml:space="preserve">
+    <value>Edite By Category</value>
+  </data>
+  <data name="EditePrice" xml:space="preserve">
+    <value>Edite Price</value>
   </data>
   <data name="EdittingSalaries" xml:space="preserve">
     <value>Editting Prices</value>
@@ -318,8 +333,14 @@
   <data name="Hundred" xml:space="preserve">
     <value>Hundred</value>
   </data>
+  <data name="Impactonprices" xml:space="preserve">
+    <value>Impact on prices</value>
+  </data>
   <data name="ImportProductData" xml:space="preserve">
     <value>Import Product Data From Excel</value>
+  </data>
+  <data name="Increase" xml:space="preserve">
+    <value>Increase</value>
   </data>
   <data name="InvalidMail" xml:space="preserve">
     <value>Invalid Mail Format</value>
@@ -360,6 +381,9 @@
   <data name="Openingbalanceforcustomers" xml:space="preserve">
     <value>Opening balance for Clients</value>
   </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>Percentage %</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
   </data>
@@ -377,6 +401,9 @@
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>Purchases</value>
+  </data>
+  <data name="Purchasing" xml:space="preserve">
+    <value>Purchasing</value>
   </data>
   <data name="Purchasingprice" xml:space="preserve">
     <value>Purchasing price</value>
@@ -420,6 +447,9 @@
   </data>
   <data name="SearchSupplier" xml:space="preserve">
     <value>Search Supplier's Name</value>
+  </data>
+  <data name="Selling" xml:space="preserve">
+    <value>Selling</value>
   </data>
   <data name="sellingprice" xml:space="preserve">
     <value>Selling price</value>
@@ -468,6 +498,9 @@
   </data>
   <data name="Ten" xml:space="preserve">
     <value>Ten</value>
+  </data>
+  <data name="TheMethod" xml:space="preserve">
+    <value> Method</value>
   </data>
   <data name="Thirty" xml:space="preserve">
     <value>Thirty</value>

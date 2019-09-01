@@ -119,6 +119,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DependencyServices\" />
     <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>

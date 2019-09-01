@@ -4,6 +4,9 @@ using Plugin.Multilingual;
 using System.Linq;
 using Xamarin.Forms;
 using IttezanPos.Helpers;
+using IttezanPos.Views.SettingsPages;
+using IttezanPos.Views.MainPage;
+
 namespace IttezanPos
 {
     public partial class App : Application
