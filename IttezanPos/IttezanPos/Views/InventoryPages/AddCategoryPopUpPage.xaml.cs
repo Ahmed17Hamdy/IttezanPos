@@ -1,4 +1,4 @@
-﻿using Rg.Plugins.Popup.Extensions;
+﻿using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +11,11 @@ using Xamarin.Forms.Xaml;
 namespace IttezanPos.Views.InventoryPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddingClassificationPage : ContentPage
+    public partial class AddCategoryPopUpPage : PopupPage
     {
-        public AddingClassificationPage()
+        public AddCategoryPopUpPage()
         {
             InitializeComponent();
-        }
-
-        private async void AddCategory_Clicked(object sender, EventArgs e)
-        {
-             await Navigation.PushPopupAsync(new AddCategoryPopUpPage());
         }
     }
 }

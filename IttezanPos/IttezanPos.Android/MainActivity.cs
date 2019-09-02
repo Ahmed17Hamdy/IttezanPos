@@ -34,6 +34,7 @@ namespace IttezanPos.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             ChechSdk();
             Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
             XamEffects.Droid.Effects.Init();

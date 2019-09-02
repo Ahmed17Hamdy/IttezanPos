@@ -16,6 +16,7 @@
     <PackageReference Include="Dropbox.Api" Version="4.9.4" />
     <PackageReference Include="HLI.Forms.Core" Version="1.0.0" />
     <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="TouchView" Version="4.0.21" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
@@ -69,6 +70,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Intro\SplashPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\InventoryPages\AddCategoryPopUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InventoryPages\AddingClassificationPage.xaml">

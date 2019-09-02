@@ -1,15 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="IttezanPos.Views.InventoryPages.AddingClassificationPage">
+<ContentPage
+    x:Class="IttezanPos.Views.InventoryPages.AddingClassificationPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    mc:Ignorable="d">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout Margin="5" Visual="Material">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <ListView />
+            </StackLayout>
+            <Button
+                AbsoluteLayout.LayoutBounds="1,1,1,50"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                BackgroundColor="#33b54b"
+                Clicked="AddCategory_Clicked"
+                CornerRadius="20"
+                Text="{tr:Translate AddingNewClassification}" />
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
