@@ -13,6 +13,12 @@
     HasSystemPadding="True"
     mc:Ignorable="d">
     <pages:PopupPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="Title" />
+        </Style>
         <ResourceDictionary>
             <Style x:Key="EntryStyle" TargetType="Entry">
                 <Setter Property="PlaceholderColor" Value="#33b54b" />
@@ -42,10 +48,15 @@
                 Visual="Material">
                 <StackLayout Margin="5">
                     <StackLayout Orientation="Horizontal" Spacing="0">
-                        <Image HeightRequest="20" Source="cancel.png" />
+                        <Image HeightRequest="20" Source="cancel.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClosePage_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
                         <Label
                             Margin="30,0"
-                            HorizontalOptions="Center"
+                            FontSize="Small"
+                            HorizontalOptions="CenterAndExpand"
                             Text="{tr:Translate AddingNewClassification}"
                             TextColor="#33b54b"
                             VerticalOptions="Center" />
@@ -67,67 +78,118 @@
                     <StackLayout>
                         <StackLayout Margin="10,5" Orientation="Horizontal">
                             <Label
+                                x:Name="RedColorlbl"
                                 ef:Border.Radius="25"
                                 BackgroundColor="Red"
+                                FontSize="Title"
                                 HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="50" />
+                                WidthRequest="50">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="RedColor_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
                             <Label
+                                x:Name="Bluelbl"
                                 ef:Border.Radius="25"
                                 BackgroundColor="Blue"
                                 HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="50" />
+                                WidthRequest="50">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="BlueColor_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
                             <Label
+                                x:Name="Voiletlbl"
                                 ef:Border.Radius="25"
                                 BackgroundColor="#FF00E6"
                                 HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="50" />
+                                WidthRequest="50">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="VoiletColor_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
                             <Label
+                                x:Name="IndigoColor"
                                 ef:Border.Radius="25"
                                 BackgroundColor="Indigo"
                                 HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="50" />
+                                WidthRequest="50">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="IndigoColor_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
                             <Label
+                                x:Name="GreenColor"
                                 ef:Border.Radius="25"
                                 BackgroundColor="Green"
                                 HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="50" />
+                                WidthRequest="50">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="GreenColor_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
                         </StackLayout>
                         <StackLayout Margin="10,5" Orientation="Horizontal">
                             <Label
+                                x:Name="Yellowlbl"
                                 ef:Border.Radius="25"
                                 BackgroundColor="Yellow"
                                 HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="50" />
+                                WidthRequest="50">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="YellowColor_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
                             <Label
+                                x:Name="Orangelbl"
                                 ef:Border.Radius="25"
                                 BackgroundColor="Orange"
                                 HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="50" />
+                                WidthRequest="50">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OrangeColor_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
                             <Label
+                                x:Name="Cyanlbl"
                                 ef:Border.Radius="25"
                                 BackgroundColor="#09EBD5"
                                 HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="50" />
+                                WidthRequest="50">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CyanColor_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
                             <Label
+                                x:Name="Brownlbl"
                                 ef:Border.Radius="25"
                                 BackgroundColor="Brown"
                                 HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="50" />
+                                WidthRequest="50">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="BrownColor_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
                             <Label
+                                x:Name="DarkBlue"
                                 ef:Border.Radius="25"
                                 BackgroundColor="#070549"
                                 HeightRequest="50"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="50" />
+                                WidthRequest="50">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="DarkBlueColor_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>

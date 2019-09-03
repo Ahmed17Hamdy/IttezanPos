@@ -65,6 +65,7 @@
                         Visual="Material">
                         <input:RadioButtonGroupView Orientation="Horizontal" Visual="Material">
                             <input:RadioButton
+                                CheckedImage="plus"
                                 CircleColor="Black"
                                 HorizontalOptions="FillAndExpand"
                                 Text="{tr:Translate Increase}"
@@ -73,18 +74,19 @@
                                 Color="#33b54b" />
                             <input:RadioButton
                                 Grid.Column="1"
-                                CircleColor="Black"
+                                CheckedImage="minus"
                                 HorizontalOptions="FillAndExpand"
                                 Text="{tr:Translate Decrease}"
                                 TextColor="Red"
                                 TextFontSize="15"
-                                Color="#33b54b" />
+                                Color="Red" />
                         </input:RadioButtonGroupView>
                     </Frame>
                     <Label Text="{tr:Translate EditePrice}" />
                     <Frame Padding="10" BackgroundColor="#eaecee">
                         <input:RadioButtonGroupView Orientation="Horizontal">
                             <input:RadioButton
+                                CheckedImage="plus"
                                 CircleColor="Black"
                                 HorizontalOptions="FillAndExpand"
                                 Text="{tr:Translate Selling}"
@@ -92,12 +94,13 @@
                                 TextFontSize="15"
                                 Color="#33b54b" />
                             <input:RadioButton
+                                CheckedImage="minus"
                                 CircleColor="Black"
                                 HorizontalOptions="FillAndExpand"
                                 Text="{tr:Translate Purchasing}"
                                 TextColor="Red"
                                 TextFontSize="15"
-                                Color="#33b54b" />
+                                Color="Red" />
                         </input:RadioButtonGroupView>
                     </Frame>
                     <Label Text="{tr:Translate EditeByCategory}" />
@@ -108,6 +111,7 @@
                     <Frame Padding="10" BackgroundColor="#eaecee">
                         <input:RadioButtonGroupView Orientation="Horizontal">
                             <input:RadioButton
+                                CheckedImage="plus"
                                 CircleColor="Black"
                                 HorizontalOptions="FillAndExpand"
                                 Text="{tr:Translate Amount}"
@@ -115,12 +119,13 @@
                                 TextFontSize="15"
                                 Color="#33b54b" />
                             <input:RadioButton
+                                CheckedImage="minus"
                                 CircleColor="Black"
                                 HorizontalOptions="FillAndExpand"
                                 Text="{tr:Translate Percentage}"
                                 TextColor="Red"
                                 TextFontSize="15"
-                                Color="#33b54b" />
+                                Color="Red" />
                         </input:RadioButtonGroupView>
                     </Frame>
                     <StackLayout Margin="20" Orientation="Horizontal">

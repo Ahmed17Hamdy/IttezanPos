@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Xamarin.Forms;
+using Rg.Plugins.Popup.Services;
+using System.Linq;
 
 namespace IttezanPos.Droid
 {
@@ -53,6 +55,18 @@ namespace IttezanPos.Droid
             {
 
                 return;
+            }
+        }
+        public async override void OnBackPressed()
+        {
+            if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
+            {
+                if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Any())
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                }
+                // Do something if there are some pages in the `PopupStack`
+             
             }
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

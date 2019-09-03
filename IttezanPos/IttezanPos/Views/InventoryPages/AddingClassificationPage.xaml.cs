@@ -1,4 +1,5 @@
 ﻿using Rg.Plugins.Popup.Extensions;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,6 @@ namespace IttezanPos.Views.InventoryPages
         {
              await Navigation.PushPopupAsync(new AddCategoryPopUpPage());
         }
+       
     }
 }
