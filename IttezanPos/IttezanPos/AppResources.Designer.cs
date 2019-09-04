@@ -268,6 +268,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alert.
+        /// </summary>
+        internal static string Alert {
+            get {
+                return ResourceManager.GetString("Alert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
         internal static string All {
@@ -394,11 +403,47 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Camera.
+        /// </summary>
+        internal static string Camera {
+            get {
+                return ResourceManager.GetString("Camera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera Permission is Needed.
+        /// </summary>
+        internal static string CameraPermissionsNeeded {
+            get {
+                return ResourceManager.GetString("CameraPermissionsNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category.
         /// </summary>
         internal static string Category {
             get {
                 return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose.
+        /// </summary>
+        internal static string Choose {
+            get {
+                return ResourceManager.GetString("Choose", resourceCulture);
             }
         }
         
@@ -682,6 +727,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gallery.
+        /// </summary>
+        internal static string Gallery {
+            get {
+                return ResourceManager.GetString("Gallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
         internal static string General {
@@ -799,6 +853,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Needs Permission For Using Camera.
+        /// </summary>
+        internal static string NeedCamera {
+            get {
+                return ResourceManager.GetString("NeedCamera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nine.
         /// </summary>
         internal static string Nine {
@@ -858,6 +921,15 @@ namespace IttezanPos {
         internal static string Percentage {
             get {
                 return ResourceManager.GetString("Percentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Needs Permission For Using Camera to choose Product Image.
+        /// </summary>
+        internal static string PermissionsDenied {
+            get {
+                return ResourceManager.GetString("PermissionsDenied", resourceCulture);
             }
         }
         
@@ -988,6 +1060,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Representation On Pos.
+        /// </summary>
+        internal static string RepresentOnPos {
+            get {
+                return ResourceManager.GetString("RepresentOnPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reservoir.
         /// </summary>
         internal static string Reservoir {
@@ -1048,6 +1129,33 @@ namespace IttezanPos {
         internal static string SearchSupplier {
             get {
                 return ResourceManager.GetString("SearchSupplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Color.
+        /// </summary>
+        internal static string SelectColor {
+            get {
+                return ResourceManager.GetString("SelectColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Image .
+        /// </summary>
+        internal static string SelectImage {
+            get {
+                return ResourceManager.GetString("SelectImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Images Mode.
+        /// </summary>
+        internal static string SelectpicMode {
+            get {
+                return ResourceManager.GetString("SelectpicMode", resourceCulture);
             }
         }
         

@@ -33,7 +33,6 @@ namespace IttezanPos.Views.InventoryPages
             Brownlbl.Text = "";
             DarkBlue.Text = "";
         }
-
         private void BlueColor_Tapped(object sender, EventArgs e)
         {
             Bluelbl.Text = "✔";
@@ -48,7 +47,6 @@ namespace IttezanPos.Views.InventoryPages
             Brownlbl.Text = "";
             DarkBlue.Text = "";
         }
-
         private void VoiletColor_Tapped(object sender, EventArgs e)
         {
             Voiletlbl.Text = "✔";
@@ -63,7 +61,6 @@ namespace IttezanPos.Views.InventoryPages
             Brownlbl.Text = "";
             DarkBlue.Text = "";
         }
-
         private void IndigoColor_Tapped(object sender, EventArgs e)
         {
             IndigoColor.Text = "✔";
@@ -78,7 +75,6 @@ namespace IttezanPos.Views.InventoryPages
             Brownlbl.Text = "";
             DarkBlue.Text = "";
         }
-
         private void GreenColor_Tapped(object sender, EventArgs e)
         {
             GreenColor.Text = "✔";
@@ -93,7 +89,6 @@ namespace IttezanPos.Views.InventoryPages
             Brownlbl.Text = "";
             DarkBlue.Text = "";
         }
-
         private void YellowColor_Tapped(object sender, EventArgs e)
         {
             Yellowlbl.Text = "✔";
@@ -107,7 +102,6 @@ namespace IttezanPos.Views.InventoryPages
             Brownlbl.Text = "";
             DarkBlue.Text = "";
         }
-
         private void OrangeColor_Tapped(object sender, EventArgs e)
         {
             Orangelbl.Text = "✔";
@@ -122,7 +116,6 @@ namespace IttezanPos.Views.InventoryPages
             Brownlbl.Text = "";
             DarkBlue.Text = "";
         }
-
         private void CyanColor_Tapped(object sender, EventArgs e)
         {
             Cyanlbl.Text = "✔";
@@ -137,7 +130,6 @@ namespace IttezanPos.Views.InventoryPages
             Brownlbl.Text = "";
             DarkBlue.Text = "";
         }
-
         private void BrownColor_Tapped(object sender, EventArgs e)
         {
             Brownlbl.Text= "✔";
@@ -152,7 +144,6 @@ namespace IttezanPos.Views.InventoryPages
            
             DarkBlue.Text = "";
         }
-
         private void DarkBlueColor_Tapped(object sender, EventArgs e)
         {
             DarkBlue.Text = "✔";
@@ -167,7 +158,6 @@ namespace IttezanPos.Views.InventoryPages
             Brownlbl.Text = "";
            
         }
-
         private async void ClosePage_Tapped(object sender, EventArgs e)
         {
             await Navigation.PopPopupAsync();

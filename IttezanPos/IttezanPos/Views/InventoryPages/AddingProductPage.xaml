@@ -12,6 +12,9 @@
     xmlns:tr="clr-namespace:IttezanPos.Helpers"
     xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
     mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="save.png" Text="{tr:Translate Save}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="#33b54b" />
@@ -38,10 +41,12 @@
                 ef:Border.Color="#33b54b"
                 ef:Border.Radius="10"
                 ef:Border.Width="1">
-                <Grid>
-                    <BoxView
+                <Grid HorizontalOptions="Center">
+                    <Image
+                        x:Name="productimg"
                         ef:Border.Radius="50"
                         ef:Border.Width="1"
+                        Aspect="Fill"
                         BackgroundColor="#33b54b"
                         HeightRequest="100"
                         HorizontalOptions="Center"
@@ -52,6 +57,10 @@
                         Text="{tr:Translate AddImage}"
                         TextColor="White"
                         VerticalOptions="Center" />
+                    <Image Aspect="AspectFit" HeightRequest="100" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ChooseImage_Tapped" />
+                    </Grid.GestureRecognizers>
                 </Grid>
                 <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
                 <StackLayout>
@@ -97,7 +106,8 @@
                             FontSize="Small"
                             HorizontalOptions="FillAndExpand" />
                         <Image
-                            Margin="5"
+                            Margin="5,10"
+                            HeightRequest="20"
                             HorizontalOptions="End"
                             Source="arrow.png" />
                     </Grid>
@@ -124,7 +134,7 @@
                         <Image
                             x:Name="ByQuantityimg"
                             Margin="5"
-                            HeightRequest="40"
+                            HeightRequest="20"
                             HorizontalOptions="Center"
                             Source="waitgreen.png"
                             WidthRequest="40" />
@@ -147,7 +157,7 @@
                         <Image
                             x:Name="ByUniteimg"
                             Margin="5"
-                            HeightRequest="40"
+                            HeightRequest="20"
                             Source="unitWhit.png"
                             WidthRequest="40" />
                         <StackLayout.GestureRecognizers>

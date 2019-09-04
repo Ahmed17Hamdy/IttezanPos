@@ -1,4 +1,6 @@
-﻿using Rg.Plugins.Popup.Extensions;
+﻿using IttezanPos.Models;
+using Refit;
+using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,11 @@ namespace IttezanPos.Views.InventoryPages
         private async void AddCategory_Clicked(object sender, EventArgs e)
         {
              await Navigation.PushPopupAsync(new AddCategoryPopUpPage());
+        }
+        protected  override void OnAppearing()
+        {
+            base.OnAppearing();
+       
         }
        
     }

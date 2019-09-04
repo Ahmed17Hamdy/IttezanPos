@@ -8,6 +8,7 @@
     xmlns:tr="clr-namespace:IttezanPos.Helpers"
     BackgroundColor="#33b54b"
     FlowDirection="MatchParent"
+    Visual="Material"
     mc:Ignorable="d">
 
     <ContentPage.Content>

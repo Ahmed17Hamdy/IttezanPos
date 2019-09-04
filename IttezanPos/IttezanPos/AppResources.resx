@@ -186,6 +186,9 @@
   <data name="AddToFund" xml:space="preserve">
     <value>Add To Fund</value>
   </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
   </data>
@@ -228,8 +231,20 @@
   <data name="ByUnit" xml:space="preserve">
     <value>By Unit</value>
   </data>
+  <data name="Camera" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="CameraPermissionsNeeded" xml:space="preserve">
+    <value>Camera Permission is Needed</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Choose</value>
   </data>
   <data name="ChooseCategory" xml:space="preserve">
     <value>Choose Category</value>
@@ -324,6 +339,9 @@
   <data name="Fourty" xml:space="preserve">
     <value>Fourty</value>
   </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
   </data>
@@ -363,6 +381,9 @@
   <data name="Millions" xml:space="preserve">
     <value>Millions</value>
   </data>
+  <data name="NeedCamera" xml:space="preserve">
+    <value>Needs Permission For Using Camera</value>
+  </data>
   <data name="Nine" xml:space="preserve">
     <value>Nine</value>
   </data>
@@ -383,6 +404,9 @@
   </data>
   <data name="Percentage" xml:space="preserve">
     <value>Percentage %</value>
+  </data>
+  <data name="PermissionsDenied" xml:space="preserve">
+    <value>Needs Permission For Using Camera to choose Product Image</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
@@ -426,6 +450,9 @@
   <data name="Reports" xml:space="preserve">
     <value>Reports</value>
   </data>
+  <data name="RepresentOnPos" xml:space="preserve">
+    <value>Representation On Pos</value>
+  </data>
   <data name="Reservoir" xml:space="preserve">
     <value>Reservoir</value>
   </data>
@@ -447,6 +474,15 @@
   </data>
   <data name="SearchSupplier" xml:space="preserve">
     <value>Search Supplier's Name</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select Color</value>
+  </data>
+  <data name="SelectImage" xml:space="preserve">
+    <value>Select Image </value>
+  </data>
+  <data name="SelectpicMode" xml:space="preserve">
+    <value>Images Mode</value>
   </data>
   <data name="Selling" xml:space="preserve">
     <value>Selling</value>

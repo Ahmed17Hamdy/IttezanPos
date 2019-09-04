@@ -14,15 +14,22 @@
   <ItemGroup>
     <PackageReference Include="AiForms.Effects" Version="1.5.2" />
     <PackageReference Include="Dropbox.Api" Version="4.9.4" />
+    <PackageReference Include="fusillade" Version="2.0.5" />
     <PackageReference Include="HLI.Forms.Core" Version="1.0.0" />
+    <PackageReference Include="modernhttpclient" Version="2.4.2" />
     <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+    <PackageReference Include="Polly" Version="7.1.1" />
+    <PackageReference Include="Refit" Version="4.7.51" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="TouchView" Version="4.0.21" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
     <PackageReference Include="Xamarin.Forms.InputKit" Version="3.0.12" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.2.0.709249" />
     <PackageReference Include="XamEffects" Version="1.6.3" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
@@ -72,13 +79,16 @@
     <EmbeddedResource Update="Views\Intro\SplashPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\InventoryPages\AddCategoryPopUpPage.xaml">
+    <EmbeddedResource Update="Views\InventoryPages\InventoryPopups\AddCategoryPopUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InventoryPages\AddingClassificationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InventoryPages\AddingProductPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\InventoryPages\InventoryPopups\AddProductImagePopUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InventoryPages\EditingProductSalaryPage.xaml">
@@ -124,7 +134,7 @@
 
   <ItemGroup>
     <Folder Include="DependencyServices\" />
-    <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\PurchasingPages\" />
   </ItemGroup>
 </Project>

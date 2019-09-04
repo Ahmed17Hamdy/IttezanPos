@@ -186,6 +186,9 @@
   <data name="AddToFund" xml:space="preserve">
     <value>أضف للصندوق</value>
   </data>
+  <data name="Alert" xml:space="preserve">
+    <value>تنبيه</value>
+  </data>
   <data name="All" xml:space="preserve">
     <value>الكل</value>
   </data>
@@ -228,8 +231,20 @@
   <data name="ByUnit" xml:space="preserve">
     <value>بالوحدة</value>
   </data>
+  <data name="Camera" xml:space="preserve">
+    <value>الكاميرا</value>
+  </data>
+  <data name="CameraPermissionsNeeded" xml:space="preserve">
+    <value> التطبيق بحاجة لإستخدام الكاميرا</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>التصنيف</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>إختر</value>
   </data>
   <data name="ChooseCategory" xml:space="preserve">
     <value>إختر التصنيف</value>
@@ -324,6 +339,9 @@
   <data name="Fourty" xml:space="preserve">
     <value>أربعون</value>
   </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>المعرض</value>
+  </data>
   <data name="General" xml:space="preserve">
     <value>إعدادات عامة</value>
   </data>
@@ -363,6 +381,9 @@
   <data name="Millions" xml:space="preserve">
     <value>ملايين</value>
   </data>
+  <data name="NeedCamera" xml:space="preserve">
+    <value>يحتاج التطبيق إلى السماح بإستخدام الكاميرا</value>
+  </data>
   <data name="Nine" xml:space="preserve">
     <value>تسعة</value>
   </data>
@@ -383,6 +404,9 @@
   </data>
   <data name="Percentage" xml:space="preserve">
     <value>% نسبة</value>
+  </data>
+  <data name="PermissionsDenied" xml:space="preserve">
+    <value>لإختيار صورة للمنتج برجاء إعطاء الأذونات المطلوبة</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>رقم الجوال</value>
@@ -429,6 +453,9 @@
   <data name="Reports" xml:space="preserve">
     <value>التقارير</value>
   </data>
+  <data name="RepresentOnPos" xml:space="preserve">
+    <value>شكل المنتج على واجهة البرنامج</value>
+  </data>
   <data name="Reservoir" xml:space="preserve">
     <value>الصندوق</value>
   </data>
@@ -449,6 +476,15 @@
   </data>
   <data name="SearchSupplier" xml:space="preserve">
     <value>بحث بإسم المورد</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>إختر اللون</value>
+  </data>
+  <data name="SelectImage" xml:space="preserve">
+    <value>إختر الصورة </value>
+  </data>
+  <data name="SelectpicMode" xml:space="preserve">
+    <value>نمط الصورة</value>
   </data>
   <data name="Selling" xml:space="preserve">
     <value>البيع</value>

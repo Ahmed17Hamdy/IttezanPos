@@ -9,6 +9,7 @@ using Android.OS;
 using Xamarin.Forms;
 using Rg.Plugins.Popup.Services;
 using System.Linq;
+using Plugin.CurrentActivity;
 
 namespace IttezanPos.Droid
 {
@@ -37,9 +38,13 @@ namespace IttezanPos.Droid
 
             base.OnCreate(savedInstanceState);
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
-            ChechSdk();
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            //ChechSdk();
             Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
+            FormsMaterial.Init(this, savedInstanceState);
             XamEffects.Droid.Effects.Init();
+            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

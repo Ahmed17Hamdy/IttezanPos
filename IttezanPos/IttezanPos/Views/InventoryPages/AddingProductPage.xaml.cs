@@ -1,5 +1,10 @@
-﻿using System;
+﻿using IttezanPos.Models;
+using IttezanPos.Views.InventoryPages.InventoryPopups;
+using Rg.Plugins.Popup.Extensions;
+using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +20,14 @@ namespace IttezanPos.Views.InventoryPages
         public AddingProductPage()
         {
             InitializeComponent();
+         
+            MessagingCenter.Subscribe<PopUpPassParameter>(this, "PopUpData", (value) =>
+            {
+                Stream receivedData = value.Myvalue;
+                Color color = value.productcolor;
+                productimg.BackgroundColor = color;
+                productimg.Source = ImageSource.FromStream(() => { return receivedData; });
+            });
         }
 
         private void ByQuantity_Tapped(object sender, EventArgs e)
@@ -38,6 +51,11 @@ namespace IttezanPos.Views.InventoryPages
             ByUnitstk.BackgroundColor = Color.FromHex("#33b54b");
             ByUnitlbl.TextColor = Color.White;
             ByUniteimg.Source = "unitWhit.png";
+        }
+
+        private async void ChooseImage_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushPopupAsync(new AddProductImagePopUpPage());
         }
     }
 }
