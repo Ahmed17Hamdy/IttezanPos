@@ -79,6 +79,9 @@
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Sales_Tapped" />
+                </Frame.GestureRecognizers>
             </Frame>
             <Frame
                 Grid.Row="1"

@@ -53,21 +53,13 @@
                             ef:Border.Width="1"
                             ColumnSpacing="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="0.25*" />
+                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="0.25*" />
                             </Grid.ColumnDefinitions>
-                            <SearchBar
-                                Grid.Column="0"
-                                Margin="5"
-                                ef:Border.Color="LightGray"
-                                ef:Border.Radius="20"
-                                ef:Border.Width="1"
-                                CancelButtonColor="Red"
-                                Placeholder="{tr:Translate Search}"
-                                PlaceholderColor="Black" />
-                            <Grid Grid.Column="1">
+                            <Grid Grid.Column="0">
                                 <Image
-                                    Margin="2,5"
+                                    Margin="5"
                                     ef:Border.Radius="10"
                                     ef:Border.Width="1"
                                     BackgroundColor="#33b54b"
@@ -77,6 +69,29 @@
                                         <TapGestureRecognizer Tapped="Scan_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
+                            </Grid>
+                            <SearchBar
+                                Grid.Column="1"
+                                Margin="5"
+                                ef:Border.Color="LightGray"
+                                ef:Border.Radius="20"
+                                ef:Border.Width="1"
+                                CancelButtonColor="White"
+                                Placeholder="{tr:Translate Search}"
+                                PlaceholderColor="Black" />
+                            <Grid
+                                Grid.Column="2"
+                                Margin="2,5"
+                                Padding="5"
+                                ef:Border.Radius="10"
+                                ef:Border.Width="1"
+                                BackgroundColor="#33b54b">
+                                <Image
+                                    ef:Border.Radius="10"
+                                    ef:Border.Width="1"
+                                    HeightRequest="30"
+                                    Source="save.png"
+                                    WidthRequest="50" />
                             </Grid>
 
                         </Grid>

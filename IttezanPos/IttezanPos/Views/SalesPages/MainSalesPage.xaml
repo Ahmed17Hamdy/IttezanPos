@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IttezanPos.Views.SalesPages.MainSalesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customcontrols="clr-namespace:IttezanPos.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <Style TargetType="customcontrols:CustomPicker">
+            <Setter Property="TitleColor" Value="White" />
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="Changa-Regular.ttf#Changa-Regular "
+                        iOS="Changa-Regular" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout Margin="10,5">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Frame
+                    CornerRadius="10"
+                    HasShadow="True"
+                    Visual="Material">
+                    <StackLayout Orientation="Horizontal" Spacing="5">
+                        <Label HorizontalOptions="CenterAndExpand" Text="{tr:Translate EmptyCart}" />
+                        <Label HorizontalOptions="StartAndExpand" Text="{tr:Translate EmptyCart}" />
+                        <Label HorizontalOptions="EndAndExpand" Text="{tr:Translate EmptyCart}" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Padding="0"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    Visual="Material">
+                    <Grid
+                        ef:Border.Radius="1"
+                        ef:Border.Width="1"
+                        ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout
+                            x:Name="searchstk"
+                            Grid.Column="0"
+                            Margin="5"
+                            Padding="5"
+                            ef:Border.Radius="10"
+                            ef:Border.Width="1"
+                            BackgroundColor="#33b54b"
+                            Orientation="Horizontal"
+                            Spacing="5">
+                            <Image Source="scan.png" WidthRequest="50">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Scan_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="search.png" WidthRequest="20">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="searchbarvisible_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                        <Grid
+                            x:Name="pickergrd"
+                            Grid.Column="1"
+                            Margin="5">
+                            <customcontrols:CustomPicker
+                                Title="{tr:Translate ChooseCategory}"
+                                ef:Border.Radius="20"
+                                BackgroundColor="#33b54b"
+                                FontSize="Small"
+                                HorizontalOptions="FillAndExpand"
+                                TitleColor="White" />
+                            <Image
+                                Margin="5,10"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                Source="arrow.png" />
+                        </Grid>
+                        <Grid
+                            x:Name="searchbar"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            IsVisible="False">
+                            <SearchBar
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="5"
+                                ef:Border.Color="LightGray"
+                                ef:Border.Radius="20"
+                                ef:Border.Width="1"
+                                CancelButtonColor="Red"
+                                Placeholder="{tr:Translate Search}"
+                                PlaceholderColor="Black" />
+                            <Image
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="15,0"
+                                HeightRequest="20"
+                                HorizontalOptions="Start"
+                                Source="cancel.png">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="searchbarinvisible_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+
+                    </Grid>
+
+                </Frame>
+            </StackLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,1,1,.09" AbsoluteLayout.LayoutFlags="All">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid
+                    Grid.Column="0"
+                    Padding="5"
+                    ef:Border.Radius="10"
+                    BackgroundColor="#33b54b">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        Source="payment.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Micro"
+                        HorizontalOptions="Center"
+                        Text="{tr:Translate Payment}"
+                        TextColor="White" />
+                </Grid>
+                <Grid
+                    Grid.Column="1"
+                    Padding="5"
+                    ef:Border.Radius="10"
+                    BackgroundColor="#33b54b">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        Source="ordertype.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Micro"
+                        HorizontalOptions="Center"
+                        Text="{tr:Translate OrderType}"
+                        TextColor="White" />
+                </Grid>
+                <Grid
+                    Grid.Column="2"
+                    Padding="5"
+                    ef:Border.Radius="10"
+                    BackgroundColor="#33b54b">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        Source="discount.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Micro"
+                        HorizontalOptions="Center"
+                        Text="{tr:Translate Discount}"
+                        TextColor="White" />
+                </Grid>
+                <Grid
+                    Grid.Column="3"
+                    Padding="5"
+                    ef:Border.Radius="10"
+                    BackgroundColor="#33b54b">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        Source="discart.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Micro"
+                        HorizontalOptions="Center"
+                        Text="{tr:Translate Discard}"
+                        TextColor="White" />
+                </Grid>
+                <Grid
+                    Grid.Column="4"
+                    Padding="5"
+                    ef:Border.Radius="10"
+                    BackgroundColor="#33b54b">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        Source="extra.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Micro"
+                        HorizontalOptions="Center"
+                        Text="{tr:Translate Extra}"
+                        TextColor="White" />
+                </Grid>
+            </Grid>
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

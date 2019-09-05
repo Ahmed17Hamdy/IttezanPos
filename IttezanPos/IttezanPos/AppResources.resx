@@ -288,6 +288,12 @@
   <data name="DeductOfFund" xml:space="preserve">
     <value>Deduct of Fund</value>
   </data>
+  <data name="Discard" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Discount</value>
+  </data>
   <data name="EditeByCategory" xml:space="preserve">
     <value>Edite By Category</value>
   </data>
@@ -309,6 +315,9 @@
   <data name="EmailAddress" xml:space="preserve">
     <value>Email Address</value>
   </data>
+  <data name="EmptyCart" xml:space="preserve">
+    <value>Empty Cart</value>
+  </data>
   <data name="Entertheamount" xml:space="preserve">
     <value>Enter the amount</value>
   </data>
@@ -323,6 +332,9 @@
   </data>
   <data name="Expirationdate" xml:space="preserve">
     <value>Expiration date</value>
+  </data>
+  <data name="Extra" xml:space="preserve">
+    <value>Extra</value>
   </data>
   <data name="Feedback" xml:space="preserve">
     <value>Feedback</value>
@@ -407,6 +419,12 @@
   </data>
   <data name="Openingbalanceforcustomers" xml:space="preserve">
     <value>Opening balance for Clients</value>
+  </data>
+  <data name="OrderType" xml:space="preserve">
+    <value>Order Type</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
   </data>
   <data name="Percentage" xml:space="preserve">
     <value>Percentage %</value>

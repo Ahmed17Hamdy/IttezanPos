@@ -574,6 +574,24 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discard.
+        /// </summary>
+        internal static string Discard {
+            get {
+                return ResourceManager.GetString("Discard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discount.
+        /// </summary>
+        internal static string Discount {
+            get {
+                return ResourceManager.GetString("Discount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edite By Category.
         /// </summary>
         internal static string EditeByCategory {
@@ -637,6 +655,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Empty Cart.
+        /// </summary>
+        internal static string EmptyCart {
+            get {
+                return ResourceManager.GetString("EmptyCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the amount.
         /// </summary>
         internal static string Entertheamount {
@@ -678,6 +705,15 @@ namespace IttezanPos {
         internal static string Expirationdate {
             get {
                 return ResourceManager.GetString("Expirationdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra.
+        /// </summary>
+        internal static string Extra {
+            get {
+                return ResourceManager.GetString("Extra", resourceCulture);
             }
         }
         
@@ -930,6 +966,24 @@ namespace IttezanPos {
         internal static string Openingbalanceforcustomers {
             get {
                 return ResourceManager.GetString("Openingbalanceforcustomers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order Type.
+        /// </summary>
+        internal static string OrderType {
+            get {
+                return ResourceManager.GetString("OrderType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment.
+        /// </summary>
+        internal static string Payment {
+            get {
+                return ResourceManager.GetString("Payment", resourceCulture);
             }
         }
         

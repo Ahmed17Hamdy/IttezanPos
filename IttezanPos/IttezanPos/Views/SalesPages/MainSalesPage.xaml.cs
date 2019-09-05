@@ -10,12 +10,12 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
 
-namespace IttezanPos.Views.PurchasingPages
+namespace IttezanPos.Views.SalesPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PurchasePage : ContentPage
+    public partial class MainSalesPage : ContentPage
     {
-        public PurchasePage()
+        public MainSalesPage()
         {
             InitializeComponent();
         }
@@ -69,7 +69,18 @@ namespace IttezanPos.Views.PurchasingPages
 
 
         }
+        private void searchbarvisible_Tapped(object sender, EventArgs e)
+        {
+            searchbar.IsVisible = true;
+            searchstk.IsVisible = false;
+            pickergrd.IsVisible = false;
+        }
 
-       
+        private void searchbarinvisible_Tapped(object sender, EventArgs e)
+        {
+            searchbar.IsVisible = false;
+            searchstk.IsVisible = true;
+            pickergrd.IsVisible = true;
+        }
     }
 }

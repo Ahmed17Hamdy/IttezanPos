@@ -288,6 +288,12 @@
   <data name="DeductOfFund" xml:space="preserve">
     <value>خصم من الصندوق</value>
   </data>
+  <data name="Discard" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>خصم</value>
+  </data>
   <data name="EditeByCategory" xml:space="preserve">
     <value>التعديل حسب التصنيف</value>
   </data>
@@ -309,6 +315,9 @@
   <data name="EmailAddress" xml:space="preserve">
     <value>البريد الإلكتروني</value>
   </data>
+  <data name="EmptyCart" xml:space="preserve">
+    <value>سلة فارغة</value>
+  </data>
   <data name="Entertheamount" xml:space="preserve">
     <value>أدخل المبلغ</value>
   </data>
@@ -323,6 +332,9 @@
   </data>
   <data name="Expirationdate" xml:space="preserve">
     <value>تاريخ إنتهاء الصلاحية</value>
+  </data>
+  <data name="Extra" xml:space="preserve">
+    <value>المزيد</value>
   </data>
   <data name="Feedback" xml:space="preserve">
     <value>الإنطباع</value>
@@ -407,6 +419,12 @@
   </data>
   <data name="Openingbalanceforcustomers" xml:space="preserve">
     <value>الأرصدة الإفتتاحية للعملاء</value>
+  </data>
+  <data name="OrderType" xml:space="preserve">
+    <value>نوع الطلب</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>الدفع</value>
   </data>
   <data name="Percentage" xml:space="preserve">
     <value>% نسبة</value>

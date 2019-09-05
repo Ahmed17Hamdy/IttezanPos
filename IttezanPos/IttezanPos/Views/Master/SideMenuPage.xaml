@@ -9,6 +9,7 @@
     xmlns:Pages="clr-namespace:IttezanPos.Views.MainPage"
     xmlns:Purchase="clr-namespace:IttezanPos.Views.PurchasingPages"
     xmlns:Reservoir="clr-namespace:IttezanPos.Views.ReservoirPages"
+    xmlns:Sales="clr-namespace:IttezanPos.Views.SalesPages"
     xmlns:SettingPages="clr-namespace:IttezanPos.Views.SettingsPages"
     xmlns:Supplier="clr-namespace:IttezanPos.Views.SupplierPages"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -86,7 +87,7 @@
                             <local:MasterPageItem
                                 Title="{tr:Translate Sales}"
                                 IconSource="salesmenu.png"
-                                TargetType="{x:Type Pages:HomePage}" />
+                                TargetType="{x:Type Sales:MainSalesPage}" />
                             <local:MasterPageItem
                                 Title="{tr:Translate Purchase}"
                                 IconSource="purchasemenu.png"
