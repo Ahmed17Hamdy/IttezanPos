@@ -187,7 +187,7 @@
     <value>Add To Fund</value>
   </data>
   <data name="Alert" xml:space="preserve">
-    <value>Alert</value>
+    <value>Alert ⚠️</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
@@ -232,7 +232,7 @@
     <value>By Unit</value>
   </data>
   <data name="Camera" xml:space="preserve">
-    <value>Camera</value>
+    <value>Camera 📷</value>
   </data>
   <data name="CameraPermissionsNeeded" xml:space="preserve">
     <value>Camera Permission is Needed</value>
@@ -257,6 +257,9 @@
   </data>
   <data name="ClientsData" xml:space="preserve">
     <value>Client's Data</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>Cost</value>
   </data>
   <data name="Customeropeningbalances" xml:space="preserve">
     <value>Client's Opening Balances</value>
@@ -340,7 +343,7 @@
     <value>Fourty</value>
   </data>
   <data name="Gallery" xml:space="preserve">
-    <value>Gallery</value>
+    <value>Gallery 🖼️</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
@@ -393,6 +396,9 @@
   <data name="Notes" xml:space="preserve">
     <value>Notes</value>
   </data>
+  <data name="NQ" xml:space="preserve">
+    <value>N.Q</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
@@ -425,6 +431,9 @@
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>Purchases</value>
+  </data>
+  <data name="PurchaseDate" xml:space="preserve">
+    <value>Purchase invoice date</value>
   </data>
   <data name="Purchasing" xml:space="preserve">
     <value>Purchasing</value>
@@ -549,6 +558,9 @@
   </data>
   <data name="Three" xml:space="preserve">
     <value>Three</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>Total</value>
   </data>
   <data name="TotalAmount" xml:space="preserve">
     <value>Total Amount</value>

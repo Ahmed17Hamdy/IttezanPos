@@ -1,10 +1,7 @@
-﻿using System;
-
+﻿
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using Xamarin.Forms;
 using Rg.Plugins.Popup.Services;
@@ -43,6 +40,7 @@ namespace IttezanPos.Droid
             Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
             FormsMaterial.Init(this, savedInstanceState);
             XamEffects.Droid.Effects.Init();
+         
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

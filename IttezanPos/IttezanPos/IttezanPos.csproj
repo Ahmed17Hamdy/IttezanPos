@@ -109,6 +109,9 @@
     <EmbeddedResource Update="Views\Master\SideMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\PurchasingPages\PurchasePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ReservoirPages\ReservoirPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -135,6 +138,5 @@
   <ItemGroup>
     <Folder Include="DependencyServices\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\PurchasingPages\" />
   </ItemGroup>
 </Project>

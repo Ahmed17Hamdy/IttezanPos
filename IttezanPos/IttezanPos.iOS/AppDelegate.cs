@@ -28,6 +28,7 @@ namespace IttezanPos.iOS
             FormsMaterial.Init();
             Rg.Plugins.Popup.Popup.Init();
             Plugin.InputKit.Platforms.iOS.Config.Init();
+            AiForms.Effects.iOS.Effects.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }

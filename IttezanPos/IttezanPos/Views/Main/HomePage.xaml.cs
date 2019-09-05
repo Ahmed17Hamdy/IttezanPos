@@ -4,6 +4,7 @@ using IttezanPos.Helpers;
 using IttezanPos.Views.ClientPages;
 using IttezanPos.Views.ExpensesPages;
 using IttezanPos.Views.InventoryPages;
+using IttezanPos.Views.PurchasingPages;
 using IttezanPos.Views.ReservoirPages;
 using IttezanPos.Views.SupplierPages;
 using Plugin.Connectivity;
@@ -63,6 +64,11 @@ namespace IttezanPos.Views.MainPage
         private async void Inventory_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new InventoryMainPage());
+        }
+
+        private async void Purchase_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PurchasePage());
         }
     }
 }

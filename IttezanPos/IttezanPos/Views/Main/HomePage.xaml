@@ -51,6 +51,9 @@
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Purchase_Tapped" />
+                </Frame.GestureRecognizers>
             </Frame>
             <Frame
                 Grid.Row="0"

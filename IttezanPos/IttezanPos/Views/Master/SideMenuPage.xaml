@@ -7,6 +7,7 @@
     xmlns:Expense="clr-namespace:IttezanPos.Views.ExpensesPages"
     xmlns:Inventory="clr-namespace:IttezanPos.Views.InventoryPages"
     xmlns:Pages="clr-namespace:IttezanPos.Views.MainPage"
+    xmlns:Purchase="clr-namespace:IttezanPos.Views.PurchasingPages"
     xmlns:Reservoir="clr-namespace:IttezanPos.Views.ReservoirPages"
     xmlns:SettingPages="clr-namespace:IttezanPos.Views.SettingsPages"
     xmlns:Supplier="clr-namespace:IttezanPos.Views.SupplierPages"
@@ -89,7 +90,7 @@
                             <local:MasterPageItem
                                 Title="{tr:Translate Purchase}"
                                 IconSource="purchasemenu.png"
-                                TargetType="{x:Type Pages:HomePage}" />
+                                TargetType="{x:Type Purchase:PurchasePage}" />
                             <local:MasterPageItem
                                 Title="{tr:Translate Suppliers}"
                                 IconSource="supplierMainpage.png"

@@ -8,6 +8,7 @@
     xmlns:customcontrols="clr-namespace:IttezanPos.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tr="clr-namespace:IttezanPos.Helpers"
     xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
@@ -98,6 +99,15 @@
                         CornerRadius="20"
                         HorizontalOptions="FillAndExpand"
                         Text="{tr:Translate AddingNewClassification}" />
+                    <!--<input:Dropdown
+                        Grid.Column="1"
+                        ef:Border.Radius="20"
+                        BackgroundColor="#33b54b"
+                        HorizontalOptions="FillAndExpand"
+                        IconImage="arrow"
+                        IsRequired="True"
+                        Placeholder="{tr:Translate ChooseCategory}"
+                        TitleColor="Black" />-->
                     <Grid Grid.Column="1">
                         <customcontrols:CustomPicker
                             Title="{tr:Translate ChooseCategory}"
@@ -111,7 +121,6 @@
                             HorizontalOptions="End"
                             Source="arrow.png" />
                     </Grid>
-
                 </Grid>
                 <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
                 <Label Text="{tr:Translate Price}" />

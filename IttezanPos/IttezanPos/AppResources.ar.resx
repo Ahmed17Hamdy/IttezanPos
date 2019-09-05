@@ -187,7 +187,7 @@
     <value>أضف للصندوق</value>
   </data>
   <data name="Alert" xml:space="preserve">
-    <value>تنبيه</value>
+    <value>تنبيه ⚠️</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>الكل</value>
@@ -232,7 +232,7 @@
     <value>بالوحدة</value>
   </data>
   <data name="Camera" xml:space="preserve">
-    <value>الكاميرا</value>
+    <value>الكاميرا 📷</value>
   </data>
   <data name="CameraPermissionsNeeded" xml:space="preserve">
     <value> التطبيق بحاجة لإستخدام الكاميرا</value>
@@ -257,6 +257,9 @@
   </data>
   <data name="ClientsData" xml:space="preserve">
     <value>بيانات العميل</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>التكلفة</value>
   </data>
   <data name="Customeropeningbalances" xml:space="preserve">
     <value>الأرصدة الإفتتاحية للعملاء</value>
@@ -340,7 +343,7 @@
     <value>أربعون</value>
   </data>
   <data name="Gallery" xml:space="preserve">
-    <value>المعرض</value>
+    <value>المعرض 🖼️</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>إعدادات عامة</value>
@@ -393,6 +396,9 @@
   <data name="Notes" xml:space="preserve">
     <value>ملاحظات</value>
   </data>
+  <data name="NQ" xml:space="preserve">
+    <value>ع.ق</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>حسناً</value>
   </data>
@@ -425,6 +431,9 @@
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>المشتريات</value>
+  </data>
+  <data name="PurchaseDate" xml:space="preserve">
+    <value>تاريخ فاتورة المشتريات</value>
   </data>
   <data name="Purchasing" xml:space="preserve">
     <value>الشراء</value>
@@ -551,6 +560,9 @@
   </data>
   <data name="Three" xml:space="preserve">
     <value>ثلاثة</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>الإجمالي</value>
   </data>
   <data name="TotalAmount" xml:space="preserve">
     <value>إجمالى المبلغ</value>

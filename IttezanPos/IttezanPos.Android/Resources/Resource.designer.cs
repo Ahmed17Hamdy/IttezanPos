@@ -18635,34 +18635,37 @@ namespace IttezanPos.Droid
 			public const int ShowClients = 2131165539;
 			
 			// aapt resource value: 0x7F070164
-			public const int SplashImage = 2131165540;
+			public const int showlist = 2131165540;
 			
 			// aapt resource value: 0x7F070165
-			public const int staff_managment = 2131165541;
+			public const int SplashImage = 2131165541;
 			
 			// aapt resource value: 0x7F070166
-			public const int supplierMainpage = 2131165542;
+			public const int staff_managment = 2131165542;
 			
 			// aapt resource value: 0x7F070167
-			public const int supplierrec = 2131165543;
+			public const int supplierMainpage = 2131165543;
 			
 			// aapt resource value: 0x7F070168
-			public const int tooltip_frame_dark = 2131165544;
+			public const int supplierrec = 2131165544;
 			
 			// aapt resource value: 0x7F070169
-			public const int tooltip_frame_light = 2131165545;
+			public const int tooltip_frame_dark = 2131165545;
 			
 			// aapt resource value: 0x7F07016A
-			public const int unitgreen = 2131165546;
+			public const int tooltip_frame_light = 2131165546;
 			
 			// aapt resource value: 0x7F07016B
-			public const int unitWhit = 2131165547;
+			public const int unitgreen = 2131165547;
 			
 			// aapt resource value: 0x7F07016C
-			public const int waitgreen = 2131165548;
+			public const int unitWhit = 2131165548;
 			
 			// aapt resource value: 0x7F07016D
-			public const int waitwhit = 2131165549;
+			public const int waitgreen = 2131165549;
+			
+			// aapt resource value: 0x7F07016E
+			public const int waitwhit = 2131165550;
 			
 			static Drawable()
 			{
