@@ -258,6 +258,9 @@
   <data name="ClientsData" xml:space="preserve">
     <value>بيانات العميل</value>
   </data>
+  <data name="ConnectionNotAvailable" xml:space="preserve">
+    <value>لا يوجد إتصال بالإنترنت , من فضلك تحقق من الإتصال بالإنترنت</value>
+  </data>
   <data name="Cost" xml:space="preserve">
     <value>التكلفة</value>
   </data>
@@ -543,6 +546,9 @@
   <data name="Statement" xml:space="preserve">
     <value>البيان</value>
   </data>
+  <data name="SupplierAdded" xml:space="preserve">
+    <value>تم إضافة المورد بنجاح</value>
+  </data>
   <data name="SupplierData" xml:space="preserve">
     <value>بيانات المورد</value>
   </data>
@@ -603,6 +609,9 @@
   <data name="Two" xml:space="preserve">
     <value>إثنان</value>
   </data>
+  <data name="UsedEmail" xml:space="preserve">
+    <value>هذا البريد الإلكتروني مسجل بالفعل</value>
+  </data>
   <data name="ViewClient" xml:space="preserve">
     <value>عرض العملاء</value>
   </data>
@@ -622,7 +631,7 @@
     <value>عرض ذمم الموردين</value>
   </data>
   <data name="Zero" xml:space="preserve">
-    <value>0.0</value>
+    <value>0</value>
   </data>
   <data name="ZeroText" xml:space="preserve">
     <value>صفر</value>

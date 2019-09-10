@@ -45,6 +45,7 @@
                         VerticalOptions="End" />
                     <StackLayout Grid.Row="1">
                         <customcontrols:CustomEntry
+                            x:Name="SupplierNameentry"
                             Grid.Row="1"
                             Margin="0"
                             ef:Border.Color="#33b54b"
@@ -68,6 +69,7 @@
                         Text="{tr:Translate Address}"
                         VerticalOptions="End" />
                     <customcontrols:CustomEntry
+                        x:Name="SupplierAddressentry"
                         Grid.Row="3"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
@@ -81,7 +83,6 @@
                             <Behaviors:ValidationBehavior PropertyName="Text">
                                 <Behaviors:ValidationBehavior.Validators>
                                     <Validators:RequiredValidator />
-
                                 </Behaviors:ValidationBehavior.Validators>
                             </Behaviors:ValidationBehavior>
 
@@ -92,6 +93,7 @@
                         Text="{tr:Translate PhoneNumber}"
                         VerticalOptions="End" />
                     <customcontrols:CustomEntry
+                        x:Name="SupplierPhoneentry"
                         Grid.Row="5"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
@@ -112,10 +114,12 @@
                         Text="{tr:Translate EmailAddress}"
                         VerticalOptions="End" />
                     <customcontrols:CustomEntry
+                        x:Name="SupplierEmailentry"
                         Grid.Row="7"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
                         ef:Border.Width="1"
+                        HorizontalTextAlignment="Center"
                         Keyboard="Email">
                         <customcontrols:CustomEntry.Behaviors>
                             <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
@@ -131,6 +135,7 @@
                         Text="{tr:Translate Notes}"
                         VerticalOptions="End" />
                     <customcontrols:CustomEntry
+                        x:Name="SupplierNotesentry"
                         Grid.Row="9"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
@@ -141,10 +146,20 @@
                         Grid.Row="10"
                         Margin="0,5,0,0"
                         BackgroundColor="#33b54b"
+                        Clicked="Button_Clicked"
                         CornerRadius="25"
-                        IsVisible="{Binding Source={x:Reference form}, Path=IsValid}"
+                        IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                         Text="{tr:Translate Save}"
                         TextColor="White" />
+                    <ActivityIndicator
+                        x:Name="ActiveIn"
+                        Grid.RowSpan="11"
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        IsRunning="False"
+                        VerticalOptions="Center"
+                        WidthRequest="100"
+                        Color="#33b54b" />
                 </StackLayout>
             </ScrollView>
         </Grid>

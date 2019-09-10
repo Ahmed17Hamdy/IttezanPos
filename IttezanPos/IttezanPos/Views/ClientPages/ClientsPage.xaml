@@ -7,34 +7,18 @@
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tr="clr-namespace:IttezanPos.Helpers"
-    xmlns:viewmodels="clr-namespace:IttezanPos.ViewModels"
     mc:Ignorable="d">
-    <!--<ContentPage.BindingContext>
-        <viewmodels:MainViewModel />
-    </ContentPage.BindingContext>-->
+
     <ContentPage.Content>
-        <!--<StackLayout>
-            <ListView x:Name="listviewwww">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-
-                        <TextCell Text="{Binding name}" />
-
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>-->
-
 
         <Grid Margin="10" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.3*" />
-                <RowDefinition Height="0.45*" />
-                <RowDefinition Height="3*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.2*" />
+                <RowDefinition Height="0.7*" />
             </Grid.RowDefinitions>
             <Label
                 Grid.Row="0"
-                Margin="0,10,0,0"
                 FontSize="Large"
                 HorizontalOptions="Center"
                 Text="{tr:Translate ViewClient}"
@@ -42,7 +26,6 @@
                 VerticalOptions="Center" />
             <Grid
                 Grid.Row="1"
-                Padding="10"
                 ef:Border.Color="Black"
                 ef:Border.Radius="1"
                 ef:Border.Width="1"
@@ -70,7 +53,7 @@
             </Grid>
             <StackLayout
                 Grid.Row="2"
-                Margin="0,-1,0,0"
+                Margin="0,-10,0,2"
                 ef:Border.Color="Black"
                 ef:Border.Radius="1"
                 ef:Border.Width="1">
@@ -78,6 +61,7 @@
                     x:Name="listviewwww"
                     Margin="0"
                     HasUnevenRows="True"
+                    ItemsSource="{Binding Clients}"
                     Visual="Material">
                     <ListView.Header>
                         <Grid
@@ -132,7 +116,15 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-
+            <ActivityIndicator
+                x:Name="ActiveIn"
+                Grid.RowSpan="3"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                IsRunning="False"
+                VerticalOptions="Center"
+                WidthRequest="100"
+                Color="#33b54b" />
         </Grid>
 
     </ContentPage.Content>

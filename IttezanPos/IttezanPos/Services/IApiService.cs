@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 namespace IttezanPos.Services
 {
     [Headers("Content-Type: application/json")]
-    public interface IApiService
+    public interface IApiService 
     {
       [Get("/api/settinginfo")]
         Task<RootObject> GetSettings();
+       
+        
     }
 }

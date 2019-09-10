@@ -187,7 +187,7 @@
     <value>Add To Fund</value>
   </data>
   <data name="Alert" xml:space="preserve">
-    <value>Alert ⚠️</value>
+    <value>⚠️ Alert </value>
   </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
@@ -257,6 +257,9 @@
   </data>
   <data name="ClientsData" xml:space="preserve">
     <value>Client's Data</value>
+  </data>
+  <data name="ConnectionNotAvailable" xml:space="preserve">
+    <value>No Internet Connected , Please Check Your Connection</value>
   </data>
   <data name="Cost" xml:space="preserve">
     <value>Cost</value>
@@ -541,6 +544,9 @@
   <data name="Statement" xml:space="preserve">
     <value>Statement</value>
   </data>
+  <data name="SupplierAdded" xml:space="preserve">
+    <value>Supplier Added Successfuly</value>
+  </data>
   <data name="SupplierData" xml:space="preserve">
     <value>Supplier's Data</value>
   </data>
@@ -601,6 +607,9 @@
   <data name="Two" xml:space="preserve">
     <value>Two</value>
   </data>
+  <data name="UsedEmail" xml:space="preserve">
+    <value>This Email is used before </value>
+  </data>
   <data name="ViewClient" xml:space="preserve">
     <value>View Clients</value>
   </data>
@@ -620,7 +629,7 @@
     <value>View Supplier Receivables</value>
   </data>
   <data name="Zero" xml:space="preserve">
-    <value>0.0</value>
+    <value>0</value>
   </data>
   <data name="ZeroText" xml:space="preserve">
     <value>Zero</value>

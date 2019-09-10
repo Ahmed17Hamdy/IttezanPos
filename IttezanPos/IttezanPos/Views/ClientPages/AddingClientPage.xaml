@@ -47,14 +47,14 @@
                         VerticalOptions="End" />
                     <StackLayout Grid.Row="1">
                         <customcontrols:CustomEntry
+                            x:Name="ClientNameentry"
                             Grid.Row="1"
                             Margin="0"
                             ef:Border.Color="#33b54b"
                             ef:Border.Radius="25"
                             ef:Border.Width="1"
                             FontSize="Small"
-                            HorizontalTextAlignment="Center"
-                            IsTextPredictionEnabled="True">
+                            HorizontalTextAlignment="Center">
                             <customcontrols:CustomEntry.Behaviors>
                                 <Behaviors:ValidationBehavior PropertyName="Text">
                                     <Behaviors:ValidationBehavior.Validators>
@@ -71,6 +71,7 @@
                         Text="{tr:Translate Address}"
                         VerticalOptions="End" />
                     <customcontrols:CustomEntry
+                        x:Name="ClientAddressentry"
                         Grid.Row="3"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
@@ -95,6 +96,7 @@
                         Text="{tr:Translate PhoneNumber}"
                         VerticalOptions="End" />
                     <customcontrols:CustomEntry
+                        x:Name="phoneentry"
                         Grid.Row="5"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
@@ -115,10 +117,12 @@
                         Text="{tr:Translate EmailAddress}"
                         VerticalOptions="End" />
                     <customcontrols:CustomEntry
+                        x:Name="Emailentry"
                         Grid.Row="7"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
                         ef:Border.Width="1"
+                        HorizontalTextAlignment="Center"
                         Keyboard="Email">
                         <customcontrols:CustomEntry.Behaviors>
                             <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
@@ -134,6 +138,7 @@
                         Text="{tr:Translate Notes}"
                         VerticalOptions="End" />
                     <customcontrols:CustomEntry
+                        x:Name="Notesentry"
                         Grid.Row="9"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
@@ -145,6 +150,7 @@
                         Text="{tr:Translate ClientLimit}"
                         VerticalOptions="End" />
                     <customcontrols:CustomEntry
+                        x:Name="Limitentry"
                         Grid.Row="11"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
@@ -156,12 +162,22 @@
                         Grid.Row="12"
                         Margin="0,5,0,0"
                         BackgroundColor="#33b54b"
+                        Clicked="Button_Clicked"
                         CornerRadius="25"
-                        IsVisible="{Binding Source={x:Reference form}, Path=IsValid}"
+                        IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                         Text="{tr:Translate Save}"
                         TextColor="White" />
                 </StackLayout>
             </ScrollView>
+            <ActivityIndicator
+                x:Name="ActiveIn"
+                Grid.RowSpan="12"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                IsRunning="False"
+                VerticalOptions="Center"
+                WidthRequest="100"
+                Color="#33b54b" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

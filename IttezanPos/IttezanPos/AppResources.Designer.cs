@@ -268,7 +268,7 @@ namespace IttezanPos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alert ⚠️.
+        ///   Looks up a localized string similar to ⚠️ Alert .
         /// </summary>
         internal static string Alert {
             get {
@@ -480,6 +480,15 @@ namespace IttezanPos {
         internal static string ClientsData {
             get {
                 return ResourceManager.GetString("ClientsData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Internet Connected , Please Check Your Connection.
+        /// </summary>
+        internal static string ConnectionNotAvailable {
+            get {
+                return ResourceManager.GetString("ConnectionNotAvailable", resourceCulture);
             }
         }
         
@@ -1331,6 +1340,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supplier Added Successfuly.
+        /// </summary>
+        internal static string SupplierAdded {
+            get {
+                return ResourceManager.GetString("SupplierAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Supplier&apos;s Data.
         /// </summary>
         internal static string SupplierData {
@@ -1511,6 +1529,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This Email is used before .
+        /// </summary>
+        internal static string UsedEmail {
+            get {
+                return ResourceManager.GetString("UsedEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View Clients.
         /// </summary>
         internal static string ViewClient {
@@ -1565,7 +1592,7 @@ namespace IttezanPos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.0.
+        ///   Looks up a localized string similar to 0.
         /// </summary>
         internal static string Zero {
             get {

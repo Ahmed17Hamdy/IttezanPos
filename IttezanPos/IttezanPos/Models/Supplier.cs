@@ -10,7 +10,8 @@ namespace IttezanPos.Models
         public string name { get; set; }
         public string address { get; set; }
         public string phone { get; set; }
-        public int number { get; set; }
+        public string email { get; set; }
+        public string note { get; set; }
         public string created_at { get; set; }
         public string updated_at { get; set; }
     }
