@@ -10,8 +10,122 @@
     mc:Ignorable="d">
 
     <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout
+                Margin="10"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                Spacing="0">
+                <StackLayout>
+                    <Label
+                        Grid.Row="0"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{tr:Translate ViewClient}"
+                        TextColor="#33b54b"
+                        VerticalOptions="Center" />
+                    <StackLayout
+                        Padding="0"
+                        ef:Border.Color="Black"
+                        ef:Border.Radius="1"
+                        ef:Border.Width="1"
+                        HorizontalOptions="Fill"
+                        Orientation="Horizontal"
+                        Spacing="0">
+                        <SearchBar
+                            Margin="5"
+                            ef:Border.Color="LightGray"
+                            ef:Border.Radius="20"
+                            ef:Border.Width="1"
+                            CancelButtonColor="Red"
+                            FontSize="Micro"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="{tr:Translate SearchClient}"
+                            WidthRequest="200" />
+                        <Button
+                            Margin="2,5"
+                            BackgroundColor="#33b54b"
+                            CornerRadius="25"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate Report}" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    ef:Border.Color="Black"
+                    ef:Border.Radius="1"
+                    ef:Border.Width="1">
+                    <ListView
+                        x:Name="listviewwww"
+                        Margin="0"
+                        HasUnevenRows="True"
+                        ItemTapped="Listviewwww_ItemTapped"
+                        ItemsSource="{Binding Clients}"
+                        Visual="Material">
+                        <ListView.Header>
+                            <Grid
+                                x:Name="listheaderlistv"
+                                Padding="0,10"
+                                ef:Border.Color="Black"
+                                ef:Border.Radius="1"
+                                ef:Border.Width="1"
+                                ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="5,0,5,0"
+                                    FontSize="Small"
+                                    HorizontalOptions="Start"
+                                    Text="{tr:Translate ClientsData}"
+                                    TextColor="Black" />
 
-        <Grid Margin="10" RowSpacing="0">
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Small"
+                                    Text="{tr:Translate PhoneNumber}"
+                                    TextColor="Black" />
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Margin="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="Small"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding name}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding phone}"
+                                            TextColor="Black" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+            <ActivityIndicator
+                x:Name="ActiveIn"
+                AbsoluteLayout.LayoutBounds=".5,0.5,.5,.2"
+                AbsoluteLayout.LayoutFlags="All"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                IsRunning="False"
+                VerticalOptions="Center"
+                WidthRequest="100"
+                Color="#33b54b" />
+        </AbsoluteLayout>
+
+        <!--<Grid Margin="10" RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.1*" />
                 <RowDefinition Height="0.2*" />
@@ -61,6 +175,7 @@
                     x:Name="listviewwww"
                     Margin="0"
                     HasUnevenRows="True"
+                    ItemTapped="Listviewwww_ItemTapped"
                     ItemsSource="{Binding Clients}"
                     Visual="Material">
                     <ListView.Header>
@@ -116,16 +231,8 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <ActivityIndicator
-                x:Name="ActiveIn"
-                Grid.RowSpan="3"
-                HeightRequest="100"
-                HorizontalOptions="Center"
-                IsRunning="False"
-                VerticalOptions="Center"
-                WidthRequest="100"
-                Color="#33b54b" />
-        </Grid>
+
+        </Grid>-->
 
     </ContentPage.Content>
 </ContentPage>

@@ -291,11 +291,26 @@
   <data name="DeductOfFund" xml:space="preserve">
     <value>خصم من الصندوق</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="DeletedClient" xml:space="preserve">
+    <value>تم حذف بيانات العميل</value>
+  </data>
+  <data name="DeletedSupplier" xml:space="preserve">
+    <value>تم حذف بيانات المورد</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>التفاصيل</value>
+  </data>
   <data name="Discard" xml:space="preserve">
     <value>إلغاء</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>خصم</value>
+  </data>
+  <data name="Edite" xml:space="preserve">
+    <value>تعديل</value>
   </data>
   <data name="EditeByCategory" xml:space="preserve">
     <value>التعديل حسب التصنيف</value>
@@ -608,6 +623,15 @@
   </data>
   <data name="Two" xml:space="preserve">
     <value>إثنان</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="UpdatedClient" xml:space="preserve">
+    <value>تم تحديث بيانات العميل بنجاح</value>
+  </data>
+  <data name="UpdatedSupplier" xml:space="preserve">
+    <value>تم تحديث بيانات المورد بنجاح</value>
   </data>
   <data name="UsedEmail" xml:space="preserve">
     <value>هذا البريد الإلكتروني مسجل بالفعل</value>

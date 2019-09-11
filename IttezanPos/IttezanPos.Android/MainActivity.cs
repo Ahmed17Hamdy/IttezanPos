@@ -8,6 +8,7 @@ using Rg.Plugins.Popup.Services;
 using System.Linq;
 using Plugin.CurrentActivity;
 
+
 namespace IttezanPos.Droid
 {
     [Activity(Label = "IttezanPos", Icon = "@drawable/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -42,7 +43,7 @@ namespace IttezanPos.Droid
             XamEffects.Droid.Effects.Init();
          
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
-
+          
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

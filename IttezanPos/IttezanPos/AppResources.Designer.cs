@@ -583,6 +583,42 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleted Client&apos;s Data Succesfully.
+        /// </summary>
+        internal static string DeletedClient {
+            get {
+                return ResourceManager.GetString("DeletedClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleted Supplier&apos;s Data Succesfully.
+        /// </summary>
+        internal static string DeletedSupplier {
+            get {
+                return ResourceManager.GetString("DeletedSupplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discard.
         /// </summary>
         internal static string Discard {
@@ -597,6 +633,15 @@ namespace IttezanPos {
         internal static string Discount {
             get {
                 return ResourceManager.GetString("Discount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edite.
+        /// </summary>
+        internal static string Edite {
+            get {
+                return ResourceManager.GetString("Edite", resourceCulture);
             }
         }
         
@@ -1525,6 +1570,33 @@ namespace IttezanPos {
         internal static string Two {
             get {
                 return ResourceManager.GetString("Two", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updated Client&apos;s Data Succesfully.
+        /// </summary>
+        internal static string UpdatedClient {
+            get {
+                return ResourceManager.GetString("UpdatedClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updated Supplier&apos;s Data Succesfully.
+        /// </summary>
+        internal static string UpdatedSupplier {
+            get {
+                return ResourceManager.GetString("UpdatedSupplier", resourceCulture);
             }
         }
         

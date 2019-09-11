@@ -16,6 +16,14 @@ namespace IttezanPos.ViewModels
             Task<AddClient> AddClient(Client client);
             [Post("/api/addclient")]
             Task<AddClientError> AddClientError(Client client);
+
+
+
+            [Post("/api/updateclient")]
+            Task<AddClient> UpdateClient(Client client);
+
+            [Post("/api/delclient")]
+            Task<DelResponse> DeleteClient(int client_id);
         }
     }
 }

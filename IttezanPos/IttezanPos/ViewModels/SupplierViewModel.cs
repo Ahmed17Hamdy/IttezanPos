@@ -16,6 +16,14 @@ namespace IttezanPos.ViewModels
             Task<AddSupplier> AddSupplier(Supplier supplier);
             [Post("/api/addsupplier")]
             Task<AddSupplierError> AddSupplierError(Supplier supplier);
+
+
+            [Post("/api/updatesupplier")]
+            Task<AddSupplier> UpdateSupplier(Supplier supplier);
+
+            [Post("/api/delsupplier")]
+            Task<DelResponse> DeleteSupplier(int supplier_id);
+
         }
       
     }

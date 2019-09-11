@@ -77,5 +77,11 @@ namespace IttezanPos.Views.SupplierPages
             }
 
         }
+
+        private async void Listviewwww_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var content = e.Item as Supplier;
+            await Navigation.PushAsync(new AddingSupplierPage(content));
+        }
     }
 }

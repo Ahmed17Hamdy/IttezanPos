@@ -78,5 +78,11 @@ namespace IttezanPos.Views.ClientPages
 
 
         }
+
+        private async void Listviewwww_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var content = e.Item as Client;
+            await Navigation.PushAsync(new AddingClientPage(content));
+        }
     }
 }

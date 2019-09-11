@@ -17,36 +17,16 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid
-            Margin="10,10,10,0"
-            Padding="0"
-            RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="2*" />
-            </Grid.RowDefinitions>
-            <ScrollView Grid.RowSpan="11" Margin="5">
-                <StackLayout>
+        <ScrollView>
+            <Grid>
+                <StackLayout Margin="10,10,10,0" Padding="0">
                     <StackLayout.Behaviors>
                         <Validators:ValidationGroupBehavior x:Name="form" />
                     </StackLayout.Behaviors>
-                    <Label
-                        Grid.Row="0"
-                        Text="{tr:Translate SupplierName}"
-                        VerticalOptions="End" />
-                    <StackLayout Grid.Row="1">
+                    <Label Text="{tr:Translate SupplierName}" VerticalOptions="End" />
+                    <StackLayout>
                         <customcontrols:CustomEntry
                             x:Name="SupplierNameentry"
-                            Grid.Row="1"
                             Margin="0"
                             ef:Border.Color="#33b54b"
                             ef:Border.Radius="25"
@@ -64,13 +44,9 @@
                             </customcontrols:CustomEntry.Behaviors>
                         </customcontrols:CustomEntry>
                     </StackLayout>
-                    <Label
-                        Grid.Row="2"
-                        Text="{tr:Translate Address}"
-                        VerticalOptions="End" />
+                    <Label Text="{tr:Translate Address}" VerticalOptions="End" />
                     <customcontrols:CustomEntry
                         x:Name="SupplierAddressentry"
-                        Grid.Row="3"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
                         ef:Border.Width="1"
@@ -88,10 +64,7 @@
 
                         </customcontrols:CustomEntry.Behaviors>
                     </customcontrols:CustomEntry>
-                    <Label
-                        Grid.Row="4"
-                        Text="{tr:Translate PhoneNumber}"
-                        VerticalOptions="End" />
+                    <Label Text="{tr:Translate PhoneNumber}" VerticalOptions="End" />
                     <customcontrols:CustomEntry
                         x:Name="SupplierPhoneentry"
                         Grid.Row="5"
@@ -109,13 +82,9 @@
                             </Behaviors:ValidationBehavior>
                         </customcontrols:CustomEntry.Behaviors>
                     </customcontrols:CustomEntry>
-                    <Label
-                        Grid.Row="6"
-                        Text="{tr:Translate EmailAddress}"
-                        VerticalOptions="End" />
+                    <Label Text="{tr:Translate EmailAddress}" VerticalOptions="End" />
                     <customcontrols:CustomEntry
                         x:Name="SupplierEmailentry"
-                        Grid.Row="7"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
                         ef:Border.Width="1"
@@ -130,20 +99,16 @@
                             </Behaviors:ValidationBehavior>
                         </customcontrols:CustomEntry.Behaviors>
                     </customcontrols:CustomEntry>
-                    <Label
-                        Grid.Row="8"
-                        Text="{tr:Translate Notes}"
-                        VerticalOptions="End" />
+                    <Label Text="{tr:Translate Notes}" VerticalOptions="End" />
                     <customcontrols:CustomEntry
                         x:Name="SupplierNotesentry"
-                        Grid.Row="9"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
                         ef:Border.Width="1"
                         HeightRequest="100"
                         HorizontalTextAlignment="Center" />
                     <Button
-                        Grid.Row="10"
+                        x:Name="savrbtn"
                         Margin="0,5,0,0"
                         BackgroundColor="#33b54b"
                         Clicked="Button_Clicked"
@@ -151,17 +116,42 @@
                         IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                         Text="{tr:Translate Save}"
                         TextColor="White" />
-                    <ActivityIndicator
-                        x:Name="ActiveIn"
-                        Grid.RowSpan="11"
-                        HeightRequest="100"
-                        HorizontalOptions="Center"
-                        IsRunning="False"
-                        VerticalOptions="Center"
-                        WidthRequest="100"
-                        Color="#33b54b" />
+                    <StackLayout
+                        x:Name="Detailsstk"
+                        IsVisible="False"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="Updatebtn"
+                            Grid.Row="10"
+                            Margin="0,5,0,0"
+                            BackgroundColor="Orange"
+                            Clicked="Update_Clicked"
+                            CornerRadius="25"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate Update}"
+                            TextColor="White" />
+                        <Button
+                            x:Name="Deletebtn"
+                            Grid.Row="10"
+                            Margin="0,5,0,0"
+                            BackgroundColor="Red"
+                            Clicked="Deletebtn_Clicked"
+                            CornerRadius="25"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate Delete}"
+                            TextColor="White" />
+                    </StackLayout>
                 </StackLayout>
-            </ScrollView>
-        </Grid>
+                <ActivityIndicator
+                    x:Name="ActiveIn"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    IsRunning="False"
+                    VerticalOptions="Center"
+                    WidthRequest="100"
+                    Color="#33b54b" />
+            </Grid>
+        </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>

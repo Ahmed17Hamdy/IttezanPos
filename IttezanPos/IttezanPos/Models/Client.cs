@@ -7,6 +7,7 @@ namespace IttezanPos.Models
 {
  public   class Client
     {
+        public int client_id { get; set; }
         public int id { get; set; }
         public string name { get; set; }
         public string phone { get; set; }
@@ -42,6 +43,12 @@ namespace IttezanPos.Models
     public class ErrorData
     {
         public List<string> email { get; set; }
+    }
+    public class DelResponse
+    {
+        public bool success { get; set; }
+        public string data { get; set; }
+        public string message { get; set; }
     }
 
 }

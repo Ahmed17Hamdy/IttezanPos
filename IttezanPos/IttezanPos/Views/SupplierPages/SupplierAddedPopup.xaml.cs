@@ -13,6 +13,9 @@ namespace IttezanPos.Views.SupplierPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SupplierAddedPopup : PopupPage
     {
+        private string edite;
+        private int id;
+
         public SupplierAddedPopup(Models.AddSupplierError data)
         {
             InitializeComponent();
@@ -26,6 +29,22 @@ namespace IttezanPos.Views.SupplierPages
         {
             InitializeComponent();
             Frame.BorderColor = Color.FromHex("#33b54b");
+        }
+
+        public SupplierAddedPopup(string edite)
+        {
+            InitializeComponent();
+            Frame.BorderColor = Color.FromHex("#33b54b");
+            Supplierlbl.Text = AppResources.UpdatedSupplier;
+            this.edite = edite;
+        }
+
+        public SupplierAddedPopup(int id)
+        {
+            InitializeComponent();
+            Frame.BorderColor = Color.Red;
+            Supplierlbl.Text = AppResources.DeletedSupplier;
+            this.id = id;
         }
     }
 }

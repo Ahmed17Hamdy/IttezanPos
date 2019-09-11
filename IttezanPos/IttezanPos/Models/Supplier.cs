@@ -6,6 +6,7 @@ namespace IttezanPos.Models
 {
     public class Supplier
     {
+        public int supplier_id { get; set; }
         public int id { get; set; }
         public string name { get; set; }
         public string address { get; set; }

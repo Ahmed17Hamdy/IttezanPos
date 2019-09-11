@@ -291,11 +291,26 @@
   <data name="DeductOfFund" xml:space="preserve">
     <value>Deduct of Fund</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeletedClient" xml:space="preserve">
+    <value>Deleted Client's Data Succesfully</value>
+  </data>
+  <data name="DeletedSupplier" xml:space="preserve">
+    <value>Deleted Supplier's Data Succesfully</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
   <data name="Discard" xml:space="preserve">
     <value>Discard</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>Discount</value>
+  </data>
+  <data name="Edite" xml:space="preserve">
+    <value>Edite</value>
   </data>
   <data name="EditeByCategory" xml:space="preserve">
     <value>Edite By Category</value>
@@ -606,6 +621,15 @@
   </data>
   <data name="Two" xml:space="preserve">
     <value>Two</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdatedClient" xml:space="preserve">
+    <value>Updated Client's Data Succesfully</value>
+  </data>
+  <data name="UpdatedSupplier" xml:space="preserve">
+    <value>Updated Supplier's Data Succesfully</value>
   </data>
   <data name="UsedEmail" xml:space="preserve">
     <value>This Email is used before </value>
