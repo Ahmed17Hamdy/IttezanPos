@@ -63,6 +63,7 @@
                         <input:RadioButtonGroupView Orientation="Horizontal" Spacing="45">
                             <input:RadioButton
                                 x:Name="Addrdbtn"
+                                CheckedImage="plus"
                                 CircleColor="Black"
                                 Clicked="Addrdbtn_Checked"
                                 Text="{tr:Translate AddToFund}"
@@ -71,12 +72,13 @@
                                 Color="#33b54b" />
                             <input:RadioButton
                                 x:Name="deductrdbtn"
+                                CheckedImage="minus"
                                 CircleColor="Black"
                                 Clicked="Deductrdbtn_Checked"
                                 Text="{tr:Translate DeductOfFund}"
                                 TextColor="Red"
                                 TextFontSize="15"
-                                Color="#33b54b" />
+                                Color="Red" />
                         </input:RadioButtonGroupView>
                         <StackLayout>
                             <Label Margin="0,5,0,-5" Text="{tr:Translate Entertheamount}" />

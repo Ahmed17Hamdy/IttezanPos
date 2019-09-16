@@ -55,7 +55,7 @@ namespace IttezanPos.Views.SupplierPages
                         phone = SupplierPhoneentry.Text,
                         note = SupplierNotesentry.Text,
                     };
-                    var nsAPI = RestService.For<ISupplierService>("https://ittezanmobilepos.com");
+                    var nsAPI = RestService.For<ISupplierService>("http://ittezanmobilepos.com");
                     try
                     {
                         var data = await nsAPI.AddSupplier(supplier);
@@ -112,7 +112,7 @@ namespace IttezanPos.Views.SupplierPages
                         phone = SupplierPhoneentry.Text,
                         note = SupplierNotesentry.Text,
                     };
-                    var nsAPI = RestService.For<ISupplierService>("https://ittezanmobilepos.com");
+                    var nsAPI = RestService.For<ISupplierService>("http://ittezanmobilepos.com");
                    
                         var data = await nsAPI.UpdateSupplier(supplier);
                         if (data.success == true)
@@ -151,7 +151,7 @@ namespace IttezanPos.Views.SupplierPages
                 if (CrossConnectivity.Current.IsConnected)
                 {
                    
-                    var nsAPI = RestService.For<ISupplierService>("https://ittezanmobilepos.com");
+                    var nsAPI = RestService.For<ISupplierService>("http://ittezanmobilepos.com");
 
                     var data = await nsAPI.DeleteSupplier(content.id);
                     if (data.success == true)

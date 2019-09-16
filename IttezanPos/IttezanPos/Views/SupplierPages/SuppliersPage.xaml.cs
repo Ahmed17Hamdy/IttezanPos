@@ -45,7 +45,7 @@ namespace IttezanPos.Views.SupplierPages
                 ActiveIn.IsRunning = true;
                 if (CrossConnectivity.Current.IsConnected)
                 {
-                    var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com");
+                    var nsAPI = RestService.For<IApiService>("http://ittezanmobilepos.com/");
                     RootObject data = await nsAPI.GetSettings();
                     Suppliers = new ObservableCollection<Supplier>(data.message.suppliers);
                     listviewwww.ItemsSource = Suppliers;

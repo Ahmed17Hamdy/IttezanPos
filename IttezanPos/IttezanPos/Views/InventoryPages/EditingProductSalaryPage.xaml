@@ -83,7 +83,10 @@
                         </input:RadioButtonGroupView>
                     </Frame>
                     <Label Text="{tr:Translate EditePrice}" />
-                    <Frame Padding="10" BackgroundColor="#eaecee">
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="#eaecee"
+                        Visual="Material">
                         <input:RadioButtonGroupView Orientation="Horizontal">
                             <input:RadioButton
                                 CheckedImage="plus"
