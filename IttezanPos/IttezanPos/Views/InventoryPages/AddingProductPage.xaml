@@ -31,6 +31,17 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="customcontrols:CustomEntry">
+
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="Changa-Regular.ttf#Changa-Regular "
+                        iOS="Changa-Regular" />
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="Button">
             <Setter Property="TextColor" Value="White" />
         </Style>
@@ -94,8 +105,10 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Button
+                        x:Name="AddCategorybtn"
                         Grid.Column="0"
                         BackgroundColor="#33b54b"
+                        Clicked="AddCategorybtn_Clicked"
                         CornerRadius="20"
                         HorizontalOptions="FillAndExpand"
                         Text="{tr:Translate AddingNewClassification}" />
@@ -110,11 +123,15 @@
                         TitleColor="Black" />-->
                     <Grid Grid.Column="1">
                         <customcontrols:CustomPicker
+                            x:Name="Categorylist"
                             Title="{tr:Translate ChooseCategory}"
                             ef:Border.Radius="20"
                             BackgroundColor="#33b54b"
                             FontSize="Small"
-                            HorizontalOptions="FillAndExpand" />
+                            HorizontalOptions="FillAndExpand"
+                            ItemDisplayBinding="{Binding name}"
+                            SelectedIndexChanged="Categorylist_SelectedIndexChanged"
+                            TextColor="White" />
                         <Image
                             Margin="5,10"
                             HeightRequest="20"
@@ -174,41 +191,65 @@
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </Grid>
-                <Grid Margin="5">
+                <Grid Margin="5" RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="0.4*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Row="0" Grid.Column="0">
-                        <Label HorizontalOptions="Center" Text="{tr:Translate sellingprice}" />
+                        <Label HorizontalOptions="Center" Text="{tr:Translate Purchasingprice}" />
+
                         <customcontrols:CustomEntry
+                            x:Name="PurchaseEntry"
                             ef:Border.Color="#33b54b"
                             ef:Border.Radius="10"
                             ef:Border.Width="1"
                             FontSize="Small"
-                            HorizontalTextAlignment="Center" />
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric">
+                            <customcontrols:CustomEntry.Behaviors>
+                                <Behaviors:NumberValidationBehavior />
+                            </customcontrols:CustomEntry.Behaviors>
+                        </customcontrols:CustomEntry>
+                        <Label
+                            x:Name="salsesErrorlbl"
+                            Margin="0,-5"
+                            FontSize="Micro"
+                            IsVisible="False"
+                            Text="{tr:Translate SellPriceMore}"
+                            TextColor="Red" />
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="1">
-                        <Label HorizontalOptions="Center" Text="{tr:Translate Purchasingprice}" />
+                        <Label HorizontalOptions="Center" Text="{tr:Translate sellingprice}" />
                         <customcontrols:CustomEntry
+                            x:Name="SellEntry"
                             ef:Border.Color="#33b54b"
                             ef:Border.Radius="10"
                             ef:Border.Width="1"
                             FontSize="Small"
-                            HorizontalTextAlignment="Center" />
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            TextChanged="SellEntry_TextChanged">
+                            <customcontrols:CustomEntry.Behaviors>
+                                <Behaviors:NumberValidationBehavior />
+                                <Behaviors:CompareValidationBehaviorGreater BindingContext="{x:Reference PurchaseEntry}" Text="{Binding Text}" />
+                            </customcontrols:CustomEntry.Behaviors>
+                        </customcontrols:CustomEntry>
                     </StackLayout>
                     <StackLayout
                         Grid.Row="1"
                         Grid.ColumnSpan="2"
                         Orientation="Horizontal">
                         <Switch
+                            x:Name="trackinstore"
                             Margin="0"
                             OnColor="#33b54b"
-                            ThumbColor="White" />
+                            ThumbColor="White"
+                            Toggled="Trackinstore_Toggled" />
                         <Label Text="{tr:Translate TrackinStore}" VerticalOptions="Center" />
                     </StackLayout>
                 </Grid>
@@ -216,10 +257,15 @@
                 <Label Text="{tr:Translate BarCode}" />
                 <StackLayout Margin="5,0" Orientation="Horizontal">
                     <Image
+                        x:Name="Scanbtn"
                         Aspect="AspectFit"
                         HeightRequest="40"
                         Source="scan.png"
-                        WidthRequest="50" />
+                        WidthRequest="50">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Scan_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
                     <customcontrols:CustomEntry
                         Grid.Column="1"
                         Margin="0"

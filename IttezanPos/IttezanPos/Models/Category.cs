@@ -20,7 +20,7 @@ namespace IttezanPos.Models
     }
     public class EachCategory
     {
-        [JsonProperty("translations")]
+        [JsonProperty("category")]
         public Category category { get; set; }
         [JsonProperty("products")]
         public List<object> products { get; set; }

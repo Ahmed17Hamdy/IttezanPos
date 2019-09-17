@@ -20,7 +20,7 @@ namespace IttezanPos.Views.ExpensesPages
         }
         private void CustomEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (e.NewTextValue != "")
+            if (e.NewTextValue != "" )
             {
                 ToWord toWord2 = new ToWord(Convert.ToDecimal(e.NewTextValue), new CurrencyInfo(Currencies.SaudiArabia));
                 switch (Settings.LastUserGravity)

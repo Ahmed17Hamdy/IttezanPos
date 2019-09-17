@@ -40,7 +40,7 @@ namespace IttezanPos.Views.ReservoirPages
                 //currencies.Add(new CurrencyInfo(CurrencyInfo.Currencies.Tunisia));
                 //currencies.Add(new CurrencyInfo(CurrencyInfo.Currencies.Gold));
               //  ToWord toWord = new ToWord(Convert.ToDecimal(e.NewTextValue), currencies[Convert.ToInt32(2)]);
-              if(e.NewTextValue!= "")
+              if(e.NewTextValue!= "" )
             {
                 ToWord toWord2 = new ToWord(Convert.ToDecimal(e.NewTextValue), new CurrencyInfo(Currencies.SaudiArabia));
 

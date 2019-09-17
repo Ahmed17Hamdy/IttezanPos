@@ -535,6 +535,9 @@
   <data name="sellingprice" xml:space="preserve">
     <value>Selling price</value>
   </data>
+  <data name="SellPriceMore" xml:space="preserve">
+    <value>Selling Price Must Be Greater than Purchase Price</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>

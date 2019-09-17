@@ -1313,6 +1313,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selling Price Must Be Greater than Purchase Price.
+        /// </summary>
+        internal static string SellPriceMore {
+            get {
+                return ResourceManager.GetString("SellPriceMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string Settings {

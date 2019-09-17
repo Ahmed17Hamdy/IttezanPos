@@ -45,7 +45,7 @@ namespace IttezanPos.Views.ClientPages
                 ActiveIn.IsRunning = true;
                 if (CrossConnectivity.Current.IsConnected)
                 {
-                    var nsAPI = RestService.For<IApiService>("http://ittezanmobilepos.com/");
+                    var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
                     RootObject data = await nsAPI.GetSettings();
                     Clients = new ObservableCollection<Client>(data.message.clients);
                     listviewwww.ItemsSource = Clients;

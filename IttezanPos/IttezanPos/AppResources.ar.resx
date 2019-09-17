@@ -537,6 +537,9 @@
   <data name="sellingprice" xml:space="preserve">
     <value>سعر البيع</value>
   </data>
+  <data name="SellPriceMore" xml:space="preserve">
+    <value>سعر البيع يجب أن يكون أكبر من سعر الشراء</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>الإعدادات</value>
   </data>

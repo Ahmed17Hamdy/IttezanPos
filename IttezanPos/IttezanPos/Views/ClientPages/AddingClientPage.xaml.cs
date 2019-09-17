@@ -57,7 +57,7 @@ namespace IttezanPos.Views.ClientPages
                        note=Notesentry.Text,
                        limitt=int.Parse(Limitentry.Text)
                     };
-                    var nsAPI = RestService.For<IClientService>("http://ittezanmobilepos.com");
+                    var nsAPI = RestService.For<IClientService>("https://ittezanmobilepos.com");
                     try
                     {
                         var data = await nsAPI.AddClient(client);
@@ -108,7 +108,7 @@ namespace IttezanPos.Views.ClientPages
                         note = Notesentry.Text,
                         limitt=int.Parse(Limitentry.Text)
                     };
-                    var nsAPI = RestService.For<IClientService>("http://ittezanmobilepos.com");
+                    var nsAPI = RestService.For<IClientService>("https://ittezanmobilepos.com");
 
                     var data = await nsAPI.UpdateClient(client);
                     if (data.success == true)
@@ -147,7 +147,7 @@ namespace IttezanPos.Views.ClientPages
                 if (CrossConnectivity.Current.IsConnected)
                 {
 
-                    var nsAPI = RestService.For<IClientService>("http://ittezanmobilepos.com");
+                    var nsAPI = RestService.For<IClientService>("https://ittezanmobilepos.com");
 
                     var data = await nsAPI.DeleteClient(content.id);
                     if (data.success == true)
