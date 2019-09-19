@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 
 using Plugin.Connectivity;
 using System;
+using System.Linq;
 
 namespace IttezanPos.Views.ClientPages
 {
@@ -83,6 +84,19 @@ namespace IttezanPos.Views.ClientPages
         {
             var content = e.Item as Client;
             await Navigation.PushAsync(new AddingClientPage(content));
+        }
+        private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            var keyword = SearchBar.Text;
+            listviewwww.ItemsSource = Clients.Where(product => product.name.ToLower().Contains(keyword.ToLower()));
+
+        }
+        void OnTextChanged(object sender, EventArgs e)
+        {
+            SearchBar searchBar = (SearchBar)sender;
+            var keyword = SearchBar.Text;
+            listviewwww.ItemsSource = Clients.Where(product => product.name.ToLower().Contains(keyword.ToLower()));
+
         }
     }
 }

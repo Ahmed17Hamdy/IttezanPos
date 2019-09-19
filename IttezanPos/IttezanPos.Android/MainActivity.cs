@@ -41,7 +41,7 @@ namespace IttezanPos.Droid
             Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
             FormsMaterial.Init(this, savedInstanceState);
             XamEffects.Droid.Effects.Init();
-         
+            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
           
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

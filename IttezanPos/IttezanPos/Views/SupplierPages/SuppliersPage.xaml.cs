@@ -77,7 +77,19 @@ namespace IttezanPos.Views.SupplierPages
             }
 
         }
+        private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            var keyword = SearchBar.Text;
+            listviewwww.ItemsSource = Suppliers.Where(product => product.name.ToLower().Contains(keyword.ToLower()));
 
+        }
+        void OnTextChanged(object sender, EventArgs e)
+        {
+            SearchBar searchBar = (SearchBar)sender;
+            var keyword = SearchBar.Text;
+            listviewwww.ItemsSource = Suppliers.Where(product => product.name.ToLower().Contains(keyword.ToLower()));
+
+        }
         private async void Listviewwww_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var content = e.Item as Supplier;

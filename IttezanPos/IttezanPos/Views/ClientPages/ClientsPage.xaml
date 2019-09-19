@@ -33,6 +33,7 @@
                         Orientation="Horizontal"
                         Spacing="0">
                         <SearchBar
+                            x:Name="SearchBar"
                             Margin="5"
                             ef:Border.Color="LightGray"
                             ef:Border.Radius="20"
@@ -41,6 +42,8 @@
                             FontSize="Micro"
                             HorizontalOptions="FillAndExpand"
                             Placeholder="{tr:Translate SearchClient}"
+                            SearchButtonPressed="SearchBar_SearchButtonPressed"
+                            TextChanged="OnTextChanged"
                             WidthRequest="200" />
                         <Button
                             Margin="2,5"

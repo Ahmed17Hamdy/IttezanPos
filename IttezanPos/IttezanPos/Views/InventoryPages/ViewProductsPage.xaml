@@ -9,8 +9,171 @@
     xmlns:tr="clr-namespace:IttezanPos.Helpers"
     mc:Ignorable="d">
     <ContentPage.Content>
-        <ScrollView>
-            <Grid>
+        <AbsoluteLayout>
+            <StackLayout
+                Margin="10"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                Spacing="0">
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{tr:Translate ViewProducts}"
+                        TextColor="#33b54b"
+                        VerticalOptions="Center" />
+                    <StackLayout Orientation="Horizontal">
+                        <Button
+                            BackgroundColor="#33b54b"
+                            CornerRadius="10"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate Report}"
+                            TextColor="White" />
+                        <Button
+                            x:Name="ClassifyByDatebtn"
+                            BackgroundColor="#33b54b"
+                            Clicked="ClassifyByDatebtn_Clicked"
+                            CornerRadius="10"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate ViewExpirationdate}"
+                            TextColor="White" />
+                    </StackLayout>
+                    <StackLayout
+                        ef:Border.Color="Black"
+                        ef:Border.Radius="1"
+                        ef:Border.Width="1"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal">
+
+                        <SearchBar
+                            x:Name="SearchBar"
+                            Margin="5"
+                            ef:Border.Color="LightGray"
+                            ef:Border.Radius="20"
+                            ef:Border.Width="1"
+                            CancelButtonColor="Red"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="{tr:Translate SearchClient}"
+                            SearchButtonPressed="SearchBar_SearchButtonPressed"
+                            TextChanged="OnTextChanged"
+                            WidthRequest="200" />
+                        <Grid Grid.Column="1" HorizontalOptions="FillAndExpand">
+                            <Image
+                                Margin="2,5"
+                                ef:Border.Radius="10"
+                                ef:Border.Width="1"
+                                BackgroundColor="#33b54b"
+                                Source="scan.png"
+                                WidthRequest="50">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Scan_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    ef:Border.Color="Black"
+                    ef:Border.Radius="1"
+                    ef:Border.Width="1">
+                    <ListView
+                        x:Name="ProductsList"
+                        Margin="0"
+                        HasUnevenRows="True"
+                        Visual="Material">
+                        <ListView.Header>
+                            <Grid
+                                x:Name="listheaderlistv"
+                                Padding="5"
+                                ef:Border.Color="Black"
+                                ef:Border.Radius="1"
+                                ef:Border.Width="1"
+                                ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    FontSize="Small"
+                                    HorizontalOptions="Start"
+                                    Text="{tr:Translate Product}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Small"
+                                    HorizontalOptions="Center"
+                                    Text="{tr:Translate Category}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="2"
+                                    FontSize="Small"
+                                    HorizontalOptions="Center"
+                                    Text="{tr:Translate Price}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="3"
+                                    FontSize="Small"
+                                    HorizontalOptions="Center"
+                                    Text="{tr:Translate Quantity}"
+                                    TextColor="Black" />
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Margin="5,0" ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="Small"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding name}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Column="1"
+                                            FontSize="Small"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Column="2"
+                                            FontSize="Small"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding sale_price}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Column="3"
+                                            FontSize="Small"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding stock}"
+                                            TextColor="Black" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+            <ActivityIndicator
+                x:Name="ActiveIn"
+                AbsoluteLayout.LayoutBounds=".5,0.5,.5,.2"
+                AbsoluteLayout.LayoutFlags="All"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                IsRunning="False"
+                VerticalOptions="Center"
+                WidthRequest="100"
+                Color="#33b54b" />
+            <!--<Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="3*" />
@@ -110,13 +273,15 @@
                             TextColor="Black" />
                     </Grid>
                 </StackLayout>
-                <ListView Grid.Row="1">
+                <ListView x:Name="ProductsList" Grid.Row="1">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Grid ColumnSpacing="0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <Label
@@ -124,17 +289,31 @@
                                         Margin="2,0,2,0"
                                         FontSize="Small"
                                         HorizontalOptions="Start"
+                                        Text="{Binding name}"
                                         TextColor="Black" />
                                     <Label
                                         Grid.Column="1"
                                         FontSize="13"
+                                        Text="{Binding}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Column="2"
+                                        FontSize="13"
+                                        Text="{Binding sale_price}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Column="3"
+                                        FontSize="13"
+                                        Text="{Binding stock}"
                                         TextColor="Black" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </Grid>
-        </ScrollView>
+            </Grid>-->
+        </AbsoluteLayout>
+
+
     </ContentPage.Content>
 </ContentPage>
