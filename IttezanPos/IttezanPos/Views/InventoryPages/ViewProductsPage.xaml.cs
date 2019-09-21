@@ -103,7 +103,7 @@ namespace IttezanPos.Views.InventoryPages
                     var eachCategories = new ObservableCollection<EachCategory>(data.message.each_category);
                     foreach (var item in eachCategories)
                     {
-                        Products.AddRange(item.products);                       
+                        Products.Add(item.products);                       
                     }
                     ProductsList.ItemsSource = products;
                     ActiveIn.IsRunning = false;
@@ -142,14 +142,14 @@ namespace IttezanPos.Views.InventoryPages
         private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             var keyword = SearchBar.Text;
-            ProductsList.ItemsSource= Products.Where(product => product.name.Contains(keyword.ToLower()));
+        ProductsList.ItemsSource= Products.Where(product => product.translations[0].name.Contains(keyword.ToLower()));
             
         }
         void OnTextChanged(object sender, EventArgs e)
         {
             SearchBar searchBar = (SearchBar)sender;
             var keyword = SearchBar.Text;
-            ProductsList.ItemsSource = ProductsList.ItemsSource = Products.Where(product => product.name.Contains(keyword.ToLower()));
+            ProductsList.ItemsSource = Products.Where(product => product.translations[0].name.Contains(keyword.ToLower()));
 
         }
     }

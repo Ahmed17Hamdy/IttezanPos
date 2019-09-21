@@ -14,6 +14,7 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.0.4" />
     <PackageReference Include="AiForms.Effects" Version="1.5.5" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
     <PackageReference Include="Dropbox.Api" Version="4.9.4" />
     <PackageReference Include="fusillade" Version="2.0.5" />
     <PackageReference Include="HLI.Forms.Core" Version="1.0.0" />

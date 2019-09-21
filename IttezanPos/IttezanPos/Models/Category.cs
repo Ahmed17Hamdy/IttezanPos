@@ -23,7 +23,7 @@ namespace IttezanPos.Models
         [JsonProperty("category")]
         public Category category { get; set; }
         [JsonProperty("products")]
-        public List<Product> products { get; set; }
+        public Product products { get; set; }
     }
     public class Message
     {

@@ -6,6 +6,7 @@
     xmlns:customcontrols="clr-namespace:IttezanPos.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tr="clr-namespace:IttezanPos.Helpers"
     mc:Ignorable="d">
@@ -24,7 +25,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <AbsoluteLayout Margin="10,5">
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.9" AbsoluteLayout.LayoutFlags="All">
                 <Frame
                     CornerRadius="10"
                     HasShadow="True"
@@ -40,14 +41,10 @@
                     CornerRadius="10"
                     HasShadow="True"
                     Visual="Material">
-                    <Grid
+                    <StackLayout
                         ef:Border.Radius="1"
                         ef:Border.Width="1"
-                        ColumnSpacing="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="2*" />
-                        </Grid.ColumnDefinitions>
+                        Orientation="Horizontal">
                         <StackLayout
                             x:Name="searchstk"
                             Grid.Column="0"
@@ -72,7 +69,8 @@
                         <Grid
                             x:Name="pickergrd"
                             Grid.Column="1"
-                            Margin="5">
+                            Margin="5"
+                            HorizontalOptions="FillAndExpand">
                             <customcontrols:CustomPicker
                                 Title="{tr:Translate ChooseCategory}"
                                 ef:Border.Radius="20"
@@ -90,6 +88,7 @@
                             x:Name="searchbar"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
+                            HorizontalOptions="FillAndExpand"
                             IsVisible="False">
                             <SearchBar
                                 Grid.Column="0"
@@ -114,9 +113,103 @@
                             </Image>
                         </Grid>
 
-                    </Grid>
+                    </StackLayout>
 
                 </Frame>
+                <StackLayout>
+                    <flv:FlowListView
+                        x:Name="ProductsList"
+                        FlowColumnCount="3"
+                        FlowItemTapped="ProductsList_FlowItemTapped"
+                        HasUnevenRows="true"
+                        VerticalOptions="Center">
+                        <flv:FlowListView.FlowColumnTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Padding="2"
+                                    BorderColor="LightGray"
+                                    CornerRadius="3"
+                                    HasShadow="False"
+                                    HeightRequest="150">
+                                    <Grid Padding="5" RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.5*" />
+                                            <RowDefinition Height="2*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0" Margin="2.5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                FontSize="Micro"
+                                                HorizontalOptions="FillAndExpand"
+                                                Text="{Binding sale_price, StringFormat='{0:N}'}"
+                                                TextColor="#33b54b">
+                                                <Label.FontSize>
+                                                    <OnIdiom
+                                                        Default="Micro"
+                                                        Phone="Small"
+                                                        Tablet="Medium" />
+                                                </Label.FontSize>
+                                            </Label>
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                FontSize="Micro"
+                                                HorizontalOptions="Start"
+                                                Text="ريال سعودي"
+                                                TextColor="#33b54b">
+                                                <Label.FontSize>
+                                                    <OnIdiom
+                                                        Default="Micro"
+                                                        Phone="Micro"
+                                                        Tablet="Small" />
+                                                </Label.FontSize>
+                                            </Label>
+
+                                            <Grid
+                                                Grid.Row="0"
+                                                Grid.RowSpan="2"
+                                                Grid.Column="1"
+                                                ef:Border.Radius="20"
+                                                BackgroundColor="#33b54b"
+                                                ColumnSpacing="0"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center">
+                                                <Image
+                                                    Margin="5"
+                                                    Source="tags.png"
+                                                    VerticalOptions="Center" />
+                                            </Grid>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                        <Image
+                                            Grid.Row="1"
+                                            HeightRequest="40"
+                                            Source="{Binding icon, StringFormat='https://ittezanmobilepos.com/uploads/user_images/{0}'}"
+                                            WidthRequest="40" />
+                                        <Label
+                                            Grid.Row="2"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding translations[0].name}"
+                                            TextColor="#33b54b" />
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </flv:FlowListView.FlowColumnTemplate>
+                    </flv:FlowListView>
+                </StackLayout>
+
             </StackLayout>
             <Grid AbsoluteLayout.LayoutBounds="0,1,1,.09" AbsoluteLayout.LayoutFlags="All">
                 <Grid.ColumnDefinitions>
@@ -130,9 +223,10 @@
                     Grid.Column="0"
                     Padding="5"
                     ef:Border.Radius="10"
-                    BackgroundColor="#33b54b">
+                    BackgroundColor="#33b54b"
+                    RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -143,6 +237,7 @@
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
+                        Margin="-1"
                         FontSize="Micro"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Payment}"
@@ -152,9 +247,10 @@
                     Grid.Column="1"
                     Padding="5"
                     ef:Border.Radius="10"
-                    BackgroundColor="#33b54b">
+                    BackgroundColor="#33b54b"
+                    RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -165,6 +261,7 @@
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
+                        Margin="-1"
                         FontSize="Micro"
                         HorizontalOptions="Center"
                         Text="{tr:Translate OrderType}"
@@ -174,9 +271,10 @@
                     Grid.Column="2"
                     Padding="5"
                     ef:Border.Radius="10"
-                    BackgroundColor="#33b54b">
+                    BackgroundColor="#33b54b"
+                    RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -187,6 +285,7 @@
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
+                        Margin="-1"
                         FontSize="Micro"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Discount}"
@@ -196,9 +295,10 @@
                     Grid.Column="3"
                     Padding="5"
                     ef:Border.Radius="10"
-                    BackgroundColor="#33b54b">
+                    BackgroundColor="#33b54b"
+                    RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -209,6 +309,7 @@
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
+                        Margin="-1"
                         FontSize="Micro"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Discard}"
@@ -218,9 +319,10 @@
                     Grid.Column="4"
                     Padding="5"
                     ef:Border.Radius="10"
-                    BackgroundColor="#33b54b">
+                    BackgroundColor="#33b54b"
+                    RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1.5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
@@ -231,12 +333,23 @@
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
+                        Margin="-1"
                         FontSize="Micro"
                         HorizontalOptions="Center"
                         Text="{tr:Translate Extra}"
                         TextColor="White" />
                 </Grid>
             </Grid>
+            <ActivityIndicator
+                x:Name="ActiveIn"
+                AbsoluteLayout.LayoutBounds=".5,0.5,.5,.2"
+                AbsoluteLayout.LayoutFlags="All"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                IsRunning="False"
+                VerticalOptions="Center"
+                WidthRequest="100"
+                Color="#33b54b" />
         </AbsoluteLayout>
 
     </ContentPage.Content>

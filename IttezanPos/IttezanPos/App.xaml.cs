@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using IttezanPos.Helpers;
 using IttezanPos.Views.SettingsPages;
 using IttezanPos.Views.MainPage;
+using DLToolkit.Forms.Controls;
 
 namespace IttezanPos
 {
@@ -14,6 +15,7 @@ namespace IttezanPos
         public App()
         {
             InitializeComponent();
+            FlowListView.Init();
             FlowDirectionPage();
             MainPage = new MasterPage();
         }
