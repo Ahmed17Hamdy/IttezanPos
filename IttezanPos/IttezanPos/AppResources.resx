@@ -243,6 +243,9 @@
   <data name="Category" xml:space="preserve">
     <value>Category</value>
   </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>Category Name</value>
+  </data>
   <data name="Choose" xml:space="preserve">
     <value>Choose</value>
   </data>
@@ -461,6 +464,9 @@
   </data>
   <data name="Product" xml:space="preserve">
     <value>Product</value>
+  </data>
+  <data name="ProductAdded" xml:space="preserve">
+    <value>Product Added Successfully</value>
   </data>
   <data name="ProductName" xml:space="preserve">
     <value>Product Name</value>

@@ -195,9 +195,9 @@
                                         </Grid>
                                         <Image
                                             Grid.Row="1"
-                                            HeightRequest="40"
-                                            Source="{Binding icon, StringFormat='https://ittezanmobilepos.com/uploads/user_images/{0}'}"
-                                            WidthRequest="40" />
+                                            Margin="10,0"
+                                            Aspect="AspectFit"
+                                            Source="{Binding image, StringFormat='https://ittezanmobilepos.com/dashboard_files/imgss/{0}'}" />
                                         <Label
                                             Grid.Row="2"
                                             HorizontalOptions="Center"

@@ -243,6 +243,9 @@
   <data name="Category" xml:space="preserve">
     <value>التصنيف</value>
   </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>إسم التصنيف</value>
+  </data>
   <data name="Choose" xml:space="preserve">
     <value>إختر</value>
   </data>
@@ -461,6 +464,9 @@
   </data>
   <data name="Product" xml:space="preserve">
     <value>المنتج</value>
+  </data>
+  <data name="ProductAdded" xml:space="preserve">
+    <value>تم إضافة المنتج بنجاح </value>
   </data>
   <data name="ProductName" xml:space="preserve">
     <value>إسم المنتج</value>

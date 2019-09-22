@@ -1,7 +1,9 @@
 ﻿using IttezanPos.Models;
 using IttezanPos.Services;
 using IttezanPos.Views.InventoryPages.InventoryPopups;
+using Newtonsoft.Json;
 using Plugin.Connectivity;
+using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Refit;
@@ -12,12 +14,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
+using static IttezanPos.ViewModels.ProductViewModel;
 
 namespace IttezanPos.Views.InventoryPages
 {
@@ -25,6 +29,8 @@ namespace IttezanPos.Views.InventoryPages
     public partial class AddingProductPage : ContentPage
     {
         private ObservableCollection<Category> categories = new ObservableCollection<Category>();
+        private int category_Id;
+        private MediaFile image ;
         public ObservableCollection<Category> Categories
         {
             get { return categories; }
@@ -41,6 +47,7 @@ namespace IttezanPos.Views.InventoryPages
             MessagingCenter.Subscribe<PopUpPassParameter>(this, "PopUpData", (value) =>
             {
                 Stream receivedData = value.Myvalue;
+                image = value.mediaFile;
                 Color color = value.productcolor;
                 productimg.BackgroundColor = color;
                 productimg.Source = ImageSource.FromStream(() => { return receivedData; });
@@ -104,7 +111,8 @@ namespace IttezanPos.Views.InventoryPages
         private void Categorylist_SelectedIndexChanged(object sender, EventArgs e)
         {
             var category = Categorylist.SelectedItem as Category;
-            Preferences.Set("category_id", category.id);
+            category_Id = category.id;
+         //   Preferences.Set("category_id", category.id);
            
         }
         private void ByQuantity_Tapped(object sender, EventArgs e)
@@ -210,6 +218,117 @@ namespace IttezanPos.Views.InventoryPages
                 await DisplayAlert(AppResources.Alert, AppResources.PermissionsDenied, AppResources.Ok);
                 //On iOS you may want to send your user to the settings screen.
                 CrossPermissions.Current.OpenAppSettings();
+
+            }
+
+
+        }
+        private bool AllNeeded()
+        {
+            if (image==null )
+            {
+                ActiveIn.IsRunning = false;
+                DisplayAlert(AppResources.Error, AppResources.AddImage, AppResources.Ok);
+                OpenImagePopup();
+                return false;
+            }
+            else if (category_Id== 0)
+            {
+                ActiveIn.IsRunning = false;
+                DisplayAlert(AppResources.Error, AppResources.ChooseCategory, AppResources.Ok);
+                Categorylist.Focus();
+                return false;
+            }          
+            return true;
+        }
+
+        private async void OpenImagePopup()
+        {
+            await Navigation.PushPopupAsync(new AddProductImagePopUpPage());
+        }
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            ActiveIn.IsRunning = true;
+            if (AllNeeded() == true)
+            {
+                Product product = new Product
+                {
+                    name = EntryName.Text,                  
+                    category_id = category_Id,
+                    description = NotesEntry.Text,
+                    sale_price = int.Parse(SellEntry.Text),
+                    purchase_price = int.Parse(PurchaseEntry.Text),
+                    locale = "ar",
+                    stock = 35  , user_id="2"            
+                };
+                StringContent name = new StringContent(product.name);
+                StringContent category_id = new StringContent(product.category_id.ToString());
+                StringContent description = new StringContent(product.description);
+                StringContent sale_price = new StringContent(product.sale_price.ToString());
+                StringContent purchase_price = new StringContent(product.purchase_price.ToString());
+                StringContent locale = new StringContent(product.locale);
+                StringContent user_id = new StringContent(product.user_id);
+                StringContent stock = new StringContent(product.stock.ToString());
+                var content = new MultipartFormDataContent();
+                content.Add(name, "name");
+                content.Add(category_id, "category_id");
+                content.Add(description, "description");
+                content.Add(sale_price, "sale_price");
+                content.Add(purchase_price, "purchase_price");
+                content.Add(locale, "locale");
+                content.Add(user_id, "user_id");
+                content.Add(stock, "stock");
+                content.Add(new StreamContent(image.GetStream()), "image", $"{image.Path}");                      
+                HttpClient httpClient = new HttpClient();
+                try
+                {
+                    var httpResponseMessage = await httpClient.PostAsync("https://ittezanmobilepos.com/api/addproduct",
+                        content);
+                    var serverResponse = httpResponseMessage.Content.ReadAsStringAsync().Result.ToString();
+                    if (serverResponse == "false")
+                    {
+                        ActiveIn.IsRunning = false;
+                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                }
+                    else
+                    {
+                        try
+                        {
+                            try
+                            {
+                                ActiveIn.IsRunning = false;
+                                var JsonResponse = JsonConvert.DeserializeObject<AddProduct>(serverResponse);
+                                if (JsonResponse.success == true)
+                                {
+                                    await PopupNavigation.Instance.PushAsync(new ProductAddedPage() );
+                                    await Navigation.PushAsync(new InventoryMainPage());
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                //var JsonResponse = JsonConvert.DeserializeObject<RegisterResponse>(serverResponse);
+                                //if (JsonResponse.success == false)
+                                //{
+                                //    ActiveIn.IsRunning = false;
+                                //    await PopupNavigation.Instance.PushAsync(new RegisterPopup(JsonResponse.data));
+                                //}
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            ActiveIn.IsRunning = false;
+                        await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                        return;
+                        }
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+            }
 
             }
 

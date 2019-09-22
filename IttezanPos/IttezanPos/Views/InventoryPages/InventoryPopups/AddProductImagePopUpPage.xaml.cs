@@ -277,6 +277,7 @@ namespace IttezanPos.Views.InventoryPages.InventoryPopups
             if (ProfilePic != null)
             {
                 MessagingCenter.Send(new PopUpPassParameter() { Myvalue = ProfilePic.GetStream() }, "PopUpData");
+                MessagingCenter.Send(new PopUpPassParameter() { mediaFile = ProfilePic }, "PopUpData");
             }
             else
             {

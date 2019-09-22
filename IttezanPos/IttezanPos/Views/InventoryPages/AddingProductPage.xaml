@@ -14,7 +14,11 @@
     xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
     mc:Ignorable="d">
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="save.png" Text="{tr:Translate Save}" />
+        <ToolbarItem
+            Clicked="ToolbarItem_Clicked"
+            IconImageSource="save.png"
+            IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
+            Text="{tr:Translate Save}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <Style TargetType="Label">
@@ -47,72 +51,76 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
+
         <ScrollView Margin="10">
-            <StackLayout
-                Padding="5"
-                ef:Border.Color="#33b54b"
-                ef:Border.Radius="10"
-                ef:Border.Width="1">
-                <Grid HorizontalOptions="Center">
-                    <Image
-                        x:Name="productimg"
-                        ef:Border.Radius="50"
-                        ef:Border.Width="1"
-                        Aspect="Fill"
-                        BackgroundColor="#33b54b"
-                        HeightRequest="100"
-                        HorizontalOptions="Center"
-                        WidthRequest="100" />
-                    <Label
-                        FontSize="Micro"
-                        HorizontalOptions="Center"
-                        Text="{tr:Translate AddImage}"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Image Aspect="AspectFit" HeightRequest="100" />
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ChooseImage_Tapped" />
-                    </Grid.GestureRecognizers>
-                </Grid>
-                <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
-                <StackLayout>
-                    <Label Text="{tr:Translate ProductName}" />
-                    <customcontrols:CustomEntry
-                        Grid.Row="1"
-                        Margin="0"
-                        ef:Border.Color="#33b54b"
-                        ef:Border.Radius="10"
-                        ef:Border.Width="1"
-                        FontSize="Small"
-                        HorizontalTextAlignment="Center"
-                        IsTextPredictionEnabled="True"
-                        Placeholder="{tr:Translate ProductName}"
-                        PlaceholderColor="Red">
-                        <customcontrols:CustomEntry.Behaviors>
-                            <Behaviors:ValidationBehavior PropertyName="Text">
-                                <Behaviors:ValidationBehavior.Validators>
-                                    <Validators:RequiredValidator />
-                                </Behaviors:ValidationBehavior.Validators>
-                            </Behaviors:ValidationBehavior>
-                        </customcontrols:CustomEntry.Behaviors>
-                    </customcontrols:CustomEntry>
-                </StackLayout>
-                <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
-                <Label Text="{tr:Translate Category}" />
-                <Grid Margin="10,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button
-                        x:Name="AddCategorybtn"
-                        Grid.Column="0"
-                        BackgroundColor="#33b54b"
-                        Clicked="AddCategorybtn_Clicked"
-                        CornerRadius="20"
-                        HorizontalOptions="FillAndExpand"
-                        Text="{tr:Translate AddingNewClassification}" />
-                    <!--<input:Dropdown
+            <Grid>
+                <StackLayout
+                    Padding="5"
+                    ef:Border.Color="#33b54b"
+                    ef:Border.Radius="10"
+                    ef:Border.Width="1">
+                    <StackLayout.Behaviors>
+                        <Validators:ValidationGroupBehavior x:Name="form" />
+                    </StackLayout.Behaviors>
+                    <Grid HorizontalOptions="Center">
+                        <Image
+                            x:Name="productimg"
+                            ef:Border.Radius="50"
+                            ef:Border.Width="1"
+                            Aspect="Fill"
+                            BackgroundColor="#33b54b"
+                            HeightRequest="100"
+                            HorizontalOptions="Center"
+                            WidthRequest="100" />
+                        <Label
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            Text="{tr:Translate AddImage}"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                        <Image Aspect="AspectFit" HeightRequest="100" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ChooseImage_Tapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
+                    <StackLayout>
+                        <Label Text="{tr:Translate ProductName}" />
+                        <customcontrols:CustomEntry
+                            x:Name="EntryName"
+                            Grid.Row="1"
+                            Margin="0"
+                            ef:Border.Color="#33b54b"
+                            ef:Border.Radius="10"
+                            ef:Border.Width="1"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsTextPredictionEnabled="True">
+                            <customcontrols:CustomEntry.Behaviors>
+                                <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                    <Behaviors:ValidationBehavior.Validators>
+                                        <Validators:RequiredValidator />
+                                    </Behaviors:ValidationBehavior.Validators>
+                                </Behaviors:ValidationBehavior>
+                            </customcontrols:CustomEntry.Behaviors>
+                        </customcontrols:CustomEntry>
+                    </StackLayout>
+                    <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
+                    <Label Text="{tr:Translate Category}" />
+                    <Grid Margin="10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            x:Name="AddCategorybtn"
+                            Grid.Column="0"
+                            BackgroundColor="#33b54b"
+                            Clicked="AddCategorybtn_Clicked"
+                            CornerRadius="20"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{tr:Translate AddingNewClassification}" />
+                        <!--<input:Dropdown
                         Grid.Column="1"
                         ef:Border.Radius="20"
                         BackgroundColor="#33b54b"
@@ -121,165 +129,205 @@
                         IsRequired="True"
                         Placeholder="{tr:Translate ChooseCategory}"
                         TitleColor="Black" />-->
-                    <Grid Grid.Column="1">
-                        <customcontrols:CustomPicker
-                            x:Name="Categorylist"
-                            Title="{tr:Translate ChooseCategory}"
-                            ef:Border.Radius="20"
+                        <Grid Grid.Column="1">
+                            <customcontrols:CustomPicker
+                                x:Name="Categorylist"
+                                Title="{tr:Translate ChooseCategory}"
+                                ef:Border.Radius="20"
+                                BackgroundColor="#33b54b"
+                                FontSize="Small"
+                                HorizontalOptions="FillAndExpand"
+                                ItemDisplayBinding="{Binding name}"
+                                SelectedIndexChanged="Categorylist_SelectedIndexChanged"
+                                TextColor="White" />
+                            <Image
+                                Margin="5,10"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                Source="arrow.png" />
+                        </Grid>
+                    </Grid>
+                    <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
+                    <Label Text="{tr:Translate Price}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout
+                            x:Name="ByQuantitystk"
+                            Grid.Column="0"
+                            Padding="30,0"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal">
+                            <Label
+                                x:Name="ByQuantitylbl"
+                                HorizontalOptions="Center"
+                                Text="{tr:Translate ByQuantity}"
+                                VerticalOptions="Center" />
+                            <Image
+                                x:Name="ByQuantityimg"
+                                Margin="5"
+                                HeightRequest="20"
+                                HorizontalOptions="Center"
+                                Source="waitgreen.png"
+                                WidthRequest="40" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ByQuantity_Tapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout
+                            x:Name="ByUnitstk"
+                            Grid.Column="1"
+                            Padding="30,0"
                             BackgroundColor="#33b54b"
+                            Orientation="Horizontal">
+                            <Label
+                                x:Name="ByUnitlbl"
+                                HorizontalOptions="Center"
+                                Text="{tr:Translate ByUnit}"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                            <Image
+                                x:Name="ByUniteimg"
+                                Margin="5"
+                                HeightRequest="20"
+                                Source="unitWhit.png"
+                                WidthRequest="40" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ByUnit_Tapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Grid>
+                    <Grid Margin="5" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="0.4*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0">
+                            <Label HorizontalOptions="Center" Text="{tr:Translate Purchasingprice}" />
+
+                            <customcontrols:CustomEntry
+                                x:Name="PurchaseEntry"
+                                ef:Border.Color="#33b54b"
+                                ef:Border.Radius="10"
+                                ef:Border.Width="1"
+                                FontSize="Small"
+                                HorizontalTextAlignment="Center"
+                                Keyboard="Numeric">
+                                <customcontrols:CustomEntry.Behaviors>
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                        <Behaviors:ValidationBehavior.Validators>
+                                            <Validators:RequiredValidator />
+                                        </Behaviors:ValidationBehavior.Validators>
+                                    </Behaviors:ValidationBehavior>
+                                    <Behaviors:NumberValidationBehavior />
+                                </customcontrols:CustomEntry.Behaviors>
+                            </customcontrols:CustomEntry>
+                            <Label
+                                x:Name="salsesErrorlbl"
+                                Margin="0,-5"
+                                FontSize="Micro"
+                                IsVisible="False"
+                                Text="{tr:Translate SellPriceMore}"
+                                TextColor="Red" />
+                        </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="1">
+                            <Label HorizontalOptions="Center" Text="{tr:Translate sellingprice}" />
+                            <customcontrols:CustomEntry
+                                x:Name="SellEntry"
+                                ef:Border.Color="#33b54b"
+                                ef:Border.Radius="10"
+                                ef:Border.Width="1"
+                                FontSize="Small"
+                                HorizontalTextAlignment="Center"
+                                Keyboard="Numeric"
+                                TextChanged="SellEntry_TextChanged">
+                                <customcontrols:CustomEntry.Behaviors>
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                        <Behaviors:ValidationBehavior.Validators>
+                                            <Validators:RequiredValidator />
+                                        </Behaviors:ValidationBehavior.Validators>
+                                    </Behaviors:ValidationBehavior>
+                                    <Behaviors:NumberValidationBehavior />
+                                    <Behaviors:CompareValidationBehaviorGreater BindingContext="{x:Reference PurchaseEntry}" Text="{Binding Text}" />
+                                </customcontrols:CustomEntry.Behaviors>
+                            </customcontrols:CustomEntry>
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Orientation="Horizontal">
+                            <Switch
+                                x:Name="trackinstore"
+                                Margin="0"
+                                OnColor="#33b54b"
+                                ThumbColor="White"
+                                Toggled="Trackinstore_Toggled" />
+                            <Label Text="{tr:Translate TrackinStore}" VerticalOptions="Center" />
+                        </StackLayout>
+                    </Grid>
+                    <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
+                    <Label Text="{tr:Translate BarCode}" />
+                    <StackLayout Margin="5,0" Orientation="Horizontal">
+                        <Image
+                            x:Name="Scanbtn"
+                            Aspect="AspectFit"
+                            HeightRequest="40"
+                            Source="scan.png"
+                            WidthRequest="50">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Scan_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <customcontrols:CustomEntry
+                            x:Name="NameEntry"
+                            Grid.Column="1"
+                            Margin="0"
+                            ef:Border.Color="#33b54b"
+                            ef:Border.Radius="10"
+                            ef:Border.Width="1"
                             FontSize="Small"
                             HorizontalOptions="FillAndExpand"
-                            ItemDisplayBinding="{Binding name}"
-                            SelectedIndexChanged="Categorylist_SelectedIndexChanged"
-                            TextColor="White" />
-                        <Image
-                            Margin="5,10"
-                            HeightRequest="20"
-                            HorizontalOptions="End"
-                            Source="arrow.png" />
+                            HorizontalTextAlignment="Center"
+                            IsTextPredictionEnabled="True"
+                            Placeholder="{tr:Translate ProductName}"
+                            PlaceholderColor="Red">
+                            <customcontrols:CustomEntry.Behaviors>
+                                <Behaviors:ValidationBehavior PropertyName="Text">
+                                    <Behaviors:ValidationBehavior.Validators>
+                                        <Validators:RequiredValidator />
+                                    </Behaviors:ValidationBehavior.Validators>
+                                </Behaviors:ValidationBehavior>
+                            </customcontrols:CustomEntry.Behaviors>
+                        </customcontrols:CustomEntry>
+                    </StackLayout>
+                    <Grid
+                        Padding="5"
+                        ef:Border.Color="#33b54b"
+                        ef:Border.Radius="10">
+                        <Label
+                            Margin="20,10"
+                            HorizontalTextAlignment="Center"
+                            Text="{tr:Translate Expirationdate}" />
+                        <DatePicker TextColor="#33b54b" />
                     </Grid>
-                </Grid>
-                <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
-                <Label Text="{tr:Translate Price}" />
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackLayout
-                        x:Name="ByQuantitystk"
-                        Grid.Column="0"
-                        Padding="30,0"
-                        HorizontalOptions="FillAndExpand"
-                        Orientation="Horizontal">
-                        <Label
-                            x:Name="ByQuantitylbl"
-                            HorizontalOptions="Center"
-                            Text="{tr:Translate ByQuantity}"
-                            VerticalOptions="Center" />
-                        <Image
-                            x:Name="ByQuantityimg"
-                            Margin="5"
-                            HeightRequest="20"
-                            HorizontalOptions="Center"
-                            Source="waitgreen.png"
-                            WidthRequest="40" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ByQuantity_Tapped" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                    <StackLayout
-                        x:Name="ByUnitstk"
-                        Grid.Column="1"
-                        Padding="30,0"
-                        BackgroundColor="#33b54b"
-                        Orientation="Horizontal">
-                        <Label
-                            x:Name="ByUnitlbl"
-                            HorizontalOptions="Center"
-                            Text="{tr:Translate ByUnit}"
-                            TextColor="White"
-                            VerticalOptions="Center" />
-                        <Image
-                            x:Name="ByUniteimg"
-                            Margin="5"
-                            HeightRequest="20"
-                            Source="unitWhit.png"
-                            WidthRequest="40" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ByUnit_Tapped" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </Grid>
-                <Grid Margin="5" RowSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="0.4*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Row="0" Grid.Column="0">
-                        <Label HorizontalOptions="Center" Text="{tr:Translate Purchasingprice}" />
-
-                        <customcontrols:CustomEntry
-                            x:Name="PurchaseEntry"
-                            ef:Border.Color="#33b54b"
-                            ef:Border.Radius="10"
-                            ef:Border.Width="1"
-                            FontSize="Small"
-                            HorizontalTextAlignment="Center"
-                            Keyboard="Numeric">
-                            <customcontrols:CustomEntry.Behaviors>
-                                <Behaviors:NumberValidationBehavior />
-                            </customcontrols:CustomEntry.Behaviors>
-                        </customcontrols:CustomEntry>
-                        <Label
-                            x:Name="salsesErrorlbl"
-                            Margin="0,-5"
-                            FontSize="Micro"
-                            IsVisible="False"
-                            Text="{tr:Translate SellPriceMore}"
-                            TextColor="Red" />
-                    </StackLayout>
-                    <StackLayout Grid.Row="0" Grid.Column="1">
-                        <Label HorizontalOptions="Center" Text="{tr:Translate sellingprice}" />
-                        <customcontrols:CustomEntry
-                            x:Name="SellEntry"
-                            ef:Border.Color="#33b54b"
-                            ef:Border.Radius="10"
-                            ef:Border.Width="1"
-                            FontSize="Small"
-                            HorizontalTextAlignment="Center"
-                            Keyboard="Numeric"
-                            TextChanged="SellEntry_TextChanged">
-                            <customcontrols:CustomEntry.Behaviors>
-                                <Behaviors:NumberValidationBehavior />
-                                <Behaviors:CompareValidationBehaviorGreater BindingContext="{x:Reference PurchaseEntry}" Text="{Binding Text}" />
-                            </customcontrols:CustomEntry.Behaviors>
-                        </customcontrols:CustomEntry>
-                    </StackLayout>
-                    <StackLayout
-                        Grid.Row="1"
-                        Grid.ColumnSpan="2"
-                        Orientation="Horizontal">
-                        <Switch
-                            x:Name="trackinstore"
-                            Margin="0"
-                            OnColor="#33b54b"
-                            ThumbColor="White"
-                            Toggled="Trackinstore_Toggled" />
-                        <Label Text="{tr:Translate TrackinStore}" VerticalOptions="Center" />
-                    </StackLayout>
-                </Grid>
-                <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
-                <Label Text="{tr:Translate BarCode}" />
-                <StackLayout Margin="5,0" Orientation="Horizontal">
-                    <Image
-                        x:Name="Scanbtn"
-                        Aspect="AspectFit"
-                        HeightRequest="40"
-                        Source="scan.png"
-                        WidthRequest="50">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Scan_Tapped" />
-                        </Image.GestureRecognizers>
-                    </Image>
                     <customcontrols:CustomEntry
-                        Grid.Column="1"
-                        Margin="0"
+                        x:Name="NotesEntry"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="10"
                         ef:Border.Width="1"
+                        ef:Placeholder.Color="#33b54b"
+                        ef:Placeholder.Text="{tr:Translate Notes}"
                         FontSize="Small"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center"
-                        IsTextPredictionEnabled="True"
-                        Placeholder="{tr:Translate ProductName}"
-                        PlaceholderColor="Red">
+                        HeightRequest="100"
+                        HorizontalTextAlignment="Center">
                         <customcontrols:CustomEntry.Behaviors>
-                            <Behaviors:ValidationBehavior PropertyName="Text">
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                 <Behaviors:ValidationBehavior.Validators>
                                     <Validators:RequiredValidator />
                                 </Behaviors:ValidationBehavior.Validators>
@@ -287,26 +335,19 @@
                         </customcontrols:CustomEntry.Behaviors>
                     </customcontrols:CustomEntry>
                 </StackLayout>
-                <Grid
-                    Padding="5"
-                    ef:Border.Color="#33b54b"
-                    ef:Border.Radius="10">
-                    <Label
-                        Margin="20,10"
-                        HorizontalTextAlignment="Center"
-                        Text="{tr:Translate Expirationdate}" />
-                    <DatePicker TextColor="#33b54b" />
-                </Grid>
-                <customcontrols:CustomEntry
-                    ef:Border.Color="#33b54b"
-                    ef:Border.Radius="10"
-                    ef:Border.Width="1"
-                    ef:Placeholder.Color="#33b54b"
-                    ef:Placeholder.Text="{tr:Translate Notes}"
-                    FontSize="Small"
+                <ActivityIndicator
+                    x:Name="ActiveIn"
                     HeightRequest="100"
-                    HorizontalTextAlignment="Center" />
-            </StackLayout>
+                    HorizontalOptions="Center"
+                    IsRunning="False"
+                    VerticalOptions="Center"
+                    WidthRequest="100"
+                    Color="#33b54b" />
+            </Grid>
+
         </ScrollView>
+
+
+
     </ContentPage.Content>
 </ContentPage>
