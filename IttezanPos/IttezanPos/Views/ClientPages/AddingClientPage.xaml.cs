@@ -115,7 +115,7 @@ namespace IttezanPos.Views.ClientPages
                     {
 
                         ActiveIn.IsRunning = false;
-                        await Navigation.PushPopupAsync(new ClientAdded(edite));
+                        await Navigation.PushPopupAsync(new ProducAddedPage(edite));
                     }
                 }
             }

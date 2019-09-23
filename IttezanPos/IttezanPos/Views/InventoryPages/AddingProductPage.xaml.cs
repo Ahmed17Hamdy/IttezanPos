@@ -31,6 +31,10 @@ namespace IttezanPos.Views.InventoryPages
         private ObservableCollection<Category> categories = new ObservableCollection<Category>();
         private int category_Id;
         private MediaFile image ;
+        private Product product;
+        private int product_Id;
+        private string text;
+
         public ObservableCollection<Category> Categories
         {
             get { return categories; }
@@ -53,6 +57,35 @@ namespace IttezanPos.Views.InventoryPages
                 productimg.Source = ImageSource.FromStream(() => { return receivedData; });
             });
         }
+
+        public AddingProductPage(Product product)
+        {
+            InitializeComponent();
+            Savebtn.IsVisible = false;
+            Detailsstk.IsVisible = true;
+            MessagingCenter.Subscribe<PopUpPassParameter>(this, "PopUpData", (value) =>
+            {
+                Stream receivedData = value.Myvalue;
+                image = value.mediaFile;
+                Color color = value.productcolor;
+                productimg.BackgroundColor = color;
+                productimg.Source = ImageSource.FromStream(() => { return receivedData; });
+            });
+            this.product = product;
+            EntryName.Text = product.name;
+            NotesEntry.Text = product.description;
+            category_Id = product.category_id;
+            PurchaseEntry.Text = product.purchase_price.ToString();
+            SellEntry.Text = product.sale_price.ToString();
+            StockQuantity.Text = product.stock.ToString();
+            Categorylist.Title = product.catname;
+            productimg.Source = "https://ittezanmobilepos.com/dashboard_files/imgss/"+ product.image;
+            product_Id = product.id;
+            EnglishNameEntry.Text = product.namee;
+            
+
+        }
+
         protected override bool OnBackButtonPressed()
         {
             Categorylist.Unfocus();
@@ -246,14 +279,15 @@ namespace IttezanPos.Views.InventoryPages
         {
             await Navigation.PushPopupAsync(new AddProductImagePopUpPage());
         }
-        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        private async void Savebtn_Clicked(object sender, EventArgs e)
         {
             ActiveIn.IsRunning = true;
             if (AllNeeded() == true)
             {
                 Product product = new Product
                 {
-                    name = EntryName.Text,                  
+                    name = EntryName.Text,    
+                    namee=EnglishNameEntry.Text,
                     category_id = category_Id,
                     description = NotesEntry.Text,
                     sale_price = int.Parse(SellEntry.Text),
@@ -262,6 +296,7 @@ namespace IttezanPos.Views.InventoryPages
                     stock = 35  , user_id="2"            
                 };
                 StringContent name = new StringContent(product.name);
+                StringContent namee = new StringContent(product.namee);
                 StringContent category_id = new StringContent(product.category_id.ToString());
                 StringContent description = new StringContent(product.description);
                 StringContent sale_price = new StringContent(product.sale_price.ToString());
@@ -271,6 +306,7 @@ namespace IttezanPos.Views.InventoryPages
                 StringContent stock = new StringContent(product.stock.ToString());
                 var content = new MultipartFormDataContent();
                 content.Add(name, "name");
+                content.Add(namee, "namee");
                 content.Add(category_id, "category_id");
                 content.Add(description, "description");
                 content.Add(sale_price, "sale_price");
@@ -307,6 +343,8 @@ namespace IttezanPos.Views.InventoryPages
                             }
                             catch (Exception ex)
                             {
+                                ActiveIn.IsRunning = false;
+                                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                                 //var JsonResponse = JsonConvert.DeserializeObject<RegisterResponse>(serverResponse);
                                 //if (JsonResponse.success == false)
                                 //{
@@ -333,6 +371,141 @@ namespace IttezanPos.Views.InventoryPages
             }
 
 
+        }
+
+        private async void Updatebtn_Clicked(object sender, EventArgs e)
+        {
+            Product product = new Product
+            {
+                product_id= product_Id,
+                name = EntryName.Text,
+                namee=EnglishNameEntry.Text,
+                category_id = category_Id,
+                description = NotesEntry.Text,
+                sale_price = int.Parse(SellEntry.Text),
+                purchase_price = int.Parse(PurchaseEntry.Text),
+                locale = "ar",
+                stock = 35,
+                user_id = "2"
+            };
+            StringContent product_id = new StringContent(product.product_id.ToString());
+            StringContent name = new StringContent(product.name);
+            StringContent namee = new StringContent(product.namee);
+            StringContent category_id = new StringContent(product.category_id.ToString());
+            StringContent description = new StringContent(product.description);
+            StringContent sale_price = new StringContent(product.sale_price.ToString());
+            StringContent purchase_price = new StringContent(product.purchase_price.ToString());
+            StringContent locale = new StringContent(product.locale);
+            StringContent user_id = new StringContent(product.user_id);
+            StringContent stock = new StringContent(product.stock.ToString());
+            var content = new MultipartFormDataContent();
+            content.Add(product_id, "product_id");
+            content.Add(name, "name");
+            content.Add(namee, "namee");
+            content.Add(category_id, "category_id");
+            content.Add(description, "description");
+            content.Add(sale_price, "sale_price");
+            content.Add(purchase_price, "purchase_price");
+            content.Add(locale, "locale");
+            content.Add(user_id, "user_id");
+            content.Add(stock, "stock");
+            if (image != null)
+            {
+                content.Add(new StreamContent(image.GetStream()), "image", $"{image.Path}");
+            }           
+            HttpClient httpClient = new HttpClient();
+            try
+            {
+                var httpResponseMessage = await httpClient.PostAsync("https://ittezanmobilepos.com/api/updateproduct",
+                    content);
+                var serverResponse = httpResponseMessage.Content.ReadAsStringAsync().Result.ToString();
+                if (serverResponse == "false")
+                {
+                    ActiveIn.IsRunning = false;
+                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                }
+                else
+                {
+                    try
+                    {
+                        try
+                        {
+                            ActiveIn.IsRunning = false;
+                            var JsonResponse = JsonConvert.DeserializeObject<RootObject>(serverResponse);
+                            if (JsonResponse.success == true)
+                            {
+                                await PopupNavigation.Instance.PushAsync(new ProductAddedPage(text));
+                                await Navigation.PushAsync(new InventoryMainPage());
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            ActiveIn.IsRunning = false;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                            //var JsonResponse = JsonConvert.DeserializeObject<RegisterResponse>(serverResponse);
+                            //if (JsonResponse.success == false)
+                            //{
+                            //    ActiveIn.IsRunning = false;
+                            //    await PopupNavigation.Instance.PushAsync(new RegisterPopup(JsonResponse.data));
+                            //}
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ActiveIn.IsRunning = false;
+                        await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                        return;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+            }
+
+        }
+
+        private async void Deletebtn_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                ActiveIn.IsRunning = true;
+                if (CrossConnectivity.Current.IsConnected)
+                {
+
+                    var nsAPI = RestService.For<IProductService>("https://ittezanmobilepos.com");
+
+                    var data = await nsAPI.DeleteClient(product.id);
+                    if (data.success == true)
+                    {
+
+                        ActiveIn.IsRunning = false;
+                        await Navigation.PushPopupAsync(new ProductAddedPage(product.id));
+                        await Navigation.PopAsync();
+                    }
+                }
+            }
+            catch (ValidationApiException validationException)
+            {
+                ActiveIn.IsRunning = false;
+                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                // handle validation here by using validationException.Content, 
+                // which is type of ProblemDetails according to RFC 7807
+            }
+            catch (ApiException exception)
+            {
+                ActiveIn.IsRunning = false;
+                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                // other exception handling 
+            }
+            catch (Exception ex)
+            {
+                ActiveIn.IsRunning = false;
+                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+            }
         }
     }
 }

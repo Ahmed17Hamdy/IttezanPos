@@ -142,15 +142,21 @@ namespace IttezanPos.Views.InventoryPages
         private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             var keyword = SearchBar.Text;
-        ProductsList.ItemsSource= Products.Where(product => product.translations[0].name.Contains(keyword.ToLower()));
+        ProductsList.ItemsSource= Products.Where(product => product.name.Contains(keyword.ToLower()));
             
         }
         void OnTextChanged(object sender, EventArgs e)
         {
             SearchBar searchBar = (SearchBar)sender;
             var keyword = SearchBar.Text;
-            ProductsList.ItemsSource = Products.Where(product => product.translations[0].name.Contains(keyword.ToLower()));
+          ProductsList.ItemsSource = Products.Where(product => product.name.Contains(keyword.ToLower()));
+          
+        }
 
+        private async void ProductsList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var product = e.Item as Product;
+            await Navigation.PushAsync(new AddingProductPage(product));
         }
     }
 }

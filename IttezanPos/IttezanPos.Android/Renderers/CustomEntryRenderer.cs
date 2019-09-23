@@ -32,7 +32,7 @@ namespace IttezanPos.Droid.Renderers
                 gd.SetColor(global::Android.Graphics.Color.Transparent);
                 this.Control.SetBackgroundDrawable(gd);
                 this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
-                Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.White));
+             //   Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.White));
             }
         }
     }

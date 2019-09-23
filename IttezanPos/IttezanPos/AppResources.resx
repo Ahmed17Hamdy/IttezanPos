@@ -207,6 +207,9 @@
   <data name="And" xml:space="preserve">
     <value>And</value>
   </data>
+  <data name="ArabicTitle" xml:space="preserve">
+    <value>Arabic Name</value>
+  </data>
   <data name="BackOffice" xml:space="preserve">
     <value>Back Office</value>
   </data>
@@ -300,6 +303,9 @@
   <data name="DeletedClient" xml:space="preserve">
     <value>Deleted Client's Data Succesfully</value>
   </data>
+  <data name="DeletedProduct" xml:space="preserve">
+    <value>Deleted Product Successfully !</value>
+  </data>
   <data name="DeletedSupplier" xml:space="preserve">
     <value>Deleted Supplier's Data Succesfully</value>
   </data>
@@ -338,6 +344,9 @@
   </data>
   <data name="EmptyCart" xml:space="preserve">
     <value>Empty Cart</value>
+  </data>
+  <data name="EnglishTitle" xml:space="preserve">
+    <value>English Name</value>
   </data>
   <data name="Entertheamount" xml:space="preserve">
     <value>Enter the amount</value>
@@ -431,6 +440,9 @@
   </data>
   <data name="NQ" xml:space="preserve">
     <value>N.Q</value>
+  </data>
+  <data name="NumberORQuantity" xml:space="preserve">
+    <value>Number OR Quantity</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
@@ -636,6 +648,9 @@
   </data>
   <data name="UpdatedClient" xml:space="preserve">
     <value>Updated Client's Data Succesfully</value>
+  </data>
+  <data name="UpdatedProduct" xml:space="preserve">
+    <value>Updated Product Successfully !</value>
   </data>
   <data name="UpdatedSupplier" xml:space="preserve">
     <value>Updated Supplier's Data Succesfully</value>

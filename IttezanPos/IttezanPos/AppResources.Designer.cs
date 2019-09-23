@@ -331,6 +331,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arabic Name.
+        /// </summary>
+        internal static string ArabicTitle {
+            get {
+                return ResourceManager.GetString("ArabicTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back Office.
         /// </summary>
         internal static string BackOffice {
@@ -610,6 +619,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleted Product Successfully !.
+        /// </summary>
+        internal static string DeletedProduct {
+            get {
+                return ResourceManager.GetString("DeletedProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleted Supplier&apos;s Data Succesfully.
         /// </summary>
         internal static string DeletedSupplier {
@@ -723,6 +741,15 @@ namespace IttezanPos {
         internal static string EmptyCart {
             get {
                 return ResourceManager.GetString("EmptyCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English Name.
+        /// </summary>
+        internal static string EnglishTitle {
+            get {
+                return ResourceManager.GetString("EnglishTitle", resourceCulture);
             }
         }
         
@@ -1002,6 +1029,15 @@ namespace IttezanPos {
         internal static string NQ {
             get {
                 return ResourceManager.GetString("NQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number OR Quantity.
+        /// </summary>
+        internal static string NumberORQuantity {
+            get {
+                return ResourceManager.GetString("NumberORQuantity", resourceCulture);
             }
         }
         
@@ -1615,6 +1651,15 @@ namespace IttezanPos {
         internal static string UpdatedClient {
             get {
                 return ResourceManager.GetString("UpdatedClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updated Product Successfully !.
+        /// </summary>
+        internal static string UpdatedProduct {
+            get {
+                return ResourceManager.GetString("UpdatedProduct", resourceCulture);
             }
         }
         

@@ -53,7 +53,7 @@
                             ef:Border.Width="1"
                             CancelButtonColor="Red"
                             HorizontalOptions="FillAndExpand"
-                            Placeholder="{tr:Translate SearchClient}"
+                            Placeholder="{tr:Translate Search}"
                             SearchButtonPressed="SearchBar_SearchButtonPressed"
                             TextChanged="OnTextChanged"
                             WidthRequest="200" />
@@ -81,6 +81,7 @@
                         x:Name="ProductsList"
                         Margin="0"
                         HasUnevenRows="True"
+                        ItemTapped="ProductsList_ItemTapped"
                         Visual="Material">
                         <ListView.Header>
                             <Grid
@@ -136,7 +137,7 @@
                                             Grid.Column="0"
                                             FontSize="Small"
                                             HorizontalOptions="Start"
-                                            Text="{Binding translations[0].name}"
+                                            Text="{Binding name}"
                                             TextColor="Black" />
                                         <Label
                                             Grid.Column="1"

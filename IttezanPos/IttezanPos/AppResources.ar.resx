@@ -207,6 +207,9 @@
   <data name="And" xml:space="preserve">
     <value>و</value>
   </data>
+  <data name="ArabicTitle" xml:space="preserve">
+    <value>الإسم بالعريبة</value>
+  </data>
   <data name="BackOffice" xml:space="preserve">
     <value>المكتب الخلفي</value>
   </data>
@@ -300,6 +303,9 @@
   <data name="DeletedClient" xml:space="preserve">
     <value>تم حذف بيانات العميل</value>
   </data>
+  <data name="DeletedProduct" xml:space="preserve">
+    <value>تم حذف المنتج بنجاح !</value>
+  </data>
   <data name="DeletedSupplier" xml:space="preserve">
     <value>تم حذف بيانات المورد</value>
   </data>
@@ -338,6 +344,9 @@
   </data>
   <data name="EmptyCart" xml:space="preserve">
     <value>سلة فارغة</value>
+  </data>
+  <data name="EnglishTitle" xml:space="preserve">
+    <value>الإسم بالإنجليزية</value>
   </data>
   <data name="Entertheamount" xml:space="preserve">
     <value>أدخل المبلغ</value>
@@ -431,6 +440,9 @@
   </data>
   <data name="NQ" xml:space="preserve">
     <value>ع.ق</value>
+  </data>
+  <data name="NumberORQuantity" xml:space="preserve">
+    <value>عدد أو كمية</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>حسناً</value>
@@ -638,6 +650,9 @@
   </data>
   <data name="UpdatedClient" xml:space="preserve">
     <value>تم تحديث بيانات العميل بنجاح</value>
+  </data>
+  <data name="UpdatedProduct" xml:space="preserve">
+    <value>تم تعديل بيانات المنتج بنجاح !</value>
   </data>
   <data name="UpdatedSupplier" xml:space="preserve">
     <value>تم تحديث بيانات المورد بنجاح</value>
