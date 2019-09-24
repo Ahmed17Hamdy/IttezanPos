@@ -144,9 +144,7 @@ namespace IttezanPos.Views.InventoryPages
         private void Categorylist_SelectedIndexChanged(object sender, EventArgs e)
         {
             var category = Categorylist.SelectedItem as Category;
-            category_Id = category.id;
-         //   Preferences.Set("category_id", category.id);
-           
+            category_Id = category.id;           
         }
         private void ByQuantity_Tapped(object sender, EventArgs e)
         {

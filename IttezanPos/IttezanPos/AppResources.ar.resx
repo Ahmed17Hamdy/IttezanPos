@@ -153,6 +153,9 @@
   <data name="AddClientName" xml:space="preserve">
     <value>أضف إسم العميل</value>
   </data>
+  <data name="AddedSucc" xml:space="preserve">
+    <value>تمت العملية بنجاح !</value>
+  </data>
   <data name="AddEmailAddress" xml:space="preserve">
     <value>أدخل البريد الإلكتروني</value>
   </data>

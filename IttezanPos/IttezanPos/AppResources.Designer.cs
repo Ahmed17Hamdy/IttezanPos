@@ -169,6 +169,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operation Added Successfully !.
+        /// </summary>
+        internal static string AddedSucc {
+            get {
+                return ResourceManager.GetString("AddedSucc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Email Address.
         /// </summary>
         internal static string AddEmailAddress {

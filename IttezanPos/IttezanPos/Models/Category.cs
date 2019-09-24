@@ -29,8 +29,11 @@ namespace IttezanPos.Models
     {
         [JsonProperty("clients")]
         public List<Client> clients { get; set; }
+
         [JsonProperty("suppliers")]
         public List<Supplier> suppliers { get; set; }
+        [JsonProperty("box")]
+        public Box box { get; set; }
         [JsonProperty("users")]
         public List<User> users { get; set; }
         [JsonProperty("each_category")]

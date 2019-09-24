@@ -153,6 +153,9 @@
   <data name="AddClientName" xml:space="preserve">
     <value>Add Client Name</value>
   </data>
+  <data name="AddedSucc" xml:space="preserve">
+    <value>Operation Added Successfully !</value>
+  </data>
   <data name="AddEmailAddress" xml:space="preserve">
     <value>Add Email Address</value>
   </data>

@@ -21,6 +21,16 @@ namespace IttezanPos.Views.SalesPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainSalesPage : ContentPage
     {
+        private ObservableCollection<Category> categories = new ObservableCollection<Category>();
+        public ObservableCollection<Category> Categories
+        {
+            get { return categories; }
+            set
+            {
+                categories = value;
+                OnPropertyChanged(nameof(categories));
+            }
+        }
         private List<Product> products = new List<Product>();
         public List<Product> Products
         {
@@ -33,8 +43,12 @@ namespace IttezanPos.Views.SalesPages
         }
         public MainSalesPage()
         {
-            InitializeComponent();
-           
+            InitializeComponent();          
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            CategoryList.Unfocus();
+            return base.OnBackButtonPressed();
         }
         protected override void OnAppearing()
         {
@@ -54,8 +68,10 @@ namespace IttezanPos.Views.SalesPages
                     foreach (var item in eachCategories)
                     {
                         Products.Add(item.products);
+                        Categories.Add(item.category);
                     }
                     ProductsList.FlowItemsSource = products;
+                    CategoryList.ItemsSource = Categories;
                     ActiveIn.IsRunning = false;
                 }
                 else
@@ -159,6 +175,27 @@ namespace IttezanPos.Views.SalesPages
             {
 
             }
+        }
+
+        private void CategoryList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var category = CategoryList.SelectedItem as Category;
+            ProductsList.ItemsSource = Products.Where(product => product.catname.Contains(category.name));
+        }
+
+     
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchBar searchBar = (SearchBar)sender;
+            var keyword = SearchBar.Text;
+            ProductsList.ItemsSource = Products.Where(product => product.name.Contains(keyword.ToLower()));
+        }
+
+        private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            var keyword = SearchBar.Text;
+            ProductsList.ItemsSource = Products.Where(product => product.name.Contains(keyword.ToLower()));
         }
     }
 }
