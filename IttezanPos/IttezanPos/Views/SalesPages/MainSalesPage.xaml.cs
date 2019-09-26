@@ -64,11 +64,12 @@ namespace IttezanPos.Views.SalesPages
                 {
                     var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
                     RootObject data = await nsAPI.GetSettings();
-                    var eachCategories = new ObservableCollection<EachCategory>(data.message.each_category);
+                    var eachCategories = new ObservableCollection<Category>(data.message.categories);
+                    Categories = eachCategories;
                     foreach (var item in eachCategories)
                     {
-                        Products.Add(item.products);
-                        Categories.Add(item.category);
+                        Products.AddRange(item.category.list_of_products);
+                     
                     }
                     ProductsList.FlowItemsSource = products;
                     CategoryList.ItemsSource = Categories;
@@ -180,7 +181,7 @@ namespace IttezanPos.Views.SalesPages
         private void CategoryList_SelectedIndexChanged(object sender, EventArgs e)
         {
             var category = CategoryList.SelectedItem as Category;
-            ProductsList.ItemsSource = Products.Where(product => product.catname.Contains(category.name));
+            ProductsList.ItemsSource = Products.Where(product => product.catname.Contains(category.category.name));
         }
 
      

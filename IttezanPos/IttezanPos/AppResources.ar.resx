@@ -258,6 +258,9 @@
   <data name="ChooseCategory" xml:space="preserve">
     <value>إختر التصنيف</value>
   </data>
+  <data name="ClientAdded" xml:space="preserve">
+    <value>تم إضافة العميل بنجاح !</value>
+  </data>
   <data name="ClientLimit" xml:space="preserve">
     <value>سقف العميل</value>
   </data>

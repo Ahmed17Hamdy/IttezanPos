@@ -13,14 +13,14 @@ namespace IttezanPos.ViewModels
         public interface IClientService
         {
             [Post("/api/addclient")]
-            Task<AddClient> AddClient(Client client);
+            Task<RootObject> AddClient(Client client);
             [Post("/api/addclient")]
             Task<AddClientError> AddClientError(Client client);
 
 
 
             [Post("/api/updateclient")]
-            Task<AddClient> UpdateClient(Client client);
+            Task<RootObject> UpdateClient(Client client);
 
             [Post("/api/delclient")]
             Task<DelResponse> DeleteClient(int client_id);

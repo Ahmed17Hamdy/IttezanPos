@@ -27,7 +27,7 @@ namespace IttezanPos.Views.InventoryPages.InventoryPopups
             Supplierlbl.Text = AppResources.DeletedProduct;
             this.id = id;
         }
-        public ProductAddedPage( string edite)
+        public ProductAddedPage(string edite)
         {
             InitializeComponent();
             Frame.BorderColor = Color.FromHex("#33b54b");

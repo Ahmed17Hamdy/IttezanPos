@@ -484,6 +484,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Client Added Successfully !.
+        /// </summary>
+        internal static string ClientAdded {
+            get {
+                return ResourceManager.GetString("ClientAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Client Limit.
         /// </summary>
         internal static string ClientLimit {

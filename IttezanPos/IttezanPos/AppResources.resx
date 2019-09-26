@@ -258,6 +258,9 @@
   <data name="ChooseCategory" xml:space="preserve">
     <value>Choose Category</value>
   </data>
+  <data name="ClientAdded" xml:space="preserve">
+    <value>Client Added Successfully !</value>
+  </data>
   <data name="ClientLimit" xml:space="preserve">
     <value>Client Limit</value>
   </data>

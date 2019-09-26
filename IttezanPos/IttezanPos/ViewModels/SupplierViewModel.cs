@@ -13,13 +13,13 @@ namespace IttezanPos.ViewModels
         public interface ISupplierService
         {
             [Post("/api/addsupplier")]
-            Task<AddSupplier> AddSupplier(Supplier supplier);
+            Task<RootObject> AddSupplier(Supplier supplier);
             [Post("/api/addsupplier")]
             Task<AddSupplierError> AddSupplierError(Supplier supplier);
 
 
             [Post("/api/updatesupplier")]
-            Task<AddSupplier> UpdateSupplier(Supplier supplier);
+            Task<RootObject> UpdateSupplier(Supplier supplier);
 
             [Post("/api/delsupplier")]
             Task<DelResponse> DeleteSupplier(int supplier_id);

@@ -11,6 +11,9 @@ using Xamarin.Forms.Xaml;
 using Plugin.Connectivity;
 using System;
 using System.Linq;
+using SQLite;
+using System.IO;
+using Settings = IttezanPos.Helpers.Settings;
 
 namespace IttezanPos.Views.ClientPages
 {
@@ -49,12 +52,66 @@ namespace IttezanPos.Views.ClientPages
                     var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
                     RootObject data = await nsAPI.GetSettings();
                     Clients = new ObservableCollection<Client>(data.message.clients);
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Client");
+                        if (!info.Any())
+                        {
+                            db.CreateTable<Client>();
+                        }
+                        else
+                        {
+                            db.DropTable<Client>();
+                            db.CreateTable<Client>();
+                        }
+                      
+                        db.InsertAll(Clients);
+                    }
+                    else
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Client");
+                        if (!info.Any())
+                        {
+                            db.CreateTable<Client>();
+                        }
+                        else
+                        {
+                            db.DropTable<Client>();
+                            db.CreateTable<Client>();
+                        }
+                        //    Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
+                        // db.CreateTable<Client>();
+                        db.InsertAll(Clients);
+                    }                   
                     listviewwww.ItemsSource = Clients;
                     ActiveIn.IsRunning = false;
                 }
                 else
                 {
-                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                    ActiveIn.IsRunning = false;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Client");
+                        if (!info.Any())
+                            db.CreateTable<Client>();
+                       
+                        Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
+                    }
+                    else
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Client");
+                        Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
+                    }
+                    listviewwww.ItemsSource = Clients;
+                  //  await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 }
             }
             
@@ -73,6 +130,7 @@ namespace IttezanPos.Views.ClientPages
             }
             catch (Exception ex)
             {
+
                 ActiveIn.IsRunning = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
             }

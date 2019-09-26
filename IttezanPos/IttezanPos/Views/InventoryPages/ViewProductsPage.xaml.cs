@@ -13,6 +13,9 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using IttezanPos.Helpers;
 using System.Linq;
+using Settings = IttezanPos.Helpers.Settings;
+using SQLite;
+using System.IO;
 
 namespace IttezanPos.Views.InventoryPages
 {
@@ -100,17 +103,70 @@ namespace IttezanPos.Views.InventoryPages
                 {
                     var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
                     RootObject data = await nsAPI.GetSettings();
-                    var eachCategories = new ObservableCollection<EachCategory>(data.message.each_category);
+                    var eachCategories = new ObservableCollection<Category>(data.message.categories);
                     foreach (var item in eachCategories)
                     {
-                        Products.Add(item.products);                       
+                      //  Products = item.category.list_of_products;
+                       Products.AddRange(item.category.list_of_products);                       
+                    }
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Product");
+                        if (!info.Any())
+                        {
+                            db.CreateTable<Product>();
+                        }
+                        else
+                        {
+                            db.DropTable<Product>();
+                            db.CreateTable<Product>();
+                        }
+                        db.CreateTable<Product>();
+                        db.InsertAll(Products);
+                    }
+                    else
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Product");
+                        if (!info.Any())
+                        {
+                            db.CreateTable<Product>();
+                        }
+                        else
+                        {
+                            db.DropTable<Product>();
+                            db.CreateTable<Product>();
+                        }
+                        //    Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
+                        // db.CreateTable<Client>();
+                        db.InsertAll(Products);
                     }
                     ProductsList.ItemsSource = products;
+
                     ActiveIn.IsRunning = false;
                 }
                 else
                 {
-                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                    ActiveIn.IsRunning = false;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Product");
+                        Products = (db.Table<Product>().ToList());
+                        ProductsList.ItemsSource = Products;
+                    }
+                    else
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Product");
+                        Products =(db.Table<Product>().ToList());
+                        ProductsList.ItemsSource = Products;
+                    }
                 }
             }
             catch (ValidationApiException validationException)

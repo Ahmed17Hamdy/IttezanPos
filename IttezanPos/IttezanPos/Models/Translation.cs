@@ -8,6 +8,7 @@ namespace IttezanPos.Models
     {
         public int id { get; set; }
         public int category_id { get; set; }
+        public int product_id { get; set; }
         public string name { get; set; }
         public string locale { get; set; }
     }

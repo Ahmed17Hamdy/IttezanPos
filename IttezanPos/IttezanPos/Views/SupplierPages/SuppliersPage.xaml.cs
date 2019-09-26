@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using IttezanPos.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Settings = IttezanPos.Helpers.Settings;
+using System.IO;
+using SQLite;
 
 namespace IttezanPos.Views.SupplierPages
 {
@@ -48,12 +51,65 @@ namespace IttezanPos.Views.SupplierPages
                     var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
                     RootObject data = await nsAPI.GetSettings();
                     Suppliers = new ObservableCollection<Supplier>(data.message.suppliers);
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Supplier");
+                        if (!info.Any())
+                        {
+                            db.CreateTable<Supplier>();
+                        }
+                        else
+                        {
+                            db.DropTable<Supplier>();
+                            db.CreateTable<Supplier>();
+                        }
+
+                        db.InsertAll(Suppliers);
+                    }
+                    else
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Supplier");
+                        if (!info.Any())
+                        {
+                            db.CreateTable<Supplier>();
+                        }
+                        else
+                        {
+                            db.DropTable<Supplier>();
+                            db.CreateTable<Supplier>();
+                        }
+                        //    Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
+                        // db.CreateTable<Client>();
+                        db.InsertAll(Suppliers);
+                    }
                     listviewwww.ItemsSource = Suppliers;
                     ActiveIn.IsRunning = false;
                 }
                 else
                 {
-                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                    ActiveIn.IsRunning = false;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Supplier");
+                        if (!info.Any())
+                            db.CreateTable<Supplier>();
+
+                        Suppliers = new ObservableCollection<Supplier>(db.Table<Supplier>().ToList());
+                    }
+                    else
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Supplier");
+                        Suppliers = new ObservableCollection<Supplier>(db.Table<Supplier>().ToList());
+                    }
+                    listviewwww.ItemsSource = Suppliers;
                 }
             }
 

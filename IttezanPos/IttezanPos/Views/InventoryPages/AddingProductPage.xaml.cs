@@ -105,16 +105,8 @@ namespace IttezanPos.Views.InventoryPages
                 {
                     var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
                     RootObject data = await nsAPI.GetSettings();
-                    var eachCategories = new ObservableCollection<EachCategory>(data.message.each_category);
-                    foreach (var item in eachCategories)
-                    {
-                        
-                        Categories.Add(item.category);
-                        //foreach (var i2tem in Categories)
-                        //{
-                        //    Categorylist.Items.Add(i2tem.name);
-                        //}
-                    }
+                    var eachCategories = new ObservableCollection<Category>(data.message.categories);
+                    Categories = eachCategories;
                     Categorylist.ItemsSource = Categories;
                 }
                 else
@@ -144,7 +136,7 @@ namespace IttezanPos.Views.InventoryPages
         private void Categorylist_SelectedIndexChanged(object sender, EventArgs e)
         {
             var category = Categorylist.SelectedItem as Category;
-            category_Id = category.id;           
+            category_Id = category.category.id;           
         }
         private void ByQuantity_Tapped(object sender, EventArgs e)
         {

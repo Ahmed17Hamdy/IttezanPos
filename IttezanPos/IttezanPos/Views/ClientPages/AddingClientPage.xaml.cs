@@ -1,5 +1,6 @@
 ﻿using IttezanPos.Models;
 using IttezanPos.Services;
+using IttezanPos.Views.InventoryPages.InventoryPopups;
 using Plugin.Connectivity;
 using Refit;
 using Rg.Plugins.Popup.Extensions;
@@ -21,6 +22,7 @@ namespace IttezanPos.Views.ClientPages
     {
         private Client content;
         private string edite;
+        private int limit;
 
         public AddingClientPage()
         {
@@ -43,6 +45,14 @@ namespace IttezanPos.Views.ClientPages
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            if (Limitentry.Text == "")
+            {
+                limit = 0;
+            }
+            else
+            {
+                limit = int.Parse(Limitentry.Text);
+            }
             try
             {
                 ActiveIn.IsRunning = true;
@@ -55,7 +65,7 @@ namespace IttezanPos.Views.ClientPages
                        email=Emailentry.Text,
                        phone=phoneentry.Text,
                        note=Notesentry.Text,
-                       limitt=int.Parse(Limitentry.Text)
+                       limitt= limit
                     };
                     var nsAPI = RestService.For<IClientService>("https://ittezanmobilepos.com");
                     try
@@ -65,9 +75,10 @@ namespace IttezanPos.Views.ClientPages
                         {
                             ActiveIn.IsRunning = false;                         
                             await Navigation.PushPopupAsync(new ClientAdded());
+                            await Navigation.PopAsync();
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
                         ActiveIn.IsRunning = false;
                         var data = await nsAPI.AddClientError(client);
@@ -93,6 +104,14 @@ namespace IttezanPos.Views.ClientPages
         }
         private async void Update_Clicked(object sender, EventArgs e)
         {
+            if (Limitentry.Text == "")
+            {
+                limit = 0;
+            }
+            else
+            {
+                limit = int.Parse(Limitentry.Text);
+            }
             try
             {
                 ActiveIn.IsRunning = true;
@@ -106,16 +125,17 @@ namespace IttezanPos.Views.ClientPages
                         email = Emailentry.Text,
                         phone = phoneentry.Text,
                         note = Notesentry.Text,
-                        limitt=int.Parse(Limitentry.Text)
+                        id = content.id,
+                        limitt= limit
                     };
                     var nsAPI = RestService.For<IClientService>("https://ittezanmobilepos.com");
 
                     var data = await nsAPI.UpdateClient(client);
                     if (data.success == true)
                     {
-
                         ActiveIn.IsRunning = false;
-                        await Navigation.PushPopupAsync(new ProducAddedPage(edite));
+                        await Navigation.PushPopupAsync(new ClientAdded(edite));
+                        await Navigation.PopAsync();
                     }
                 }
             }
@@ -138,7 +158,6 @@ namespace IttezanPos.Views.ClientPages
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
             }
         }
-
         private async void Deletebtn_Clicked(object sender, EventArgs e)
         {
             try

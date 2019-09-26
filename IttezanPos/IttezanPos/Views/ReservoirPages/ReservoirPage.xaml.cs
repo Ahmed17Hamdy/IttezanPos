@@ -13,6 +13,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static IttezanPos.Helpers.CurrencyInfo;
 using static IttezanPos.ViewModels.BoxViewModel;
+using Settings = IttezanPos.Helpers.Settings;
 
 namespace IttezanPos.Views.ReservoirPages
 {

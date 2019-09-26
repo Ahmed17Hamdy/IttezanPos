@@ -24,7 +24,7 @@
             HorizontalOptions="CenterAndExpand"
             VerticalOptions="CenterAndExpand">
             <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                <Label x:Name="Supplierlbl" Text="{tr:Translate SupplierAdded}" />
+                <Label x:Name="Supplierlbl" Text="{tr:Translate ClientAdded}" />
             </StackLayout>
 
         </Frame>
