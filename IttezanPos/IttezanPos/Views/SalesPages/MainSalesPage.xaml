@@ -27,14 +27,29 @@
         <AbsoluteLayout Margin="10,5">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.9" AbsoluteLayout.LayoutFlags="All">
                 <Frame
+                    Padding="0"
                     CornerRadius="10"
-                    HasShadow="True"
                     Visual="Material">
-                    <StackLayout Orientation="Horizontal" Spacing="5">
-                        <Label HorizontalOptions="CenterAndExpand" Text="{tr:Translate EmptyCart}" />
-                        <Label HorizontalOptions="StartAndExpand" Text="{tr:Translate EmptyCart}" />
-                        <Label HorizontalOptions="EndAndExpand" Text="{tr:Translate EmptyCart}" />
-                    </StackLayout>
+                    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                        <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal">
+                            <Label
+                                x:Name="cartnolbl"
+                                FontSize="Large"
+                                HorizontalOptions="Center"
+                                Text=""
+                                TextColor="#33b54b"
+                                VerticalOptions="Center" />
+                            <Image
+                                Margin="5"
+                                Aspect="AspectFit"
+                                HeightRequest="100"
+                                HorizontalOptions="Center"
+                                Source="cart.png"
+                                VerticalOptions="Center" />
+
+                        </StackLayout>
+
+                    </Grid>
                 </Frame>
                 <Frame
                     Padding="0"
