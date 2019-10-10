@@ -117,10 +117,10 @@ namespace IttezanPos.Views.SupplierPages
                         var data = await nsAPI.UpdateSupplier(supplier);
                         if (data.success == true)
                         {
-                          
                             ActiveIn.IsRunning = false;
                             await Navigation.PushPopupAsync(new SupplierAddedPopup(edite));
-                        }                
+                        await Navigation.PopAsync();
+                    }                
                 }
             }
             catch (ValidationApiException validationException)
