@@ -553,6 +553,9 @@
   <data name="SelectpicMode" xml:space="preserve">
     <value>Images Mode</value>
   </data>
+  <data name="SelectProduct" xml:space="preserve">
+    <value>Please Add Products first </value>
+  </data>
   <data name="Selling" xml:space="preserve">
     <value>Selling</value>
   </data>
@@ -585,6 +588,9 @@
   </data>
   <data name="Statement" xml:space="preserve">
     <value>Statement</value>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>SubTotal :</value>
   </data>
   <data name="SupplierAdded" xml:space="preserve">
     <value>Supplier Added Successfuly</value>
@@ -630,6 +636,9 @@
   </data>
   <data name="TotalAmount" xml:space="preserve">
     <value>Total Amount</value>
+  </data>
+  <data name="TotalDisc" xml:space="preserve">
+    <value>Total Discount :</value>
   </data>
   <data name="TrackinStore" xml:space="preserve">
     <value>TrackinStore</value>

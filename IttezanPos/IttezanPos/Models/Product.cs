@@ -15,12 +15,15 @@ namespace IttezanPos.Models
         public int category_id { get; set; }
         public string  product_name { get; set; }
         public int product_id { get; set; }
+        public int quantity { get; set; }
+        public string discount { get; set; }
         public string user { get; set; }
         public string name { get; set; }
         public string namee { get; set; }
         public string locale { get; set; }
         public string image { get; set; }
         public int purchase_price { get; set; }
+        public double total_price { get; set; }
         public int sale_price { get; set; }
         public int stock { get; set; }
         public string profit_percent { get; set; }
@@ -38,5 +41,14 @@ namespace IttezanPos.Models
         public string data { get; set; }
         public string message { get; set; }
     }
-
+   public class SaleProduct : Product
+    {
+        public int order_id { get; set; }
+       
+        public int client_id { get; set; }
+        public string payment_type { get; set; }
+        public string total_price { get; set; }
+        public string amount_paid { get; set; }
+        public int remaining_amount { get; set; }
+    }
 }

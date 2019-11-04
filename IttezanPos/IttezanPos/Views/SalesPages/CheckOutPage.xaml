@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IttezanPos.Views.SalesPages.CheckOutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                FontSize="Subtitle"
+                HorizontalOptions="Center"
+                Text="Choose Customer"
+                TextColor="#33b54b"
+                TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Customer_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Frame
+                Grid.Row="1"
+                Margin="0"
+                Padding="0"
+                BackgroundColor="#33b54b"
+                CornerRadius="20"
+                VerticalOptions="Start">
+                <Grid Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout
+                        Grid.Column="0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center">
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label Text="{tr:Translate SubTotal}" />
+                            <Label x:Name="subtotallbl" Text="0" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label Text="{tr:Translate TotalDisc}" />
+                            <Label
+                                x:Name="Disclbl"
+                                HorizontalOptions="FillAndExpand"
+                                Text="{tr:Translate Zero}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Column="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center">
+                        <Label HorizontalOptions="Center" Text="{tr:Translate total}" />
+                        <Label
+                            x:Name="totallbl"
+                            HorizontalOptions="Center"
+                            Text="{tr:Translate Zero}" />
+                    </StackLayout>
+
+
+                </Grid>
+            </Frame>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

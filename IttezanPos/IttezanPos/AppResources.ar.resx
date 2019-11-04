@@ -555,6 +555,9 @@
   <data name="SelectpicMode" xml:space="preserve">
     <value>نمط الصورة</value>
   </data>
+  <data name="SelectProduct" xml:space="preserve">
+    <value>من فضلك قم بإضافة المنتجات أولاً</value>
+  </data>
   <data name="Selling" xml:space="preserve">
     <value>البيع</value>
   </data>
@@ -587,6 +590,9 @@
   </data>
   <data name="Statement" xml:space="preserve">
     <value>البيان</value>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value> : المبلغ الإجمالي</value>
   </data>
   <data name="SupplierAdded" xml:space="preserve">
     <value>تم إضافة المورد بنجاح</value>
@@ -632,6 +638,9 @@
   </data>
   <data name="TotalAmount" xml:space="preserve">
     <value>إجمالى المبلغ</value>
+  </data>
+  <data name="TotalDisc" xml:space="preserve">
+    <value>: إجمالي الخصم</value>
   </data>
   <data name="TrackinStore" xml:space="preserve">
     <value>تتبع في المخزون</value>

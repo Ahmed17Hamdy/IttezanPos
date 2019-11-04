@@ -1367,6 +1367,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Add Products first .
+        /// </summary>
+        internal static string SelectProduct {
+            get {
+                return ResourceManager.GetString("SelectProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selling.
         /// </summary>
         internal static string Selling {
@@ -1462,6 +1471,15 @@ namespace IttezanPos {
         internal static string Statement {
             get {
                 return ResourceManager.GetString("Statement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SubTotal :.
+        /// </summary>
+        internal static string SubTotal {
+            get {
+                return ResourceManager.GetString("SubTotal", resourceCulture);
             }
         }
         
@@ -1597,6 +1615,15 @@ namespace IttezanPos {
         internal static string TotalAmount {
             get {
                 return ResourceManager.GetString("TotalAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Discount :.
+        /// </summary>
+        internal static string TotalDisc {
+            get {
+                return ResourceManager.GetString("TotalDisc", resourceCulture);
             }
         }
         
