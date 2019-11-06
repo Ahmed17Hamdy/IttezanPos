@@ -233,7 +233,7 @@ namespace IttezanPos.Views.SalesPages
                         };
                         var content = new MultipartFormDataContent();
                         var js = JsonConvert.SerializeObject(products);
-                        content.Add(new StringContent(js, Encoding.UTF8, "text/json"), "item");
+                        content.Add(new StringContent(js, Encoding.UTF8, "text/json"), "products");
                         var response = await client.PostAsync("https://ittezanmobilepos.com/api/makeOrder", content);
                         if (response.IsSuccessStatusCode)
                         {
