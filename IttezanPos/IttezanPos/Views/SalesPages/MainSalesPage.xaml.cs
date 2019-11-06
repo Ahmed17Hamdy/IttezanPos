@@ -103,7 +103,12 @@ namespace IttezanPos.Views.SalesPages
                     Categories = eachCategories;
                     foreach (var item in eachCategories)
                     {
-                        Products.AddRange(item.category.list_of_products);                     
+                        foreach (var item2 in item.category.list_of_products)
+                        {
+                            item2.product_id = item2.id;
+                        }
+                        Products.AddRange(item.category.list_of_products);  
+                        
                     }
                     if (Device.RuntimePlatform == Device.iOS)
                     {

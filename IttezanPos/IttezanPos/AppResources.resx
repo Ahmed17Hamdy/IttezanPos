@@ -246,6 +246,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="CaSh" xml:space="preserve">
+    <value>Cash</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
   </data>
@@ -257,6 +260,12 @@
   </data>
   <data name="ChooseCategory" xml:space="preserve">
     <value>Choose Category</value>
+  </data>
+  <data name="ChooseCustomer" xml:space="preserve">
+    <value>Choose Customer</value>
+  </data>
+  <data name="ChoosePaymentType" xml:space="preserve">
+    <value>Payment Type</value>
   </data>
   <data name="ClientAdded" xml:space="preserve">
     <value>Client Added Successfully !</value>
@@ -354,6 +363,9 @@
   <data name="EnglishTitle" xml:space="preserve">
     <value>English Name</value>
   </data>
+  <data name="EnterAmountPaid" xml:space="preserve">
+    <value>Enter Amount Paid</value>
+  </data>
   <data name="Entertheamount" xml:space="preserve">
     <value>Enter the amount</value>
   </data>
@@ -435,6 +447,9 @@
   <data name="NeedCamera" xml:space="preserve">
     <value>Needs Permission For Using Camera</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
   <data name="Nine" xml:space="preserve">
     <value>Nine</value>
   </data>
@@ -459,11 +474,17 @@
   <data name="Openingbalanceforcustomers" xml:space="preserve">
     <value>Opening balance for Clients</value>
   </data>
+  <data name="Or" xml:space="preserve">
+    <value>Or</value>
+  </data>
   <data name="OrderType" xml:space="preserve">
     <value>Order Type</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>Payment</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Choose Payment Type</value>
   </data>
   <data name="Percentage" xml:space="preserve">
     <value>Percentage %</value>
@@ -579,6 +600,9 @@
   </data>
   <data name="Sixty" xml:space="preserve">
     <value>Sixty</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>Or Skip</value>
   </data>
   <data name="SR" xml:space="preserve">
     <value>SR</value>

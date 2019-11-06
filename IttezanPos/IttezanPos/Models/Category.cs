@@ -12,7 +12,7 @@ namespace IttezanPos.Models
         [ForeignKey(typeof(Category2))]
         public int categoryId { get; set; }
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
-        public Category2 category { get; set; }     
+        public Category2 category { get; set; }
     }
     public class Settings
     {
@@ -46,7 +46,7 @@ namespace IttezanPos.Models
     }
     public class Category2
     {
-        [OneToMany] 
+        [OneToMany]
         public List<Category> categories { get; set; }
         [JsonProperty("id")]
         public int id { get; set; }
@@ -62,25 +62,42 @@ namespace IttezanPos.Models
         public List<Translation> translations { get; set; }
     }
 
-   
+
     public class Message
     {
         [JsonProperty("settings")]
         public Settings settings { get; set; }
         [JsonProperty("clients")]
         public List<Client> clients { get; set; }
-        
+
         [JsonProperty("suppliers")]
         public List<Supplier> suppliers { get; set; }
         [JsonProperty("box")]
+
         public Box box { get; set; }
+        [JsonProperty("payments")]
+        public List<Payment> payments { get; set; }
         [JsonProperty("users")]
         public List<User> users { get; set; }
-     
+
         [JsonProperty("categories")]
         public List<Category> categories { get; set; }
     }
-
+    public class Payment
+    {
+        [JsonProperty("id")]
+        public int id { get; set; }
+        [JsonProperty("name")]
+        public string name { get; set; }
+        [JsonProperty("en_name")]
+        public string en_name { get; set; }
+        [JsonProperty("payment_type_number")]
+        public int payment_type_number { get; set; }
+        [JsonProperty("created_at")]
+        public string created_at { get; set; }
+        [JsonProperty("updated_at")]
+        public string updated_at { get; set; }
+    }
     public class RootObject
     {
         [JsonProperty("success")]

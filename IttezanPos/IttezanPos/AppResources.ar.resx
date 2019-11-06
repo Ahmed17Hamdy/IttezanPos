@@ -246,6 +246,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>إلغاء</value>
   </data>
+  <data name="CaSh" xml:space="preserve">
+    <value>نقداً</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>التصنيف</value>
   </data>
@@ -257,6 +260,12 @@
   </data>
   <data name="ChooseCategory" xml:space="preserve">
     <value>إختر التصنيف</value>
+  </data>
+  <data name="ChooseCustomer" xml:space="preserve">
+    <value>إختر العميل</value>
+  </data>
+  <data name="ChoosePaymentType" xml:space="preserve">
+    <value>نوع الدفع</value>
   </data>
   <data name="ClientAdded" xml:space="preserve">
     <value>تم إضافة العميل بنجاح !</value>
@@ -354,6 +363,9 @@
   <data name="EnglishTitle" xml:space="preserve">
     <value>الإسم بالإنجليزية</value>
   </data>
+  <data name="EnterAmountPaid" xml:space="preserve">
+    <value>أدخل المبلغ المدفوع</value>
+  </data>
   <data name="Entertheamount" xml:space="preserve">
     <value>أدخل المبلغ</value>
   </data>
@@ -435,6 +447,9 @@
   <data name="NeedCamera" xml:space="preserve">
     <value>يحتاج التطبيق إلى السماح بإستخدام الكاميرا</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
   <data name="Nine" xml:space="preserve">
     <value>تسعة</value>
   </data>
@@ -459,11 +474,17 @@
   <data name="Openingbalanceforcustomers" xml:space="preserve">
     <value>الأرصدة الإفتتاحية للعملاء</value>
   </data>
+  <data name="Or" xml:space="preserve">
+    <value>أو</value>
+  </data>
   <data name="OrderType" xml:space="preserve">
     <value>نوع الطلب</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>الدفع</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>إختر نوع الدفع</value>
   </data>
   <data name="Percentage" xml:space="preserve">
     <value>% نسبة</value>
@@ -581,6 +602,9 @@
   </data>
   <data name="Sixty" xml:space="preserve">
     <value>ستون</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>أو تجاهل</value>
   </data>
   <data name="SR" xml:space="preserve">
     <value>ريال سعودي</value>

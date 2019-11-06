@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage
+<ContentPage
     x:Class="IttezanPos.Views.SalesPages.SalesPopups.ClientPopup"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -10,130 +10,122 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:tr="clr-namespace:IttezanPos.Helpers"
     BackgroundColor="White"
-    HasSystemPadding="True"
     mc:Ignorable="d">
-    <pages:PopupPage.Animation>
-        <animations:ScaleAnimation
-            DurationIn="1000"
-            EasingIn="BounceOut"
-            PositionIn="Bottom"
-            PositionOut="Center"
-            ScaleIn="1"
-            ScaleOut="0.7" />
-    </pages:PopupPage.Animation>
-    <pages:PopupPage.Content>
-        <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
-            <Grid>
-                <StackLayout Margin="10">
-                    <StackLayout>
-                        <Label
-                            Grid.Row="0"
-                            FontSize="Large"
-                            HorizontalOptions="Center"
-                            Text="{tr:Translate ViewClient}"
-                            TextColor="#33b54b"
-                            VerticalOptions="Center" />
-                        <StackLayout
-                            Padding="0"
-                            ef:Border.Color="Black"
-                            ef:Border.Radius="1"
-                            ef:Border.Width="1"
-                            HorizontalOptions="Fill"
-                            Orientation="Horizontal"
-                            Spacing="0">
-                            <SearchBar
-                                x:Name="SearchBar"
-                                Margin="5"
-                                ef:Border.Color="LightGray"
-                                ef:Border.Radius="20"
-                                ef:Border.Width="1"
-                                CancelButtonColor="Red"
-                                FontSize="Micro"
-                                HorizontalOptions="FillAndExpand"
-                                Placeholder="{tr:Translate SearchClient}"
-                                SearchButtonPressed="SearchBar_SearchButtonPressed"
-                                TextChanged="OnTextChanged"
-                                WidthRequest="200" />
-                        </StackLayout>
-                    </StackLayout>
+
+    <ContentPage.Content>
+
+        <Grid>
+            <StackLayout Margin="10">
+                <StackLayout>
+                    <Label
+                        Grid.Row="0"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{tr:Translate AddNewClient}"
+                        TextColor="#33b54b"
+                        TextDecorations="Underline"
+                        VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddClient_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <StackLayout
+                        Padding="0"
                         ef:Border.Color="Black"
                         ef:Border.Radius="1"
-                        ef:Border.Width="1">
-                        <ListView
-                            x:Name="listviewwww"
-                            Margin="0"
-                            HasUnevenRows="True"
-                            ItemTapped="Listviewwww_ItemTapped"
-                            ItemsSource="{Binding Clients}"
-                            Visual="Material">
-                            <ListView.Header>
-                                <Grid
-                                    x:Name="listheaderlistv"
-                                    Padding="0,10"
-                                    ef:Border.Color="Black"
-                                    ef:Border.Radius="1"
-                                    ef:Border.Width="1"
-                                    ColumnSpacing="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label
-                                        Grid.Column="0"
-                                        Margin="5,0,5,0"
-                                        FontSize="Small"
-                                        HorizontalOptions="Start"
-                                        Text="{tr:Translate ClientsData}"
-                                        TextColor="Black" />
-
-                                    <Label
-                                        Grid.Column="1"
-                                        FontSize="Small"
-                                        Text="{tr:Translate PhoneNumber}"
-                                        TextColor="Black" />
-                                </Grid>
-                            </ListView.Header>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Grid Margin="10">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="2*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Label
-                                                Grid.Column="0"
-                                                FontSize="Small"
-                                                HorizontalOptions="Start"
-                                                Text="{Binding name}"
-                                                TextColor="Black" />
-                                            <Label
-                                                Grid.Column="1"
-                                                Text="{Binding phone}"
-                                                TextColor="Black" />
-                                        </Grid>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                        ef:Border.Width="1"
+                        HorizontalOptions="Fill"
+                        Orientation="Horizontal"
+                        Spacing="0">
+                        <SearchBar
+                            x:Name="SearchBar"
+                            Margin="5"
+                            ef:Border.Color="LightGray"
+                            ef:Border.Radius="20"
+                            ef:Border.Width="1"
+                            CancelButtonColor="Red"
+                            FontSize="Micro"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="{tr:Translate SearchClient}"
+                            SearchButtonPressed="SearchBar_SearchButtonPressed"
+                            TextChanged="OnTextChanged"
+                            WidthRequest="200" />
                     </StackLayout>
-
                 </StackLayout>
-                <ActivityIndicator
-                    x:Name="ActiveIn"
-                    HeightRequest="100"
-                    HorizontalOptions="Center"
-                    IsRunning="False"
-                    VerticalOptions="Center"
-                    WidthRequest="100"
-                    Color="#33b54b" />
-            </Grid>
-        </ScrollView>
+                <StackLayout
+                    ef:Border.Color="Black"
+                    ef:Border.Radius="1"
+                    ef:Border.Width="1">
+                    <ListView
+                        x:Name="listviewwww"
+                        Margin="0"
+                        HasUnevenRows="True"
+                        ItemTapped="Listviewwww_ItemTapped"
+                        ItemsSource="{Binding Clients}"
+                        Visual="Material">
+                        <ListView.Header>
+                            <Grid
+                                x:Name="listheaderlistv"
+                                Padding="0,10"
+                                ef:Border.Color="Black"
+                                ef:Border.Radius="1"
+                                ef:Border.Width="1"
+                                ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="5,0,5,0"
+                                    FontSize="Small"
+                                    HorizontalOptions="Start"
+                                    Text="{tr:Translate ClientsData}"
+                                    TextColor="Black" />
+
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Small"
+                                    Text="{tr:Translate PhoneNumber}"
+                                    TextColor="Black" />
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Margin="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="Small"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding name}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding phone}"
+                                            TextColor="Black" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+            </StackLayout>
+            <ActivityIndicator
+                x:Name="ActiveIn"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                IsRunning="False"
+                VerticalOptions="Center"
+                WidthRequest="100"
+                Color="#33b54b" />
+        </Grid>
 
 
-
-
-
-    </pages:PopupPage.Content>
-</pages:PopupPage>
+    </ContentPage.Content>
+</ContentPage>

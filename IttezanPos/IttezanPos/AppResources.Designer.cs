@@ -448,6 +448,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cash.
+        /// </summary>
+        internal static string CaSh {
+            get {
+                return ResourceManager.GetString("CaSh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category.
         /// </summary>
         internal static string Category {
@@ -480,6 +489,24 @@ namespace IttezanPos {
         internal static string ChooseCategory {
             get {
                 return ResourceManager.GetString("ChooseCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose Customer.
+        /// </summary>
+        internal static string ChooseCustomer {
+            get {
+                return ResourceManager.GetString("ChooseCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment Type.
+        /// </summary>
+        internal static string ChoosePaymentType {
+            get {
+                return ResourceManager.GetString("ChoosePaymentType", resourceCulture);
             }
         }
         
@@ -772,6 +799,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter Amount Paid.
+        /// </summary>
+        internal static string EnterAmountPaid {
+            get {
+                return ResourceManager.GetString("EnterAmountPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the amount.
         /// </summary>
         internal static string Entertheamount {
@@ -1015,6 +1051,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        internal static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nine.
         /// </summary>
         internal static string Nine {
@@ -1087,6 +1132,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Or.
+        /// </summary>
+        internal static string Or {
+            get {
+                return ResourceManager.GetString("Or", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order Type.
         /// </summary>
         internal static string OrderType {
@@ -1101,6 +1155,15 @@ namespace IttezanPos {
         internal static string Payment {
             get {
                 return ResourceManager.GetString("Payment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose Payment Type.
+        /// </summary>
+        internal static string PaymentType {
+            get {
+                return ResourceManager.GetString("PaymentType", resourceCulture);
             }
         }
         
@@ -1444,6 +1507,15 @@ namespace IttezanPos {
         internal static string Sixty {
             get {
                 return ResourceManager.GetString("Sixty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Or Skip.
+        /// </summary>
+        internal static string Skip {
+            get {
+                return ResourceManager.GetString("Skip", resourceCulture);
             }
         }
         

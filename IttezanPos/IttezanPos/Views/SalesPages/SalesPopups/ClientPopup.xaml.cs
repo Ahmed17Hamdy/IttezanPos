@@ -1,5 +1,6 @@
 ﻿using IttezanPos.Models;
 using IttezanPos.Services;
+using IttezanPos.Views.ClientPages;
 using Plugin.Connectivity;
 using Refit;
 using Rg.Plugins.Popup.Pages;
@@ -18,7 +19,7 @@ using Xamarin.Forms.Xaml;
 namespace IttezanPos.Views.SalesPages.SalesPopups
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ClientPopup : PopupPage
+    public partial class ClientPopup : ContentPage
     {
         private ObservableCollection<Client> clients = new ObservableCollection<Client>();
         public ObservableCollection<Client> Clients
@@ -33,6 +34,7 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
         public ClientPopup()
         {
             InitializeComponent();
+
         }
         protected override void OnAppearing()
         {
@@ -136,7 +138,8 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
         private async void Listviewwww_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var content = e.Item as Client;
-          //  await Navigation.PushAsync(new AddingClientPage(content));
+            MessagingCenter.Send(new Client() { name = content.name }, "PopUpData");
+            await Navigation.PopAsync();
         }
         private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
         {
@@ -150,6 +153,11 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
             var keyword = SearchBar.Text;
             listviewwww.ItemsSource = Clients.Where(product => product.name.ToLower().Contains(keyword.ToLower()));
 
+        }
+
+        private async void AddClient_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddingClientPage());
         }
     }
 }

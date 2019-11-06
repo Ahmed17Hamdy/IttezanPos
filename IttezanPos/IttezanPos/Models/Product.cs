@@ -8,7 +8,7 @@ namespace IttezanPos.Models
 {
  public   class Product
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int id { get; set; }
         public string user_id { get; set; }
         public string catname { get; set; }
