@@ -189,6 +189,9 @@
   <data name="AddToFund" xml:space="preserve">
     <value>Add To Fund</value>
   </data>
+  <data name="AddTotaldiscount" xml:space="preserve">
+    <value>Add Total discount</value>
+  </data>
   <data name="Alert" xml:space="preserve">
     <value>⚠️ Alert </value>
   </data>
@@ -456,6 +459,9 @@
   <data name="Ninety" xml:space="preserve">
     <value>Ninety</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>Notes</value>
   </data>
@@ -637,6 +643,9 @@
   <data name="Suppliers" xml:space="preserve">
     <value>Suppliers</value>
   </data>
+  <data name="SureTodiscard" xml:space="preserve">
+    <value>Are You Sure you want to discard this reciept creation ?</value>
+  </data>
   <data name="Ten" xml:space="preserve">
     <value>Ten</value>
   </data>
@@ -697,6 +706,9 @@
   <data name="UsedEmail" xml:space="preserve">
     <value>This Email is used before </value>
   </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
   <data name="ViewClient" xml:space="preserve">
     <value>View Clients</value>
   </data>
@@ -714,6 +726,9 @@
   </data>
   <data name="ViewSupplierreceivables" xml:space="preserve">
     <value>View Supplier Receivables</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
   <data name="Zero" xml:space="preserve">
     <value>0</value>

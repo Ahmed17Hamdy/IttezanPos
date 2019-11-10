@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SQLite;
 using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace IttezanPos.Models
 
         [ForeignKey(typeof(Category2))]
         public int categoryId { get; set; }
-        [ManyToOne(CascadeOperations = CascadeOperation.All)]
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
         public Category2 category { get; set; }
     }
     public class Settings
@@ -46,10 +47,12 @@ namespace IttezanPos.Models
     }
     public class Category2
     {
-        [OneToMany]
-        public List<Category> categories { get; set; }
+        [PrimaryKey]
         [JsonProperty("id")]
         public int id { get; set; }
+        [OneToMany]
+        public List<Category> categories { get; set; }
+       
         [JsonProperty("created_at")]
         public string created_at { get; set; }
         [JsonProperty("updated_at")]
@@ -58,6 +61,7 @@ namespace IttezanPos.Models
         public List<Product> list_of_products { get; set; }
         [JsonProperty("name")]
         public string name { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         [JsonProperty("translations")]
         public List<Translation> translations { get; set; }
     }

@@ -189,6 +189,9 @@
   <data name="AddToFund" xml:space="preserve">
     <value>أضف للصندوق</value>
   </data>
+  <data name="AddTotaldiscount" xml:space="preserve">
+    <value>أضف إجمالي الخصم</value>
+  </data>
   <data name="Alert" xml:space="preserve">
     <value>تنبيه ⚠️</value>
   </data>
@@ -456,6 +459,9 @@
   <data name="Ninety" xml:space="preserve">
     <value>تسعون</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>لا</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>ملاحظات</value>
   </data>
@@ -616,7 +622,7 @@
     <value>البيان</value>
   </data>
   <data name="SubTotal" xml:space="preserve">
-    <value> : المبلغ الإجمالي</value>
+    <value> المبلغ الإجمالي :</value>
   </data>
   <data name="SupplierAdded" xml:space="preserve">
     <value>تم إضافة المورد بنجاح</value>
@@ -638,6 +644,9 @@
   </data>
   <data name="Suppliers" xml:space="preserve">
     <value>الموردين</value>
+  </data>
+  <data name="SureTodiscard" xml:space="preserve">
+    <value>هل تريد إلغاء هذه الفاتورة ؟</value>
   </data>
   <data name="Ten" xml:space="preserve">
     <value>عشرة</value>
@@ -664,7 +673,7 @@
     <value>إجمالى المبلغ</value>
   </data>
   <data name="TotalDisc" xml:space="preserve">
-    <value>: إجمالي الخصم</value>
+    <value>إجمالي الخصم :</value>
   </data>
   <data name="TrackinStore" xml:space="preserve">
     <value>تتبع في المخزون</value>
@@ -699,6 +708,9 @@
   <data name="UsedEmail" xml:space="preserve">
     <value>هذا البريد الإلكتروني مسجل بالفعل</value>
   </data>
+  <data name="Value" xml:space="preserve">
+    <value>قيمة</value>
+  </data>
   <data name="ViewClient" xml:space="preserve">
     <value>عرض العملاء</value>
   </data>
@@ -716,6 +728,9 @@
   </data>
   <data name="ViewSupplierreceivables" xml:space="preserve">
     <value>عرض ذمم الموردين</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>نعم</value>
   </data>
   <data name="Zero" xml:space="preserve">
     <value>0</value>

@@ -277,6 +277,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Total discount.
+        /// </summary>
+        internal static string AddTotaldiscount {
+            get {
+                return ResourceManager.GetString("AddTotaldiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ⚠️ Alert .
         /// </summary>
         internal static string Alert {
@@ -1078,6 +1087,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
         internal static string Notes {
@@ -1619,6 +1637,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are You Sure you want to discard this reciept creation ?.
+        /// </summary>
+        internal static string SureTodiscard {
+            get {
+                return ResourceManager.GetString("SureTodiscard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ten.
         /// </summary>
         internal static string Ten {
@@ -1799,6 +1826,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        internal static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View Clients.
         /// </summary>
         internal static string ViewClient {
@@ -1849,6 +1885,15 @@ namespace IttezanPos {
         internal static string ViewSupplierreceivables {
             get {
                 return ResourceManager.GetString("ViewSupplierreceivables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
         

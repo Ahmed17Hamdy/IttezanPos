@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using IttezanPos.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
@@ -18,6 +18,9 @@ using DLToolkit.Forms.Controls;
 using static IttezanPos.Services.OfflineDataBase;
 using System.IO;
 using SQLite;
+using Plugin.Multilingual;
+using Rg.Plugins.Popup.Extensions;
+using IttezanPos.Views.SalesPages.SalesPopups;
 
 namespace IttezanPos.Views.SalesPages
 {
@@ -78,11 +81,55 @@ namespace IttezanPos.Views.SalesPages
         }
         public MainSalesPage()
         {
-            InitializeComponent();          
+            InitializeComponent();
+            if (IttezanPos.Helpers.Settings.LastUserGravity == "Arabic")
+            {
+                CategoryListar.IsVisible = true;
+                CategoryListen.IsVisible = false;
+            }
+            else
+            {
+                CategoryListar.IsVisible = false;
+                CategoryListen.IsVisible = true;
+            }
+            MessagingCenter.Subscribe<ValuePercent>(this, "PopUpData", (value) =>
+            {
+                if (value.Value != "")
+                {
+                    Disclbl.Text = value.Value;
+                    totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString();
+                }
+                else
+                {
+                    Disclbl.Text = (double.Parse(value.Percentage)*double.Parse(subtotallbl.Text)).ToString();
+                    totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString();
+
+                }
+
+            });
+
+            FlowDirectionPage();
+        }
+        private async void FlowDirectionPage()
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                FlowDirection = (Helpers.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
+             : FlowDirection.LeftToRight;
+                CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().
+             First(element => element.EnglishName.Contains(Helpers.Settings.LastUserGravity));
+                AppResources.Culture = CrossMultilingual.Current.CurrentCultureInfo;
+            }
+            else
+            {
+                await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
+            }
         }
         protected override bool OnBackButtonPressed()
         {
-            CategoryList.Unfocus();
+            CategoryListen.Unfocus();
+            CategoryListar.Unfocus();
             return base.OnBackButtonPressed();
         }
         protected override void OnAppearing()
@@ -124,7 +171,7 @@ namespace IttezanPos.Views.SalesPages
 
                             db.CreateTable<Product>();
                         }
-                        db.DropTable<Product>();
+                        db.DeleteAll<Product>();
                         db.InsertAll(Products);
                     }
                     else
@@ -132,25 +179,19 @@ namespace IttezanPos.Views.SalesPages
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Product");
-                        if (!info.Any())
-                        {
+                            db.DeleteAll<Product>();
                             db.CreateTable<Product>();
                             db.CreateTable<Category>();
-                        }
-                        else
+                        foreach (var item in Products)
                         {
-                            db.DropTable<Product>();
-                           db.DropTable<Category>();
-                            db.CreateTable<Product>();
-                            db.CreateTable<Category>();
+                            db.InsertOrReplace(item);
                         }
-                        //    Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
-                      
-                       db.InsertAll(Products);
+                       
                         db.InsertAll(Categories);
                     }
                     ProductsList.FlowItemsSource = products;
-                    CategoryList.ItemsSource = Categories;
+                    CategoryListen.ItemsSource = Categories;
+                    CategoryListar.ItemsSource = Categories;
                     ActiveIn.IsRunning = false;
                 }
                 else
@@ -175,11 +216,12 @@ namespace IttezanPos.Views.SalesPages
                         var info = db.GetTableInfo("Product");
                         var info2 = db.GetTableInfo("Category");
                         Products = (db.Table<Product>().ToList());
-                        Categories1 = (db.Table<Category>().ToList());
+                        Categories = new ObservableCollection<Category>(db.Table<Category>().ToList());
 
                     }
                     ProductsList.FlowItemsSource = Products;
-                    CategoryList.ItemsSource = Categories;
+                    CategoryListar.ItemsSource = Categories;
+                    CategoryListen.ItemsSource = Categories;
                 }
             }
             catch (ValidationApiException validationException)
@@ -327,11 +369,16 @@ namespace IttezanPos.Views.SalesPages
 
         private void CategoryList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var category = CategoryList.SelectedItem as Category;
+            var category = CategoryListar.SelectedItem as Category;
+            ProductsList.FlowItemsSource = Products.Where(product => product.catname.Contains(category.category.name)).ToList();
+        }
+        private void CategoryListen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var category = CategoryListen.SelectedItem as Category;
             ProductsList.FlowItemsSource = Products.Where(product => product.catname.Contains(category.category.name)).ToList();
         }
 
-     
+
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -489,6 +536,59 @@ namespace IttezanPos.Views.SalesPages
             {
                 await Navigation.PushAsync(new CheckOutPage(saleproducts, Disclbl.Text,totallbl.Text,subtotallbl.Text));
             }
+        }
+
+        private async void Discard_Tapped(object sender, EventArgs e)
+        {
+            if (SaleProducts.Count() == 0)
+            {
+                await DisplayAlert(AppResources.Alert, AppResources.SelectProduct, AppResources.Ok);
+
+            }
+            else
+            {
+                var action = await DisplayAlert(AppResources.Alert, AppResources.SureTodiscard, AppResources.Yes, AppResources.No);
+                if (action)
+                {
+                    SaleProducts.Clear();
+                    Salesro.Clear();
+                    totallbl.Text = AppResources.Zero;
+                    subtotallbl.Text = AppResources.Zero;
+                    Disclbl.Text = AppResources.Zero;
+                    cartnolbl.Text = AppResources.Zero;
+                }
+            }
+         
+            
+        }
+
+        private void delete_Clicked(object sender, EventArgs e)
+        {
+            if (((sender as Button).BindingContext is Product _selectedro))
+            {
+                var obj = SaleProducts.Find(x => x.id == _selectedro.id);
+                cartnolbl.Text = (int.Parse(cartnolbl.Text) - _selectedro.quantity).ToString();
+                subtotallbl.Text = (double.Parse(subtotallbl.Text) - _selectedro.total_price).ToString();
+                totallbl.Text = (double.Parse(subtotallbl.Text) - (double.Parse(Disclbl.Text))).ToString("0.00");
+                saleproducts.Remove(obj);
+                Salesro = new ObservableCollection<Product>(SaleProducts);
+                SalesList.ItemsSource = Salesro;
+            }
+
+        }
+
+        private async void Discount_Tapped(object sender, EventArgs e)
+        {
+            if (SaleProducts.Count() == 0)
+            {
+                await DisplayAlert(AppResources.Alert, AppResources.SelectProduct, AppResources.Ok);
+
+            }
+            else
+            {
+                await Navigation.PushPopupAsync(new CalculatorPage());
+            }
+
         }
     }
 }   

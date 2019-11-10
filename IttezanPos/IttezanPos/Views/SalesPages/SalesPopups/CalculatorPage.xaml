@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="IttezanPos.Views.SalesPages.SalesPopups.CalculatorPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    mc:Ignorable="d">
+    <pages:PopupPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="BackgroundColor" Value="#33b54b" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+    </pages:PopupPage.Resources>
+    <pages:PopupPage.Content>
+        <Grid
+            Margin="20"
+            ef:Border.Color="#33b54b"
+            ef:Border.Radius="20"
+            ef:Border.Width="1"
+            BackgroundColor="White"
+            VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="{tr:Translate AddTotaldiscount}" />
+            <input:RadioButtonGroupView
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <input:RadioButton
+                    x:Name="Valuebtn"
+                    Clicked="Valuebtn_Clicked"
+                    IsChecked="True"
+                    Text="{tr:Translate Value}"
+                    TextColor="White"
+                    TextFontSize="15"
+                    Color="#33b54b" />
+                <input:RadioButton
+                    x:Name="Percentagebtn"
+                    Clicked="Percentagebtn_Clicked"
+                    Text="{tr:Translate Percentage}"
+                    TextColor="White"
+                    TextFontSize="15"
+                    Color="Red" />
+            </input:RadioButtonGroupView>
+            <Label
+                x:Name="Resultlbl"
+                Grid.Row="2"
+                Margin="5"
+                ef:Border.Color="#33b54b"
+                ef:Border.Radius="10"
+                ef:Border.Width="1"
+                BackgroundColor="White"
+                Text=""
+                TextColor="#33b54b" />
+            <StackLayout Grid.Row="3" Orientation="Horizontal">
+                <Label
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="1">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="One_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="2">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="two_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="3">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="three_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout Grid.Row="4" Orientation="Horizontal">
+                <Label
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="4">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="four_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="5">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="five_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="6">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="six_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout Grid.Row="5" Orientation="Horizontal">
+                <Label
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="7">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="seven_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="8">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="eight_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="9">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="nine_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Zero_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Grid.Column="1"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text=".">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="dot_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Grid.Column="2"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Clear">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Clear_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </Grid>
+            <StackLayout Grid.Row="7" Orientation="Horizontal">
+                <Label
+                    x:Name="Closelbl"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="✘">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Closelbl_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    BackgroundColor="DarkGreen"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="✓">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Next_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+
+            </StackLayout>
+
+
+        </Grid>
+
+
+
+    </pages:PopupPage.Content>
+</pages:PopupPage>

@@ -203,13 +203,11 @@ namespace IttezanPos.Views.SalesPages
         {
             try
             {
-            //    ActiveIn.IsRunning = true;
+               ActiveIn.IsRunning = true;
                 if (CrossConnectivity.Current.IsConnected)
                 {
                     using (var client = new HttpClient())
                     {
-
-
                         //ObservableCollection<sub> subs = new ObservableCollection<sub>();
                         //foreach (var item2 in saleproducts)
                         //{
@@ -238,47 +236,31 @@ namespace IttezanPos.Views.SalesPages
                         if (response.IsSuccessStatusCode)
                         {
                             var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+                            ActiveIn.IsRunning = false;
                             var json = JsonConvert.DeserializeObject<SaleObject>(serverResponse);
-                            await DisplayAlert("", json.data, "OK");
-                           // ser.DeleteAll();
-                        //   await Navigation.PopAsync();
+                             App.Current.MainPage = new SuccessfulReciep(products);
+                           
                         }
                         else
                         {
-                     //       await DisplayAlert("Error", AppResources.ServerError, "OK");
+                            ActiveIn.IsRunning = false;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                         }
                     }
-                    //  var nsAPI = RestService.For<ISalesService>("https://ittezanmobilepos.com");
-                    //  try
-                    //  {
-                    //      var data = await nsAPI.AddSale(item);
-                    //      if (data.success == true)
-                    //      {
-                    //      //    ActiveIn.IsRunning = false;
-                    ////          await Navigation.PushPopupAsync(new ClientAdded());
 
-                    //      }
-                    //  }
-                    //  catch (Exception ex)
-                    //  {
-                    //     // ActiveIn.IsRunning = false;
-                    ////      var data = await nsAPI.AddClientError(client);
-                    // //     await Navigation.PushPopupAsync(new ClientAdded(data));
-                    ////      Emailentry.Focus();
-                    //  }
                 }
 
             }
             catch (ValidationApiException validationException)
             {
-              //  ActiveIn.IsRunning = false;
+                ActiveIn.IsRunning = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 // handle validation here by using validationException.Content, 
                 // which is type of ProblemDetails according to RFC 7807
             }
             catch (ApiException exception)
             {
-             //   ActiveIn.IsRunning = false;
+                ActiveIn.IsRunning = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 // other exception handling
             }

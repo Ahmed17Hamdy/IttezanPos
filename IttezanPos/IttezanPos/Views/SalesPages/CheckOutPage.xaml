@@ -27,19 +27,19 @@
                 VerticalOptions="Start">
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.5*" />
                         <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <StackLayout
                         Grid.Column="0"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Center">
                         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                            <Label Text="{tr:Translate SubTotal}" />
+                            <Label FontSize="Small" Text="{tr:Translate SubTotal}" />
                             <Label x:Name="subtotallbl" Text="0" />
                         </StackLayout>
                         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                            <Label Text="{tr:Translate TotalDisc}" />
+                            <Label FontSize="Small" Text="{tr:Translate TotalDisc}" />
                             <Label
                                 x:Name="Disclbl"
                                 HorizontalOptions="FillAndExpand"
@@ -196,7 +196,15 @@
                 </StackLayout>
 
             </Frame>
-
+            <ActivityIndicator
+                x:Name="ActiveIn"
+                Grid.RowSpan="4"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                IsRunning="False"
+                VerticalOptions="Center"
+                WidthRequest="100"
+                Color="#33b54b" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

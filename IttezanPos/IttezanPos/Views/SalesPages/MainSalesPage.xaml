@@ -191,14 +191,24 @@
                                         Margin="5"
                                         HorizontalOptions="FillAndExpand">
                                         <customcontrols:CustomPicker
-                                            x:Name="CategoryList"
+                                            x:Name="CategoryListar"
                                             Title="{tr:Translate ChooseCategory}"
                                             ef:Border.Radius="20"
                                             BackgroundColor="#33b54b"
                                             FontSize="Small"
                                             HorizontalOptions="FillAndExpand"
-                                            ItemDisplayBinding="{Binding category.name}"
+                                            ItemDisplayBinding="{Binding category.translations[0].name}"
                                             SelectedIndexChanged="CategoryList_SelectedIndexChanged"
+                                            TitleColor="White" />
+                                        <customcontrols:CustomPicker
+                                            x:Name="CategoryListen"
+                                            Title="{tr:Translate ChooseCategory}"
+                                            ef:Border.Radius="20"
+                                            BackgroundColor="#33b54b"
+                                            FontSize="Small"
+                                            HorizontalOptions="FillAndExpand"
+                                            ItemDisplayBinding="{Binding category.translations[1].name}"
+                                            SelectedIndexChanged="CategoryListen_SelectedIndexChanged"
                                             TitleColor="White" />
                                         <Image
                                             Margin="5,10"
@@ -450,6 +460,7 @@
                                                         VerticalOptions="Center" />
                                                     <Button
                                                         Grid.Column="1"
+                                                        Clicked="delete_Clicked"
                                                         HorizontalOptions="FillAndExpand"
                                                         Text="♼" />
                                                 </Grid>
@@ -547,6 +558,9 @@
                             HorizontalOptions="Center"
                             Text="{tr:Translate Discount}"
                             TextColor="White" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Discount_Tapped" />
+                        </Grid.GestureRecognizers>
                     </Grid>
                     <Grid
                         Grid.Column="3"
@@ -571,6 +585,9 @@
                             HorizontalOptions="Center"
                             Text="{tr:Translate Discard}"
                             TextColor="White" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Discard_Tapped" />
+                        </Grid.GestureRecognizers>
                     </Grid>
                     <Grid
                         Grid.Column="4"
