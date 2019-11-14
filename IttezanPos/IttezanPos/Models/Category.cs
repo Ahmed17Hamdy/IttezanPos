@@ -57,6 +57,7 @@ namespace IttezanPos.Models
         public string created_at { get; set; }
         [JsonProperty("updated_at")]
         public string updated_at { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         [JsonProperty("list_of_products")]
         public List<Product> list_of_products { get; set; }
         [JsonProperty("name")]

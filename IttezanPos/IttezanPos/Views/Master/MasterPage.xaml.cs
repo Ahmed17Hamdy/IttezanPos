@@ -24,21 +24,10 @@ namespace IttezanPos.Views.Master
             masterPage.newlist.ItemSelected += OnItemSelected;
             masterPage.listhelp.ItemSelected += OnItemSelected;
         }
-        private async void FlowDirectionPage()
+        private void FlowDirectionPage()
         {
-
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
-             : FlowDirection.LeftToRight;
-                CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().
-             First(element => element.EnglishName.Contains(Settings.LastUserGravity));
-                AppResources.Culture = CrossMultilingual.Current.CurrentCultureInfo;
-            }
-            else
-            {
-                await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
-            }
+            FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
+            : FlowDirection.LeftToRight;
         }
         void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

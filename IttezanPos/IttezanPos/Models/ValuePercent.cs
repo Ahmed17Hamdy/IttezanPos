@@ -8,5 +8,6 @@ namespace IttezanPos.Models
     {
         public string Value { get; set; }
         public string Percentage { get; set; }
+        public DateTime expiredate { get; set; }
     }
 }

@@ -22,8 +22,14 @@
                         Text="{tr:Translate ViewProducts}"
                         TextColor="#33b54b"
                         VerticalOptions="Center" />
-                    <StackLayout Orientation="Horizontal">
+
+                    <Grid MinimumHeightRequest="60">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
                         <Button
+                            Grid.Column="0"
                             BackgroundColor="#33b54b"
                             CornerRadius="10"
                             HorizontalOptions="FillAndExpand"
@@ -31,13 +37,26 @@
                             TextColor="White" />
                         <Button
                             x:Name="ClassifyByDatebtn"
+                            Grid.Column="1"
                             BackgroundColor="#33b54b"
                             Clicked="ClassifyByDatebtn_Clicked"
                             CornerRadius="10"
                             HorizontalOptions="FillAndExpand"
                             Text="{tr:Translate ViewExpirationdate}"
                             TextColor="White" />
-                    </StackLayout>
+                        <Button
+                            x:Name="AllListbtn"
+                            Grid.Column="1"
+                            BackgroundColor="#33b54b"
+                            Clicked="AllListbtn_Clicked"
+                            CornerRadius="10"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="False"
+                            Text="{tr:Translate ViewProducts}"
+                            TextColor="White" />
+                    </Grid>
+
+
                     <StackLayout
                         ef:Border.Color="Black"
                         ef:Border.Radius="1"
@@ -73,7 +92,7 @@
 
                     </StackLayout>
                 </StackLayout>
-                <StackLayout
+                <Grid
                     ef:Border.Color="Black"
                     ef:Border.Radius="1"
                     ef:Border.Width="1">
@@ -162,7 +181,93 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </StackLayout>
+                    <ListView
+                        x:Name="ProductsByDateList"
+                        Margin="0"
+                        HasUnevenRows="True"
+                        IsVisible="False"
+                        ItemTapped="ProductsList_ItemTapped"
+                        Visual="Material">
+                        <ListView.Header>
+                            <Grid
+                                x:Name="lisBydatetheaderlistv"
+                                Padding="5"
+                                ef:Border.Color="Black"
+                                ef:Border.Radius="1"
+                                ef:Border.Width="1"
+                                ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    FontSize="Small"
+                                    HorizontalOptions="Start"
+                                    Text="{tr:Translate Product}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Small"
+                                    HorizontalOptions="Center"
+                                    Text="{tr:Translate Category}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="2"
+                                    FontSize="Small"
+                                    HorizontalOptions="Center"
+                                    Text="{tr:Translate Expirationdate}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="3"
+                                    FontSize="Small"
+                                    HorizontalOptions="Center"
+                                    Text="{tr:Translate Quantity}"
+                                    TextColor="Black" />
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Margin="5,0" ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="Small"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding name}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Column="1"
+                                            FontSize="Small"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding catname}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Column="2"
+                                            FontSize="Small"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding expiration_date}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Column="3"
+                                            FontSize="Small"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding stock}"
+                                            TextColor="Black" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
             </StackLayout>
             <ActivityIndicator
                 x:Name="ActiveIn"

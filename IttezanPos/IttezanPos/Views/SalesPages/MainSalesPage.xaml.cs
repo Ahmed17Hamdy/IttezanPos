@@ -65,7 +65,7 @@ namespace IttezanPos.Views.SalesPages
             get { return saleproducts; }
             set
             {
-                products = value;
+                saleproducts = value;
                 OnPropertyChanged(nameof(saleproducts));
             }
         }
@@ -76,7 +76,7 @@ namespace IttezanPos.Views.SalesPages
             set
             {
                 salesro = value;
-                OnPropertyChanged(nameof(categories));
+                OnPropertyChanged(nameof(salesro));
             }
         }
         public MainSalesPage()
@@ -148,6 +148,7 @@ namespace IttezanPos.Views.SalesPages
                     RootObject data = await nsAPI.GetSettings();
                     var eachCategories = new ObservableCollection<Category>(data.message.categories);
                     Categories = eachCategories;
+                    var categories = new List<Category>(Categories);
                     foreach (var item in eachCategories)
                     {
                         foreach (var item2 in item.category.list_of_products)
@@ -178,16 +179,19 @@ namespace IttezanPos.Views.SalesPages
                     {
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Product");
-                            db.DeleteAll<Product>();
-                            db.CreateTable<Product>();
-                            db.CreateTable<Category>();
+                       
+                        db.DeleteAll<Product>();
+                          
+                        db.CreateTable<Product>();
+                       
+                        db.CreateTable<Category>();
+                       
                         foreach (var item in Products)
                         {
                             db.InsertOrReplace(item);
                         }
                        
-                        db.InsertAll(Categories);
+                      db.InsertAll(categories);
                     }
                     ProductsList.FlowItemsSource = products;
                     CategoryListen.ItemsSource = Categories;
@@ -307,8 +311,6 @@ namespace IttezanPos.Views.SalesPages
             pickergrd.IsVisible = true;
         }
 
-       
-
         private  void ProductsList_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
             var saleproduct = ProductsList.FlowLastTappedItem as Product;
@@ -369,8 +371,16 @@ namespace IttezanPos.Views.SalesPages
 
         private void CategoryList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             var category = CategoryListar.SelectedItem as Category;
-            ProductsList.FlowItemsSource = Products.Where(product => product.catname.Contains(category.category.name)).ToList();
+            if (category.category.name == "الكل")
+            {
+                ProductsList.FlowItemsSource = Products;
+            }
+            else
+            {
+                ProductsList.FlowItemsSource = Products.Where(product => product.catname.Contains(category.category.name)).ToList();
+            }
         }
         private void CategoryListen_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -558,8 +568,6 @@ namespace IttezanPos.Views.SalesPages
                     cartnolbl.Text = AppResources.Zero;
                 }
             }
-         
-            
         }
 
         private void delete_Clicked(object sender, EventArgs e)
@@ -567,9 +575,11 @@ namespace IttezanPos.Views.SalesPages
             if (((sender as Button).BindingContext is Product _selectedro))
             {
                 var obj = SaleProducts.Find(x => x.id == _selectedro.id);
+               
                 cartnolbl.Text = (int.Parse(cartnolbl.Text) - _selectedro.quantity).ToString();
-                subtotallbl.Text = (double.Parse(subtotallbl.Text) - _selectedro.total_price).ToString();
+                subtotallbl.Text = (double.Parse(subtotallbl.Text) - _selectedro.total_price).ToString("0.00");
                 totallbl.Text = (double.Parse(subtotallbl.Text) - (double.Parse(Disclbl.Text))).ToString("0.00");
+                _selectedro.quantity = 0;
                 saleproducts.Remove(obj);
                 Salesro = new ObservableCollection<Product>(SaleProducts);
                 SalesList.ItemsSource = Salesro;

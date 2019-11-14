@@ -270,6 +270,9 @@
   <data name="ChoosePaymentType" xml:space="preserve">
     <value>Payment Type</value>
   </data>
+  <data name="ChooseSupplier" xml:space="preserve">
+    <value>Choose Supplier</value>
+  </data>
   <data name="ClientAdded" xml:space="preserve">
     <value>Client Added Successfully !</value>
   </data>
@@ -450,6 +453,18 @@
   <data name="NeedCamera" xml:space="preserve">
     <value>Needs Permission For Using Camera</value>
   </data>
+  <data name="NewPurchasePrice" xml:space="preserve">
+    <value>New Purchaing Price</value>
+  </data>
+  <data name="NewSaleDashBoard" xml:space="preserve">
+    <value>New Sale / DashBoard</value>
+  </data>
+  <data name="NewSalePrice" xml:space="preserve">
+    <value>New Sale Price</value>
+  </data>
+  <data name="NewSPurchaseDashBoard" xml:space="preserve">
+    <value>New Purchase / DashBoard</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>
@@ -473,6 +488,12 @@
   </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="OldPurchasePrice" xml:space="preserve">
+    <value>Old Purchasing Price</value>
+  </data>
+  <data name="OldSalePrice" xml:space="preserve">
+    <value>Old Sale Price</value>
   </data>
   <data name="One" xml:space="preserve">
     <value>One</value>
@@ -573,6 +594,9 @@
   </data>
   <data name="SelectColor" xml:space="preserve">
     <value>Select Color</value>
+  </data>
+  <data name="SelectExireDate" xml:space="preserve">
+    <value>Please , Select Expiration Date First</value>
   </data>
   <data name="SelectImage" xml:space="preserve">
     <value>Select Image </value>
@@ -720,6 +744,9 @@
   </data>
   <data name="ViewProducts" xml:space="preserve">
     <value>View Products</value>
+  </data>
+  <data name="ViewsSendReciept" xml:space="preserve">
+    <value>Views / Send Reciept</value>
   </data>
   <data name="ViewSupplier" xml:space="preserve">
     <value>View Suppliers</value>

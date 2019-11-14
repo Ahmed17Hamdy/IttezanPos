@@ -3,31 +3,58 @@
     x:Class="IttezanPos.Views.PurchasingPages.PurchasePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behaviors="clr-namespace:IttezanPos.Behaviors"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Grid
+                Grid.Row="0"
+                BackgroundColor="#33b54b"
+                ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="0.5*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.Column="0"
+                    HeightRequest="20"
+                    HorizontalOptions="Center"
+                    Source="menubutton.png"
+                    VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Master_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
 
-        <AbsoluteLayout>
-
-            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                <Grid>
+            </Grid>
+            <AbsoluteLayout Grid.Row="1">
+                <Grid
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="3*" />
                     </Grid.RowDefinitions>
                     <StackLayout Grid.Row="0" Padding="5">
                         <Label
-                            Margin="0,10,0,0"
                             FontSize="Large"
                             HorizontalOptions="Center"
                             Text="{tr:Translate Purchase}"
                             TextColor="Black"
                             VerticalOptions="Center" />
                         <Grid
-                            Margin="10,0"
                             Padding="5"
                             ef:Border.Color="Black"
                             ef:Border.Radius="1"
@@ -47,7 +74,7 @@
                                 TextColor="White" />
                         </Grid>
                         <Grid
-                            Margin="10,-7"
+                            Margin="0,-7"
                             ef:Border.Color="Black"
                             ef:Border.Radius="1"
                             ef:Border.Width="1"
@@ -91,120 +118,313 @@
                                     ef:Border.Width="1"
                                     HeightRequest="30"
                                     Source="save.png"
-                                    WidthRequest="50" />
+                                    WidthRequest="50">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Nextage_Tapped" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
                             </Grid>
 
                         </Grid>
-                        <Grid
-                            Margin="10,0,10,-10"
-                            Padding="0,10"
-                            ef:Border.Color="Black"
-                            ef:Border.Radius="1"
-                            ef:Border.Width="1"
-                            ColumnSpacing="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label
-                                Grid.Column="0"
-                                FontSize="Small"
-                                HorizontalOptions="Start"
-                                Text="{tr:Translate Product}"
-                                TextColor="Black" />
-                            <Label
-                                Grid.Column="1"
-                                FontSize="Small"
-                                Text="{tr:Translate Cost}"
-                                TextColor="Black" />
-                            <Label
-                                Grid.Column="2"
-                                FontSize="Small"
-                                Text="{tr:Translate Quantity}"
-                                TextColor="Black" />
-                            <Label
-                                Grid.Column="3"
-                                FontSize="13"
-                                Text="{tr:Translate total}"
-                                TextColor="Black" />
-                        </Grid>
                     </StackLayout>
-                    <ListView Grid.Row="1">
+                    <ListView
+                        x:Name="SalesList"
+                        Grid.Row="1"
+                        Margin="5,0"
+                        HasUnevenRows="True"
+                        IsVisible="True"
+                        Visual="Material">
+                        <ListView.Header>
+                            <Grid
+                                x:Name="listheaderlistv"
+                                Padding="5"
+                                ef:Border.Color="Black"
+                                ef:Border.Radius="1"
+                                ef:Border.Width="1"
+                                ColumnSpacing="0"
+                                HeightRequest="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.5*" />
+                                    <ColumnDefinition Width="0.5*" />
+                                    <ColumnDefinition Width="0.5*" />
+                                    <ColumnDefinition Width="*" />
+
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    FontSize="Micro"
+                                    HorizontalOptions="Start"
+                                    Text="{tr:Translate Product}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Micro"
+                                    HorizontalOptions="Center"
+                                    Text="{tr:Translate Quantity}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="2"
+                                    FontSize="Micro"
+                                    HorizontalOptions="Center"
+                                    Text="{tr:Translate Cost}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="3"
+                                    FontSize="Micro"
+                                    HorizontalOptions="Start"
+                                    Text="{tr:Translate total}"
+                                    TextColor="Black" />
+                            </Grid>
+                        </ListView.Header>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <Grid ColumnSpacing="0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Label
-                                            Grid.Column="0"
-                                            Margin="2,0,2,0"
-                                            FontSize="Small"
-                                            HorizontalOptions="Start"
-                                            TextColor="Black" />
-                                        <Label
-                                            Grid.Column="1"
-                                            FontSize="13"
-                                            TextColor="Black" />
-                                    </Grid>
+                                <ViewCell Height="100">
+                                    <Frame
+                                        Padding="2"
+                                        BorderColor="LightGray"
+                                        CornerRadius="3"
+                                        HasShadow="False">
+                                        <Grid
+                                            Margin="5,0"
+                                            ColumnSpacing="0"
+                                            VerticalOptions="Center">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="0.5*" />
+                                                <ColumnDefinition Width="0.5*" />
+                                                <ColumnDefinition Width="0.5*" />
+                                                <ColumnDefinition Width="*" />
+
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Column="0"
+                                                FontSize="Micro"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding name, Mode=TwoWay}"
+                                                TextColor="Black" />
+                                            <Entry
+                                                Grid.Column="1"
+                                                BackgroundColor="#33b54b"
+                                                FontSize="Micro"
+                                                HorizontalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                Keyboard="Numeric"
+                                                Text="{Binding quantity, Mode=TwoWay}"
+                                                TextChanged="CustomEntry_TextChanged"
+                                                TextColor="Black"
+                                                VerticalOptions="Center">
+                                                <Entry.Behaviors>
+                                                    <Behaviors:NumberValidationBehavior />
+                                                </Entry.Behaviors>
+                                            </Entry>
+                                            <Label
+                                                Grid.Column="2"
+                                                Margin="10,0"
+                                                ef:Border.Color="Black"
+                                                ef:Border.Radius="20"
+                                                ef:Border.Width="1"
+                                                FontSize="Micro"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding purchase_price, Mode=TwoWay, StringFormat='{0:N}'}"
+                                                TextColor="Black"
+                                                VerticalOptions="Center">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="cost_Tapped" />
+                                                </Label.GestureRecognizers>
+                                            </Label>
+
+                                            <Grid Grid.Column="3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Text="{Binding total_price, Mode=TwoWay, StringFormat='{0:N}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center" />
+                                                <Button
+                                                    Grid.Column="1"
+                                                    Clicked="delete_Clicked"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Text="♼" />
+                                            </Grid>
+
+
+
+
+                                        </Grid>
+                                    </Frame>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+
                 </Grid>
-            </ScrollView>
+                <flv:FlowListView
+                    x:Name="ProductsList"
+                    AbsoluteLayout.LayoutBounds="0,0.8,1,0.4"
+                    AbsoluteLayout.LayoutFlags="All"
+                    FlowColumnCount="4"
+                    FlowItemTapped="ProductsList_FlowItemTapped"
+                    HasUnevenRows="true"
+                    IsVisible="False">
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Margin="5"
+                                Padding="2"
+                                BorderColor="LightGray"
+                                CornerRadius="3"
+                                HasShadow="False"
+                                HeightRequest="50">
+                                <Grid Padding="5" RowSpacing="0">
+                                    <Label
+                                        HorizontalOptions="Center"
+                                        Text="{Binding name}"
+                                        TextColor="#33b54b"
+                                        VerticalOptions="Center" />
+                                    <!--<Grid.RowDefinitions>
+                                            <RowDefinition Height="1.5*" />
+                                            <RowDefinition Height="2*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0" Margin="2.5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                FontSize="Micro"
+                                                HorizontalOptions="FillAndExpand"
+                                                Text="{Binding sale_price, StringFormat='{0:N}'}"
+                                                TextColor="#33b54b">
+                                                <Label.FontSize>
+                                                    <OnIdiom
+                                                        Default="Micro"
+                                                        Phone="Small"
+                                                        Tablet="Medium" />
+                                                </Label.FontSize>
+                                            </Label>
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                FontSize="Micro"
+                                                HorizontalOptions="Start"
+                                                Text="ريال سعودي"
+                                                TextColor="#33b54b">
+                                                <Label.FontSize>
+                                                    <OnIdiom
+                                                        Default="Micro"
+                                                        Phone="Micro"
+                                                        Tablet="Small" />
+                                                </Label.FontSize>
+                                            </Label>
 
-            <ImageButton
-                Margin="10,0"
-                ef:Border.Color="LightGray"
-                ef:Border.Radius="80"
-                ef:Border.Width="3"
-                AbsoluteLayout.LayoutBounds="0,0.9,1,.1"
-                AbsoluteLayout.LayoutFlags="All"
-                BackgroundColor="LightGray"
-                HorizontalOptions="End"
-                Opacity="0.5"
-                Source="showlist.png"
-                VerticalOptions="End"
-                Visual="Material"
-                WidthRequest="50" />
+                                            <Grid
+                                                Grid.Row="0"
+                                                Grid.RowSpan="2"
+                                                Grid.Column="1"
+                                                ef:Border.Radius="20"
+                                                BackgroundColor="#33b54b"
+                                                ColumnSpacing="0"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center">
+                                                <Image
+                                                    Margin="5"
+                                                    Source="tags.png"
+                                                    VerticalOptions="Center" />
+                                            </Grid>
+                                    -->
+                                    <!--<Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Grid.GestureRecognizers>-->
+                                    <!--</Grid>
+                                        <Image
+                                            Grid.Row="1"
+                                            Margin="10,0"
+                                            Aspect="AspectFit"
+                                            Source="{Binding image, StringFormat='https://ittezanmobilepos.com/dashboard_files/imgss/{0}'}" />
+                                        <Label
+                                            Grid.Row="2"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding translations[0].name}"
+                                            TextColor="#33b54b" />-->
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </flv:FlowListView.FlowColumnTemplate>
+                </flv:FlowListView>
+                <ImageButton
+                    x:Name="ShowProductlistbtn"
+                    Margin="10,0"
+                    ef:Border.Color="LightGray"
+                    ef:Border.Radius="80"
+                    ef:Border.Width="3"
+                    AbsoluteLayout.LayoutBounds="0,0.9,1,.1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="LightGray"
+                    Clicked="ShowProductlistbtn_Clicked"
+                    HorizontalOptions="End"
+                    Opacity="0.5"
+                    Source="showlist.png"
+                    VerticalOptions="End"
+                    Visual="Material"
+                    WidthRequest="50" />
 
-            <StackLayout
-                Margin="5"
-                ef:Border.Color="LightGray"
-                ef:Border.Radius="1"
-                ef:Border.Width="1"
-                AbsoluteLayout.LayoutBounds="0,1,1,.1"
-                AbsoluteLayout.LayoutFlags="All"
-                Orientation="Horizontal"
-                VerticalOptions="Center">
-                <Label
-                    HorizontalOptions="FillAndExpand"
-                    Text="{tr:Translate total}"
-                    TextColor="Black" />
-                <Label
-                    HorizontalOptions="FillAndExpand"
-                    Text="{tr:Translate Zero}"
-                    TextColor="Red" />
-                <Label
-                    HorizontalOptions="StartAndExpand"
-                    Text="{tr:Translate SR}"
-                    TextColor="Black" />
-                <Label
-                    HorizontalOptions="EndAndExpand"
-                    Text="{tr:Translate NQ}"
-                    TextColor="Black" />
-                <Label
-                    HorizontalOptions="FillAndExpand"
-                    Text="{tr:Translate Zero}"
-                    TextColor="Red" />
-            </StackLayout>
+                <StackLayout
+                    Margin="5"
+                    ef:Border.Color="LightGray"
+                    ef:Border.Radius="1"
+                    ef:Border.Width="1"
+                    AbsoluteLayout.LayoutBounds="0,1,1,.1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <Label
+                        HorizontalOptions="FillAndExpand"
+                        Text="{tr:Translate total}"
+                        TextColor="Black" />
+                    <Label
+                        x:Name="totallbl"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{tr:Translate Zero}"
+                        TextColor="Red" />
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="{tr:Translate SR}"
+                        TextColor="Black" />
+                    <Label
+                        HorizontalOptions="EndAndExpand"
+                        Text="{tr:Translate NQ}"
+                        TextColor="Black" />
+                    <Label
+                        x:Name="cartnolbl"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{tr:Translate Zero}"
+                        TextColor="Red" />
+                </StackLayout>
+                <ActivityIndicator
+                    x:Name="ActiveIn"
+                    AbsoluteLayout.LayoutBounds=".5,0.5,.5,.2"
+                    AbsoluteLayout.LayoutFlags="All"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    IsRunning="False"
+                    VerticalOptions="Center"
+                    WidthRequest="100"
+                    Color="#33b54b" />
+            </AbsoluteLayout>
 
-        </AbsoluteLayout>
+        </Grid>
 
     </ContentPage.Content>
 </ContentPage>

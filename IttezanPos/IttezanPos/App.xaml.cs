@@ -21,14 +21,7 @@ namespace IttezanPos
         }
         private void FlowDirectionPage()
         {
-
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().
-             First(element => element.EnglishName.Contains(Settings.LastUserGravity));
-                AppResources.Culture = CrossMultilingual.Current.CurrentCultureInfo;
-            }
-
+                _ = Settings.LastUserGravity == "English";
         }
         protected override void OnStart()
         {

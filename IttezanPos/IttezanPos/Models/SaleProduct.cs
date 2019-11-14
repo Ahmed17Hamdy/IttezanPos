@@ -28,6 +28,21 @@ namespace IttezanPos.Models
      
         public List<Product> products { get; set; }
     }
+    public class Purchaseitem
+    {
+
+        public int purchasing_order { get; set; }
+        public string payment_type { get; set; }
+
+        public int user_id { get; set; }
+        public string supplier_id { get; set; }
+        public string discount { get; set; }
+        public string total_price { get; set; }
+        public int total_price_after_discount { get; set; }
+
+
+        public List<Product> products { get; set; }
+    }
     public class sub
     {
         public int id { get; set; }
@@ -37,6 +52,6 @@ namespace IttezanPos.Models
     {
         public bool success { get; set; }
         public string data { get; set; }
-        public List<OrderItem> message { get; set; }
+        public List<Purchaseitem> message { get; set; }
     }
 }

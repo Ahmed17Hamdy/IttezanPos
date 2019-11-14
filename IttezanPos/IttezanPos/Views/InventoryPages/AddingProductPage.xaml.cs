@@ -9,6 +9,7 @@ using Plugin.Permissions.Abstractions;
 using Refit;
 using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Services;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -78,7 +79,8 @@ namespace IttezanPos.Views.InventoryPages
             PurchaseEntry.Text = product.purchase_price.ToString();
             SellEntry.Text = product.sale_price.ToString();
             StockQuantity.Text = product.stock.ToString();
-            Categorylist.Title = product.catname;
+            CategoryListar.Title = product.translations[0].name;
+            CategoryListar.Title = product.translations[1].name;
             productimg.Source = "https://ittezanmobilepos.com/dashboard_files/imgss/"+ product.image;
             product_Id = product.id;
             EnglishNameEntry.Text = product.namee;
@@ -88,7 +90,8 @@ namespace IttezanPos.Views.InventoryPages
 
         protected override bool OnBackButtonPressed()
         {
-            Categorylist.Unfocus();
+            CategoryListen.Unfocus();
+            CategoryListar.Unfocus();
             return base.OnBackButtonPressed();
         }
         protected override void OnAppearing()
@@ -107,11 +110,43 @@ namespace IttezanPos.Views.InventoryPages
                     RootObject data = await nsAPI.GetSettings();
                     var eachCategories = new ObservableCollection<Category>(data.message.categories);
                     Categories = eachCategories;
-                    Categorylist.ItemsSource = Categories;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        db.CreateTable<Category>();
+                        db.DeleteAll<Category>();
+                        db.InsertAll(Categories);
+                    }
+                    else
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        
+                        db.DeleteAll<Category>();
+                       
+                        db.CreateTable<Category>();
+                       
+                        db.InsertAll(Categories);
+                    }
+                    CategoryListar.ItemsSource = Categories;
+                    CategoryListar.ItemsSource = Categories;
                 }
                 else
                 {
-                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                    ActiveIn.IsRunning = false;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        Categories = new ObservableCollection<Category>(db.Table<Category>().ToList());
+                    }
+                    else
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        Categories = new ObservableCollection<Category>(db.Table<Category>().ToList());
+                    }
                 }
             }
             catch (ValidationApiException validationException)
@@ -133,10 +168,16 @@ namespace IttezanPos.Views.InventoryPages
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
             }
         }
-        private void Categorylist_SelectedIndexChanged(object sender, EventArgs e)
+        
+        private void CategoryList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var category = Categorylist.SelectedItem as Category;
-            category_Id = category.category.id;           
+            var category = CategoryListar.SelectedItem as Category;
+            category_Id = category.category.id;
+        }
+        private void CategoryListen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var category = CategoryListen.SelectedItem as Category;
+            category_Id = category.category.id;
         }
         private void ByQuantity_Tapped(object sender, EventArgs e)
         {
@@ -259,7 +300,8 @@ namespace IttezanPos.Views.InventoryPages
             {
                 ActiveIn.IsRunning = false;
                 DisplayAlert(AppResources.Error, AppResources.ChooseCategory, AppResources.Ok);
-                Categorylist.Focus();
+                CategoryListen.Focus();
+                CategoryListar.Focus();
                 return false;
             }          
             return true;

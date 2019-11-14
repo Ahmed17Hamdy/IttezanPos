@@ -175,15 +175,25 @@
                         TitleColor="Black" />-->
                             <Grid Grid.Column="1">
                                 <customcontrols:CustomPicker
-                                    x:Name="Categorylist"
+                                    x:Name="CategoryListar"
                                     Title="{tr:Translate ChooseCategory}"
                                     ef:Border.Radius="20"
                                     BackgroundColor="#33b54b"
                                     FontSize="Small"
                                     HorizontalOptions="FillAndExpand"
-                                    ItemDisplayBinding="{Binding name}"
-                                    SelectedIndexChanged="Categorylist_SelectedIndexChanged"
-                                    TextColor="White" />
+                                    ItemDisplayBinding="{Binding category.translations[0].name}"
+                                    SelectedIndexChanged="CategoryList_SelectedIndexChanged"
+                                    TitleColor="White" />
+                                <customcontrols:CustomPicker
+                                    x:Name="CategoryListen"
+                                    Title="{tr:Translate ChooseCategory}"
+                                    ef:Border.Radius="20"
+                                    BackgroundColor="#33b54b"
+                                    FontSize="Small"
+                                    HorizontalOptions="FillAndExpand"
+                                    ItemDisplayBinding="{Binding category.translations[1].name}"
+                                    SelectedIndexChanged="CategoryListen_SelectedIndexChanged"
+                                    TitleColor="White" />
                                 <Image
                                     Margin="5,10"
                                     HeightRequest="20"

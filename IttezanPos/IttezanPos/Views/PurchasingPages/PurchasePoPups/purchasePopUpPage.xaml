@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="IttezanPos.Views.PurchasingPages.purchasePopUpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behaviors="clr-namespace:IttezanPos.Behaviors"
+    xmlns:Entry="clr-namespace:IttezanPos.CustomControls"
+    xmlns:Validators="clr-namespace:IttezanPos.Models.BModel"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    mc:Ignorable="d">
+    <pages:PopupPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="FontAttributes" Value="Bold" />
+
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+    </pages:PopupPage.Resources>
+    <pages:PopupPage.Content>
+        <Grid
+            Margin="20"
+            ef:Border.Color="#33b54b"
+            ef:Border.Radius="20"
+            ef:Border.Width="1"
+            BackgroundColor="White"
+            VerticalOptions="Center">
+            <StackLayout>
+                <StackLayout.Behaviors>
+                    <Validators:ValidationGroupBehavior x:Name="form" />
+                </StackLayout.Behaviors>
+                <Label x:Name="pronamelbl" Margin="5" />
+                <StackLayout
+                    Margin="10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+                    <Label Text="{tr:Translate Quantity}" />
+                    <Label Text=":" />
+                    <Label x:Name="Stocklbl" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout
+                    Margin="10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+                    <Label Text="{tr:Translate OldSalePrice}" />
+                    <Label Text=":" />
+                    <Label x:Name="Old_salelbl" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout
+                    Margin="10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+                    <Label Text="{tr:Translate NewSalePrice}" />
+                    <Label Text=":" />
+                    <Entry x:Name="New_salelbl" HorizontalOptions="FillAndExpand">
+                        <Entry.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+                <StackLayout
+                    Margin="10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+                    <Label Text="{tr:Translate OldPurchasePrice}" />
+                    <Label Text=":" />
+                    <Label x:Name="Old_Purchaselbl" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout
+                    Margin="10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+                    <Label Text="{tr:Translate NewPurchasePrice}" />
+                    <Label Text=":" />
+                    <Entry x:Name="New_Purchaselbl" HorizontalOptions="FillAndExpand">
+                        <Entry.Behaviors>
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+                <Grid
+                    Padding="5"
+                    ef:Border.Color="Black"
+                    ef:Border.Radius="1"
+                    ef:Border.Width="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Text="{tr:Translate Expirationdate}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <DatePicker
+                        x:Name="datepi"
+                        Grid.Column="1"
+                        ef:Border.Radius="10"
+                        BackgroundColor="#33b54b"
+                        DateSelected="DatePicker_DateSelected"
+                        TextColor="White" />
+                </Grid>
+                <StackLayout Orientation="Horizontal">
+                    <Button
+                        x:Name="Closelbl"
+                        BackgroundColor="#33b54b"
+                        Clicked="Closelbl_Clicked"
+                        CornerRadius="10"
+                        HorizontalOptions="FillAndExpand"
+                        Text="✘" />
+                    <Button
+                        BackgroundColor="DarkGreen"
+                        Clicked="Next_Tapped"
+                        CornerRadius="10"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
+                        Text="✓" />
+
+
+                </StackLayout>
+
+            </StackLayout>
+        </Grid>
+
+
+
+    </pages:PopupPage.Content>
+</pages:PopupPage>

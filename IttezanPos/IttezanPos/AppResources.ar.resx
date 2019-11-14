@@ -270,6 +270,9 @@
   <data name="ChoosePaymentType" xml:space="preserve">
     <value>نوع الدفع</value>
   </data>
+  <data name="ChooseSupplier" xml:space="preserve">
+    <value>إختر إسم المورد</value>
+  </data>
   <data name="ClientAdded" xml:space="preserve">
     <value>تم إضافة العميل بنجاح !</value>
   </data>
@@ -450,6 +453,18 @@
   <data name="NeedCamera" xml:space="preserve">
     <value>يحتاج التطبيق إلى السماح بإستخدام الكاميرا</value>
   </data>
+  <data name="NewPurchasePrice" xml:space="preserve">
+    <value>سعر الشراء الجديد</value>
+  </data>
+  <data name="NewSaleDashBoard" xml:space="preserve">
+    <value>عملية بيع جديدة </value>
+  </data>
+  <data name="NewSalePrice" xml:space="preserve">
+    <value>سعر البيع الجديد</value>
+  </data>
+  <data name="NewSPurchaseDashBoard" xml:space="preserve">
+    <value>عملية شراء جديدة</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>التالي</value>
   </data>
@@ -473,6 +488,12 @@
   </data>
   <data name="Ok" xml:space="preserve">
     <value>حسناً</value>
+  </data>
+  <data name="OldPurchasePrice" xml:space="preserve">
+    <value>سعر الشراء القديم</value>
+  </data>
+  <data name="OldSalePrice" xml:space="preserve">
+    <value>سعر البيع القديم</value>
   </data>
   <data name="One" xml:space="preserve">
     <value>واحد</value>
@@ -575,6 +596,9 @@
   </data>
   <data name="SelectColor" xml:space="preserve">
     <value>إختر اللون</value>
+  </data>
+  <data name="SelectExireDate" xml:space="preserve">
+    <value>من فضلك إختر تاريخ إنتهاء الصلاحية أولاً</value>
   </data>
   <data name="SelectImage" xml:space="preserve">
     <value>إختر الصورة </value>
@@ -722,6 +746,9 @@
   </data>
   <data name="ViewProducts" xml:space="preserve">
     <value>عرض المنتجات</value>
+  </data>
+  <data name="ViewsSendReciept" xml:space="preserve">
+    <value>عرض / إرسال فاتورة</value>
   </data>
   <data name="ViewSupplier" xml:space="preserve">
     <value>عرض الموردين</value>

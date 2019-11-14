@@ -13,6 +13,7 @@ namespace IttezanPos.Models
         public string user_id { get; set; }
         public string catname { get; set; }
         public int category_id { get; set; }
+        public int purchasing_order { get; set; }
         public string  product_name { get; set; }
         public int product_id { get; set; }
         public int quantity { get; set; }
@@ -22,13 +23,14 @@ namespace IttezanPos.Models
         public string namee { get; set; }
         public string locale { get; set; }
         public string image { get; set; }
-        public int purchase_price { get; set; }
+        public double purchase_price { get; set; }
         public double total_price { get; set; }
-        public int sale_price { get; set; }
+        public double sale_price { get; set; }
         public int stock { get; set; }
         public string profit_percent { get; set; }
         public string description { get; set; }
         public DateTime created_at { get; set; }
+        public DateTime expiration_date { get; set; }
         public DateTime updated_at { get; set; }
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Translation> translations { get; set; }

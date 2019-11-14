@@ -103,7 +103,6 @@
                     </Image.GestureRecognizers>
                 </Image>-->
             </Grid>
-
             <AbsoluteLayout Grid.Row="1" Margin="10,5">
                 <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.9" AbsoluteLayout.LayoutFlags="All">
                     <Frame

@@ -37,6 +37,8 @@ namespace IttezanPos.Views.InventoryPages
             InitializeComponent();
             listheaderlistv.FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
            : FlowDirection.LeftToRight;
+            lisBydatetheaderlistv.FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
+           : FlowDirection.LeftToRight;
         }
 
         private void Scan_Tapped(object sender, EventArgs e)
@@ -120,7 +122,7 @@ namespace IttezanPos.Views.InventoryPages
                         }
                         else
                         {
-                            db.DropTable<Product>();
+                            db.DeleteAll<Product>();
                             db.CreateTable<Product>();
                         }
                         db.CreateTable<Product>();
@@ -131,18 +133,16 @@ namespace IttezanPos.Views.InventoryPages
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Product");
-                        if (!info.Any())
-                        {
+                       
+                            db.DeleteAll<Product>();
                             db.CreateTable<Product>();
-                        }
-                        else
+                        foreach (var item in Products)
                         {
-                            db.DropTable<Product>();
-                            db.CreateTable<Product>();
+                            db.InsertOrReplace(item);
                         }
                         //    Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
                         // db.CreateTable<Client>();
-                        db.InsertAll(Products);
+                       
                     }
                     ProductsList.ItemsSource = products;
 
@@ -191,8 +191,11 @@ namespace IttezanPos.Views.InventoryPages
 
         private void ClassifyByDatebtn_Clicked(object sender, EventArgs e)
         {
-            Products = Products.OrderBy(b => b.created_at).ThenBy(b => b.updated_at).ToList();
-            ProductsList.ItemsSource = Products;
+            ProductsByDateList.ItemsSource = Products.OrderBy(b => b.created_at).ThenBy(b => b.expiration_date).ToList();
+            ProductsList.IsVisible = false;
+            ProductsByDateList.IsVisible = true;          
+            AllListbtn.IsVisible = true;
+            ClassifyByDatebtn.IsVisible = false;
         }
 
         private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
@@ -214,5 +217,15 @@ namespace IttezanPos.Views.InventoryPages
             var product = e.Item as Product;
             await Navigation.PushAsync(new AddingProductPage(product));
         }
+
+        private void AllListbtn_Clicked(object sender, EventArgs e)
+        {
+            ProductsList.IsVisible = true;
+            ProductsByDateList.IsVisible = false;
+            AllListbtn.IsVisible = false;
+            ClassifyByDatebtn.IsVisible = true;
+        }
+
+       
     }
 }

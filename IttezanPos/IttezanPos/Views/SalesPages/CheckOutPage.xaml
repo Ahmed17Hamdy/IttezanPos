@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Behaviors="clr-namespace:IttezanPos.Behaviors"
+    xmlns:Validators="clr-namespace:IttezanPos.Models.BModel"
     xmlns:customcontrols="clr-namespace:IttezanPos.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
@@ -19,192 +20,204 @@
                 <RowDefinition Height="0.5*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Frame
-                Grid.Row="0"
-                Margin="0"
-                Padding="0"
-                CornerRadius="20"
-                VerticalOptions="Start">
-                <Grid Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackLayout
-                        Grid.Column="0"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Center">
-                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                            <Label FontSize="Small" Text="{tr:Translate SubTotal}" />
-                            <Label x:Name="subtotallbl" Text="0" />
+            <StackLayout Grid.Row="0" Grid.RowSpan="4">
+                <StackLayout.Behaviors>
+                    <Validators:ValidationGroupBehavior x:Name="form" />
+                </StackLayout.Behaviors>
+                <Frame
+                    Grid.Row="0"
+                    Margin="0"
+                    Padding="0"
+                    CornerRadius="20"
+                    VerticalOptions="Start">
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout
+                            Grid.Column="0"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label FontSize="Small" Text="{tr:Translate SubTotal}" />
+                                <Label x:Name="subtotallbl" Text="0" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label FontSize="Small" Text="{tr:Translate TotalDisc}" />
+                                <Label
+                                    x:Name="Disclbl"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{tr:Translate Zero}" />
+                            </StackLayout>
                         </StackLayout>
-                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                            <Label FontSize="Small" Text="{tr:Translate TotalDisc}" />
+                        <StackLayout
+                            Grid.Column="1"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center">
+                            <Label HorizontalOptions="Center" Text="{tr:Translate total}" />
                             <Label
-                                x:Name="Disclbl"
-                                HorizontalOptions="FillAndExpand"
+                                x:Name="totallbl"
+                                HorizontalOptions="Center"
                                 Text="{tr:Translate Zero}" />
                         </StackLayout>
-                    </StackLayout>
-                    <StackLayout
-                        Grid.Column="1"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Center">
-                        <Label HorizontalOptions="Center" Text="{tr:Translate total}" />
-                        <Label
-                            x:Name="totallbl"
-                            HorizontalOptions="Center"
-                            Text="{tr:Translate Zero}" />
-                    </StackLayout>
 
 
-                </Grid>
-            </Frame>
-            <Frame Grid.Row="1">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0.5*" />
-                        <RowDefinition Height="0.5*" />
-                    </Grid.RowDefinitions>
-
-                    <Label
-                        Grid.Row="0"
-                        FontSize="Subtitle"
-                        HorizontalOptions="Center"
-                        Text="{tr:Translate ChooseCustomer}"
-                        TextColor="#33b54b"
-                        TextDecorations="Underline">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Customer_Tapped" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <StackLayout Grid.Row="1">
-                        <StackLayout Orientation="Horizontal">
-                            <Label HorizontalOptions="Start" Text="{tr:Translate ClientName}" />
-                            <Label HorizontalOptions="StartAndExpand" Text=":" />
-                            <Label
-                                x:Name="CustName"
-                                HorizontalOptions="FillAndExpand"
-                                Text="" />
-                        </StackLayout>
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="{tr:Translate Skip}"
-                            TextDecorations="Strikethrough"
-                            VerticalOptions="Center" />
-                    </StackLayout>
-
-
-                </Grid>
-            </Frame>
-            <Frame Grid.Row="2">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="1.5*" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Row="0"
-                        Grid.ColumnSpan="2"
-                        FontSize="Subtitle"
-                        HorizontalOptions="Center"
-                        Text="{tr:Translate ChoosePaymentType}"
-                        TextColor="#33b54b" />
-
-
-                    <StackLayout
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Orientation="Horizontal">
-                        <Frame
-                            Padding="0"
-                            BackgroundColor="#33b54b"
-                            CornerRadius="20"
-                            HorizontalOptions="FillAndExpand">
-                            <Label
-                                x:Name="paymentlbl"
-                                FontSize="Small"
-                                HorizontalTextAlignment="Center"
-                                Text="{tr:Translate CaSh}"
-                                VerticalTextAlignment="Center" />
-                        </Frame>
-
-                        <Label Text="{tr:Translate Or}" VerticalOptions="Center" />
-                    </StackLayout>
-
-                    <Grid
-                        x:Name="pickergrd"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        HorizontalOptions="FillAndExpand">
-                        <customcontrols:CustomPicker
-                            x:Name="PaymentListen"
-                            Title="{tr:Translate PaymentType}"
-                            ef:Border.Radius="20"
-                            BackgroundColor="#33b54b"
-                            FontSize="Small"
-                            HorizontalOptions="FillAndExpand"
-                            IsVisible="False"
-                            ItemDisplayBinding="{Binding en_name}"
-                            SelectedIndexChanged="PaymentList_SelectedIndexChanged"
-                            TextColor="White"
-                            TitleColor="White" />
-                        <customcontrols:CustomPicker
-                            x:Name="PaymentListar"
-                            Title="{tr:Translate PaymentType}"
-                            ef:Border.Radius="20"
-                            BackgroundColor="#33b54b"
-                            FontSize="Small"
-                            HorizontalOptions="FillAndExpand"
-                            IsVisible="False"
-                            ItemDisplayBinding="{Binding name}"
-                            SelectedIndexChanged="PaymentListar_SelectedIndexChanged"
-                            TextColor="White"
-                            TitleColor="White" />
-                        <Image
-                            Margin="5,10"
-                            HeightRequest="20"
-                            HorizontalOptions="End"
-                            Source="arrow.png" />
                     </Grid>
-                </Grid>
+                </Frame>
+                <Frame Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*" />
+                            <RowDefinition Height="0.5*" />
+                        </Grid.RowDefinitions>
 
-            </Frame>
-            <Frame Grid.Row="3">
-                <StackLayout>
-                    <Entry
-                        x:Name="Amountpaidentry"
-                        Keyboard="Numeric"
-                        Placeholder="{tr:Translate EnterAmountPaid}"
-                        PlaceholderColor="#33b54b">
-                        <Entry.Behaviors>
-                            <Behaviors:NumberValidationBehavior />
-                        </Entry.Behaviors>
-                    </Entry>
-                    <Button
-                        x:Name="Nextbtn"
-                        BackgroundColor="#33b54b"
-                        Clicked="Nextbtn_Clicked"
-                        CornerRadius="20"
-                        Text="{tr:Translate Next}"
-                        TextColor="White"
-                        VerticalOptions="EndAndExpand" />
-                </StackLayout>
+                        <Label
+                            Grid.Row="0"
+                            FontSize="Subtitle"
+                            HorizontalOptions="Center"
+                            Text="{tr:Translate ChooseCustomer}"
+                            TextColor="#33b54b"
+                            TextDecorations="Underline">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Customer_Tapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <StackLayout Grid.Row="1">
+                            <StackLayout Orientation="Horizontal">
+                                <Label HorizontalOptions="Start" Text="{tr:Translate ClientName}" />
+                                <Label HorizontalOptions="StartAndExpand" Text=":" />
+                                <Label
+                                    x:Name="CustName"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="" />
+                            </StackLayout>
+                            <Label
+                                HorizontalOptions="Center"
+                                Text="{tr:Translate Skip}"
+                                TextDecorations="Strikethrough"
+                                VerticalOptions="Center" />
+                        </StackLayout>
 
-            </Frame>
-            <ActivityIndicator
-                x:Name="ActiveIn"
-                Grid.RowSpan="4"
-                HeightRequest="100"
-                HorizontalOptions="Center"
-                IsRunning="False"
-                VerticalOptions="Center"
-                WidthRequest="100"
-                Color="#33b54b" />
+
+                    </Grid>
+                </Frame>
+                <Frame Grid.Row="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="1.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"
+                            FontSize="Subtitle"
+                            HorizontalOptions="Center"
+                            Text="{tr:Translate ChoosePaymentType}"
+                            TextColor="#33b54b" />
+
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Orientation="Horizontal">
+                            <Frame
+                                Padding="0"
+                                BackgroundColor="#33b54b"
+                                CornerRadius="20"
+                                HorizontalOptions="FillAndExpand">
+                                <Label
+                                    x:Name="paymentlbl"
+                                    FontSize="Small"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{tr:Translate CaSh}"
+                                    VerticalTextAlignment="Center" />
+                            </Frame>
+
+                            <Label Text="{tr:Translate Or}" VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <Grid
+                            x:Name="pickergrd"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalOptions="FillAndExpand">
+                            <customcontrols:CustomPicker
+                                x:Name="PaymentListen"
+                                Title="{tr:Translate PaymentType}"
+                                ef:Border.Radius="20"
+                                BackgroundColor="#33b54b"
+                                FontSize="Small"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="False"
+                                ItemDisplayBinding="{Binding en_name}"
+                                SelectedIndexChanged="PaymentList_SelectedIndexChanged"
+                                TextColor="White"
+                                TitleColor="White" />
+                            <customcontrols:CustomPicker
+                                x:Name="PaymentListar"
+                                Title="{tr:Translate PaymentType}"
+                                ef:Border.Radius="20"
+                                BackgroundColor="#33b54b"
+                                FontSize="Small"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="False"
+                                ItemDisplayBinding="{Binding name}"
+                                SelectedIndexChanged="PaymentListar_SelectedIndexChanged"
+                                TextColor="White"
+                                TitleColor="White" />
+                            <Image
+                                Margin="5,10"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                Source="arrow.png" />
+                        </Grid>
+                    </Grid>
+
+                </Frame>
+                <Frame Grid.Row="3">
+                    <StackLayout>
+                        <Entry
+                            x:Name="Amountpaidentry"
+                            Keyboard="Numeric"
+                            Placeholder="{tr:Translate EnterAmountPaid}"
+                            PlaceholderColor="#33b54b">
+                            <Entry.Behaviors>
+                                <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                    <Behaviors:ValidationBehavior.Validators>
+                                        <Validators:RequiredValidator />
+                                    </Behaviors:ValidationBehavior.Validators>
+                                </Behaviors:ValidationBehavior>
+                                <Behaviors:NumberValidationBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Button
+                            x:Name="Nextbtn"
+                            BackgroundColor="#33b54b"
+                            Clicked="Nextbtn_Clicked"
+                            CornerRadius="20"
+                            IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
+                            Text="{tr:Translate Next}"
+                            TextColor="White"
+                            VerticalOptions="EndAndExpand" />
+                    </StackLayout>
+
+                </Frame>
+                <ActivityIndicator
+                    x:Name="ActiveIn"
+                    Grid.RowSpan="4"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    IsRunning="False"
+                    VerticalOptions="Center"
+                    WidthRequest="100"
+                    Color="#33b54b" />
+            </StackLayout>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

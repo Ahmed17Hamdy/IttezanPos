@@ -18,12 +18,15 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
         private string percent;
         private string value;
         private bool check;
+       
+
         public CalculatorPage()
         {
             InitializeComponent();
             check = true;
         }
 
+       
         private async void Closelbl_Tapped(object sender, EventArgs e)
         {
             await Navigation.PopPopupAsync();
