@@ -871,6 +871,15 @@ namespace IttezanPos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expnse Added Successfully !.
+        /// </summary>
+        internal static string ExpnseAdded {
+            get {
+                return ResourceManager.GetString("ExpnseAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Extra.
         /// </summary>
         internal static string Extra {
@@ -1317,6 +1326,15 @@ namespace IttezanPos {
         internal static string ProductName {
             get {
                 return ResourceManager.GetString("ProductName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Products Modified Successfully !.
+        /// </summary>
+        internal static string Productsmodified {
+            get {
+                return ResourceManager.GetString("Productsmodified", resourceCulture);
             }
         }
         

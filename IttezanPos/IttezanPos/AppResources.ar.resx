@@ -387,6 +387,9 @@
   <data name="Expirationdate" xml:space="preserve">
     <value>تاريخ إنتهاء الصلاحية</value>
   </data>
+  <data name="ExpnseAdded" xml:space="preserve">
+    <value>تم إضافة المصروفات بنجاح !</value>
+  </data>
   <data name="Extra" xml:space="preserve">
     <value>المزيد</value>
   </data>
@@ -536,6 +539,9 @@
   </data>
   <data name="ProductName" xml:space="preserve">
     <value>إسم المنتج</value>
+  </data>
+  <data name="Productsmodified" xml:space="preserve">
+    <value>تم تعديل المنتجات بنجاح !</value>
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>المشتريات</value>

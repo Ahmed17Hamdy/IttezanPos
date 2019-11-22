@@ -14,15 +14,17 @@ namespace IttezanPos.Views.SalesPages
     public partial class SuccessfulReciep : ContentPage
     {
       
-        private OrderItem products;
+        private List<OrderItem> products;
         private Purchaseitem products1;
+        private string paymentname;
 
-    
-        public SuccessfulReciep(OrderItem products)
+
+        public SuccessfulReciep(List<OrderItem> products,string paymentname)
         {
             InitializeComponent();
             this.products = products;
-            Totallbl.Text = products.total_price;
+            this.paymentname = paymentname;
+            Totallbl.Text = products[0].total_price;
             Salestk.IsVisible = true;
             Purchasestk.IsVisible = false;
         }
@@ -44,6 +46,11 @@ namespace IttezanPos.Views.SalesPages
         private void Button_Clicked_1(object sender, EventArgs e)
         {
             Application.Current.MainPage = new NavigationPage(new PurchasePage());
+        }
+
+        private async void ViewReciept_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RecieptPage(products,  paymentname) );
         }
     }
 }

@@ -22,7 +22,8 @@ namespace IttezanPos.Models
         public string client_id { get; set; }
        
         public int user_id { get; set; }
-     
+     //   public int id { get; set; }
+
         public string payment_type { get; set; }
      
      
@@ -49,6 +50,12 @@ namespace IttezanPos.Models
         public int quantity { get; set; }
     }
     public class SaleObject
+    {
+        public bool success { get; set; }
+        public string data { get; set; }
+        public List<OrderItem> message { get; set; }
+    }
+    public class PurchaseObject
     {
         public bool success { get; set; }
         public string data { get; set; }

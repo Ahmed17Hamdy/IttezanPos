@@ -46,6 +46,9 @@
                 AbsoluteLayout.LayoutFlags="All"
                 Visual="Material">
                 <StackLayout Visual="Material">
+                    <StackLayout.Behaviors>
+                        <Validators:ValidationGroupBehavior x:Name="form" />
+                    </StackLayout.Behaviors>
                     <StackLayout Orientation="Horizontal">
                         <Image
                             Aspect="AspectFit"
@@ -65,16 +68,21 @@
                         Visual="Material">
                         <input:RadioButtonGroupView Orientation="Horizontal" Visual="Material">
                             <input:RadioButton
+                                x:Name="increasebtn"
                                 CheckedImage="plus"
                                 CircleColor="Black"
+                                Clicked="increasebtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
+                                IsChecked="True"
                                 Text="{tr:Translate Increase}"
                                 TextColor="#33b54b"
                                 TextFontSize="15"
                                 Color="#33b54b" />
                             <input:RadioButton
+                                x:Name="decreaebtn"
                                 Grid.Column="1"
                                 CheckedImage="minus"
+                                Clicked="decreaebtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
                                 Text="{tr:Translate Decrease}"
                                 TextColor="Red"
@@ -89,16 +97,21 @@
                         Visual="Material">
                         <input:RadioButtonGroupView Orientation="Horizontal">
                             <input:RadioButton
+                                x:Name="sellingbtn"
                                 CheckedImage="plus"
                                 CircleColor="Black"
+                                Clicked="sellingbtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
+                                IsChecked="True"
                                 Text="{tr:Translate Selling}"
                                 TextColor="#33b54b"
                                 TextFontSize="15"
                                 Color="#33b54b" />
                             <input:RadioButton
+                                x:Name="Purchasingbtn"
                                 CheckedImage="minus"
                                 CircleColor="Black"
+                                Clicked="Purchasingbtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
                                 Text="{tr:Translate Purchasing}"
                                 TextColor="Red"
@@ -108,22 +121,53 @@
                     </Frame>
                     <Label Text="{tr:Translate EditeByCategory}" />
                     <Frame Padding="0" BackgroundColor="#eaecee">
-                        <CustomControls:CustomPicker Title="{tr:Translate All}" TitleColor="Black" />
+                        <Grid>
+                            <CustomControls:CustomPicker
+                                x:Name="CategoryListar"
+                                Title="{tr:Translate All}"
+                                ef:Border.Radius="20"
+                                BackgroundColor="#33b54b"
+                                FontSize="Small"
+                                HorizontalOptions="FillAndExpand"
+                                ItemDisplayBinding="{Binding category.translations[0].name}"
+                                SelectedIndexChanged="CategoryList_SelectedIndexChanged"
+                                TitleColor="White" />
+                            <CustomControls:CustomPicker
+                                x:Name="CategoryListen"
+                                Title="{tr:Translate All}"
+                                ef:Border.Radius="20"
+                                BackgroundColor="#33b54b"
+                                FontSize="Small"
+                                HorizontalOptions="FillAndExpand"
+                                ItemDisplayBinding="{Binding category.translations[1].name}"
+                                SelectedIndexChanged="CategoryListen_SelectedIndexChanged"
+                                TitleColor="White" />
+                            <Image
+                                Margin="5,10"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                Source="arrow.png" />
+                        </Grid>
                     </Frame>
                     <Label Text="{tr:Translate TheMethod}" />
                     <Frame Padding="10" BackgroundColor="#eaecee">
                         <input:RadioButtonGroupView Orientation="Horizontal">
                             <input:RadioButton
+                                x:Name="amountbtn"
                                 CheckedImage="plus"
                                 CircleColor="Black"
+                                Clicked="amountbtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
+                                IsChecked="True"
                                 Text="{tr:Translate Amount}"
                                 TextColor="#33b54b"
                                 TextFontSize="15"
                                 Color="#33b54b" />
                             <input:RadioButton
+                                x:Name="percentbtn"
                                 CheckedImage="minus"
                                 CircleColor="Black"
+                                Clicked="percentbtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
                                 Text="{tr:Translate Percentage}"
                                 TextColor="Red"
@@ -137,6 +181,7 @@
                             Text="{tr:Translate Amount}"
                             VerticalOptions="Center" />
                         <CustomControls:CustomEntry
+                            x:Name="amountentry"
                             Grid.Row="1"
                             Margin="0"
                             ef:Border.Color="#33b54b"
@@ -152,7 +197,7 @@
                             PlaceholderColor="Red">
                             <CustomControls:CustomEntry.Behaviors>
                                 <Behaviors:NumberValidationBehavior />
-                                <Behaviors:ValidationBehavior PropertyName="Text">
+                                <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                     <Behaviors:ValidationBehavior.Validators>
                                         <Validators:RequiredValidator />
                                     </Behaviors:ValidationBehavior.Validators>
@@ -163,9 +208,19 @@
                     <Button
                         Margin="20"
                         BackgroundColor="#33b54b"
+                        Clicked="Button_Clicked"
                         CornerRadius="10"
+                        IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                         Text="{tr:Translate Save}"
                         VerticalOptions="EndAndExpand" />
+                    <ActivityIndicator
+                        x:Name="ActiveIn"
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        IsRunning="False"
+                        VerticalOptions="Center"
+                        WidthRequest="100"
+                        Color="#33b54b" />
                 </StackLayout>
             </Frame>
         </ScrollView>

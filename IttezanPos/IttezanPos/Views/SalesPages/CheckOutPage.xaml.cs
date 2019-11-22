@@ -49,7 +49,10 @@ namespace IttezanPos.Views.SalesPages
         private string text2;
         private string text3;
         private string paymentid = "1";
+        private string paymentname ;
         private string clienttid = null;
+        private string amount_paid;
+
         public CheckOutPage(List<Product> saleproducts, string text1, string text2, string text3)
         {
             InitializeComponent();
@@ -188,14 +191,14 @@ namespace IttezanPos.Views.SalesPages
         {
             var payment = PaymentListen.SelectedItem as Payment;
 
-            paymentlbl.Text = payment.en_name;
+            paymentlbl.Text = payment.en_name= paymentname;
             paymentid = payment.id.ToString();
         }
         private void PaymentListar_SelectedIndexChanged(object sender, EventArgs e)
         {
             var payment = PaymentListar.SelectedItem as Payment;
 
-            paymentlbl.Text = payment.name;
+            paymentlbl.Text = payment.name = paymentname;
             paymentid = payment.id.ToString();
         }
 
@@ -217,13 +220,21 @@ namespace IttezanPos.Views.SalesPages
                         //        quantity = item2.quantity
                         //    });
                         //}
+                        if (Amountpaidentry.Text != "")
+                        {
+                            amount_paid = Amountpaidentry.Text;
+                        }
+                        else
+                        {
+                            amount_paid = "0";
+                        }
                         OrderItem products = new OrderItem
                         {
 
                             discount = text1,
                             products = saleproducts,
                             total_price = text2,
-                            amount_paid = Amountpaidentry.Text,
+                            amount_paid = amount_paid,
                             client_id = clienttid,
                             user_id = 3,
                             payment_type = paymentid
@@ -238,7 +249,7 @@ namespace IttezanPos.Views.SalesPages
                             var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
                             ActiveIn.IsRunning = false;
                             var json = JsonConvert.DeserializeObject<SaleObject>(serverResponse);
-                             App.Current.MainPage = new SuccessfulReciep(products);
+                             App.Current.MainPage = new SuccessfulReciep(json.message, paymentname);
                            
                         }
                         else

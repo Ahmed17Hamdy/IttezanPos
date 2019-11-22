@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IttezanPos.Views.RecieptPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behaviors="clr-namespace:IttezanPos.Behaviors"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="9*" />
+                </Grid.RowDefinitions>
+                <Grid
+                    Grid.Row="2"
+                    Margin="5"
+                    Padding="5"
+                    ef:Border.Color="LightGray"
+                    ef:Border.Radius="20"
+                    ef:Border.Width="1"
+                    ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="0.2*" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0">
+                        <Label
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="Buissinessname"
+                            TextColor="Black" />
+                        <Image HorizontalOptions="Center" VerticalOptions="Center" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                x:Name="BuissenessMobile"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Buisseness Mobile" />
+                            <Label
+                                x:Name="BuissenessAddress"
+                                HorizontalOptions="End"
+                                Text="Buisseness Address" />
+                        </StackLayout>
+                        <Label HorizontalOptions="Center" Text="Buisseness Mobile" />
+                        <BoxView HeightRequest="1" Color="Gray" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                            <Label Text="Invoice#" />
+                            <Label x:Name="Invoiceidlbl" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                            <Label Text="Date :" />
+                            <Label x:Name="Datelbl" />
+                        </StackLayout>
+                        <StackLayout
+                            Padding="5"
+                            BackgroundColor="LightGray"
+                            Orientation="Horizontal">
+                            <Label HorizontalOptions="FillAndExpand" Text="P Mode" />
+                            <Label HorizontalOptions="End" Text="Amount" />
+                        </StackLayout>
+                        <StackLayout Padding="5" Orientation="Horizontal">
+                            <Label x:Name="paymenttypelbl" HorizontalOptions="FillAndExpand" />
+                            <Label x:Name="Amountlbl" HorizontalOptions="End" />
+                        </StackLayout>
+                        <ListView
+                            x:Name="RecieptList"
+                            Margin="0"
+                            AbsoluteLayout.LayoutBounds="0,0,1,1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            HasUnevenRows="True"
+                            Visual="Material">
+                            <ListView.Header>
+                                <Grid
+                                    x:Name="listheaderlistv"
+                                    Padding="5"
+                                    ef:Border.Radius="1"
+                                    ef:Border.Width="1"
+                                    BackgroundColor="LightGray"
+                                    ColumnSpacing="0"
+                                    HeightRequest="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*" />
+                                        <ColumnDefinition Width="0.5*" />
+                                        <ColumnDefinition Width="0.5*" />
+                                        <ColumnDefinition Width="*" />
+
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        FontSize="Micro"
+                                        HorizontalOptions="Start"
+                                        Text="{tr:Translate Product}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Column="1"
+                                        FontSize="Micro"
+                                        HorizontalOptions="Center"
+                                        Text="{tr:Translate Quantity}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Column="2"
+                                        FontSize="Micro"
+                                        HorizontalOptions="Center"
+                                        Text="{tr:Translate Price}"
+                                        TextColor="Black" />
+
+                                    <Label
+                                        Grid.Column="3"
+                                        FontSize="Micro"
+                                        HorizontalOptions="End"
+                                        Text="{tr:Translate total}"
+                                        TextColor="Black" />
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="100">
+                                        <Frame
+                                            Padding="2"
+                                            BorderColor="LightGray"
+                                            CornerRadius="3"
+                                            HasShadow="False">
+                                            <Grid
+                                                Margin="5,0"
+                                                ColumnSpacing="0"
+                                                VerticalOptions="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="0.5*" />
+                                                    <ColumnDefinition Width="0.5*" />
+                                                    <ColumnDefinition Width="0.5*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="Start"
+                                                    Text="{Binding name, Mode=TwoWay}"
+                                                    TextColor="Black" />
+                                                <Label
+                                                    Grid.Column="1"
+                                                    BackgroundColor="#33b54b"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="Center"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding quantity, Mode=TwoWay}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center" />
+                                                <Label
+                                                    Grid.Column="2"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="Center"
+                                                    Text="{Binding sale_price, Mode=TwoWay, StringFormat='{0:N}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center" />
+                                                <Label
+                                                    Grid.Column="3"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Text="{Binding total_price, Mode=TwoWay, StringFormat='{0:N}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center" />
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <StackLayout
+                            Padding="5"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                            <Label HorizontalOptions="FillAndExpand" Text="SubTotal" />
+                            <Label
+                                x:Name="SubtotalAmountlbl"
+                                HorizontalOptions="End"
+                                Text="Amount" />
+                        </StackLayout>
+                        <StackLayout
+                            Padding="5"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                            <Label HorizontalOptions="FillAndExpand" Text="Total" />
+                            <Label
+                                x:Name="totalAmountlbl"
+                                HorizontalOptions="End"
+                                Text="Amount" />
+                        </StackLayout>
+                        <Label x:Name="Thankslbl" Text="Tahnk You , Visit Again !" />
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </ScrollView>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

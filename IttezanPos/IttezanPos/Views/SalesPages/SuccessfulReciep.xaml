@@ -48,7 +48,9 @@
                 IsVisible="False">
 
                 <Button
+                    x:Name="ViewReciept"
                     BackgroundColor="#33b54b"
+                    Clicked="ViewReciept_Clicked"
                     ImageSource="bill.png"
                     Text="{tr:Translate ViewsSendReciept}" />
                 <Button

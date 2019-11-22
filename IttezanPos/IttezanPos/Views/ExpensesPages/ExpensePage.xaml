@@ -29,6 +29,9 @@
                     Padding="5"
                     HorizontalOptions="Center"
                     Orientation="Horizontal">
+                    <StackLayout.Behaviors>
+                        <Validators:ValidationGroupBehavior x:Name="form" />
+                    </StackLayout.Behaviors>
                     <Image
                         Aspect="AspectFit"
                         HorizontalOptions="Center"
@@ -49,6 +52,7 @@
                             FontSize="Medium"
                             Text="{tr:Translate Statement}" />
                         <customcontrols:CustomEntry
+                            x:Name="Statmententry"
                             Grid.Row="1"
                             Margin="0"
                             ef:Border.Color="#33b54b"
@@ -58,7 +62,7 @@
                             HorizontalTextAlignment="Center"
                             IsTextPredictionEnabled="True">
                             <customcontrols:CustomEntry.Behaviors>
-                                <Behaviors:ValidationBehavior PropertyName="Text">
+                                <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                     <Behaviors:ValidationBehavior.Validators>
                                         <Validators:RequiredValidator />
                                     </Behaviors:ValidationBehavior.Validators>
@@ -68,6 +72,7 @@
                         <StackLayout>
                             <Label Margin="0,5,0,-5" Text="{tr:Translate Entertheamount}" />
                             <customcontrols:CustomEntry
+                                x:Name="amountentry"
                                 Grid.Row="1"
                                 Margin="0"
                                 ef:Border.Color="#33b54b"
@@ -83,7 +88,7 @@
                                 TextChanged="CustomEntry_TextChanged">
                                 <customcontrols:CustomEntry.Behaviors>
                                     <Behaviors:NumberValidationBehavior />
-                                    <Behaviors:ValidationBehavior PropertyName="Text">
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                         <Behaviors:ValidationBehavior.Validators>
                                             <Validators:RequiredValidator />
                                         </Behaviors:ValidationBehavior.Validators>
@@ -100,6 +105,7 @@
                                     HorizontalTextAlignment="Center"
                                     Text="{tr:Translate Date}" />
                                 <DatePicker
+                                    x:Name="DatePicker"
                                     ef:Border.Color="#33b54b"
                                     ef:Border.Radius="10"
                                     ef:Border.Width="1"
@@ -109,12 +115,24 @@
                                 x:Name="Addingbtn"
                                 Margin="70,30"
                                 BackgroundColor="#33b54b"
+                                Clicked="Button_Clicked"
                                 CornerRadius="10"
+                                IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                                 Text="{tr:Translate Save}"
                                 TextColor="Black" />
                         </StackLayout>
                     </StackLayout>
                 </ScrollView>
+                <ActivityIndicator
+                    x:Name="ActiveIn"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    IsRunning="False"
+                    VerticalOptions="Center"
+                    WidthRequest="100"
+                    Color="#33b54b" />
             </Grid>
         </ScrollView>
     </ContentPage.Content>

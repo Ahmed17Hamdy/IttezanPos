@@ -387,6 +387,9 @@
   <data name="Expirationdate" xml:space="preserve">
     <value>Expiration date</value>
   </data>
+  <data name="ExpnseAdded" xml:space="preserve">
+    <value>Expnse Added Successfully !</value>
+  </data>
   <data name="Extra" xml:space="preserve">
     <value>Extra</value>
   </data>
@@ -536,6 +539,9 @@
   </data>
   <data name="ProductName" xml:space="preserve">
     <value>Product Name</value>
+  </data>
+  <data name="Productsmodified" xml:space="preserve">
+    <value>Products Modified Successfully !</value>
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>Purchases</value>
