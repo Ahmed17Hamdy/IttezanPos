@@ -9,7 +9,132 @@
     xmlns:tr="clr-namespace:IttezanPos.Helpers"
     mc:Ignorable="d">
     <ContentPage.Content>
-        <Grid>
+
+        <Grid Margin="5" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <Label
+                    Margin="0,10,0,0"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{tr:Translate Supplieropeningbalances}"
+                    TextColor="#33b54b"
+                    VerticalOptions="Center" />
+
+                <Grid
+                    Padding="10"
+                    ef:Border.Color="Black"
+                    ef:Border.Radius="1"
+                    ef:Border.Width="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <SearchBar
+                        x:Name="Searchbar"
+                        Grid.Column="0"
+                        Margin="5"
+                        ef:Border.Color="Gray"
+                        ef:Border.Radius="20"
+                        ef:Border.Width="1"
+                        CancelButtonColor="Red"
+                        HorizontalOptions="Start"
+                        Placeholder="{tr:Translate SearchSupplier}"
+                        PlaceholderColor="Gray"
+                        SearchButtonPressed="SearchBar_SearchButtonPressed"
+                        TextChanged="OnTextChanged" />
+                    <Button
+                        Grid.Column="1"
+                        Margin="2,5"
+                        BackgroundColor="#33b54b"
+                        CornerRadius="25"
+                        HorizontalOptions="Fill"
+                        Text="{tr:Translate Report}" />
+                </Grid>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="1"
+                ef:Border.Color="Black"
+                ef:Border.Radius="1"
+                ef:Border.Width="1">
+                <ListView
+                    x:Name="listviewwww"
+                    Margin="0"
+                    HasUnevenRows="True"
+                    Visual="Material">
+                    <ListView.Header>
+                        <Grid
+                            x:Name="listheaderlistv"
+                            Padding="0,10"
+                            ef:Border.Color="Black"
+                            ef:Border.Radius="1"
+                            ef:Border.Width="1"
+                            ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Margin="5,0,5,0"
+                                FontSize="Small"
+                                HorizontalOptions="Start"
+                                Text="{tr:Translate SupplierData}"
+                                TextColor="Black" />
+
+                            <Label
+                                Grid.Column="1"
+                                FontSize="Small"
+                                Text="{tr:Translate Amountpayable}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="Small"
+                                Text="{tr:Translate Amountowed}"
+                                TextColor="Black" />
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        FontSize="Small"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding name}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Column="1"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding remaining}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Column="2"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding creditorit}"
+                                        TextColor="Black" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+
+        </Grid>
+        <!--<Grid>
             <ScrollView>
                 <StackLayout Grid.Row="0" Padding="5">
 
@@ -110,6 +235,6 @@
                     </ListView>
                 </StackLayout>
             </ScrollView>
-        </Grid>
+        </Grid>-->
     </ContentPage.Content>
 </ContentPage>

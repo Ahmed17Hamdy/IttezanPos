@@ -10,107 +10,127 @@
     mc:Ignorable="d">
     <ContentPage.Content>
 
-        <Grid>
-            <ScrollView>
-                <StackLayout Grid.Row="0" Padding="5">
+        <Grid Margin="5" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <Label
+                    Margin="0,10,0,0"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{tr:Translate Openingbalanceforcustomers}"
+                    TextColor="#33b54b"
+                    VerticalOptions="Center" />
 
-                    <Label
-                        Margin="0,10,0,0"
-                        FontSize="Large"
-                        HorizontalOptions="Center"
-                        Text="{tr:Translate Openingbalanceforcustomers}"
-                        TextColor="#33b54b"
-                        VerticalOptions="Center" />
-                    <Grid
-                        Margin="10"
-                        ef:Border.Color="Black"
-                        ef:Border.Radius="1"
+                <Grid
+                    Padding="10"
+                    ef:Border.Color="Black"
+                    ef:Border.Radius="1"
+                    ef:Border.Width="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <SearchBar
+                        x:Name="Searchbar"
+                        Grid.Column="0"
+                        Margin="5"
+                        ef:Border.Color="Gray"
+                        ef:Border.Radius="20"
                         ef:Border.Width="1"
-                        ColumnSpacing="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <SearchBar
-                            Grid.Column="0"
-                            Margin="5"
-                            ef:Border.Color="Gray"
-                            ef:Border.Radius="20"
+                        CancelButtonColor="Red"
+                        HorizontalOptions="Start"
+                        Placeholder="{tr:Translate SearchClient}"
+                        PlaceholderColor="Gray"
+                        SearchButtonPressed="SearchBar_SearchButtonPressed"
+                        TextChanged="OnTextChanged" />
+                    <Button
+                        Grid.Column="1"
+                        Margin="2,5"
+                        BackgroundColor="#33b54b"
+                        CornerRadius="25"
+                        HorizontalOptions="Fill"
+                        Text="{tr:Translate Report}" />
+                </Grid>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="1"
+                ef:Border.Color="Black"
+                ef:Border.Radius="1"
+                ef:Border.Width="1">
+                <ListView
+                    x:Name="listviewwww"
+                    Margin="0"
+                    HasUnevenRows="True"
+                    Visual="Material">
+                    <ListView.Header>
+                        <Grid
+                            x:Name="listheaderlistv"
+                            Padding="0,10"
+                            ef:Border.Color="Black"
+                            ef:Border.Radius="1"
                             ef:Border.Width="1"
-                            CancelButtonColor="Red"
-                            Placeholder="{tr:Translate SearchClient}"
-                            PlaceholderColor="Gray" />
-                        <Button
-                            Grid.Column="1"
-                            Margin="2,5"
-                            BackgroundColor="#33b54b"
-                            CornerRadius="25"
-                            Text="{tr:Translate Report}" />
-                    </Grid>
-                    <Grid
-                        Margin="10,-17,10,-10"
-                        Padding="0,10"
-                        ef:Border.Color="Black"
-                        ef:Border.Radius="1"
-                        ef:Border.Width="1"
-                        ColumnSpacing="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Label
-                            Grid.Column="0"
-                            Margin="2,0,2,0"
-                            FontSize="Small"
-                            HorizontalOptions="Start"
-                            Text="{tr:Translate ClientsData}"
-                            TextColor="Black" />
-                        <Label
-                            Grid.Column="1"
-                            FontSize="13"
-                            HorizontalOptions="Start"
-                            Text="{tr:Translate Amountpayable}"
-                            TextColor="Black" />
-                        <Label
-                            Grid.Column="2"
-                            FontSize="13"
-                            Text="{tr:Translate Amountowed}"
-                            TextColor="Black" />
-                    </Grid>
-                    <StackLayout />
-                    <ListView>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid ColumnSpacing="0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Label
-                                            Grid.Column="0"
-                                            Margin="2,0,2,0"
-                                            FontSize="Small"
-                                            HorizontalOptions="Start"
-                                            TextColor="Black" />
-                                        <Label
-                                            Grid.Column="1"
-                                            FontSize="13"
-                                            HorizontalOptions="Start"
-                                            TextColor="Black" />
-                                        <Label
-                                            Grid.Column="2"
-                                            FontSize="13"
-                                            TextColor="Black" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
-            </ScrollView>
+                            ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Margin="5,0,5,0"
+                                FontSize="Small"
+                                HorizontalOptions="Start"
+                                Text="{tr:Translate ClientsData}"
+                                TextColor="Black" />
+
+                            <Label
+                                Grid.Column="1"
+                                FontSize="Small"
+                                Text="{tr:Translate Amountpayable}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="Small"
+                                Text="{tr:Translate Amountowed}"
+                                TextColor="Black" />
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        FontSize="Small"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding name}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding remaining}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Column="2"
+                                        Text="{Binding creditorit}"
+                                        TextColor="Black" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+
         </Grid>
 
     </ContentPage.Content>
