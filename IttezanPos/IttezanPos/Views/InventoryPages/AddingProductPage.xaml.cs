@@ -1,4 +1,5 @@
 ﻿using IttezanPos.Models;
+using IttezanPos.Resources;
 using IttezanPos.Services;
 using IttezanPos.Views.InventoryPages.InventoryPopups;
 using Newtonsoft.Json;
@@ -23,6 +24,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
 using static IttezanPos.ViewModels.ProductViewModel;
+using PermissionStatus = Plugin.Permissions.Abstractions.PermissionStatus;
 
 namespace IttezanPos.Views.InventoryPages
 {

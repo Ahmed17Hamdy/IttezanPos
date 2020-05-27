@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
 
     <ContentPage.Content>
@@ -20,7 +20,7 @@
                 BackgroundColor="#33b54b"
                 Clicked="AddCategory_Clicked"
                 CornerRadius="20"
-                Text="{tr:Translate AddingNewClassification}" />
+                Text="{x:Static resource:AppResources.AddingNewClassification}" />
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

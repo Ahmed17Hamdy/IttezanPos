@@ -10,7 +10,7 @@
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
     NavigationPage.HasNavigationBar="True"
     mc:Ignorable="d">
@@ -106,7 +106,7 @@
                         <Label
                             FontSize="Micro"
                             HorizontalOptions="Center"
-                            Text="{tr:Translate AddImage}"
+                            Text="{x:Static resource:AppResources.AddImage}"
                             TextColor="White"
                             VerticalOptions="Center" />
                         <Image Aspect="AspectFit" HeightRequest="100" />
@@ -116,7 +116,7 @@
                     </Grid>
                     <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
                     <StackLayout>
-                        <Label Text="{tr:Translate ProductName}" />
+                        <Label Text="{x:Static resource:AppResources.ProductName}" />
                         <StackLayout Orientation="Horizontal">
                             <customcontrols:CustomEntry
                                 x:Name="EntryName"
@@ -128,7 +128,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsTextPredictionEnabled="True"
-                                Placeholder="{tr:Translate ArabicTitle}">
+                                Placeholder="{x:Static resource:AppResources.ArabicTitle}">
                                 <customcontrols:CustomEntry.Behaviors>
                                     <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                         <Behaviors:ValidationBehavior.Validators>
@@ -147,10 +147,10 @@
                                 HorizontalOptions="FillAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsTextPredictionEnabled="True"
-                                Placeholder="{tr:Translate EnglishTitle}" />
+                                Placeholder="{x:Static resource:AppResources.EnglishTitle}" />
                         </StackLayout>
                         <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
-                        <Label Text="{tr:Translate Category}" />
+                        <Label Text="{x:Static resource:AppResources.Category}" />
                         <Grid Margin="10,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -163,7 +163,7 @@
                                 Clicked="AddCategorybtn_Clicked"
                                 CornerRadius="20"
                                 HorizontalOptions="FillAndExpand"
-                                Text="{tr:Translate AddingNewClassification}" />
+                                Text="{x:Static resource:AppResources.AddingNewClassification}" />
                             <!--<input:Dropdown
                         Grid.Column="1"
                         ef:Border.Radius="20"
@@ -171,12 +171,12 @@
                         HorizontalOptions="FillAndExpand"
                         IconImage="arrow"
                         IsRequired="True"
-                        Placeholder="{tr:Translate ChooseCategory}"
+                        Placeholder="{x:Static resource:AppResources.ChooseCategory}"
                         TitleColor="Black" />-->
                             <Grid Grid.Column="1">
                                 <customcontrols:CustomPicker
                                     x:Name="CategoryListar"
-                                    Title="{tr:Translate ChooseCategory}"
+                                    Title="{x:Static resource:AppResources.ChooseCategory}"
                                     ef:Border.Radius="20"
                                     BackgroundColor="#33b54b"
                                     FontSize="Small"
@@ -186,7 +186,7 @@
                                     TitleColor="White" />
                                 <customcontrols:CustomPicker
                                     x:Name="CategoryListen"
-                                    Title="{tr:Translate ChooseCategory}"
+                                    Title="{x:Static resource:AppResources.ChooseCategory}"
                                     ef:Border.Radius="20"
                                     BackgroundColor="#33b54b"
                                     FontSize="Small"
@@ -202,7 +202,7 @@
                             </Grid>
                         </Grid>
                         <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
-                        <Label Text="{tr:Translate Price}" />
+                        <Label Text="{x:Static resource:AppResources.Price}" />
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -217,7 +217,7 @@
                                 <Label
                                     x:Name="ByQuantitylbl"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate ByQuantity}"
+                                    Text="{x:Static resource:AppResources.ByQuantity}"
                                     VerticalOptions="Center" />
                                 <Image
                                     x:Name="ByQuantityimg"
@@ -239,7 +239,7 @@
                                 <Label
                                     x:Name="ByUnitlbl"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate ByUnit}"
+                                    Text="{x:Static resource:AppResources.ByUnit}"
                                     TextColor="White"
                                     VerticalOptions="Center" />
                                 <Image
@@ -263,7 +263,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <StackLayout Grid.Row="0" Grid.Column="0">
-                                <Label HorizontalOptions="Center" Text="{tr:Translate Purchasingprice}" />
+                                <Label HorizontalOptions="Center" Text="{x:Static resource:AppResources.Purchasingprice}" />
                                 <customcontrols:CustomEntry
                                     x:Name="PurchaseEntry"
                                     ef:Border.Color="#33b54b"
@@ -286,11 +286,11 @@
                                     Margin="0,-5"
                                     FontSize="Micro"
                                     IsVisible="False"
-                                    Text="{tr:Translate SellPriceMore}"
+                                    Text="{x:Static resource:AppResources.SellPriceMore}"
                                     TextColor="Red" />
                             </StackLayout>
                             <StackLayout Grid.Row="0" Grid.Column="1">
-                                <Label HorizontalOptions="Center" Text="{tr:Translate sellingprice}" />
+                                <Label HorizontalOptions="Center" Text="{x:Static resource:AppResources.sellingprice}" />
                                 <customcontrols:CustomEntry
                                     x:Name="SellEntry"
                                     ef:Border.Color="#33b54b"
@@ -321,7 +321,7 @@
                                     OnColor="#33b54b"
                                     ThumbColor="White"
                                     Toggled="Trackinstore_Toggled" />
-                                <Label Text="{tr:Translate TrackinStore}" VerticalOptions="Center" />
+                                <Label Text="{x:Static resource:AppResources.TrackinStore}" VerticalOptions="Center" />
                             </StackLayout>
                             <StackLayout Grid.Row="1" Grid.Column="1">
                                 <customcontrols:CustomEntry
@@ -333,7 +333,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Center"
                                     Keyboard="Numeric"
-                                    Placeholder="{tr:Translate NumberORQuantity}"
+                                    Placeholder="{x:Static resource:AppResources.NumberORQuantity}"
                                     TextChanged="SellEntry_TextChanged">
                                     <customcontrols:CustomEntry.Behaviors>
                                         <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
@@ -348,7 +348,7 @@
 
                         </Grid>
                         <BoxView BackgroundColor="#33b54b" HeightRequest="1" />
-                        <Label Text="{tr:Translate BarCode}" />
+                        <Label Text="{x:Static resource:AppResources.BarCode}" />
                         <StackLayout Margin="5,0" Orientation="Horizontal">
                             <Image
                                 x:Name="Scanbtn"
@@ -386,7 +386,7 @@
                             <Label
                                 Margin="20,10"
                                 HorizontalTextAlignment="Center"
-                                Text="{tr:Translate Expirationdate}" />
+                                Text="{x:Static resource:AppResources.Expirationdate}" />
                             <DatePicker TextColor="#33b54b" />
                         </Grid>
                         <customcontrols:CustomEntry
@@ -395,7 +395,7 @@
                             ef:Border.Radius="10"
                             ef:Border.Width="1"
                             ef:Placeholder.Color="#33b54b"
-                            ef:Placeholder.Text="{tr:Translate Notes}"
+                            ef:Placeholder.Text="{x:Static resource:AppResources.Notes}"
                             FontSize="Small"
                             HeightRequest="100"
                             HorizontalTextAlignment="Center">

@@ -9,7 +9,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Content>
 
@@ -40,26 +40,26 @@
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center">
                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                <Label FontSize="Small" Text="{tr:Translate SubTotal}" />
+                                <Label FontSize="Small" Text="{x:Static resource:AppResources.SubTotal}" />
                                 <Label x:Name="subtotallbl" Text="0" />
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                <Label FontSize="Small" Text="{tr:Translate TotalDisc}" />
+                                <Label FontSize="Small" Text="{x:Static resource:AppResources.TotalDisc}" />
                                 <Label
                                     x:Name="Disclbl"
                                     HorizontalOptions="FillAndExpand"
-                                    Text="{tr:Translate Zero}" />
+                                    Text="{x:Static resource:AppResources.Zero}" />
                             </StackLayout>
                         </StackLayout>
                         <StackLayout
                             Grid.Column="1"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center">
-                            <Label HorizontalOptions="Center" Text="{tr:Translate total}" />
+                            <Label HorizontalOptions="Center" Text="{x:Static resource:AppResources.total}" />
                             <Label
                                 x:Name="totallbl"
                                 HorizontalOptions="Center"
-                                Text="{tr:Translate Zero}" />
+                                Text="{x:Static resource:AppResources.Zero}" />
                         </StackLayout>
 
 
@@ -76,7 +76,7 @@
                             Grid.Row="0"
                             FontSize="Subtitle"
                             HorizontalOptions="Center"
-                            Text="{tr:Translate ChooseCustomer}"
+                            Text="{x:Static resource:AppResources.ChooseCustomer}"
                             TextColor="#33b54b"
                             TextDecorations="Underline">
                             <Label.GestureRecognizers>
@@ -85,7 +85,7 @@
                         </Label>
                         <StackLayout Grid.Row="1">
                             <StackLayout Orientation="Horizontal">
-                                <Label HorizontalOptions="Start" Text="{tr:Translate ClientName}" />
+                                <Label HorizontalOptions="Start" Text="{x:Static resource:AppResources.ClientName}" />
                                 <Label HorizontalOptions="StartAndExpand" Text=":" />
                                 <Label
                                     x:Name="CustName"
@@ -94,7 +94,7 @@
                             </StackLayout>
                             <Label
                                 HorizontalOptions="Center"
-                                Text="{tr:Translate Skip}"
+                                Text="{x:Static resource:AppResources.Skip}"
                                 TextDecorations="Strikethrough"
                                 VerticalOptions="Center" />
                         </StackLayout>
@@ -117,7 +117,7 @@
                             Grid.ColumnSpan="2"
                             FontSize="Subtitle"
                             HorizontalOptions="Center"
-                            Text="{tr:Translate ChoosePaymentType}"
+                            Text="{x:Static resource:AppResources.ChoosePaymentType}"
                             TextColor="#33b54b" />
 
 
@@ -134,11 +134,11 @@
                                     x:Name="paymentlbl"
                                     FontSize="Small"
                                     HorizontalTextAlignment="Center"
-                                    Text="{tr:Translate CaSh}"
+                                    Text="{x:Static resource:AppResources.CaSh}"
                                     VerticalTextAlignment="Center" />
                             </Frame>
 
-                            <Label Text="{tr:Translate Or}" VerticalOptions="Center" />
+                            <Label Text="{x:Static resource:AppResources.Or}" VerticalOptions="Center" />
                         </StackLayout>
 
                         <Grid
@@ -148,7 +148,7 @@
                             HorizontalOptions="FillAndExpand">
                             <customcontrols:CustomPicker
                                 x:Name="PaymentListen"
-                                Title="{tr:Translate PaymentType}"
+                                Title="{x:Static resource:AppResources.PaymentType}"
                                 ef:Border.Radius="20"
                                 BackgroundColor="#33b54b"
                                 FontSize="Small"
@@ -160,7 +160,7 @@
                                 TitleColor="White" />
                             <customcontrols:CustomPicker
                                 x:Name="PaymentListar"
-                                Title="{tr:Translate PaymentType}"
+                                Title="{x:Static resource:AppResources.PaymentType}"
                                 ef:Border.Radius="20"
                                 BackgroundColor="#33b54b"
                                 FontSize="Small"
@@ -184,7 +184,7 @@
                         <Entry
                             x:Name="Amountpaidentry"
                             Keyboard="Numeric"
-                            Placeholder="{tr:Translate EnterAmountPaid}"
+                            Placeholder="{x:Static resource:AppResources.EnterAmountPaid}"
                             PlaceholderColor="#33b54b">
                             <Entry.Behaviors>
                                 <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
@@ -201,7 +201,7 @@
                             Clicked="Nextbtn_Clicked"
                             CornerRadius="20"
                             IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
-                            Text="{tr:Translate Next}"
+                            Text="{x:Static resource:AppResources.Next}"
                             TextColor="White"
                             VerticalOptions="EndAndExpand" />
                     </StackLayout>

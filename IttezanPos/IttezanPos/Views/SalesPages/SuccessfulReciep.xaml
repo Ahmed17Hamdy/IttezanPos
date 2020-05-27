@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    NavigationPage.HasBackButton="False"
     mc:Ignorable="d">
     <ContentPage.Content>
         <Grid Margin="5">
@@ -35,12 +36,13 @@
 
                 <Button
                     BackgroundColor="#33b54b"
+                    Clicked="ViewReciept_Clicked"
                     ImageSource="bill.png"
-                    Text="{tr:Translate ViewsSendReciept}" />
+                    Text="{x:Static resource:AppResources.ViewsSendReciept}" />
                 <Button
                     Clicked="Button_Clicked"
                     ImageSource="backsale.png"
-                    Text="{tr:Translate NewSaleDashBoard}" />
+                    Text="{x:Static resource:AppResources.NewSaleDashBoard}" />
             </StackLayout>
             <StackLayout
                 x:Name="Purchasestk"
@@ -52,11 +54,11 @@
                     BackgroundColor="#33b54b"
                     Clicked="ViewReciept_Clicked"
                     ImageSource="bill.png"
-                    Text="{tr:Translate ViewsSendReciept}" />
+                    Text="{x:Static resource:AppResources.ViewsSendReciept}" />
                 <Button
                     Clicked="Button_Clicked_1"
                     ImageSource="backsale.png"
-                    Text="{tr:Translate NewSPurchaseDashBoard}" />
+                    Text="{x:Static resource:AppResources.NewSPurchaseDashBoard}" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

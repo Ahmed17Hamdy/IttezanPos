@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Content>
         <AbsoluteLayout>
@@ -19,7 +19,7 @@
                     <Label
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate ViewProducts}"
+                        Text="{x:Static resource:AppResources.ViewProducts}"
                         TextColor="#33b54b"
                         VerticalOptions="Center" />
 
@@ -33,7 +33,7 @@
                             BackgroundColor="#33b54b"
                             CornerRadius="10"
                             HorizontalOptions="FillAndExpand"
-                            Text="{tr:Translate Report}"
+                            Text="{x:Static resource:AppResources.Report}"
                             TextColor="White" />
                         <Button
                             x:Name="ClassifyByDatebtn"
@@ -42,7 +42,7 @@
                             Clicked="ClassifyByDatebtn_Clicked"
                             CornerRadius="10"
                             HorizontalOptions="FillAndExpand"
-                            Text="{tr:Translate ViewExpirationdate}"
+                            Text="{x:Static resource:AppResources.ViewExpirationdate}"
                             TextColor="White" />
                         <Button
                             x:Name="AllListbtn"
@@ -52,7 +52,7 @@
                             CornerRadius="10"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="False"
-                            Text="{tr:Translate ViewProducts}"
+                            Text="{x:Static resource:AppResources.ViewProducts}"
                             TextColor="White" />
                     </Grid>
 
@@ -72,7 +72,7 @@
                             ef:Border.Width="1"
                             CancelButtonColor="Red"
                             HorizontalOptions="FillAndExpand"
-                            Placeholder="{tr:Translate Search}"
+                            Placeholder="{x:Static resource:AppResources.Search}"
                             SearchButtonPressed="SearchBar_SearchButtonPressed"
                             TextChanged="OnTextChanged"
                             WidthRequest="200" />
@@ -120,25 +120,25 @@
                                     Grid.Column="0"
                                     FontSize="Small"
                                     HorizontalOptions="Start"
-                                    Text="{tr:Translate Product}"
+                                    Text="{x:Static resource:AppResources.Product}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="1"
                                     FontSize="Small"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate Category}"
+                                    Text="{x:Static resource:AppResources.Category}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="2"
                                     FontSize="Small"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate Price}"
+                                    Text="{x:Static resource:AppResources.Price}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="3"
                                     FontSize="Small"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate Quantity}"
+                                    Text="{x:Static resource:AppResources.Quantity}"
                                     TextColor="Black" />
                             </Grid>
                         </ListView.Header>
@@ -206,25 +206,25 @@
                                     Grid.Column="0"
                                     FontSize="Small"
                                     HorizontalOptions="Start"
-                                    Text="{tr:Translate Product}"
+                                    Text="{x:Static resource:AppResources.Product}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="1"
                                     FontSize="Small"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate Category}"
+                                    Text="{x:Static resource:AppResources.Category}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="2"
                                     FontSize="Small"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate Expirationdate}"
+                                    Text="{x:Static resource:AppResources.Expirationdate}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="3"
                                     FontSize="Small"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate Quantity}"
+                                    Text="{x:Static resource:AppResources.Quantity}"
                                     TextColor="Black" />
                             </Grid>
                         </ListView.Header>

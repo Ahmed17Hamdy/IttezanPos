@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Content>
         <Grid Margin="5" RowSpacing="0">
@@ -19,7 +19,7 @@
                     Margin="0,10,0,0"
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{tr:Translate Supplierresidualamounts}"
+                    Text="{x:Static resource:AppResources.Supplierresidualamounts}"
                     TextColor="#33b54b"
                     VerticalOptions="Center" />
 
@@ -41,7 +41,7 @@
                         ef:Border.Width="1"
                         CancelButtonColor="Red"
                         HorizontalOptions="Start"
-                        Placeholder="{tr:Translate SearchSupplier}"
+                        Placeholder="{x:Static resource:AppResources.SearchSupplier}"
                         PlaceholderColor="Gray"
                         SearchButtonPressed="SearchBar_SearchButtonPressed"
                         TextChanged="OnTextChanged" />
@@ -49,9 +49,10 @@
                         Grid.Column="1"
                         Margin="2,5"
                         BackgroundColor="#33b54b"
+                        Clicked="Button_Clicked"
                         CornerRadius="25"
                         HorizontalOptions="Fill"
-                        Text="{tr:Translate Report}" />
+                        Text="{x:Static resource:AppResources.Report}" />
                 </Grid>
             </StackLayout>
 
@@ -84,18 +85,18 @@
                                 Margin="5,0,5,0"
                                 FontSize="Small"
                                 HorizontalOptions="Start"
-                                Text="{tr:Translate SupplierData}"
+                                Text="{x:Static resource:AppResources.SupplierData}"
                                 TextColor="Black" />
 
                             <Label
                                 Grid.Column="1"
                                 FontSize="Small"
-                                Text="{tr:Translate TotalAmount}"
+                                Text="{x:Static resource:AppResources.TotalAmount}"
                                 TextColor="Black" />
                             <Label
                                 Grid.Column="2"
                                 FontSize="Small"
-                                Text="{tr:Translate Amountpaid}"
+                                Text="{x:Static resource:AppResources.Amountpaid}"
                                 TextColor="Black" />
                         </Grid>
                     </ListView.Header>

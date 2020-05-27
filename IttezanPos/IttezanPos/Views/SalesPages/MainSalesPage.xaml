@@ -10,7 +10,7 @@
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -30,7 +30,9 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
+
     <ContentPage.Content>
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -42,8 +44,8 @@
                 ColumnSpacing="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="5*" />
+
                 </Grid.ColumnDefinitions>
                 <Image
                     Grid.Column="0"
@@ -55,44 +57,48 @@
                         <TapGestureRecognizer Tapped="Master_Tapped" />
                     </Image.GestureRecognizers>
                 </Image>
-                <StackLayout
-                    Grid.Column="1"
-                    HorizontalOptions="FillAndExpand"
-                    Orientation="Horizontal"
-                    Spacing="20">
+                <Grid Grid.Column="1" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
                     <StackLayout
                         HorizontalOptions="FillAndExpand"
                         Spacing="0"
                         VerticalOptions="Center">
-                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                            <Label FontSize="Micro" Text="{tr:Translate SubTotal}" />
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="Start">
+                            <Label FontSize="Micro" Text="{x:Static resource:AppResources.SubTotal}" />
                             <Label
                                 x:Name="subtotallbl"
                                 FontSize="Micro"
                                 Text="0" />
                         </StackLayout>
                         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                            <Label FontSize="Micro" Text="{tr:Translate TotalDisc}" />
+                            <Label FontSize="Micro" Text="{x:Static resource:AppResources.TotalDisc}" />
                             <Label
                                 x:Name="Disclbl"
                                 FontSize="Micro"
                                 HorizontalOptions="FillAndExpand"
-                                Text="{tr:Translate Zero}" />
+                                Text="{x:Static resource:AppResources.Zero}" />
                         </StackLayout>
                     </StackLayout>
                     <StackLayout
+                        Grid.Column="1"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal"
                         VerticalOptions="Center">
-                        <Label FontSize="Medium" Text="{tr:Translate total}" />
+                        <Label FontSize="Medium" Text="{x:Static resource:AppResources.total}" />
                         <Label FontSize="Medium" Text=":" />
                         <Label
                             x:Name="totallbl"
                             FontSize="Medium"
                             HorizontalOptions="FillAndExpand"
-                            Text="{tr:Translate Zero}" />
+                            Text="{x:Static resource:AppResources.Zero}" />
                     </StackLayout>
-                </StackLayout>
+                </Grid>
                 <!--<Image
                     Grid.Column="2"
                     HorizontalOptions="Center"
@@ -132,7 +138,7 @@
                                     x:Name="cartnolbl"
                                     FontSize="Large"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate Zero}"
+                                    Text="{x:Static resource:AppResources.Zero}"
                                     TextColor="#33b54b"
                                     VerticalOptions="Center" />
                                 <Image
@@ -191,22 +197,22 @@
                                         HorizontalOptions="FillAndExpand">
                                         <customcontrols:CustomPicker
                                             x:Name="CategoryListar"
-                                            Title="{tr:Translate ChooseCategory}"
+                                            Title="{x:Static resource:AppResources.ChooseCategory}"
                                             ef:Border.Radius="20"
                                             BackgroundColor="#33b54b"
                                             FontSize="Small"
                                             HorizontalOptions="FillAndExpand"
-                                            ItemDisplayBinding="{Binding category.translations[0].name}"
+                                            ItemDisplayBinding="{Binding category.name}"
                                             SelectedIndexChanged="CategoryList_SelectedIndexChanged"
                                             TitleColor="White" />
                                         <customcontrols:CustomPicker
                                             x:Name="CategoryListen"
-                                            Title="{tr:Translate ChooseCategory}"
+                                            Title="{x:Static resource:AppResources.ChooseCategory}"
                                             ef:Border.Radius="20"
                                             BackgroundColor="#33b54b"
                                             FontSize="Small"
                                             HorizontalOptions="FillAndExpand"
-                                            ItemDisplayBinding="{Binding category.translations[1].name}"
+                                            ItemDisplayBinding="{Binding category.enname}"
                                             SelectedIndexChanged="CategoryListen_SelectedIndexChanged"
                                             TitleColor="White" />
                                         <Image
@@ -234,7 +240,7 @@
                                             ef:Border.Radius="20"
                                             ef:Border.Width="1"
                                             CancelButtonColor="White"
-                                            Placeholder="{tr:Translate Search}"
+                                            Placeholder="{x:Static resource:AppResources.Search}"
                                             PlaceholderColor="Black"
                                             SearchButtonPressed="SearchBar_SearchButtonPressed"
                                             TextChanged="SearchBar_TextChanged" />
@@ -337,7 +343,7 @@
                                                     <Label
                                                         Grid.Row="2"
                                                         HorizontalOptions="Center"
-                                                        Text="{Binding translations[0].name}"
+                                                        Text="{Binding name}"
                                                         TextColor="#33b54b" />
                                                 </Grid>
                                             </Frame>
@@ -374,26 +380,26 @@
                                         Grid.Column="0"
                                         FontSize="Micro"
                                         HorizontalOptions="Start"
-                                        Text="{tr:Translate Product}"
+                                        Text="{x:Static resource:AppResources.Product}"
                                         TextColor="Black" />
                                     <Label
                                         Grid.Column="1"
                                         FontSize="Micro"
                                         HorizontalOptions="Center"
-                                        Text="{tr:Translate Quantity}"
+                                        Text="{x:Static resource:AppResources.Quantity}"
                                         TextColor="Black" />
                                     <Label
                                         Grid.Column="2"
                                         FontSize="Micro"
                                         HorizontalOptions="Center"
-                                        Text="{tr:Translate Price}"
+                                        Text="{x:Static resource:AppResources.Price}"
                                         TextColor="Black" />
 
                                     <Label
                                         Grid.Column="3"
                                         FontSize="Micro"
                                         HorizontalOptions="Start"
-                                        Text="{tr:Translate total}"
+                                        Text="{x:Static resource:AppResources.total}"
                                         TextColor="Black" />
                                 </Grid>
                             </ListView.Header>
@@ -428,7 +434,7 @@
                                                     FontSize="Micro"
                                                     HorizontalOptions="Center"
                                                     HorizontalTextAlignment="Center"
-                                                    Keyboard="Numeric"
+                                                    Keyboard="Telephone"
                                                     Text="{Binding quantity, Mode=TwoWay}"
                                                     TextChanged="CustomEntry_TextChanged"
                                                     TextColor="Black"
@@ -504,7 +510,7 @@
                             Margin="-1"
                             FontSize="Micro"
                             HorizontalOptions="Center"
-                            Text="{tr:Translate Payment}"
+                            Text="{x:Static resource:AppResources.Payment}"
                             TextColor="White" />
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Payment_Tapped" />
@@ -531,7 +537,7 @@
                             Margin="-1"
                             FontSize="Micro"
                             HorizontalOptions="Center"
-                            Text="{tr:Translate OrderType}"
+                            Text="{x:Static resource:AppResources.OrderType}"
                             TextColor="White" />
                     </Grid>
                     <Grid
@@ -555,7 +561,7 @@
                             Margin="-1"
                             FontSize="Micro"
                             HorizontalOptions="Center"
-                            Text="{tr:Translate Discount}"
+                            Text="{x:Static resource:AppResources.Discount}"
                             TextColor="White" />
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Discount_Tapped" />
@@ -582,7 +588,7 @@
                             Margin="-1"
                             FontSize="Micro"
                             HorizontalOptions="Center"
-                            Text="{tr:Translate Discard}"
+                            Text="{x:Static resource:AppResources.Discard}"
                             TextColor="White" />
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Discard_Tapped" />
@@ -609,20 +615,38 @@
                             Margin="-1"
                             FontSize="Micro"
                             HorizontalOptions="Center"
-                            Text="{tr:Translate Extra}"
+                            Text="{x:Static resource:AppResources.Extra}"
                             TextColor="White" />
                     </Grid>
                 </Grid>
-                <ActivityIndicator
+                <Frame
                     x:Name="ActiveIn"
+                    Grid.RowSpan="2"
                     AbsoluteLayout.LayoutBounds=".5,0.5,.5,.2"
                     AbsoluteLayout.LayoutFlags="All"
-                    HeightRequest="100"
                     HorizontalOptions="Center"
-                    IsRunning="False"
-                    VerticalOptions="Center"
-                    WidthRequest="100"
-                    Color="#33b54b" />
+                    IsVisible="False"
+                    VerticalOptions="Center">
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.ColumnSpan="3"
+                        Padding="0">
+
+                        <ActivityIndicator
+                            HeightRequest="50"
+                            IsRunning="True"
+                            WidthRequest="50"
+                            Color="#33b54b" />
+                        <Label
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:AppResources.Loading}"
+                            TextColor="#33b54b" />
+                    </StackLayout>
+                </Frame>
+
+
             </AbsoluteLayout>
         </Grid>
 

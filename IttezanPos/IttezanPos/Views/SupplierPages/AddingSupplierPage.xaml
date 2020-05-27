@@ -9,7 +9,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <Style TargetType="Label">
@@ -23,28 +23,46 @@
                     <StackLayout.Behaviors>
                         <Validators:ValidationGroupBehavior x:Name="form" />
                     </StackLayout.Behaviors>
-                    <Label Text="{tr:Translate SupplierName}" VerticalOptions="End" />
-                    <StackLayout>
-                        <customcontrols:CustomEntry
-                            x:Name="SupplierNameentry"
-                            Margin="0"
-                            ef:Border.Color="#33b54b"
-                            ef:Border.Radius="25"
-                            ef:Border.Width="1"
-                            FontSize="Small"
-                            HorizontalTextAlignment="Center"
-                            IsTextPredictionEnabled="True">
-                            <customcontrols:CustomEntry.Behaviors>
-                                <Behaviors:ValidationBehavior PropertyName="Text">
-                                    <Behaviors:ValidationBehavior.Validators>
-                                        <Validators:RequiredValidator />
-                                    </Behaviors:ValidationBehavior.Validators>
-                                </Behaviors:ValidationBehavior>
+                    <Label Text="{x:Static resource:AppResources.SuplierNameAr}" VerticalOptions="End" />
+                    <customcontrols:CustomEntry
+                        x:Name="SupplierNameArentry"
+                        Margin="0"
+                        ef:Border.Color="#33b54b"
+                        ef:Border.Radius="25"
+                        ef:Border.Width="1"
+                        FontSize="Small"
+                        HorizontalTextAlignment="Center">
+                        <customcontrols:CustomEntry.Behaviors>
+                            <Behaviors:ValidationBehavior PropertyName="Text">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
 
-                            </customcontrols:CustomEntry.Behaviors>
-                        </customcontrols:CustomEntry>
-                    </StackLayout>
-                    <Label Text="{tr:Translate Address}" VerticalOptions="End" />
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+
+                        </customcontrols:CustomEntry.Behaviors>
+                    </customcontrols:CustomEntry>
+                    <Label Text="{x:Static resource:AppResources.SupplierNameEn}" VerticalOptions="End" />
+                    <customcontrols:CustomEntry
+                        x:Name="SupplierNameEnentry"
+                        Margin="0"
+                        ef:Border.Color="#33b54b"
+                        ef:Border.Radius="25"
+                        ef:Border.Width="1"
+                        FontSize="Small"
+                        HorizontalTextAlignment="Center">
+                        <customcontrols:CustomEntry.Behaviors>
+                            <Behaviors:ValidationBehavior PropertyName="Text">
+                                <Behaviors:ValidationBehavior.Validators>
+                                    <Validators:RequiredValidator />
+
+                                </Behaviors:ValidationBehavior.Validators>
+                            </Behaviors:ValidationBehavior>
+
+                        </customcontrols:CustomEntry.Behaviors>
+                    </customcontrols:CustomEntry>
+
+                    <Label Text="{x:Static resource:AppResources.Address}" VerticalOptions="End" />
                     <customcontrols:CustomEntry
                         x:Name="SupplierAddressentry"
                         ef:Border.Color="#33b54b"
@@ -64,7 +82,7 @@
 
                         </customcontrols:CustomEntry.Behaviors>
                     </customcontrols:CustomEntry>
-                    <Label Text="{tr:Translate PhoneNumber}" VerticalOptions="End" />
+                    <Label Text="{x:Static resource:AppResources.PhoneNumber}" VerticalOptions="End" />
                     <customcontrols:CustomEntry
                         x:Name="SupplierPhoneentry"
                         Grid.Row="5"
@@ -82,7 +100,7 @@
                             </Behaviors:ValidationBehavior>
                         </customcontrols:CustomEntry.Behaviors>
                     </customcontrols:CustomEntry>
-                    <Label Text="{tr:Translate EmailAddress}" VerticalOptions="End" />
+                    <Label Text="{x:Static resource:AppResources.EmailAddress}" VerticalOptions="End" />
                     <customcontrols:CustomEntry
                         x:Name="SupplierEmailentry"
                         ef:Border.Color="#33b54b"
@@ -94,12 +112,12 @@
                             <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                 <Behaviors:ValidationBehavior.Validators>
                                     <Validators:RequiredValidator />
-                                    <Behaviors:FormatValidator Format="^(?:[a-zA-Z0-9_'^&amp;/+-])+(?:\.(?:[a-zA-Z0-9_'^&amp;/+-])+)*@(?:(?:\[?(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\.){3}(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\]?)|(?:[a-zA-Z0-9-]+\.)+(?:[a-zA-Z]){2,}\.?)$" Message="{tr:Translate InvalidMail}" />
+                                    <Behaviors:FormatValidator Format="^(?:[a-zA-Z0-9_'^&amp;/+-])+(?:\.(?:[a-zA-Z0-9_'^&amp;/+-])+)*@(?:(?:\[?(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\.){3}(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\]?)|(?:[a-zA-Z0-9-]+\.)+(?:[a-zA-Z]){2,}\.?)$" Message="{x:Static resource:AppResources.InvalidMail}" />
                                 </Behaviors:ValidationBehavior.Validators>
                             </Behaviors:ValidationBehavior>
                         </customcontrols:CustomEntry.Behaviors>
                     </customcontrols:CustomEntry>
-                    <Label Text="{tr:Translate Notes}" VerticalOptions="End" />
+                    <Label Text="{x:Static resource:AppResources.Notes}" VerticalOptions="End" />
                     <customcontrols:CustomEntry
                         x:Name="SupplierNotesentry"
                         ef:Border.Color="#33b54b"
@@ -114,7 +132,7 @@
                         Clicked="Button_Clicked"
                         CornerRadius="25"
                         IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
-                        Text="{tr:Translate Save}"
+                        Text="{x:Static resource:AppResources.Save}"
                         TextColor="White" />
                     <StackLayout
                         x:Name="Detailsstk"
@@ -128,7 +146,7 @@
                             Clicked="Update_Clicked"
                             CornerRadius="25"
                             HorizontalOptions="FillAndExpand"
-                            Text="{tr:Translate Update}"
+                            Text="{x:Static resource:AppResources.Update}"
                             TextColor="White" />
                         <Button
                             x:Name="Deletebtn"
@@ -138,18 +156,29 @@
                             Clicked="Deletebtn_Clicked"
                             CornerRadius="25"
                             HorizontalOptions="FillAndExpand"
-                            Text="{tr:Translate Delete}"
+                            Text="{x:Static resource:AppResources.Delete}"
                             TextColor="White" />
                     </StackLayout>
                 </StackLayout>
-                <ActivityIndicator
+                <Frame
                     x:Name="ActiveIn"
-                    HeightRequest="100"
                     HorizontalOptions="Center"
-                    IsRunning="False"
-                    VerticalOptions="Center"
-                    WidthRequest="100"
-                    Color="#33b54b" />
+                    IsVisible="False"
+                    VerticalOptions="Center">
+                    <StackLayout>
+
+                        <ActivityIndicator
+                            HeightRequest="50"
+                            IsRunning="True"
+                            WidthRequest="50"
+                            Color="#33b54b" />
+                        <Label
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:AppResources.Loading}"
+                            TextColor="#33b54b" />
+                    </StackLayout>
+                </Frame>
             </Grid>
         </ScrollView>
 

@@ -1,4 +1,5 @@
 ﻿using IttezanPos.Models;
+using IttezanPos.Resources;
 using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
@@ -23,21 +24,23 @@ namespace IttezanPos.Views.ClientPages
             Frame.BorderColor = Color.FromHex("#33b54b");
         }
 
-        public ClientAdded(AddClientError data)
-        {
-            InitializeComponent();
-            Frame.BorderColor = Color.Red;
-            if (data.data.email.First() == "قيمة البريد الالكتروني مُستخدمة من قبل")
-            {
-                Supplierlbl.Text = AppResources.UsedEmail;
-            }
-        }
+       
         public ClientAdded(string edite)
         {
             InitializeComponent();
-            Frame.BorderColor = Color.FromHex("#33b54b");
-            Supplierlbl.Text = AppResources.UpdatedClient;
-            this.edite = edite;
+           
+            if (edite == "قيمة البريد الالكتروني مُستخدمة من قبل")
+            {
+                Frame.BorderColor = Color.Red;
+                Supplierlbl.Text = AppResources.UsedEmail;
+            }
+            else
+            {
+                Frame.BorderColor = Color.FromHex("#33b54b");
+                Supplierlbl.Text = AppResources.UpdatedClient;
+                this.edite = edite;
+            }
+           
         }
         public ClientAdded(int id)
         {

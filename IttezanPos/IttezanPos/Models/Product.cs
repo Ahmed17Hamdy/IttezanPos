@@ -10,6 +10,8 @@ namespace IttezanPos.Models
     {
         [PrimaryKey]
         public int id { get; set; }
+        [ForeignKey(typeof(Category2))]
+        public int category2Id { get; set; }      
         public string user_id { get; set; }
         public string catname { get; set; }
         public int category_id { get; set; }
@@ -29,10 +31,10 @@ namespace IttezanPos.Models
         public int stock { get; set; }
         public string profit_percent { get; set; }
         public string description { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime expiration_date { get; set; }
-        public DateTime updated_at { get; set; }
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public DateTimeOffset? created_at { get; set; }
+        public string expiration_date { get; set; }
+        public DateTimeOffset? updated_at { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All),Ignore]
         public List<Translation> translations { get; set; }
         
 

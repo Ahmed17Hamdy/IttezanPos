@@ -7,7 +7,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
@@ -98,26 +98,26 @@
                                         Grid.Column="0"
                                         FontSize="Micro"
                                         HorizontalOptions="Start"
-                                        Text="{tr:Translate Product}"
+                                        Text="{x:Static resource:AppResources.Product}"
                                         TextColor="Black" />
                                     <Label
                                         Grid.Column="1"
                                         FontSize="Micro"
                                         HorizontalOptions="Center"
-                                        Text="{tr:Translate Quantity}"
+                                        Text="{x:Static resource:AppResources.Quantity}"
                                         TextColor="Black" />
                                     <Label
                                         Grid.Column="2"
                                         FontSize="Micro"
                                         HorizontalOptions="Center"
-                                        Text="{tr:Translate Price}"
+                                        Text="{x:Static resource:AppResources.Price}"
                                         TextColor="Black" />
 
                                     <Label
                                         Grid.Column="3"
                                         FontSize="Micro"
                                         HorizontalOptions="End"
-                                        Text="{tr:Translate total}"
+                                        Text="{x:Static resource:AppResources.total}"
                                         TextColor="Black" />
                                 </Grid>
                             </ListView.Header>

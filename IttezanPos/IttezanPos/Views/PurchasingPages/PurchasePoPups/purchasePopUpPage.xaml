@@ -11,7 +11,7 @@
     xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <Style TargetType="Label">
@@ -39,7 +39,7 @@
                     Margin="10,0"
                     HorizontalOptions="FillAndExpand"
                     Orientation="Horizontal">
-                    <Label Text="{tr:Translate Quantity}" />
+                    <Label Text="{x:Static resource:AppResources.Quantity}" />
                     <Label Text=":" />
                     <Label x:Name="Stocklbl" HorizontalOptions="FillAndExpand" />
                 </StackLayout>
@@ -47,7 +47,7 @@
                     Margin="10,0"
                     HorizontalOptions="FillAndExpand"
                     Orientation="Horizontal">
-                    <Label Text="{tr:Translate OldSalePrice}" />
+                    <Label Text="{x:Static resource:AppResources.OldSalePrice}" />
                     <Label Text=":" />
                     <Label x:Name="Old_salelbl" HorizontalOptions="FillAndExpand" />
                 </StackLayout>
@@ -55,7 +55,7 @@
                     Margin="10,0"
                     HorizontalOptions="FillAndExpand"
                     Orientation="Horizontal">
-                    <Label Text="{tr:Translate NewSalePrice}" />
+                    <Label Text="{x:Static resource:AppResources.NewSalePrice}" />
                     <Label Text=":" />
                     <Entry x:Name="New_salelbl" HorizontalOptions="FillAndExpand">
                         <Entry.Behaviors>
@@ -71,7 +71,7 @@
                     Margin="10,0"
                     HorizontalOptions="FillAndExpand"
                     Orientation="Horizontal">
-                    <Label Text="{tr:Translate OldPurchasePrice}" />
+                    <Label Text="{x:Static resource:AppResources.OldPurchasePrice}" />
                     <Label Text=":" />
                     <Label x:Name="Old_Purchaselbl" HorizontalOptions="FillAndExpand" />
                 </StackLayout>
@@ -79,7 +79,7 @@
                     Margin="10,0"
                     HorizontalOptions="FillAndExpand"
                     Orientation="Horizontal">
-                    <Label Text="{tr:Translate NewPurchasePrice}" />
+                    <Label Text="{x:Static resource:AppResources.NewPurchasePrice}" />
                     <Label Text=":" />
                     <Entry x:Name="New_Purchaselbl" HorizontalOptions="FillAndExpand">
                         <Entry.Behaviors>
@@ -101,7 +101,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Label
-                        Text="{tr:Translate Expirationdate}"
+                        Text="{x:Static resource:AppResources.Expirationdate}"
                         TextColor="Black"
                         VerticalOptions="Center" />
                     <DatePicker

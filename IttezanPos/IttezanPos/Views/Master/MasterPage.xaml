@@ -7,7 +7,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:locals="clr-namespace:IttezanPos.Views.MainPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <MasterDetailPage.Master>
         <Menu:SideMenuPage x:Name="masterPage" />
@@ -15,7 +15,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage FlowDirection="MatchParent">
             <x:Arguments>
-                <locals:HomePage Title="{tr:Translate MainPage}" />
+                <locals:HomePage Title="{x:Static resource:AppResources.MainPage}" />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

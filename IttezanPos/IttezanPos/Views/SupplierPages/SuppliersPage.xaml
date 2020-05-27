@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Content>
         <AbsoluteLayout>
@@ -20,7 +20,7 @@
                         Grid.Row="0"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate ViewSupplier}"
+                        Text="{x:Static resource:AppResources.ViewSupplier}"
                         TextColor="#33b54b"
                         VerticalOptions="Center" />
                     <StackLayout
@@ -40,16 +40,17 @@
                             CancelButtonColor="Red"
                             FontSize="Micro"
                             HorizontalOptions="FillAndExpand"
-                            Placeholder="{tr:Translate SearchSupplier}"
+                            Placeholder="{x:Static resource:AppResources.SearchSupplier}"
                             SearchButtonPressed="SearchBar_SearchButtonPressed"
                             TextChanged="OnTextChanged"
                             WidthRequest="200" />
                         <Button
                             Margin="2,5"
                             BackgroundColor="#33b54b"
+                            Clicked="Button_Clicked"
                             CornerRadius="25"
                             HorizontalOptions="FillAndExpand"
-                            Text="{tr:Translate Report}" />
+                            Text="{x:Static resource:AppResources.Report}" />
                     </StackLayout>
                 </StackLayout>
                 <StackLayout
@@ -80,13 +81,13 @@
                                     Margin="5,0,5,0"
                                     FontSize="Small"
                                     HorizontalOptions="Start"
-                                    Text="{tr:Translate SupplierData}"
+                                    Text="{x:Static resource:AppResources.SupplierData}"
                                     TextColor="Black" />
 
                                 <Label
                                     Grid.Column="1"
                                     FontSize="Small"
-                                    Text="{tr:Translate PhoneNumber}"
+                                    Text="{x:Static resource:AppResources.PhoneNumber}"
                                     TextColor="Black" />
                             </Grid>
                         </ListView.Header>

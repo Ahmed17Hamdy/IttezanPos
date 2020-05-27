@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IttezanPos.Views.ReportsPages.Reportpage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#34b44c" />
+        </Style>
+        <Style TargetType="syncfusion:SfExpander">
+            <Setter Property="HeaderBackgroundColor" Value="#EDF2F5" />
+            <Setter Property="IconColor" Value="Gray" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Margin="10,10,10,5" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*" />
+                    <RowDefinition Height="0.8*" />
+                </Grid.RowDefinitions>
+                <StackLayout
+                    Grid.Row="0"
+                    Margin="10,0"
+                    Padding="5"
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+                    <Image
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        Source="Reports.png"
+                        VerticalOptions="Center"
+                        WidthRequest="50" />
+                    <Label
+                        FontSize="Title"
+                        HorizontalOptions="Center"
+                        Text="{x:Static resource:AppResources.Reports}"
+                        TextColor="#34b44c"
+                        VerticalOptions="Center" />
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <syncfusion:SfExpander>
+                        <syncfusion:SfExpander.Header>
+                            <Grid>
+                                <Label
+                                    Margin="10,0"
+                                    FontSize="Title"
+                                    Text="{x:Static resource:AppResources.Sales}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </syncfusion:SfExpander.Header>
+                        <syncfusion:SfExpander.Content>
+                            <ScrollView>
+                                <StackLayout Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.SalesReport}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.ProfitsReport}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.BillReport}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.SalesReturnsBills}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.ProductPriceReport}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.TotalTaxesByProduct}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.TotalTaxesByProduct}"
+                                        TextColor="White" />
+                                </StackLayout>
+                            </ScrollView>
+
+                        </syncfusion:SfExpander.Content>
+                    </syncfusion:SfExpander>
+                    <syncfusion:SfExpander>
+                        <syncfusion:SfExpander.Header>
+                            <Grid>
+                                <Label
+                                    Margin="10,0"
+                                    FontSize="Title"
+                                    Text="{x:Static resource:AppResources.Purchase}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </syncfusion:SfExpander.Header>
+                        <syncfusion:SfExpander.Content>
+                            <ScrollView>
+                                <StackLayout Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.PurchasesReport}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.PurchasesBillsReports}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.PurchasesReturnsBills}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.TotalPurchasesbyro}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.TotalPurchasesbycateg}"
+                                        TextColor="White" />
+                                </StackLayout>
+                            </ScrollView>
+
+                        </syncfusion:SfExpander.Content>
+                    </syncfusion:SfExpander>
+                    <syncfusion:SfExpander>
+                        <syncfusion:SfExpander.Header>
+                            <Grid>
+                                <Label
+                                    Margin="10,0"
+                                    FontSize="Title"
+                                    Text="{x:Static resource:AppResources.Customers}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </syncfusion:SfExpander.Header>
+                        <syncfusion:SfExpander.Content>
+                            <ScrollView>
+                                <StackLayout Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.ClientReports}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.ClientReport}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.ClientBillReport}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.ReturnsReports}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.Clientpaymentmovement}"
+                                        TextColor="White" />
+                                </StackLayout>
+                            </ScrollView>
+
+                        </syncfusion:SfExpander.Content>
+                    </syncfusion:SfExpander>
+                    <syncfusion:SfExpander>
+                        <syncfusion:SfExpander.Header>
+                            <Grid>
+                                <Label
+                                    Margin="10,0"
+                                    FontSize="Title"
+                                    Text="{x:Static resource:AppResources.Suppliers}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </syncfusion:SfExpander.Header>
+                        <syncfusion:SfExpander.Content>
+                            <ScrollView>
+                                <StackLayout Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.SuppliersReport}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.SupplierReport}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.SupplierOpenningbalanceRe}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.SupplierbillReport}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.Supplierpaymentmovement}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.Supplierpaymentmovement}"
+                                        TextColor="White" />
+                                </StackLayout>
+                            </ScrollView>
+
+                        </syncfusion:SfExpander.Content>
+                    </syncfusion:SfExpander>
+                    <syncfusion:SfExpander>
+                        <syncfusion:SfExpander.Header>
+                            <Grid>
+                                <Label
+                                    Margin="10,0"
+                                    FontSize="Title"
+                                    Text="{x:Static resource:AppResources.Inventory}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </syncfusion:SfExpander.Header>
+                        <syncfusion:SfExpander.Content>
+                            <ScrollView>
+                                <StackLayout Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.Inventory}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.InventoryByClass}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.InventForClass}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.ProMove}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.CorruptedPro}"
+                                        TextColor="White" />
+                                </StackLayout>
+                            </ScrollView>
+
+                        </syncfusion:SfExpander.Content>
+                    </syncfusion:SfExpander>
+                    <syncfusion:SfExpander>
+                        <syncfusion:SfExpander.Header>
+                            <Grid>
+                                <Label
+                                    Margin="10,0"
+                                    FontSize="Title"
+                                    Text="{x:Static resource:AppResources.Reservoir}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </syncfusion:SfExpander.Header>
+                        <syncfusion:SfExpander.Content>
+                            <ScrollView>
+                                <StackLayout Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.BoxMov}"
+                                        TextColor="White" />
+
+                                </StackLayout>
+                            </ScrollView>
+
+                        </syncfusion:SfExpander.Content>
+                    </syncfusion:SfExpander>
+                    <syncfusion:SfExpander>
+                        <syncfusion:SfExpander.Header>
+                            <Grid>
+                                <Label
+                                    Margin="10,0"
+                                    FontSize="Title"
+                                    Text="{x:Static resource:AppResources.Expense}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </syncfusion:SfExpander.Header>
+                        <syncfusion:SfExpander.Content>
+                            <ScrollView>
+                                <StackLayout Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.ReservRepor}"
+                                        TextColor="White" />
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.ReserByAcc}"
+                                        TextColor="White" />
+
+                                </StackLayout>
+                            </ScrollView>
+
+                        </syncfusion:SfExpander.Content>
+                    </syncfusion:SfExpander>
+                    <syncfusion:SfExpander>
+                        <syncfusion:SfExpander.Header>
+                            <Grid>
+                                <Label
+                                    Margin="10,0"
+                                    FontSize="Title"
+                                    Text="{x:Static resource:AppResources.Store}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </syncfusion:SfExpander.Header>
+                        <syncfusion:SfExpander.Content>
+                            <ScrollView>
+                                <StackLayout Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                    <Button
+                                        BackgroundColor="#33b54b"
+                                        CornerRadius="20"
+                                        Text="{x:Static resource:AppResources.StoreMove}"
+                                        TextColor="White" />
+
+                                </StackLayout>
+                            </ScrollView>
+
+                        </syncfusion:SfExpander.Content>
+                    </syncfusion:SfExpander>
+
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

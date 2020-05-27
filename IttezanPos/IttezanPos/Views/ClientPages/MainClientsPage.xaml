@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
     BackgroundColor="White"
     mc:Ignorable="d">
@@ -26,7 +26,7 @@
                 <Label
                     FontSize="48"
                     HorizontalOptions="Center"
-                    Text="{tr:Translate Customers}"
+                    Text="{x:Static resource:AppResources.Customers}"
                     TextColor="#34b44c"
                     VerticalOptions="Start" />
             </StackLayout>
@@ -56,7 +56,7 @@
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate AddNewClient}"
+                        Text="{x:Static resource:AppResources.AddNewClient}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
@@ -74,7 +74,7 @@
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate Customeropeningbalances}"
+                        Text="{x:Static resource:AppResources.Customeropeningbalances}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
@@ -92,7 +92,7 @@
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate ViewCustomerreceivables}"
+                        Text="{x:Static resource:AppResources.ViewCustomerreceivables}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
@@ -110,7 +110,7 @@
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate Customerreceivables}"
+                        Text="{x:Static resource:AppResources.Customerreceivables}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
@@ -128,12 +128,32 @@
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate ViewClient}"
+                        Text="{x:Static resource:AppResources.ViewClient}"
                         TextColor="White"
                         VerticalOptions="Center" />
 
                 </Grid>
             </Grid>
+            <Frame
+                x:Name="ActiveIn"
+                Grid.RowSpan="2"
+                HorizontalOptions="Center"
+                IsVisible="False"
+                VerticalOptions="Center">
+                <StackLayout>
+
+                    <ActivityIndicator
+                        HeightRequest="50"
+                        IsRunning="True"
+                        WidthRequest="50"
+                        Color="#33b54b" />
+                    <Label
+                        FontSize="Micro"
+                        HorizontalOptions="Center"
+                        Text="{x:Static resource:AppResources.Loading}"
+                        TextColor="#33b54b" />
+                </StackLayout>
+            </Frame>
         </Grid>
 
 

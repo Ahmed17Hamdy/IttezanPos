@@ -28,6 +28,7 @@ namespace IttezanPos.iOS
             FormsMaterial.Init();
             Rg.Plugins.Popup.Popup.Init();
             Plugin.InputKit.Platforms.iOS.Config.Init();
+            Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             AiForms.Effects.iOS.Effects.Init();
             LoadApplication(new App());

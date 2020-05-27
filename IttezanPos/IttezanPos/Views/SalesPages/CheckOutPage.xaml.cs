@@ -18,6 +18,7 @@ using Xamarin.Forms.Xaml;
 using static IttezanPos.ViewModels.SalesViewModel;
 using System.Net.Http;
 using Newtonsoft.Json;
+using IttezanPos.Resources;
 
 namespace IttezanPos.Views.SalesPages
 {
@@ -49,7 +50,7 @@ namespace IttezanPos.Views.SalesPages
         private string text2;
         private string text3;
         private string paymentid = "1";
-        private string paymentname ;
+        private string paymentname= "cash";
         private string clienttid = null;
         private string amount_paid;
 
@@ -249,7 +250,7 @@ namespace IttezanPos.Views.SalesPages
                             var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
                             ActiveIn.IsRunning = false;
                             var json = JsonConvert.DeserializeObject<SaleObject>(serverResponse);
-                             App.Current.MainPage = new SuccessfulReciep(json.message, paymentname);
+                             await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts ,paymentname));
                            
                         }
                         else

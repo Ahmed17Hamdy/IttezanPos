@@ -8,7 +8,7 @@
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
@@ -51,7 +51,7 @@
                         <Label
                             FontSize="Large"
                             HorizontalOptions="Center"
-                            Text="{tr:Translate Purchase}"
+                            Text="{x:Static resource:AppResources.Purchase}"
                             TextColor="Black"
                             VerticalOptions="Center" />
                         <Grid
@@ -64,7 +64,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label
-                                Text="{tr:Translate PurchaseDate}"
+                                Text="{x:Static resource:AppResources.PurchaseDate}"
                                 TextColor="Black"
                                 VerticalOptions="Center" />
                             <DatePicker
@@ -104,7 +104,7 @@
                                 ef:Border.Radius="20"
                                 ef:Border.Width="1"
                                 CancelButtonColor="White"
-                                Placeholder="{tr:Translate Search}"
+                                Placeholder="{x:Static resource:AppResources.Search}"
                                 PlaceholderColor="Black" />
                             <Grid
                                 Grid.Column="2"
@@ -155,25 +155,25 @@
                                     Grid.Column="0"
                                     FontSize="Micro"
                                     HorizontalOptions="Start"
-                                    Text="{tr:Translate Product}"
+                                    Text="{x:Static resource:AppResources.Product}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="1"
                                     FontSize="Micro"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate Quantity}"
+                                    Text="{x:Static resource:AppResources.Quantity}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="2"
                                     FontSize="Micro"
                                     HorizontalOptions="Center"
-                                    Text="{tr:Translate Cost}"
+                                    Text="{x:Static resource:AppResources.Cost}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="3"
                                     FontSize="Micro"
                                     HorizontalOptions="Start"
-                                    Text="{tr:Translate total}"
+                                    Text="{x:Static resource:AppResources.total}"
                                     TextColor="Black" />
                             </Grid>
                         </ListView.Header>
@@ -391,37 +391,49 @@
                     VerticalOptions="Center">
                     <Label
                         HorizontalOptions="FillAndExpand"
-                        Text="{tr:Translate total}"
+                        Text="{x:Static resource:AppResources.total}"
                         TextColor="Black" />
                     <Label
                         x:Name="totallbl"
                         HorizontalOptions="FillAndExpand"
-                        Text="{tr:Translate Zero}"
+                        Text="{x:Static resource:AppResources.Zero}"
                         TextColor="Red" />
                     <Label
                         HorizontalOptions="StartAndExpand"
-                        Text="{tr:Translate SR}"
+                        Text="{x:Static resource:AppResources.SR}"
                         TextColor="Black" />
                     <Label
                         HorizontalOptions="EndAndExpand"
-                        Text="{tr:Translate NQ}"
+                        Text="{x:Static resource:AppResources.NQ}"
                         TextColor="Black" />
                     <Label
                         x:Name="cartnolbl"
                         HorizontalOptions="FillAndExpand"
-                        Text="{tr:Translate Zero}"
+                        Text="{x:Static resource:AppResources.Zero}"
                         TextColor="Red" />
                 </StackLayout>
-                <ActivityIndicator
+                <Frame
                     x:Name="ActiveIn"
+                    Grid.RowSpan="2"
                     AbsoluteLayout.LayoutBounds=".5,0.5,.5,.2"
                     AbsoluteLayout.LayoutFlags="All"
-                    HeightRequest="100"
                     HorizontalOptions="Center"
-                    IsRunning="False"
-                    VerticalOptions="Center"
-                    WidthRequest="100"
-                    Color="#33b54b" />
+                    IsVisible="False"
+                    VerticalOptions="Center">
+                    <StackLayout>
+
+                        <ActivityIndicator
+                            HeightRequest="50"
+                            IsRunning="True"
+                            WidthRequest="50"
+                            Color="#33b54b" />
+                        <Label
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:AppResources.Loading}"
+                            TextColor="#33b54b" />
+                    </StackLayout>
+                </Frame>
             </AbsoluteLayout>
 
         </Grid>

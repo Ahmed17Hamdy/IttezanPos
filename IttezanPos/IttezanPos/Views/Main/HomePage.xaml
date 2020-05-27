@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     BackgroundColor="#33b54b"
     FlowDirection="MatchParent"
     Visual="Material"
@@ -47,7 +47,7 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Purchase}"
+                        Text="{x:Static resource:AppResources.Purchase}"
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
@@ -70,12 +70,12 @@
                         Grid.Row="0"
                         Margin="5,10,5,0"
                         Aspect="AspectFit"
-                        Source="SALES.png" />
+                        Source="Sales.png" />
                     <Label
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Sales}"
+                        Text="{x:Static resource:AppResources.Sales}"
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
@@ -105,7 +105,7 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Suppliers}"
+                        Text="{x:Static resource:AppResources.Suppliers}"
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
@@ -136,7 +136,7 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Customers}"
+                        Text="{x:Static resource:AppResources.Customers}"
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
@@ -166,7 +166,7 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Expense}"
+                        Text="{x:Static resource:AppResources.Expense}"
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
@@ -189,13 +189,13 @@
                         Grid.Row="0"
                         Margin="5,10,5,0"
                         HorizontalOptions="Center"
-                        Source="Box.png"
+                        Source="box.png"
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Reservoir}"
+                        Text="{x:Static resource:AppResources.Reservoir}"
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>
@@ -224,9 +224,12 @@
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Reports}"
+                        Text="{x:Static resource:AppResources.Reports}"
                         TextColor="Black"
                         VerticalOptions="Center" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Reports_Tapped" />
+                    </Grid.GestureRecognizers>
                 </Grid>
             </Frame>
             <Frame
@@ -244,13 +247,13 @@
                         Grid.Row="0"
                         Margin="5,10,5,0"
                         HorizontalOptions="Center"
-                        Source="Inventory.png"
+                        Source="inventory.png"
                         VerticalOptions="Center" />
                     <Label
                         Grid.Row="1"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Inventory}"
+                        Text="{x:Static resource:AppResources.Inventory}"
                         TextColor="Black"
                         VerticalOptions="Center" />
                 </Grid>

@@ -15,7 +15,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:local="clr-namespace:IttezanPos.Views.Master"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     Title="Title"
     mc:Ignorable="d">
     <ContentPage.Content>
@@ -36,15 +36,15 @@
                     <ListView.ItemsSource>
                         <x:Array Type="{x:Type local:MasterPageItem}">
                             <local:MasterPageItem
-                                Title="{tr:Translate Recipts}"
+                                Title="{x:Static resource:AppResources.Recipts}"
                                 IconSource="receipt.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate Feedback}"
+                                Title="{x:Static resource:AppResources.Feedback}"
                                 IconSource="feedback.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate Help}"
+                                Title="{x:Static resource:AppResources.Help}"
                                 IconSource="help.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                         </x:Array>
@@ -74,7 +74,7 @@
                 <BoxView BackgroundColor="LightGray" HeightRequest="1" />
                 <Label
                     Margin="10,0"
-                    Text="{tr:Translate Management}"
+                    Text="{x:Static resource:AppResources.Management}"
                     TextColor="Black" />
                 <ListView
                     x:Name="listView"
@@ -85,35 +85,35 @@
                     <ListView.ItemsSource>
                         <x:Array Type="{x:Type local:MasterPageItem}">
                             <local:MasterPageItem
-                                Title="{tr:Translate Sales}"
+                                Title="{x:Static resource:AppResources.Sales}"
                                 IconSource="salesmenu.png"
                                 TargetType="{x:Type Sales:MainSalesPage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate Purchase}"
+                                Title="{x:Static resource:AppResources.Purchase}"
                                 IconSource="purchasemenu.png"
                                 TargetType="{x:Type Purchase:PurchasePage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate Suppliers}"
+                                Title="{x:Static resource:AppResources.Suppliers}"
                                 IconSource="supplierMainpage.png"
                                 TargetType="{x:Type Supplier:MainSuppliersPage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate Customers}"
+                                Title="{x:Static resource:AppResources.Customers}"
                                 IconSource="Clients.png"
                                 TargetType="{x:Type Client:MainClientsPage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate Expense}"
+                                Title="{x:Static resource:AppResources.Expense}"
                                 IconSource="expensemenu.png"
                                 TargetType="{x:Type Expense:ExpensePage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate Reservoir}"
+                                Title="{x:Static resource:AppResources.Reservoir}"
                                 IconSource="reservoirmenu.png"
                                 TargetType="{x:Type Reservoir:ReservoirPage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate Inventory}"
+                                Title="{x:Static resource:AppResources.Inventory}"
                                 IconSource="inventorymenu.png"
                                 TargetType="{x:Type Inventory:InventoryMainPage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate StaffManagement}"
+                                Title="{x:Static resource:AppResources.StaffManagement}"
                                 IconSource="staff_managment.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                         </x:Array>
@@ -143,7 +143,7 @@
                 <BoxView BackgroundColor="LightGray" HeightRequest="1" />
                 <Label
                     Margin="10,0"
-                    Text="{tr:Translate Settings}"
+                    Text="{x:Static resource:AppResources.Settings}"
                     TextColor="Black" />
                 <ListView
                     x:Name="newlist"
@@ -154,23 +154,23 @@
                     <ListView.ItemsSource>
                         <x:Array Type="{x:Type local:MasterPageItem}">
                             <local:MasterPageItem
-                                Title="{tr:Translate BusinessSettings}"
+                                Title="{x:Static resource:AppResources.BusinessSettings}"
                                 IconSource="business_setting.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate General}"
+                                Title="{x:Static resource:AppResources.General}"
                                 IconSource="general.png"
                                 TargetType="{x:Type SettingPages:GeneralSettings}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate Printer}"
+                                Title="{x:Static resource:AppResources.Printer}"
                                 IconSource="printer.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate BackOffice}"
+                                Title="{x:Static resource:AppResources.BackOffice}"
                                 IconSource="backoffice.png"
                                 TargetType="{x:Type Pages:HomePage}" />
                             <local:MasterPageItem
-                                Title="{tr:Translate LogOut}"
+                                Title="{x:Static resource:AppResources.LogOut}"
                                 IconSource="logout.png"
                                 TargetType="{x:Type Pages:HomePage}" />
 

@@ -1,4 +1,5 @@
 ﻿using IttezanPos.Models;
+using IttezanPos.Resources;
 using IttezanPos.Services;
 using IttezanPos.Views.PurchasingPages.PurchasePoPups;
 using IttezanPos.Views.SalesPages;

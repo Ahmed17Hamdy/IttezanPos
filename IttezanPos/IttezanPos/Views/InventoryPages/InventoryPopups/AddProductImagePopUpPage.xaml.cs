@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using Plugin.Media.Abstractions;
 using Plugin.Media;
 using IttezanPos.Models;
+using IttezanPos.Resources;
 
 namespace IttezanPos.Views.InventoryPages.InventoryPopups
 {

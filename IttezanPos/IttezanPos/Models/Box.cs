@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,8 @@ namespace IttezanPos.Models
 {
   public  class Box
     {
+        [PrimaryKey]
+        public int id { get; set; }
         public int type_operation { get; set; }
         public string balance { get; set; }
         public string amount { get; set; }

@@ -1,6 +1,6 @@
 ﻿using IttezanPos.Views.Master;
 using Plugin.Connectivity;
-using Plugin.Multilingual;
+
 using System.Linq;
 using Xamarin.Forms;
 using IttezanPos.Helpers;
@@ -15,7 +15,10 @@ namespace IttezanPos
         public App()
         {
             InitializeComponent();
-            FlowListView.Init();
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjEyOTIxQDMxMzcyZTM0MmUzMEhBclpMNTZSNlpLQTFzUVlhbjFIR3d2aXFlVUFXcmNURVVycTMxQUZOdFk9");
+
+
+FlowListView.Init();
             FlowDirectionPage();
             MainPage = new MasterPage();
         }

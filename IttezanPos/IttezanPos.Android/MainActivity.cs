@@ -6,7 +6,7 @@ using Android.OS;
 using Xamarin.Forms;
 using Rg.Plugins.Popup.Services;
 using System.Linq;
-using Plugin.CurrentActivity;
+
 
 
 namespace IttezanPos.Droid
@@ -37,16 +37,18 @@ namespace IttezanPos.Droid
             base.OnCreate(savedInstanceState);
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
            
-            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+     //       CrossCurrentActivity.Current.Init(this, savedInstanceState);
             //ChechSdk();
             Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
             FormsMaterial.Init(this, savedInstanceState);
             XamEffects.Droid.Effects.Init();
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
-            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
-          
+       //     Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            //PdfSharp.Xamarin.Forms.Droid.Platform.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjEyOTEwQDMxMzcyZTM0MmUzMEhBclpMNTZSNlpLQTFzUVlhbjFIR3d2aXFlVUFXcmNURVVycTMxQUZOdFk9");
+
             LoadApplication(new App());
         }
         public void ChechSdk()
@@ -72,6 +74,10 @@ namespace IttezanPos.Droid
                 }
                 // Do something if there are some pages in the `PopupStack`
              
+            }
+            else
+            {
+                return;
             }
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

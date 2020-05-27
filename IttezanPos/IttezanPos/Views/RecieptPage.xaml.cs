@@ -14,7 +14,7 @@ namespace IttezanPos.Views
     {
        
         private List<OrderItem> products;
-      
+       private List<Product> saleproducts;
         private string paymentname;
 
         public RecieptPage()
@@ -22,18 +22,22 @@ namespace IttezanPos.Views
             InitializeComponent();
         }
 
-        public RecieptPage(List<OrderItem> products, string paymentname)
+        public RecieptPage(List<OrderItem> products, List<Product> saleproducts, string paymentname)
         {
             InitializeComponent();
             this.products = products;
+            this.saleproducts = saleproducts;
             this.paymentname = paymentname;
-        //    Invoiceidlbl.Text = products[0].id.ToString();
+            Invoiceidlbl.Text = products[0].id.ToString();
             Datelbl.Text = DateTime.Now.ToLongDateString();
             paymenttypelbl.Text = paymentname;
             Amountlbl.Text= products[0].amount_paid; ;
-            RecieptList.ItemsSource = products[0].products;
+            RecieptList.ItemsSource = saleproducts;
         }
 
-     
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

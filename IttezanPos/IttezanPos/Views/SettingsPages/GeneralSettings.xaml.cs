@@ -1,5 +1,5 @@
 ﻿using Plugin.Connectivity;
-using Plugin.Multilingual;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using IttezanPos.Views.MainPage;
 using IttezanPos.Views.Master;
+using System.Threading;
+using System.Globalization;
+using IttezanPos.Resources;
 
 namespace IttezanPos.Views.SettingsPages
 {
@@ -21,37 +24,31 @@ namespace IttezanPos.Views.SettingsPages
             InitializeComponent();
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private  void Button_Clicked(object sender, EventArgs e)
         {
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList()
+           
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList()
                     .First(element => element.EnglishName.Contains("English"));
-                AppResources.Culture = CrossMultilingual.Current.CurrentCultureInfo;
+                AppResources.Culture = Thread.CurrentThread.CurrentUICulture;
                 Settings.LastUserGravity = "English";
-                App.Current.MainPage = new MasterPage();
-            }
-            else await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
+            Application.Current.MainPage = new MasterPage();
+          
 
         }
 
-        private async void Button_Clicked_1(object sender, EventArgs e)
+        private  void Button_Clicked_1(object sender, EventArgs e)
         {
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList()
+           
+            var language =   Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList()
                     .First(element => element.EnglishName.Contains("Arabic"));
-                AppResources.Culture = CrossMultilingual.Current.CurrentCultureInfo ;
+            Thread.CurrentThread.CurrentUICulture = language;
+            AppResources.Culture = language;
 
                 Settings.LastUserGravity = "Arabic";
                 GravityClass.Grav();
 
-                App.Current.MainPage = new MasterPage();
-            }
-            else
-            {
-                await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
-            }
+            Application.Current.MainPage = new MasterPage();
+            
         }
     }
 }

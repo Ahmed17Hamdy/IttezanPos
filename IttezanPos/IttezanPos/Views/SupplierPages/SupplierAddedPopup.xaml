@@ -9,7 +9,7 @@
     xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <pages:PopupPage.Animation>
         <animations:MoveAnimation
@@ -26,7 +26,7 @@
             HorizontalOptions="CenterAndExpand"
             VerticalOptions="CenterAndExpand">
             <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                <Label x:Name="Supplierlbl" Text="{tr:Translate SupplierAdded}" />
+                <Label x:Name="Supplierlbl" Text="{x:Static resource:AppResources.SupplierAdded}" />
             </StackLayout>
 
         </Frame>

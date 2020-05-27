@@ -16,6 +16,7 @@ using System.Linq;
 using Settings = IttezanPos.Helpers.Settings;
 using SQLite;
 using System.IO;
+using IttezanPos.Resources;
 
 namespace IttezanPos.Views.InventoryPages
 {

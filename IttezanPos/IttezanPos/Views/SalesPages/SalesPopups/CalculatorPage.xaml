@@ -8,7 +8,7 @@
     xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <Style TargetType="Label">
@@ -37,7 +37,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="{tr:Translate AddTotaldiscount}" />
+            <Label Grid.Row="0" Text="{x:Static resource:AppResources.AddTotaldiscount}" />
             <input:RadioButtonGroupView
                 Grid.Row="1"
                 HorizontalOptions="Center"
@@ -46,14 +46,14 @@
                     x:Name="Valuebtn"
                     Clicked="Valuebtn_Clicked"
                     IsChecked="True"
-                    Text="{tr:Translate Value}"
+                    Text="{x:Static resource:AppResources.Value}"
                     TextColor="White"
                     TextFontSize="15"
                     Color="#33b54b" />
                 <input:RadioButton
                     x:Name="Percentagebtn"
                     Clicked="Percentagebtn_Clicked"
-                    Text="{tr:Translate Percentage}"
+                    Text="{x:Static resource:AppResources.Percentage}"
                     TextColor="White"
                     TextFontSize="15"
                     Color="Red" />

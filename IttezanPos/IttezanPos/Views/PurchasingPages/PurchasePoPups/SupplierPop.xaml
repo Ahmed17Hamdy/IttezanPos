@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Content>
         <Grid>
@@ -16,7 +16,7 @@
                         Grid.Row="0"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate AddNewSupplier}"
+                        Text="{x:Static resource:AppResources.AddNewSupplier}"
                         TextColor="#33b54b"
                         TextDecorations="Underline"
                         VerticalOptions="Center">
@@ -41,7 +41,7 @@
                             CancelButtonColor="Red"
                             FontSize="Micro"
                             HorizontalOptions="FillAndExpand"
-                            Placeholder="{tr:Translate SearchClient}"
+                            Placeholder="{x:Static resource:AppResources.SearchClient}"
                             SearchButtonPressed="SearchBar_SearchButtonPressed"
                             TextChanged="OnTextChanged"
                             WidthRequest="200" />
@@ -75,13 +75,13 @@
                                     Margin="5,0,5,0"
                                     FontSize="Small"
                                     HorizontalOptions="Start"
-                                    Text="{tr:Translate ClientsData}"
+                                    Text="{x:Static resource:AppResources.ClientsData}"
                                     TextColor="Black" />
 
                                 <Label
                                     Grid.Column="1"
                                     FontSize="Small"
-                                    Text="{tr:Translate PhoneNumber}"
+                                    Text="{x:Static resource:AppResources.PhoneNumber}"
                                     TextColor="Black" />
                             </Grid>
                         </ListView.Header>

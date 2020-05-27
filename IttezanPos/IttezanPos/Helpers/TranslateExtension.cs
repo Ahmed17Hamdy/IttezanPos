@@ -1,9 +1,10 @@
-﻿using Plugin.Multilingual;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,7 +25,7 @@ namespace IttezanPos.Helpers
             if (Text == null)
                 return "";
 
-            var ci = CrossMultilingual.Current.CurrentCultureInfo;
+            var ci = Thread.CurrentThread.CurrentUICulture;
 
             var translation = resmgr.Value.GetString(Text, ci);
 

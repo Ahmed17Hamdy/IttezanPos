@@ -9,7 +9,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <Style TargetType="Label">
@@ -41,7 +41,7 @@
                     <Label
                         FontSize="Title"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Expense}"
+                        Text="{x:Static resource:AppResources.Expense}"
                         TextColor="#34b44c"
                         VerticalOptions="Center" />
                 </StackLayout>
@@ -50,7 +50,7 @@
                         <Label
                             Margin="0,5,0,-5"
                             FontSize="Medium"
-                            Text="{tr:Translate Statement}" />
+                            Text="{x:Static resource:AppResources.Statement}" />
                         <customcontrols:CustomEntry
                             x:Name="Statmententry"
                             Grid.Row="1"
@@ -70,7 +70,7 @@
                             </customcontrols:CustomEntry.Behaviors>
                         </customcontrols:CustomEntry>
                         <StackLayout>
-                            <Label Margin="0,5,0,-5" Text="{tr:Translate Entertheamount}" />
+                            <Label Margin="0,5,0,-5" Text="{x:Static resource:AppResources.Entertheamount}" />
                             <customcontrols:CustomEntry
                                 x:Name="amountentry"
                                 Grid.Row="1"
@@ -83,7 +83,7 @@
                                 IsTextPredictionEnabled="True"
                                 Keyboard="Numeric"
                                 MaxLength="9"
-                                Placeholder="{tr:Translate Zero}"
+                                Placeholder="{x:Static resource:AppResources.Zero}"
                                 PlaceholderColor="Red"
                                 TextChanged="CustomEntry_TextChanged">
                                 <customcontrols:CustomEntry.Behaviors>
@@ -98,12 +98,12 @@
                             <Label
                                 x:Name="NumbertoTextlbl"
                                 Margin="0,-5,0,5"
-                                Text="{tr:Translate ZeroText}" />
+                                Text="{x:Static resource:AppResources.ZeroText}" />
                             <Grid>
                                 <Label
                                     Margin="20,10"
                                     HorizontalTextAlignment="Center"
-                                    Text="{tr:Translate Date}" />
+                                    Text="{x:Static resource:AppResources.Date}" />
                                 <DatePicker
                                     x:Name="DatePicker"
                                     ef:Border.Color="#33b54b"
@@ -118,7 +118,7 @@
                                 Clicked="Button_Clicked"
                                 CornerRadius="10"
                                 IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
-                                Text="{tr:Translate Save}"
+                                Text="{x:Static resource:AppResources.Save}"
                                 TextColor="Black" />
                         </StackLayout>
                     </StackLayout>

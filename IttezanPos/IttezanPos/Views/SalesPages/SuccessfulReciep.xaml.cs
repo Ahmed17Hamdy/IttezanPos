@@ -16,13 +16,15 @@ namespace IttezanPos.Views.SalesPages
       
         private List<OrderItem> products;
         private Purchaseitem products1;
+        private List<Product> saleproducts;
         private string paymentname;
 
 
-        public SuccessfulReciep(List<OrderItem> products,string paymentname)
+        public SuccessfulReciep(List<OrderItem> products, List<Product> saleproducts, string paymentname)
         {
             InitializeComponent();
             this.products = products;
+            this.saleproducts = saleproducts;
             this.paymentname = paymentname;
             Totallbl.Text = products[0].total_price;
             Salestk.IsVisible = true;
@@ -50,7 +52,8 @@ namespace IttezanPos.Views.SalesPages
 
         private async void ViewReciept_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RecieptPage(products,  paymentname) );
+            await Navigation.PushAsync(new NavigationPage(new RecieptPage(products,saleproducts,  paymentname)) );
         }
+      
     }
 }

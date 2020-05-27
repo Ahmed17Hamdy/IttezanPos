@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
     mc:Ignorable="d">
     <ContentPage.Content>
@@ -30,7 +30,7 @@
                 <Label
                     FontSize="Title"
                     HorizontalOptions="Center"
-                    Text="{tr:Translate Inventory}"
+                    Text="{x:Static resource:AppResources.Inventory}"
                     TextColor="#34b44c"
                     VerticalOptions="Center" />
             </StackLayout>
@@ -58,7 +58,7 @@
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate AddNewProduct}"
+                        Text="{x:Static resource:AppResources.AddNewProduct}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
@@ -76,7 +76,7 @@
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate ViewProducts}"
+                        Text="{x:Static resource:AppResources.ViewProducts}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
@@ -94,7 +94,7 @@
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate AddingNewClassification}"
+                        Text="{x:Static resource:AppResources.AddingNewClassification}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>
@@ -112,7 +112,7 @@
                         Margin="50,-5,50,0"
                         FontSize="Medium"
                         HorizontalOptions="Start"
-                        Text="{tr:Translate EdittingSalaries}"
+                        Text="{x:Static resource:AppResources.EdittingSalaries}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>

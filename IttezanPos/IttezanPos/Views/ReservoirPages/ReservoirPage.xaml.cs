@@ -1,10 +1,15 @@
 ﻿using IttezanPos.Helpers;
 using IttezanPos.Models;
+using IttezanPos.Resources;
+using IttezanPos.Services;
 using Plugin.Connectivity;
 using Refit;
 using Rg.Plugins.Popup.Extensions;
+using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,16 +31,117 @@ namespace IttezanPos.Views.ReservoirPages
         private int disc_expenses;
         private int add_sales_clients;
 
+        public Box Box { get; private set; }
+
         public ReservoirPage()
         {
             InitializeComponent();
+            _ = GetData();
             type_Operation = 1;
             disc_purchasing_suppliers = 0;
             disc_expenses=0;
             add_sales_clients = 0;
         }
+        async Task GetData()
+        {
+            try
+            {
+                //      ActiveIn.IsRunning = true;
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
+                    RootObject data = await nsAPI.GetSettings();
+                    Box = (data.message.box);
+                    Balancelbl.Text = Box.balance;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Box");
+                        if (!info.Any())
+                        {
+                            db.CreateTable<Box>();
+                        }
+                        else
+                        {
+                            db.DropTable<Box>();
+                            db.CreateTable<Box>();
+                        }
 
-    private  void Addrdbtn_Checked(object sender, EventArgs e)
+                        db.Insert(Box);
+                    }
+                    else
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Box");
+                        if (!info.Any())
+                        {
+                            db.CreateTable<Box>();
+                        }
+                        else
+                        {
+                            db.DropTable<Box>();
+                            db.CreateTable<Box>();
+                        }
+                        //    Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
+                        // db.CreateTable<Client>();
+                      //  db.InsertAll(Suppliers);
+                    }
+                    //  listviewwww.ItemsSource = Suppliers;
+                    //    ActiveIn.IsRunning = false;
+                }
+                else
+                {
+                    // ActiveIn.IsRunning = false;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Box");
+                        if (!info.Any())
+                            db.CreateTable<Box>();
+
+                        Box = (db.Table<Box>().First());
+                        Balancelbl.Text = Box.balance;
+                    }
+                    else
+                    {
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Box");
+                        if (!info.Any())
+                            db.CreateTable<Box>();
+
+                        Box = (db.Table<Box>().First());
+                        Balancelbl.Text = Box.balance;
+                        //   Suppliers = new ObservableCollection<Supplier>(db.Table<Supplier>().ToList());
+                    }
+                    //    listviewwww.ItemsSource = Suppliers;
+                }
+            }
+
+            catch (ValidationApiException validationException)
+            {
+                // handle validation here by using validationException.Content, 
+                // which is type of ProblemDetails according to RFC 7807
+                //    ActiveIn.IsRunning = false;
+                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+            }
+            catch (ApiException exception)
+            {
+                //   ActiveIn.IsRunning = false;
+                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                // other exception handling
+            }
+            catch (Exception ex)
+            {
+                //    ActiveIn.IsRunning = false;
+                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+            }
+
+        }
+        private  void Addrdbtn_Checked(object sender, EventArgs e)
         {
             Deductionbtn.IsVisible = false;
             Addingbtn.IsVisible = true;
@@ -113,7 +219,7 @@ namespace IttezanPos.Views.ReservoirPages
         {
             try
             {
-                ActiveIn.IsRunning = true;
+                ActiveIn.IsVisible = true;
                 if (CrossConnectivity.Current.IsConnected)
                 {
                     Box box = new Box
@@ -130,14 +236,14 @@ namespace IttezanPos.Views.ReservoirPages
                         var data = await nsAPI.Addinterproccess(box);
                         if (data.success == true)
                         {
-                            ActiveIn.IsRunning = false;
+                            ActiveIn.IsVisible = false;
                             await DisplayAlert(AppResources.Alert, AppResources.AddedSucc, AppResources.Ok);
                             Balancelbl.Text = data.message.box.balance;
                         }
                     }
                     catch(Exception ex)
                     {
-                        ActiveIn.IsRunning = false;
+                        ActiveIn.IsVisible = false;
                         await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                     }
                 }
@@ -145,14 +251,14 @@ namespace IttezanPos.Views.ReservoirPages
             }
             catch (ValidationApiException validationException)
             {
-                ActiveIn.IsRunning = false;
+                ActiveIn.IsVisible = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 // handle validation here by using validationException.Content, 
                 // which is type of ProblemDetails according to RFC 7807
             }
             catch (ApiException exception)
             {
-                ActiveIn.IsRunning = false;
+                ActiveIn.IsVisible = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 // other exception handling
             }
@@ -162,7 +268,7 @@ namespace IttezanPos.Views.ReservoirPages
         {
             try
             {
-                ActiveIn.IsRunning = true;
+                ActiveIn.IsVisible = true;
                 if (CrossConnectivity.Current.IsConnected)
                 {
                     Box box = new Box
@@ -179,13 +285,13 @@ namespace IttezanPos.Views.ReservoirPages
                         var data = await nsAPI.Addinterproccess(box);
                         if (data.success == true)
                         {
-                            ActiveIn.IsRunning = false;
+                            ActiveIn.IsVisible = false;
                             await DisplayAlert(AppResources.Alert, AppResources.AddedSucc, AppResources.Ok);
                         }
                     }
                     catch
                     {
-                        ActiveIn.IsRunning = false;
+                        ActiveIn.IsVisible = false;
                         await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                     }
                 }
@@ -193,14 +299,14 @@ namespace IttezanPos.Views.ReservoirPages
             }
             catch (ValidationApiException validationException)
             {
-                ActiveIn.IsRunning = false;
+                ActiveIn.IsVisible = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 // handle validation here by using validationException.Content, 
                 // which is type of ProblemDetails according to RFC 7807
             }
             catch (ApiException exception)
             {
-                ActiveIn.IsRunning = false;
+                ActiveIn.IsVisible = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 // other exception handling
             }

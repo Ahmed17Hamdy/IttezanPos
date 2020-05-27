@@ -10,8 +10,8 @@
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
-    Title="{tr:Translate Reservoir}"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    Title="{x:Static resource:AppResources.Reservoir}"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <Style TargetType="Label">
@@ -50,20 +50,30 @@
                     <Label
                         FontSize="Title"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Reservoir}"
+                        Text="{x:Static resource:AppResources.Reservoir}"
                         TextColor="#34b44c"
                         VerticalOptions="Center" />
                 </StackLayout>
-                <ActivityIndicator
+                <Frame
                     x:Name="ActiveIn"
-                    Grid.Row="0"
                     Grid.RowSpan="2"
-                    HeightRequest="100"
                     HorizontalOptions="Center"
-                    IsRunning="False"
-                    VerticalOptions="Center"
-                    WidthRequest="100"
-                    Color="#33b54b" />
+                    IsVisible="False"
+                    VerticalOptions="Center">
+                    <StackLayout>
+
+                        <ActivityIndicator
+                            HeightRequest="50"
+                            IsRunning="True"
+                            WidthRequest="50"
+                            Color="#33b54b" />
+                        <Label
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:AppResources.Loading}"
+                            TextColor="#33b54b" />
+                    </StackLayout>
+                </Frame>
                 <ScrollView Grid.Row="1">
                     <StackLayout>
                         <StackLayout
@@ -77,7 +87,7 @@
                                 CircleColor="Black"
                                 Clicked="Addrdbtn_Checked"
                                 IsChecked="True"
-                                Text="{tr:Translate AddToFund}"
+                                Text="{x:Static resource:AppResources.AddToFund}"
                                 TextColor="#33b54b"
                                 TextFontSize="15"
                                 Color="#33b54b" />
@@ -86,13 +96,13 @@
                                 CheckedImage="minus"
                                 CircleColor="Black"
                                 Clicked="Deductrdbtn_Checked"
-                                Text="{tr:Translate DeductOfFund}"
+                                Text="{x:Static resource:AppResources.DeductOfFund}"
                                 TextColor="Red"
                                 TextFontSize="15"
                                 Color="Red" />
                         </input:RadioButtonGroupView>
                         <StackLayout>
-                            <Label Margin="0,5,0,-5" Text="{tr:Translate Entertheamount}" />
+                            <Label Margin="0,5,0,-5" Text="{x:Static resource:AppResources.Entertheamount}" />
                             <customcontrols:CustomEntry
                                 x:Name="AmountEntry"
                                 Grid.Row="1"
@@ -105,7 +115,7 @@
                                 IsTextPredictionEnabled="True"
                                 Keyboard="Numeric"
                                 MaxLength="9"
-                                Placeholder="{tr:Translate Zero}"
+                                Placeholder="{x:Static resource:AppResources.Zero}"
                                 PlaceholderColor="Red"
                                 TextChanged="CustomEntry_TextChanged">
                                 <customcontrols:CustomEntry.Behaviors>
@@ -120,12 +130,12 @@
                             <Label
                                 x:Name="NumbertoTextlbl"
                                 Margin="0,-5,0,5"
-                                Text="{tr:Translate ZeroText}" />
+                                Text="{x:Static resource:AppResources.ZeroText}" />
                             <Grid>
                                 <Label
                                     Margin="20,10"
                                     HorizontalTextAlignment="Center"
-                                    Text="{tr:Translate Date}" />
+                                    Text="{x:Static resource:AppResources.Date}" />
                                 <DatePicker
                                     ef:Border.Color="#33b54b"
                                     ef:Border.Radius="10"
@@ -135,7 +145,7 @@
                             <Label
                                 Margin="0,5,0,-5"
                                 FontSize="Medium"
-                                Text="{tr:Translate Statement}" />
+                                Text="{x:Static resource:AppResources.Statement}" />
                             <customcontrols:CustomEntry
                                 x:Name="NotesEntry"
                                 Grid.Row="1"
@@ -162,7 +172,7 @@
                                 <Label
                                     Grid.Column="0"
                                     HorizontalOptions="Start"
-                                    Text="{tr:Translate Addsalesandcustomeramountstothefund}" />
+                                    Text="{x:Static resource:AppResources.Addsalesandcustomeramountstothefund}" />
                                 <Switch
                                     x:Name="Salescustswitch"
                                     Grid.Column="1"
@@ -180,7 +190,7 @@
                                     <ColumnDefinition Width="5*" />
                                     <ColumnDefinition Width="0.8*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{tr:Translate DeductionoftheamountsofpurchasesandsuppliersfromtheFund}" />
+                                <Label Grid.Column="0" Text="{x:Static resource:AppResources.DeductionoftheamountsofpurchasesandsuppliersfromtheFund}" />
                                 <Switch
                                     x:Name="Purchaseandsuppliersswitch"
                                     Grid.Column="1"
@@ -198,7 +208,7 @@
                                     <ColumnDefinition Width="5*" />
                                     <ColumnDefinition Width="0.8*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{tr:Translate DeductionofexpensesfromtheFund}" />
+                                <Label Grid.Column="0" Text="{x:Static resource:AppResources.DeductionofexpensesfromtheFund}" />
                                 <Switch
                                     x:Name="expensesswitch"
                                     Grid.Column="1"
@@ -217,7 +227,7 @@
                                     BackgroundColor="#33b54b"
                                     Clicked="Addingbtn_Clicked"
                                     CornerRadius="10"
-                                    Text="{tr:Translate AddToFund}"
+                                    Text="{x:Static resource:AppResources.AddToFund}"
                                     TextColor="Black" />
                                 <Button
                                     x:Name="Deductionbtn"
@@ -226,7 +236,7 @@
                                     Clicked="Deductionbtn_Clicked"
                                     CornerRadius="10"
                                     IsVisible="False"
-                                    Text="{tr:Translate DeductOfFund}"
+                                    Text="{x:Static resource:AppResources.DeductOfFund}"
                                     TextColor="Black" />
                             </Grid>
                         </StackLayout>
@@ -238,7 +248,7 @@
                             <Label
                                 Grid.Column="0"
                                 Margin="20,0"
-                                Text="{tr:Translate Balance}"
+                                Text="{x:Static resource:AppResources.Balance}"
                                 VerticalOptions="Center" />
                             <Label
                                 x:Name="Balancelbl"
@@ -249,7 +259,7 @@
                                 ef:Border.Width="1"
                                 BackgroundColor="White"
                                 HorizontalTextAlignment="Center"
-                                Text="{tr:Translate Zero}"
+                                Text="{x:Static resource:AppResources.Zero}"
                                 TextColor="Red"
                                 VerticalOptions="CenterAndExpand" />
                         </Grid>

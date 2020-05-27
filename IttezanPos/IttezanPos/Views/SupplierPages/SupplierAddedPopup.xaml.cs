@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using IttezanPos.Resources;
+using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,15 +17,7 @@ namespace IttezanPos.Views.SupplierPages
         private string edite;
         private int id;
 
-        public SupplierAddedPopup(Models.AddSupplierError data)
-        {
-            InitializeComponent();
-            Frame.BorderColor = Color.Red;
-            if (data.data.email.First()== "قيمة البريد الالكتروني مُستخدمة من قبل")
-            {
-                Supplierlbl.Text = AppResources.UsedEmail;
-            }
-        }
+       
         public SupplierAddedPopup()
         {
             InitializeComponent();
@@ -34,9 +27,18 @@ namespace IttezanPos.Views.SupplierPages
         public SupplierAddedPopup(string edite)
         {
             InitializeComponent();
-            Frame.BorderColor = Color.FromHex("#33b54b");
-            Supplierlbl.Text = AppResources.UpdatedSupplier;
-            this.edite = edite;
+            if (edite == "قيمة البريد الالكتروني مُستخدمة من قبل")
+            {
+                Frame.BorderColor = Color.Red;
+                Supplierlbl.Text = AppResources.UsedEmail;
+            }
+            else
+            {
+                Frame.BorderColor = Color.FromHex("#33b54b");
+                Supplierlbl.Text = AppResources.UpdatedSupplier;
+               
+            }
+         
         }
 
         public SupplierAddedPopup(int id)

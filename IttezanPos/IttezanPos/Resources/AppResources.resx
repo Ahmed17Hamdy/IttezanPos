@@ -231,6 +231,12 @@
   <data name="Billions" xml:space="preserve">
     <value>Billions</value>
   </data>
+  <data name="BillReport" xml:space="preserve">
+    <value>Bills Report</value>
+  </data>
+  <data name="BoxMov" xml:space="preserve">
+    <value>Reservior Movement</value>
+  </data>
   <data name="BusinessSettings" xml:space="preserve">
     <value>Business Settings</value>
   </data>
@@ -276,17 +282,38 @@
   <data name="ClientAdded" xml:space="preserve">
     <value>Client Added Successfully !</value>
   </data>
+  <data name="ClientBillReport" xml:space="preserve">
+    <value>Client's Bill Report</value>
+  </data>
   <data name="ClientLimit" xml:space="preserve">
     <value>Client Limit</value>
   </data>
   <data name="ClientName" xml:space="preserve">
     <value>Client Name</value>
   </data>
+  <data name="ClientNameAr" xml:space="preserve">
+    <value>Client Name in Arabic</value>
+  </data>
+  <data name="ClientNameEn" xml:space="preserve">
+    <value>Client Name in English</value>
+  </data>
+  <data name="Clientpaymentmovement" xml:space="preserve">
+    <value>Client's Payment Movement</value>
+  </data>
+  <data name="ClientReport" xml:space="preserve">
+    <value>Client's Report</value>
+  </data>
+  <data name="ClientReports" xml:space="preserve">
+    <value>Clients Report</value>
+  </data>
   <data name="ClientsData" xml:space="preserve">
     <value>Client's Data</value>
   </data>
   <data name="ConnectionNotAvailable" xml:space="preserve">
     <value>No Internet Connected , Please Check Your Connection</value>
+  </data>
+  <data name="CorruptedPro" xml:space="preserve">
+    <value>Corrupted Products</value>
   </data>
   <data name="Cost" xml:space="preserve">
     <value>Cost</value>
@@ -435,8 +462,17 @@
   <data name="InvalidMail" xml:space="preserve">
     <value>Invalid Mail Format</value>
   </data>
+  <data name="InventForClass" xml:space="preserve">
+    <value>Inventory For Category</value>
+  </data>
   <data name="Inventory" xml:space="preserve">
     <value>Inventory</value>
+  </data>
+  <data name="InventoryByClass" xml:space="preserve">
+    <value>Inventory By Category</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading ... Please Wait</value>
   </data>
   <data name="LogOut" xml:space="preserve">
     <value> Log Out</value>
@@ -508,7 +544,7 @@
     <value>Or</value>
   </data>
   <data name="OrderType" xml:space="preserve">
-    <value>Order Type</value>
+    <value>Hold</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>Payment</value>
@@ -540,14 +576,35 @@
   <data name="ProductName" xml:space="preserve">
     <value>Product Name</value>
   </data>
+  <data name="ProductPriceReport" xml:space="preserve">
+    <value>Product Price Report</value>
+  </data>
   <data name="Productsmodified" xml:space="preserve">
     <value>Products Modified Successfully !</value>
+  </data>
+  <data name="ProfitsReport" xml:space="preserve">
+    <value>Profits Report</value>
+  </data>
+  <data name="ProMove" xml:space="preserve">
+    <value>Product Movement</value>
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>Purchases</value>
   </data>
   <data name="PurchaseDate" xml:space="preserve">
     <value>Purchase invoice date</value>
+  </data>
+  <data name="PurchasesBillsReports" xml:space="preserve">
+    <value>Purchases's Bills Reports</value>
+  </data>
+  <data name="PurchasesReport" xml:space="preserve">
+    <value>Purchases Report</value>
+  </data>
+  <data name="PurchasesReturns" xml:space="preserve">
+    <value>Purchases's Returns</value>
+  </data>
+  <data name="PurchasesReturnsBills" xml:space="preserve">
+    <value>Purchases Returns Bills</value>
   </data>
   <data name="Purchasing" xml:space="preserve">
     <value>Purchasing</value>
@@ -576,15 +633,30 @@
   <data name="RepresentOnPos" xml:space="preserve">
     <value>Representation On Pos</value>
   </data>
+  <data name="ReserByAcc" xml:space="preserve">
+    <value>Expenses Report By Account</value>
+  </data>
   <data name="Reservoir" xml:space="preserve">
     <value>Reservoir</value>
+  </data>
+  <data name="ReservRepor" xml:space="preserve">
+    <value>Expenses Report</value>
   </data>
   <data name="residualamounts" xml:space="preserve">
     <value>Customer receivables
  - residual amounts</value>
   </data>
+  <data name="ReturnsReports" xml:space="preserve">
+    <value>Client's Returns Reports</value>
+  </data>
   <data name="Sales" xml:space="preserve">
     <value>Sales</value>
+  </data>
+  <data name="SalesReport" xml:space="preserve">
+    <value>Sales Report</value>
+  </data>
+  <data name="SalesReturnsBills" xml:space="preserve">
+    <value>Sales's Returns Bills</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
@@ -649,11 +721,29 @@
   <data name="Statement" xml:space="preserve">
     <value>Statement</value>
   </data>
+  <data name="Store" xml:space="preserve">
+    <value>Store</value>
+  </data>
+  <data name="StoreMove" xml:space="preserve">
+    <value>Store Movement</value>
+  </data>
   <data name="SubTotal" xml:space="preserve">
     <value>SubTotal :</value>
   </data>
+  <data name="SuplierNameAr" xml:space="preserve">
+    <value>Supplier Name in Arabic</value>
+  </data>
   <data name="SupplierAdded" xml:space="preserve">
     <value>Supplier Added Successfuly</value>
+  </data>
+  <data name="Supplierbillexchange" xml:space="preserve">
+    <value>Supplier's Bill Exchange</value>
+  </data>
+  <data name="SupplierbillReport" xml:space="preserve">
+    <value>Supplier's Bill Report</value>
+  </data>
+  <data name="SupplierByCategoryReport" xml:space="preserve">
+    <value>Supplier By Category Report</value>
   </data>
   <data name="SupplierData" xml:space="preserve">
     <value>Supplier's Data</value>
@@ -661,17 +751,32 @@
   <data name="SupplierName" xml:space="preserve">
     <value>Supplier Name</value>
   </data>
+  <data name="SupplierNameEn" xml:space="preserve">
+    <value>Supplier Name in English</value>
+  </data>
   <data name="Supplieropeningbalances" xml:space="preserve">
     <value>Supplier's Opening Balances</value>
   </data>
+  <data name="SupplierOpenningbalanceRe" xml:space="preserve">
+    <value>Supplier's Openning balance Report</value>
+  </data>
+  <data name="Supplierpaymentmovement" xml:space="preserve">
+    <value>Supplier's Payment Movement</value>
+  </data>
   <data name="Supplierreceivables" xml:space="preserve">
     <value>Supplier's Receivables - Reports</value>
+  </data>
+  <data name="SupplierReport" xml:space="preserve">
+    <value>Supplier's Report</value>
   </data>
   <data name="Supplierresidualamounts" xml:space="preserve">
     <value>Residual amounts to suppliers</value>
   </data>
   <data name="Suppliers" xml:space="preserve">
     <value>Suppliers</value>
+  </data>
+  <data name="SuppliersReport" xml:space="preserve">
+    <value>Suppliers Report</value>
   </data>
   <data name="SureTodiscard" xml:space="preserve">
     <value>Are You Sure you want to discard this reciept creation ?</value>
@@ -702,6 +807,18 @@
   </data>
   <data name="TotalDisc" xml:space="preserve">
     <value>Total Discount :</value>
+  </data>
+  <data name="TotalPurchasesbycateg" xml:space="preserve">
+    <value>Total Purchases By Categories</value>
+  </data>
+  <data name="TotalPurchasesbyro" xml:space="preserve">
+    <value>Total Purchases By Products</value>
+  </data>
+  <data name="TotalTaxesByClient" xml:space="preserve">
+    <value>Total Taxes By Client</value>
+  </data>
+  <data name="TotalTaxesByProduct" xml:space="preserve">
+    <value>Total Taxes By Product</value>
   </data>
   <data name="TrackinStore" xml:space="preserve">
     <value>TrackinStore</value>

@@ -9,10 +9,11 @@ namespace IttezanPos.Models
 {
     public class Category
     {
-
+        [PrimaryKey,AutoIncrement,]
+        public int Id { get; set; }
         [ForeignKey(typeof(Category2))]
-        public int categoryId { get; set; }
-        [OneToOne(CascadeOperations = CascadeOperation.All)]
+        public int category2Id { get; set; }
+        [ManyToOne]
         public Category2 category { get; set; }
     }
     public class Settings
@@ -47,23 +48,25 @@ namespace IttezanPos.Models
     }
     public class Category2
     {
+
         [PrimaryKey]
-        [JsonProperty("id")]
         public int id { get; set; }
-        [OneToMany]
+
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Category> categories { get; set; }
-       
         [JsonProperty("created_at")]
-        public string created_at { get; set; }
+        public DateTimeOffset created_at { get; set; }
         [JsonProperty("updated_at")]
-        public string updated_at { get; set; }
+        public DateTimeOffset updated_at { get; set; }
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         [JsonProperty("list_of_products")]
         public List<Product> list_of_products { get; set; }
         [JsonProperty("name")]
         public string name { get; set; }
+        [JsonProperty("enname")]
+        public string enname { get; set; }
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        [JsonProperty("translations")]
+     
         public List<Translation> translations { get; set; }
     }
 

@@ -3,7 +3,6 @@ using Plugin.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using IttezanPos.Helpers;
 using Xamarin.Forms;
@@ -14,13 +13,16 @@ using Plugin.Connectivity;
 using IttezanPos.Services;
 using Refit;
 using System.Collections.ObjectModel;
-using DLToolkit.Forms.Controls;
-using static IttezanPos.Services.OfflineDataBase;
 using System.IO;
 using SQLite;
-using Plugin.Multilingual;
+
 using Rg.Plugins.Popup.Extensions;
 using IttezanPos.Views.SalesPages.SalesPopups;
+using SQLiteNetExtensions.Extensions;
+using Settings = IttezanPos.Helpers.Settings;
+using System.Threading;
+using System.Globalization;
+using IttezanPos.Resources;
 
 namespace IttezanPos.Views.SalesPages
 {
@@ -39,8 +41,8 @@ namespace IttezanPos.Views.SalesPages
                 OnPropertyChanged(nameof(categories));
             }
         }
-        private List<Category> categories1 = new List<Category>();
-        public List<Category> Categories1
+        private List<Category2> categories1 = new List<Category2>();
+        public List<Category2> Categories1
         {
             get { return categories1; }
             set
@@ -85,11 +87,14 @@ namespace IttezanPos.Views.SalesPages
             if (IttezanPos.Helpers.Settings.LastUserGravity == "Arabic")
             {
                 CategoryListar.IsVisible = true;
+                listheaderlistv.FlowDirection = FlowDirection.RightToLeft;
                 CategoryListen.IsVisible = false;
             }
             else
             {
+
                 CategoryListar.IsVisible = false;
+                listheaderlistv.FlowDirection = FlowDirection.LeftToRight;
                 CategoryListen.IsVisible = true;
             }
             MessagingCenter.Subscribe<ValuePercent>(this, "PopUpData", (value) =>
@@ -110,21 +115,16 @@ namespace IttezanPos.Views.SalesPages
 
             FlowDirectionPage();
         }
-        private async void FlowDirectionPage()
+        private void FlowDirectionPage()
         {
 
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                FlowDirection = (Helpers.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
-             : FlowDirection.LeftToRight;
-                CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().
-             First(element => element.EnglishName.Contains(Helpers.Settings.LastUserGravity));
-                AppResources.Culture = CrossMultilingual.Current.CurrentCultureInfo;
-            }
-            else
-            {
-                await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
-            }
+
+            FlowDirection = (Helpers.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
+         : FlowDirection.LeftToRight;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList().
+         First(element => element.EnglishName.Contains(Helpers.Settings.LastUserGravity));
+            AppResources.Culture = Thread.CurrentThread.CurrentUICulture;
+            GravityClass.Grav();
         }
         protected override bool OnBackButtonPressed()
         {
@@ -134,73 +134,86 @@ namespace IttezanPos.Views.SalesPages
         }
         protected override void OnAppearing()
         {
-            GetData();
+            _ = GetData();
             base.OnAppearing();
         }
         async Task GetData()
         {
             try
             {
-                ActiveIn.IsRunning = true;
+                ActiveIn.IsVisible = true;
                 if (CrossConnectivity.Current.IsConnected)
                 {
                     var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
                     RootObject data = await nsAPI.GetSettings();
-                    var eachCategories = new ObservableCollection<Category>(data.message.categories);
-                    Categories = eachCategories;
-                    var categories = new List<Category>(Categories);
-                    foreach (var item in eachCategories)
+                    Categories = new ObservableCollection<Category>(data.message.categories);
+                    
+
+                    foreach (var item in Categories)
                     {
+                        item.category2Id = item.category.id;
                         foreach (var item2 in item.category.list_of_products)
                         {
                             item2.product_id = item2.id;
                         }
-                        Products.AddRange(item.category.list_of_products);  
-                        
-                    }
+                        Products.AddRange(item.category.list_of_products);
+                        Categories1.Add(item.category);
+                      }
                     if (Device.RuntimePlatform == Device.iOS)
                     {
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Product");
-                        if (!info.Any())
+                        var info2 = db.GetTableInfo("Category");
+                        if (!info.Any() && !info2.Any())
                         {
                             db.CreateTable<Product>();
+                            db.CreateTable<Category>();
+                            db.InsertAll(Products);
+                            db.InsertAll(Categories);
                         }
                         else
                         {
+                            db.UpdateAll(Products);
+                            db.UpdateAll(Categories);
 
-                            db.CreateTable<Product>();
                         }
-                        db.DeleteAll<Product>();
-                        db.InsertAll(Products);
                     }
                     else
                     {
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Product");
+                        var info2 = db.GetTableInfo("Category");
                        
-                        db.DeleteAll<Product>();
-                          
-                        db.CreateTable<Product>();
-                       
-                        db.CreateTable<Category>();
-                       
-                        foreach (var item in Products)
+                        if (!info.Any()&& !info2.Any())
                         {
-                            db.InsertOrReplace(item);
+                            db.CreateTable<Product>();
+                            db.CreateTable<Category>();
+                            db.CreateTable<Category2>();
+                            db.InsertAll(Products);
+                            db.InsertAll(Categories1);
+                            db.InsertAllWithChildren(Categories);
                         }
-                       
-                      db.InsertAll(categories);
+                        else
+                         {
+                            //db.DropTable<Product>();
+                            //db.DropTable<Category>();
+                            //db.DropTable<Category2>();
+                            db.UpdateAll(Products);
+                            db.UpdateAll(Categories1);
+                            db.UpdateAll(Categories);
+                            
+                        }
                     }
-                    ProductsList.FlowItemsSource = products;
+                    ProductsList.FlowItemsSource = Products;
                     CategoryListen.ItemsSource = Categories;
                     CategoryListar.ItemsSource = Categories;
-                    ActiveIn.IsRunning = false;
+                    ActiveIn.IsVisible = false;
                 }
                 else
                 {
-                    ActiveIn.IsRunning = false;
+                    ActiveIn.IsVisible = false;
                     if (Device.RuntimePlatform == Device.iOS)
                     {
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
@@ -220,8 +233,9 @@ namespace IttezanPos.Views.SalesPages
                         var info = db.GetTableInfo("Product");
                         var info2 = db.GetTableInfo("Category");
                         Products = (db.Table<Product>().ToList());
-                        Categories = new ObservableCollection<Category>(db.Table<Category>().ToList());
+                        Categories = new ObservableCollection<Category>(db.GetAllWithChildren<Category>().ToList());
 
+                    
                     }
                     ProductsList.FlowItemsSource = Products;
                     CategoryListar.ItemsSource = Categories;
@@ -232,18 +246,18 @@ namespace IttezanPos.Views.SalesPages
             {
                 // handle validation here by using validationException.Content, 
                 // which is type of ProblemDetails according to RFC 7807
-                ActiveIn.IsRunning = false;
+                ActiveIn.IsVisible = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
             }
             catch (ApiException exception)
             {
-                ActiveIn.IsRunning = false;
+                ActiveIn.IsVisible = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 // other exception handling
             }
             catch (Exception ex)
             {
-                ActiveIn.IsRunning = false;
+                ActiveIn.IsVisible = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
             }
         }
@@ -379,13 +393,21 @@ namespace IttezanPos.Views.SalesPages
             }
             else
             {
-                ProductsList.FlowItemsSource = Products.Where(product => product.catname.Contains(category.category.name)).ToList();
+                ProductsList.FlowItemsSource = Products.Where(product => product.category_id==category.category.id).ToList();
             }
         }
         private void CategoryListen_SelectedIndexChanged(object sender, EventArgs e)
         {
             var category = CategoryListen.SelectedItem as Category;
-            ProductsList.FlowItemsSource = Products.Where(product => product.catname.Contains(category.category.name)).ToList();
+
+            if (category.category.name == "الكل")
+            {
+                ProductsList.FlowItemsSource = Products;
+            }
+            else
+            {
+                ProductsList.FlowItemsSource = Products.Where(product => product.category_id == category.category.id).ToList();
+            }
         }
 
 
@@ -415,16 +437,41 @@ namespace IttezanPos.Views.SalesPages
 
         private void Cart_Tapped(object sender, EventArgs e)
         {
-            Productstk.IsVisible = false;
-            SalesList.IsVisible = true;
-            backtosales.IsVisible = true;
+            if (Settings.LastUserGravity == "Arabic")
+            {
+                SalesList.IsVisible = true;
+                listheaderlistv.FlowDirection = FlowDirection.RightToLeft;
+             //   SalesListEn.IsVisible = false;
+                Productstk.IsVisible = false;
+                backtosales.IsVisible = true;
+            }
+            else
+            {
+                listheaderlistv.FlowDirection = FlowDirection.LeftToRight;
+
+                SalesList.IsVisible = true;
+            //    SalesListEn.IsVisible = true;
+                Productstk.IsVisible = false;
+                backtosales.IsVisible = true;
+            }
         }
 
         private void Backtostk_Tapped(object sender, EventArgs e)
         {
-            Productstk.IsVisible = true;
-            SalesList.IsVisible = false;
-            backtosales.IsVisible = false;
+            if (Settings.LastUserGravity == "Arabic")
+            {
+                Productstk.IsVisible = true;
+                SalesList.IsVisible = false;
+            //    SalesListEn.IsVisible = false;
+                backtosales.IsVisible = false;
+            }
+            else
+            {
+                Productstk.IsVisible = true;
+                SalesList.IsVisible = false;
+           //     SalesListEn.IsVisible = false;
+                backtosales.IsVisible = false;
+            }
         }
 
      

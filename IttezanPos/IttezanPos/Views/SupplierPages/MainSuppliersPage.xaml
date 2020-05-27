@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
     mc:Ignorable="d">
     <ContentPage.Content>
@@ -30,7 +30,7 @@
                     <Label
                         FontSize="Title"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate Suppliers}"
+                        Text="{x:Static resource:AppResources.Suppliers}"
                         TextColor="#34b44c"
                         VerticalOptions="Center" />
                 </StackLayout>
@@ -60,7 +60,7 @@
                             Margin="50,-5,50,0"
                             FontSize="Medium"
                             HorizontalOptions="Start"
-                            Text="{tr:Translate AddNewSupplier}"
+                            Text="{x:Static resource:AppResources.AddNewSupplier}"
                             TextColor="White"
                             VerticalOptions="Center" />
                     </Grid>
@@ -78,7 +78,7 @@
                             Margin="50,-5,50,0"
                             FontSize="Medium"
                             HorizontalOptions="Start"
-                            Text="{tr:Translate Supplieropeningbalances}"
+                            Text="{x:Static resource:AppResources.Supplieropeningbalances}"
                             TextColor="White"
                             VerticalOptions="Center" />
                     </Grid>
@@ -96,7 +96,7 @@
                             Margin="50,-5,50,0"
                             FontSize="Medium"
                             HorizontalOptions="Start"
-                            Text="{tr:Translate Supplierresidualamounts}"
+                            Text="{x:Static resource:AppResources.Supplierresidualamounts}"
                             TextColor="White"
                             VerticalOptions="Center" />
                     </Grid>
@@ -114,7 +114,7 @@
                             Margin="50,-5,50,0"
                             FontSize="Medium"
                             HorizontalOptions="Start"
-                            Text="{tr:Translate Supplierreceivables}"
+                            Text="{x:Static resource:AppResources.Supplierreceivables}"
                             TextColor="White"
                             VerticalOptions="Center" />
                     </Grid>
@@ -132,12 +132,33 @@
                             Margin="50,-5,50,0"
                             FontSize="Medium"
                             HorizontalOptions="Start"
-                            Text="{tr:Translate ViewSupplier}"
+                            Text="{x:Static resource:AppResources.ViewSupplier}"
                             TextColor="White"
                             VerticalOptions="Center" />
 
                     </Grid>
                 </Grid>
+                <Frame
+                    x:Name="ActiveIn"
+                    Grid.RowSpan="2"
+                    HorizontalOptions="Center"
+                    IsVisible="False"
+                    VerticalOptions="Center">
+                    <StackLayout>
+
+                        <ActivityIndicator
+                            HeightRequest="50"
+                            IsRunning="True"
+                            WidthRequest="50"
+                            Color="#33b54b" />
+                        <Label
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:AppResources.Loading}"
+                            TextColor="#33b54b" />
+                    </StackLayout>
+                </Frame>
+
             </Grid>
         </AbsoluteLayout>
     </ContentPage.Content>

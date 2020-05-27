@@ -7,12 +7,18 @@ namespace IttezanPos.Models
 {
  public   class Client
     {
+        public Client()
+        {
+        }
+
         [JsonProperty("client_id")]
         public int client_id { get; set; }
         [JsonProperty("id")]
         public int id { get; set; }
         [JsonProperty("name")]
         public string name { get; set; }
+        [JsonProperty("enname")]
+        public string enname { get; set; }
         [JsonProperty("phone")]
         public string phone { get; set; }
         [JsonProperty("email")]

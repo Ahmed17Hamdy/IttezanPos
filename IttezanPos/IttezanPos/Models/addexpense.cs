@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,8 @@ namespace IttezanPos.Models
 {
  public   class addexpense
     {
+        [PrimaryKey]
+        public int id { get; set; }
         public double amount { get; set; }
         public string date { get; set; }
         public string statement { get; set; }

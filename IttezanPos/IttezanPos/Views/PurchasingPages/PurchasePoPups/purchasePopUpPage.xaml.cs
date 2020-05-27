@@ -1,4 +1,5 @@
 ﻿using IttezanPos.Models;
+using IttezanPos.Resources;
 using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
 using System;

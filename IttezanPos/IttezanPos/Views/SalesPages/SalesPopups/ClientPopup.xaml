@@ -8,7 +8,7 @@
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     BackgroundColor="White"
     mc:Ignorable="d">
 
@@ -21,7 +21,7 @@
                         Grid.Row="0"
                         FontSize="Large"
                         HorizontalOptions="Center"
-                        Text="{tr:Translate AddNewClient}"
+                        Text="{x:Static resource:AppResources.AddNewClient}"
                         TextColor="#33b54b"
                         TextDecorations="Underline"
                         VerticalOptions="Center">
@@ -46,7 +46,7 @@
                             CancelButtonColor="Red"
                             FontSize="Micro"
                             HorizontalOptions="FillAndExpand"
-                            Placeholder="{tr:Translate SearchClient}"
+                            Placeholder="{x:Static resource:AppResources.SearchClient}"
                             SearchButtonPressed="SearchBar_SearchButtonPressed"
                             TextChanged="OnTextChanged"
                             WidthRequest="200" />
@@ -80,13 +80,13 @@
                                     Margin="5,0,5,0"
                                     FontSize="Small"
                                     HorizontalOptions="Start"
-                                    Text="{tr:Translate ClientsData}"
+                                    Text="{x:Static resource:AppResources.ClientsData}"
                                     TextColor="Black" />
 
                                 <Label
                                     Grid.Column="1"
                                     FontSize="Small"
-                                    Text="{tr:Translate PhoneNumber}"
+                                    Text="{x:Static resource:AppResources.PhoneNumber}"
                                     TextColor="Black" />
                             </Grid>
                         </ListView.Header>

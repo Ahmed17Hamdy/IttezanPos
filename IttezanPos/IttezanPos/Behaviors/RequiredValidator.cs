@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IttezanPos.Resources;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IttezanPos.Android", "Ittez
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IttezanPos.iOS", "IttezanPos\IttezanPos.iOS\IttezanPos.iOS.csproj", "{433CDA32-96FC-4A31-B7D7-3A2CAAA5E359}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IttezanPos", "IttezanPos\IttezanPos\IttezanPos.csproj", "{6A52BB33-F90A-44B9-ACCF-FA4AFDA4E10A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IttezanPos", "IttezanPos\IttezanPos\IttezanPos.csproj", "{6A52BB33-F90A-44B9-ACCF-FA4AFDA4E10A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

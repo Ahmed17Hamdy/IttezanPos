@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using IttezanPos.Helpers;
+using IttezanPos.Resources;
 using Plugin.Connectivity;
-using Plugin.Multilingual;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,6 +31,10 @@ namespace IttezanPos.Views.Master
         {
             FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
             : FlowDirection.LeftToRight;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList().
+        First(element => element.EnglishName.Contains(Settings.LastUserGravity));
+            AppResources.Culture = Thread.CurrentThread.CurrentUICulture;
+            GravityClass.Grav();
         }
         void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

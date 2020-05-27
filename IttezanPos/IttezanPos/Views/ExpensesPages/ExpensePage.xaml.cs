@@ -1,9 +1,12 @@
 ﻿using IttezanPos.Helpers;
 using IttezanPos.Models;
+using IttezanPos.Resources;
 using Plugin.Connectivity;
 using Refit;
+using SQLite;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,6 +80,52 @@ namespace IttezanPos.Views.ExpensesPages
                         // await Navigation.PushPopupAsync(new ClientAdded(data));
                         //  Emailentry.Focus();
                     }
+                }
+                else
+                {
+                    // ActiveIn.IsRunning = false;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        addexpense client = new addexpense
+                        {
+                            date = DatePicker.Date.ToShortDateString(),
+                            statement = Statmententry.Text,
+                            user_id = 3,
+
+                            amount = double.Parse(amountentry.Text)
+
+                        };
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("addexpense");
+                        if (!info.Any())
+                            db.CreateTable<addexpense>();
+
+                        db.Insert(client);
+                     
+                    }
+                    else
+                    {
+                        addexpense client = new addexpense
+                        {
+                            date = DatePicker.Date.ToShortDateString(),
+                            statement = Statmententry.Text,
+                            user_id = 3,
+
+                            amount = double.Parse(amountentry.Text)
+
+                        };
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                        var db = new SQLiteConnection(dbpath);
+                        var info = db.GetTableInfo("Box");
+                        if (!info.Any())
+                            db.CreateTable<Box>();
+
+                        db.Insert(client);
+
+                        //   Suppliers = new ObservableCollection<Supplier>(db.Table<Supplier>().ToList());
+                    }
+                    //    listviewwww.ItemsSource = Suppliers;
                 }
 
             }

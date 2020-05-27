@@ -22,7 +22,7 @@ namespace IttezanPos.Models
         public string client_id { get; set; }
        
         public int user_id { get; set; }
-     //   public int id { get; set; }
+        public int id { get; set; }
 
         public string payment_type { get; set; }
      

@@ -10,7 +10,7 @@
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <Style TargetType="Label">
@@ -58,10 +58,10 @@
                         <Label
                             FontSize="Title"
                             HorizontalOptions="FillAndExpand"
-                            Text="{tr:Translate EdittingSalaries}"
+                            Text="{x:Static resource:AppResources.EdittingSalaries}"
                             VerticalOptions="Center" />
                     </StackLayout>
-                    <Label Text="{tr:Translate Impactonprices}" />
+                    <Label Text="{x:Static resource:AppResources.Impactonprices}" />
                     <Frame
                         Padding="10"
                         BackgroundColor="#eaecee"
@@ -74,7 +74,7 @@
                                 Clicked="increasebtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
                                 IsChecked="True"
-                                Text="{tr:Translate Increase}"
+                                Text="{x:Static resource:AppResources.Increase}"
                                 TextColor="#33b54b"
                                 TextFontSize="15"
                                 Color="#33b54b" />
@@ -84,13 +84,13 @@
                                 CheckedImage="minus"
                                 Clicked="decreaebtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
-                                Text="{tr:Translate Decrease}"
+                                Text="{x:Static resource:AppResources.Decrease}"
                                 TextColor="Red"
                                 TextFontSize="15"
                                 Color="Red" />
                         </input:RadioButtonGroupView>
                     </Frame>
-                    <Label Text="{tr:Translate EditePrice}" />
+                    <Label Text="{x:Static resource:AppResources.EditePrice}" />
                     <Frame
                         Padding="10"
                         BackgroundColor="#eaecee"
@@ -103,7 +103,7 @@
                                 Clicked="sellingbtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
                                 IsChecked="True"
-                                Text="{tr:Translate Selling}"
+                                Text="{x:Static resource:AppResources.Selling}"
                                 TextColor="#33b54b"
                                 TextFontSize="15"
                                 Color="#33b54b" />
@@ -113,18 +113,18 @@
                                 CircleColor="Black"
                                 Clicked="Purchasingbtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
-                                Text="{tr:Translate Purchasing}"
+                                Text="{x:Static resource:AppResources.Purchasing}"
                                 TextColor="Red"
                                 TextFontSize="15"
                                 Color="Red" />
                         </input:RadioButtonGroupView>
                     </Frame>
-                    <Label Text="{tr:Translate EditeByCategory}" />
+                    <Label Text="{x:Static resource:AppResources.EditeByCategory}" />
                     <Frame Padding="0" BackgroundColor="#eaecee">
                         <Grid>
                             <CustomControls:CustomPicker
                                 x:Name="CategoryListar"
-                                Title="{tr:Translate All}"
+                                Title="{x:Static resource:AppResources.All}"
                                 ef:Border.Radius="20"
                                 BackgroundColor="#33b54b"
                                 FontSize="Small"
@@ -134,7 +134,7 @@
                                 TitleColor="White" />
                             <CustomControls:CustomPicker
                                 x:Name="CategoryListen"
-                                Title="{tr:Translate All}"
+                                Title="{x:Static resource:AppResources.All}"
                                 ef:Border.Radius="20"
                                 BackgroundColor="#33b54b"
                                 FontSize="Small"
@@ -149,7 +149,7 @@
                                 Source="arrow.png" />
                         </Grid>
                     </Frame>
-                    <Label Text="{tr:Translate TheMethod}" />
+                    <Label Text="{x:Static resource:AppResources.TheMethod}" />
                     <Frame Padding="10" BackgroundColor="#eaecee">
                         <input:RadioButtonGroupView Orientation="Horizontal">
                             <input:RadioButton
@@ -159,7 +159,7 @@
                                 Clicked="amountbtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
                                 IsChecked="True"
-                                Text="{tr:Translate Amount}"
+                                Text="{x:Static resource:AppResources.Amount}"
                                 TextColor="#33b54b"
                                 TextFontSize="15"
                                 Color="#33b54b" />
@@ -169,7 +169,7 @@
                                 CircleColor="Black"
                                 Clicked="percentbtn_Clicked"
                                 HorizontalOptions="FillAndExpand"
-                                Text="{tr:Translate Percentage}"
+                                Text="{x:Static resource:AppResources.Percentage}"
                                 TextColor="Red"
                                 TextFontSize="15"
                                 Color="Red" />
@@ -178,7 +178,7 @@
                     <StackLayout Margin="20" Orientation="Horizontal">
                         <Label
                             HorizontalOptions="End"
-                            Text="{tr:Translate Amount}"
+                            Text="{x:Static resource:AppResources.Amount}"
                             VerticalOptions="Center" />
                         <CustomControls:CustomEntry
                             x:Name="amountentry"
@@ -193,7 +193,7 @@
                             IsTextPredictionEnabled="True"
                             Keyboard="Numeric"
                             MaxLength="9"
-                            Placeholder="{tr:Translate Zero}"
+                            Placeholder="{x:Static resource:AppResources.Zero}"
                             PlaceholderColor="Red">
                             <CustomControls:CustomEntry.Behaviors>
                                 <Behaviors:NumberValidationBehavior />
@@ -211,7 +211,7 @@
                         Clicked="Button_Clicked"
                         CornerRadius="10"
                         IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
-                        Text="{tr:Translate Save}"
+                        Text="{x:Static resource:AppResources.Save}"
                         VerticalOptions="EndAndExpand" />
                     <ActivityIndicator
                         x:Name="ActiveIn"

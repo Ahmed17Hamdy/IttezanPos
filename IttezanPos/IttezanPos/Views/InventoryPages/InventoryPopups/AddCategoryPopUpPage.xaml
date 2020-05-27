@@ -8,7 +8,7 @@
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     Padding="0,60"
     HasSystemPadding="True"
     mc:Ignorable="d">
@@ -57,7 +57,7 @@
                             Margin="30,0"
                             FontSize="Small"
                             HorizontalOptions="CenterAndExpand"
-                            Text="{tr:Translate AddingNewClassification}"
+                            Text="{x:Static resource:AppResources.AddingNewClassification}"
                             TextColor="#33b54b"
                             VerticalOptions="Center" />
                         <Button
@@ -65,14 +65,14 @@
                             FontSize="Micro"
                             HeightRequest="35"
                             HorizontalOptions="End"
-                            Text="{tr:Translate Save}"
+                            Text="{x:Static resource:AppResources.Save}"
                             TextColor="White" />
                     </StackLayout>
                     <BoxView HeightRequest="1" Color="Gray" />
 
                     <Entry
                         x:Name="UsernameEntry"
-                        Placeholder="{tr:Translate CategoryName}"
+                        Placeholder="{x:Static resource:AppResources.CategoryName}"
                         Style="{StaticResource EntryStyle}" />
 
                     <StackLayout>

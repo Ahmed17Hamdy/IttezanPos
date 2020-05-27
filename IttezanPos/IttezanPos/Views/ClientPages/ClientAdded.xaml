@@ -7,7 +7,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns:tr="clr-namespace:IttezanPos.Helpers"
+   xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <pages:PopupPage.Animation>
         <animations:MoveAnimation
@@ -24,7 +24,7 @@
             HorizontalOptions="CenterAndExpand"
             VerticalOptions="CenterAndExpand">
             <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                <Label x:Name="Supplierlbl" Text="{tr:Translate ClientAdded}" />
+                <Label x:Name="Supplierlbl" Text="{x:Static resource:AppResources.ClientAdded}" />
             </StackLayout>
 
         </Frame>

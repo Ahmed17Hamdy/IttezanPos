@@ -193,7 +193,7 @@
     <value>أضف إجمالي الخصم</value>
   </data>
   <data name="Alert" xml:space="preserve">
-    <value>تنبيه ⚠️</value>
+    <value>تنبـــــيه⚠️</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>الكل</value>
@@ -230,6 +230,9 @@
   </data>
   <data name="Billions" xml:space="preserve">
     <value>مليارات</value>
+  </data>
+  <data name="BillReport" xml:space="preserve">
+    <value>عرض الفواتير</value>
   </data>
   <data name="BusinessSettings" xml:space="preserve">
     <value>إعدادات العمل</value>
@@ -276,17 +279,38 @@
   <data name="ClientAdded" xml:space="preserve">
     <value>تم إضافة العميل بنجاح !</value>
   </data>
+  <data name="ClientBillReport" xml:space="preserve">
+    <value>تقرير بالفواتير لعميل</value>
+  </data>
   <data name="ClientLimit" xml:space="preserve">
     <value>سقف العميل</value>
   </data>
   <data name="ClientName" xml:space="preserve">
     <value>إسم العميل</value>
   </data>
+  <data name="ClientNameAr" xml:space="preserve">
+    <value>إسم العميل بالعربية</value>
+  </data>
+  <data name="ClientNameEn" xml:space="preserve">
+    <value>إسم العميل بالإنجليزية</value>
+  </data>
+  <data name="Clientpaymentmovement" xml:space="preserve">
+    <value>تقرير بحركة التسديد لعميل</value>
+  </data>
+  <data name="ClientReport" xml:space="preserve">
+    <value>تقرير عميل</value>
+  </data>
+  <data name="ClientReports" xml:space="preserve">
+    <value>تقرير ذمم العملاء</value>
+  </data>
   <data name="ClientsData" xml:space="preserve">
     <value>بيانات العميل</value>
   </data>
   <data name="ConnectionNotAvailable" xml:space="preserve">
     <value>لا يوجد إتصال بالإنترنت , من فضلك تحقق من الإتصال بالإنترنت</value>
+  </data>
+  <data name="CorruptedPro" xml:space="preserve">
+    <value>تقرير بالمنتجات التالفة</value>
   </data>
   <data name="Cost" xml:space="preserve">
     <value>التكلفة</value>
@@ -435,8 +459,17 @@
   <data name="InvalidMail" xml:space="preserve">
     <value>صيغة البريد الإلكتروني غير صحيحة</value>
   </data>
+  <data name="InventForClass" xml:space="preserve">
+    <value>جرد لتصنيف</value>
+  </data>
   <data name="Inventory" xml:space="preserve">
     <value>المخزون</value>
+  </data>
+  <data name="InventoryByClass" xml:space="preserve">
+    <value>جرد حسب التصنيف</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>جاري التحميل, إنتظر من فضلك</value>
   </data>
   <data name="LogOut" xml:space="preserve">
     <value>تسجيل الخروج</value>
@@ -508,7 +541,7 @@
     <value>أو</value>
   </data>
   <data name="OrderType" xml:space="preserve">
-    <value>نوع الطلب</value>
+    <value>إنتظار</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>الدفع</value>
@@ -540,14 +573,35 @@
   <data name="ProductName" xml:space="preserve">
     <value>إسم المنتج</value>
   </data>
+  <data name="ProductPriceReport" xml:space="preserve">
+    <value>تقرير بعروض الأسعار</value>
+  </data>
   <data name="Productsmodified" xml:space="preserve">
     <value>تم تعديل المنتجات بنجاح !</value>
+  </data>
+  <data name="ProfitsReport" xml:space="preserve">
+    <value>تقرير الأرباح</value>
+  </data>
+  <data name="ProMove" xml:space="preserve">
+    <value>تقرير بحركة منتج</value>
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>المشتريات</value>
   </data>
   <data name="PurchaseDate" xml:space="preserve">
     <value>تاريخ فاتورة المشتريات</value>
+  </data>
+  <data name="PurchasesBillsReports" xml:space="preserve">
+    <value>تقرير بفواتير المشتريات</value>
+  </data>
+  <data name="PurchasesReport" xml:space="preserve">
+    <value>تقرير بالمشتريات</value>
+  </data>
+  <data name="PurchasesReturns" xml:space="preserve">
+    <value>تقرير بفواتير المرتجع للمشتريات</value>
+  </data>
+  <data name="PurchasesReturnsBills" xml:space="preserve">
+    <value>تقرير بفواتير المرتجع - مشتريات</value>
   </data>
   <data name="Purchasing" xml:space="preserve">
     <value>الشراء</value>
@@ -579,14 +633,29 @@
   <data name="RepresentOnPos" xml:space="preserve">
     <value>شكل المنتج على واجهة البرنامج</value>
   </data>
+  <data name="ReserByAcc" xml:space="preserve">
+    <value>تقرير بالمصاريف حسب الحساب</value>
+  </data>
   <data name="Reservoir" xml:space="preserve">
     <value>الصندوق</value>
+  </data>
+  <data name="ReservRepor" xml:space="preserve">
+    <value>تقرير بالمصاريف</value>
   </data>
   <data name="residualamounts" xml:space="preserve">
     <value>ذمم العملاء - المبالغ المتبقية </value>
   </data>
+  <data name="ReturnsReports" xml:space="preserve">
+    <value>تقرير بفواتير المرتجع</value>
+  </data>
   <data name="Sales" xml:space="preserve">
     <value>المبيعات</value>
+  </data>
+  <data name="SalesReport" xml:space="preserve">
+    <value>تقارير المبيعات</value>
+  </data>
+  <data name="SalesReturnsBills" xml:space="preserve">
+    <value>تقرير بالفواتير المرتجع- مبيعات</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>حفظ</value>
@@ -651,11 +720,29 @@
   <data name="Statement" xml:space="preserve">
     <value>البيان</value>
   </data>
+  <data name="Store" xml:space="preserve">
+    <value>المتجر</value>
+  </data>
+  <data name="StoreMove" xml:space="preserve">
+    <value>حركة المتجر</value>
+  </data>
   <data name="SubTotal" xml:space="preserve">
     <value> المبلغ الإجمالي :</value>
   </data>
+  <data name="SuplierNameAr" xml:space="preserve">
+    <value>إسم المورد بالعربية</value>
+  </data>
   <data name="SupplierAdded" xml:space="preserve">
     <value>تم إضافة المورد بنجاح</value>
+  </data>
+  <data name="Supplierbillexchange" xml:space="preserve">
+    <value>تقرير بسندات الصرف لمورد</value>
+  </data>
+  <data name="SupplierbillReport" xml:space="preserve">
+    <value>تقرير بالفواتير لمورد</value>
+  </data>
+  <data name="SupplierByCategoryReport" xml:space="preserve">
+    <value>تقرير إجمالي حسب الصنف لمورد</value>
   </data>
   <data name="SupplierData" xml:space="preserve">
     <value>بيانات المورد</value>
@@ -663,17 +750,32 @@
   <data name="SupplierName" xml:space="preserve">
     <value>إسم المورد</value>
   </data>
+  <data name="SupplierNameEn" xml:space="preserve">
+    <value>إسم المورد بالإنجليزية</value>
+  </data>
   <data name="Supplieropeningbalances" xml:space="preserve">
     <value>الأرصدة الإفتتاحية للموردين</value>
   </data>
+  <data name="SupplierOpenningbalanceRe" xml:space="preserve">
+    <value>تقرير بحركة الرصيد الإفتتاحي للمورد</value>
+  </data>
+  <data name="Supplierpaymentmovement" xml:space="preserve">
+    <value>تقرير بحركة التسديد لمورد</value>
+  </data>
   <data name="Supplierreceivables" xml:space="preserve">
     <value>ذمم الموردين - تقارير</value>
+  </data>
+  <data name="SupplierReport" xml:space="preserve">
+    <value>كشف حساب مورد</value>
   </data>
   <data name="Supplierresidualamounts" xml:space="preserve">
     <value>المبالغ المتبقية للموردين</value>
   </data>
   <data name="Suppliers" xml:space="preserve">
     <value>الموردين</value>
+  </data>
+  <data name="SuppliersReport" xml:space="preserve">
+    <value>تقرير بالمتبقي للموردين</value>
   </data>
   <data name="SureTodiscard" xml:space="preserve">
     <value>هل تريد إلغاء هذه الفاتورة ؟</value>
@@ -704,6 +806,18 @@
   </data>
   <data name="TotalDisc" xml:space="preserve">
     <value>إجمالي الخصم :</value>
+  </data>
+  <data name="TotalPurchasesbycateg" xml:space="preserve">
+    <value>إجمالى المشتريات حسب التصنيف</value>
+  </data>
+  <data name="TotalPurchasesbyro" xml:space="preserve">
+    <value>إجمالى المشتريات حسب المنتج</value>
+  </data>
+  <data name="TotalTaxesByClient" xml:space="preserve">
+    <value>إجمالى الضرائب حسب العميل</value>
+  </data>
+  <data name="TotalTaxesByProduct" xml:space="preserve">
+    <value>إجمالي الضرائب حسب الصنف</value>
   </data>
   <data name="TrackinStore" xml:space="preserve">
     <value>تتبع في المخزون</value>

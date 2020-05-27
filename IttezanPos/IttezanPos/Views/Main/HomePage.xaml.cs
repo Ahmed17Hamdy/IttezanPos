@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using IttezanPos.Helpers;
+using IttezanPos.Resources;
 using IttezanPos.Views.ClientPages;
 using IttezanPos.Views.ExpensesPages;
 using IttezanPos.Views.InventoryPages;
 using IttezanPos.Views.PurchasingPages;
+using IttezanPos.Views.ReportsPages;
 using IttezanPos.Views.ReservoirPages;
 using IttezanPos.Views.SalesPages;
 using IttezanPos.Views.SupplierPages;
 using Plugin.Connectivity;
-using Plugin.Multilingual;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,21 +28,16 @@ namespace IttezanPos.Views.MainPage
             FlowDirectionPage();
            
         }
-        private async void FlowDirectionPage()
+        private void FlowDirectionPage()
         {
 
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
-             : FlowDirection.LeftToRight;
-                CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().
-             First(element => element.EnglishName.Contains(Settings.LastUserGravity));
-                AppResources.Culture = CrossMultilingual.Current.CurrentCultureInfo;
-            }
-            else
-            {
-                await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
-            }
+
+            FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
+         : FlowDirection.LeftToRight;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList().
+         First(element => element.EnglishName.Contains(Settings.LastUserGravity));
+            AppResources.Culture = Thread.CurrentThread.CurrentUICulture;
+            GravityClass.Grav();
         }
 
         private async void Client_Tapped(object sender, EventArgs e)
@@ -75,6 +74,11 @@ namespace IttezanPos.Views.MainPage
         private async void Sales_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainSalesPage());
+        }
+
+        private async void Reports_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Reportpage());
         }
     }
 }

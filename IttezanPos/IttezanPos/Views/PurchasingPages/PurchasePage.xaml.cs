@@ -18,6 +18,7 @@ using System.IO;
 using SQLite;
 using Rg.Plugins.Popup.Extensions;
 using IttezanPos.Views.SalesPages.SalesPopups;
+using IttezanPos.Resources;
 
 namespace IttezanPos.Views.PurchasingPages
 {
@@ -131,7 +132,7 @@ namespace IttezanPos.Views.PurchasingPages
         {
             try
             {
-                ActiveIn.IsRunning = true;
+                ActiveIn.IsVisible = true;
                 if (CrossConnectivity.Current.IsConnected)
                 {
                     var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
@@ -181,11 +182,11 @@ namespace IttezanPos.Views.PurchasingPages
                     }
                     ProductsList.FlowItemsSource = products;
                  
-                    ActiveIn.IsRunning = false;
+                    ActiveIn.IsVisible = false;
                 }
                 else
                 {
-                    ActiveIn.IsRunning = false;
+                    ActiveIn.IsVisible = false;
                     if (Device.RuntimePlatform == Device.iOS)
                     {
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
@@ -216,18 +217,18 @@ namespace IttezanPos.Views.PurchasingPages
             {
                 // handle validation here by using validationException.Content, 
                 // which is type of ProblemDetails according to RFC 7807
-                ActiveIn.IsRunning = false;
+                ActiveIn.IsVisible = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
             }
             catch (ApiException exception)
             {
-                ActiveIn.IsRunning = false;
+                ActiveIn.IsVisible = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 // other exception handling
             }
             catch (Exception ex)
             {
-                ActiveIn.IsRunning = false;
+                ActiveIn.IsVisible = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
             }
         }
