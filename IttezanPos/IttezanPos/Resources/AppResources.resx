@@ -294,7 +294,7 @@
   <data name="ClientNameAr" xml:space="preserve">
     <value>Client Name in Arabic</value>
   </data>
-  <data name="ClientNameEn" xml:space="preserve">
+  <data name="ClientEnnamen" xml:space="preserve">
     <value>Client Name in English</value>
   </data>
   <data name="Clientpaymentmovement" xml:space="preserve">
@@ -751,7 +751,7 @@
   <data name="SupplierName" xml:space="preserve">
     <value>Supplier Name</value>
   </data>
-  <data name="SupplierNameEn" xml:space="preserve">
+  <data name="SupplierEnnamen" xml:space="preserve">
     <value>Supplier Name in English</value>
   </data>
   <data name="Supplieropeningbalances" xml:space="preserve">
@@ -885,5 +885,17 @@
   </data>
   <data name="ZeroText" xml:space="preserve">
     <value>Zero</value>
+  </data>
+  <data name="Added" xml:space="preserve">
+    <value>Added to Cart Successfully</value>
+  </data>
+  <data name="Stockerror" xml:space="preserve">
+    <value>Quantity of Product is not enough in Stock</value>
+  </data>
+  <data name="Addsaleserror" xml:space="preserve">
+    <value>Amount should be equal Or greater than Total</value>
+  </data>
+  <data name="EnterQuantity" xml:space="preserve">
+    <value>Please Enter Quantity</value>
   </data>
 </root>

@@ -94,17 +94,20 @@ namespace IttezanPos.Models
     public class Payment
     {
         [JsonProperty("id")]
-        public int id { get; set; }
-        [JsonProperty("name")]
-        public string name { get; set; }
-        [JsonProperty("en_name")]
-        public string en_name { get; set; }
-        [JsonProperty("payment_type_number")]
-        public int payment_type_number { get; set; }
+        [PrimaryKey]
+        public int Id { get; set; }
+
+        [JsonProperty("payment_type")]
+        public string PaymentType { get; set; }
+
+        [JsonProperty("payment_type_enname")]
+        public string PaymentTypeEnname { get; set; }
+
         [JsonProperty("created_at")]
-        public string created_at { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
+
         [JsonProperty("updated_at")]
-        public string updated_at { get; set; }
+        public DateTimeOffset UpdatedAt { get; set; }
     }
     public class RootObject
     {

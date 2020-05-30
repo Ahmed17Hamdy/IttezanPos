@@ -18,11 +18,11 @@ namespace IttezanPos.Models
         public int purchasing_order { get; set; }
         public string  product_name { get; set; }
         public int product_id { get; set; }
-        public int quantity { get; set; }
+        public double quantity { get; set; }
         public string discount { get; set; }
         public string user { get; set; }
         public string name { get; set; }
-        public string namee { get; set; }
+        public string Enname { get; set; }
         public string locale { get; set; }
         public string image { get; set; }
         public double purchase_price { get; set; }
@@ -32,7 +32,7 @@ namespace IttezanPos.Models
         public string profit_percent { get; set; }
         public string description { get; set; }
         public DateTimeOffset? created_at { get; set; }
-        public string expiration_date { get; set; }
+        public DateTimeOffset? expiration_date { get; set; }
         public DateTimeOffset? updated_at { get; set; }
         [OneToMany(CascadeOperations = CascadeOperation.All),Ignore]
         public List<Translation> translations { get; set; }

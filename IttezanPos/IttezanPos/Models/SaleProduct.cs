@@ -1,5 +1,6 @@
 ﻿using IttezanPos.Views.SalesPages;
 using Newtonsoft.Json;
+using SQLite;
 using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,8 @@ namespace IttezanPos.Models
 {
    public class OrderItem
     {
-       
+        [PrimaryKey,AutoIncrement]
+        public int id { get; set; }
         public string total_price { get; set; }
        
         public string amount_paid { get; set; }
@@ -22,16 +24,18 @@ namespace IttezanPos.Models
         public string client_id { get; set; }
        
         public int user_id { get; set; }
-        public int id { get; set; }
-
+        
+        public DateTimeOffset? created_at { get; set; }
+       
+        public DateTimeOffset? updated_at { get; set; }
         public string payment_type { get; set; }
-     
-     
+
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Product> products { get; set; }
     }
     public class Purchaseitem
     {
-
+        [PrimaryKey]
         public int purchasing_order { get; set; }
         public string payment_type { get; set; }
 
@@ -41,7 +45,7 @@ namespace IttezanPos.Models
         public string total_price { get; set; }
         public int total_price_after_discount { get; set; }
 
-
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Product> products { get; set; }
     }
     public class sub

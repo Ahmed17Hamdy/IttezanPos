@@ -201,15 +201,15 @@ namespace IttezanPos.Views.PurchasingPages
         {
             var payment = PaymentListen.SelectedItem as Payment;
 
-            paymentlbl.Text = payment.en_name;
-            paymentid = payment.id.ToString();
+            paymentlbl.Text = payment.PaymentTypeEnname;
+            paymentid = payment.Id.ToString();
         }
         private void PaymentListar_SelectedIndexChanged(object sender, EventArgs e)
         {
             var payment = PaymentListar.SelectedItem as Payment;
 
-            paymentlbl.Text = payment.name;
-            paymentid = payment.id.ToString();
+            paymentlbl.Text = payment.PaymentType;
+            paymentid = payment.Id.ToString();
         }
         private async void Nextbtn_Clicked(object sender, EventArgs e)
         {

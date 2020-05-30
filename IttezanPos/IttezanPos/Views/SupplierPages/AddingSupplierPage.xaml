@@ -42,9 +42,9 @@
 
                         </customcontrols:CustomEntry.Behaviors>
                     </customcontrols:CustomEntry>
-                    <Label Text="{x:Static resource:AppResources.SupplierNameEn}" VerticalOptions="End" />
+                    <Label Text="{x:Static resource:AppResources.SupplierEnnamen}" VerticalOptions="End" />
                     <customcontrols:CustomEntry
-                        x:Name="SupplierNameEnentry"
+                        x:Name="SupplierEnnamenentry"
                         Margin="0"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"

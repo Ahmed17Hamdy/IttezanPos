@@ -35,7 +35,7 @@ namespace IttezanPos.Views.SupplierPages
             InitializeComponent();
             this.content = content;
             SupplierNameArentry.Text = content.name;
-            SupplierNameEnentry.Text = content.enname;
+            SupplierEnnamenentry.Text = content.enname;
             SupplierAddressentry.Text = content.address;
             SupplierEmailentry.Text = content.email;
             SupplierPhoneentry.Text = content.phone;
@@ -54,7 +54,7 @@ namespace IttezanPos.Views.SupplierPages
                     Supplier supplier = new Supplier
                     {
                         name = SupplierNameArentry.Text,
-                        enname = SupplierNameEnentry.Text,
+                        enname = SupplierEnnamenentry.Text,
                         address = SupplierAddressentry.Text,
                         email = SupplierEmailentry.Text,
                         phone = SupplierPhoneentry.Text,
@@ -91,7 +91,7 @@ namespace IttezanPos.Views.SupplierPages
                         Supplier client = new Supplier
                         {
                             name = SupplierNameArentry.Text,
-                            enname = SupplierNameEnentry.Text,
+                            enname = SupplierEnnamenentry.Text,
                             address = SupplierAddressentry.Text,
                             email = SupplierEmailentry.Text,
                             phone = SupplierPhoneentry.Text,
@@ -127,7 +127,7 @@ namespace IttezanPos.Views.SupplierPages
                         Supplier client = new Supplier
                         {
                             name = SupplierNameArentry.Text,
-                            enname = SupplierNameEnentry.Text,
+                            enname = SupplierEnnamenentry.Text,
                             address = SupplierAddressentry.Text,
                             email = SupplierEmailentry.Text,
                             phone = SupplierPhoneentry.Text,
@@ -187,7 +187,7 @@ namespace IttezanPos.Views.SupplierPages
                     {
                         id = content.id,
                         name = SupplierNameArentry.Text,
-                        enname = SupplierNameEnentry.Text,
+                        enname = SupplierEnnamenentry.Text,
                         address = SupplierAddressentry.Text,
                         email = SupplierEmailentry.Text,
                         phone = SupplierPhoneentry.Text,
@@ -217,7 +217,7 @@ namespace IttezanPos.Views.SupplierPages
                         { 
                             id = content.id,
                             name = SupplierNameArentry.Text,
-                            enname = SupplierNameEnentry.Text,
+                            enname = SupplierEnnamenentry.Text,
                             address = SupplierAddressentry.Text,
                             email = SupplierEmailentry.Text,
                             phone = SupplierPhoneentry.Text,
@@ -242,7 +242,7 @@ namespace IttezanPos.Views.SupplierPages
                         {
                             id = content.id,
                             name = SupplierNameArentry.Text,
-                            enname = SupplierNameEnentry.Text,
+                            enname = SupplierEnnamenentry.Text,
                             address = SupplierAddressentry.Text,
                             email = SupplierEmailentry.Text,
                             phone = SupplierPhoneentry.Text,
@@ -311,7 +311,7 @@ namespace IttezanPos.Views.SupplierPages
                         {
                             id = content.id,
                             name = SupplierNameArentry.Text,
-                            enname = SupplierNameEnentry.Text,
+                            enname = SupplierEnnamenentry.Text,
                             address = SupplierAddressentry.Text,
                             email = SupplierEmailentry.Text,
                             phone = SupplierPhoneentry.Text,
@@ -335,7 +335,7 @@ namespace IttezanPos.Views.SupplierPages
                         {
                             id = content.id,
                             name = SupplierNameArentry.Text,
-                            enname = SupplierNameEnentry.Text,
+                            enname = SupplierEnnamenentry.Text,
                             address = SupplierAddressentry.Text,
                             email = SupplierEmailentry.Text,
                             phone = SupplierPhoneentry.Text,

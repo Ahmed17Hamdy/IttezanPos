@@ -10,7 +10,7 @@
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
     NavigationPage.HasNavigationBar="True"
     mc:Ignorable="d">
@@ -138,7 +138,7 @@
                                 </customcontrols:CustomEntry.Behaviors>
                             </customcontrols:CustomEntry>
                             <customcontrols:CustomEntry
-                                x:Name="EnglishNameEntry"
+                                x:Name="EnglishEnnamentry"
                                 Margin="0"
                                 ef:Border.Color="#33b54b"
                                 ef:Border.Radius="10"
@@ -387,7 +387,7 @@
                                 Margin="20,10"
                                 HorizontalTextAlignment="Center"
                                 Text="{x:Static resource:AppResources.Expirationdate}" />
-                            <DatePicker TextColor="#33b54b" />
+                            <DatePicker x:Name="Datepicker" TextColor="#33b54b" />
                         </Grid>
                         <customcontrols:CustomEntry
                             x:Name="NotesEntry"

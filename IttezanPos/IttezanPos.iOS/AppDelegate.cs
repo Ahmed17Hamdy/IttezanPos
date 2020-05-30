@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using FFImageLoading.Forms.Platform;
 using Foundation;
 
 using UIKit;
@@ -29,6 +29,7 @@ namespace IttezanPos.iOS
             Rg.Plugins.Popup.Popup.Init();
             Plugin.InputKit.Platforms.iOS.Config.Init();
             Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
+            CachedImageRenderer.Init();
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             AiForms.Effects.iOS.Effects.Init();
             LoadApplication(new App());

@@ -67,7 +67,7 @@ namespace IttezanPos.Views.ClientPages
                     Client client = new Client
                     {                        
                        name = ClientNameArentry.Text,
-                        enname = ClientNameEnentry.Text,
+                        enname = ClientEnnamenentry.Text,
                         address =ClientAddressentry.Text,
                        email=Emailentry.Text,
                        phone=phoneentry.Text,
@@ -105,7 +105,7 @@ namespace IttezanPos.Views.ClientPages
                         Client client = new Client
                         {
                             name = ClientNameArentry.Text,
-                            enname = ClientNameEnentry.Text,
+                            enname = ClientEnnamenentry.Text,
                             address = ClientAddressentry.Text,
                             email = Emailentry.Text,
                             phone = phoneentry.Text,
@@ -143,7 +143,7 @@ namespace IttezanPos.Views.ClientPages
                         Client client = new Client
                         {
                             name = ClientNameArentry.Text,
-                            enname = ClientNameEnentry.Text,
+                            enname = ClientEnnamenentry.Text,
                             address = ClientAddressentry.Text,
                             email = Emailentry.Text,
                             phone = phoneentry.Text,
@@ -206,7 +206,7 @@ namespace IttezanPos.Views.ClientPages
                     {
                         client_id = content.id,
                         name = ClientNameArentry.Text,
-                        enname = ClientNameEnentry.Text,
+                        enname = ClientEnnamenentry.Text,
                         address = ClientAddressentry.Text,
                         email = Emailentry.Text,
                         phone = phoneentry.Text,
@@ -240,7 +240,7 @@ namespace IttezanPos.Views.ClientPages
                         {
                             id = content.id,
                             name = ClientNameArentry.Text,
-                            enname = ClientNameEnentry.Text,
+                            enname = ClientEnnamenentry.Text,
                             address = ClientAddressentry.Text,
                             email = Emailentry.Text,
                             phone = phoneentry.Text,
@@ -265,7 +265,7 @@ namespace IttezanPos.Views.ClientPages
                         {
                             id=content.id,
                             name = ClientNameArentry.Text,
-                            enname = ClientNameEnentry.Text,
+                            enname = ClientEnnamenentry.Text,
                             address = ClientAddressentry.Text,
                             email = Emailentry.Text,
                             phone = phoneentry.Text,
@@ -335,7 +335,7 @@ namespace IttezanPos.Views.ClientPages
                         {
                             id = content.id,
                             name = ClientNameArentry.Text,
-                            enname = ClientNameEnentry.Text,
+                            enname = ClientEnnamenentry.Text,
                             address = ClientAddressentry.Text,
                             email = Emailentry.Text,
                             phone = phoneentry.Text,
@@ -359,7 +359,7 @@ namespace IttezanPos.Views.ClientPages
                         {
                             id = content.id,
                             name = ClientNameArentry.Text,
-                            enname = ClientNameEnentry.Text,
+                            enname = ClientEnnamenentry.Text,
                             address = ClientAddressentry.Text,
                             email = Emailentry.Text,
                             phone = phoneentry.Text,

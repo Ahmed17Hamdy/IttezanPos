@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
-    x:Class="IttezanPos.Views.SalesPages.SalesPopups.CalculatorPage"
+    x:Class="IttezanPos.Views.SalesPages.SalesPopups.Quantitypop"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -37,27 +37,8 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="{x:Static resource:AppResources.AddTotaldiscount}" />
-            <input:RadioButtonGroupView
-                Grid.Row="1"
-                HorizontalOptions="Center"
-                Orientation="Horizontal">
-                <input:RadioButton
-                    x:Name="Valuebtn"
-                    Clicked="Valuebtn_Clicked"
-                    IsChecked="True"
-                    Text="{x:Static resource:AppResources.Value}"
-                    TextColor="White"
-                    TextFontSize="15"
-                    Color="#33b54b" />
-                <input:RadioButton
-                    x:Name="Percentagebtn"
-                    Clicked="Percentagebtn_Clicked"
-                    Text="{x:Static resource:AppResources.Percentage}"
-                    TextColor="White"
-                    TextFontSize="15"
-                    Color="Red" />
-            </input:RadioButtonGroupView>
+            <Label Grid.Row="0" Text="{x:Static resource:AppResources.Quantity}" />
+
             <Label
                 x:Name="Resultlbl"
                 Grid.Row="2"

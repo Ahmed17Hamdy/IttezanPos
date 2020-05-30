@@ -81,11 +81,21 @@ namespace IttezanPos.Views.InventoryPages
             PurchaseEntry.Text = product.purchase_price.ToString();
             SellEntry.Text = product.sale_price.ToString();
             StockQuantity.Text = product.stock.ToString();
-            CategoryListar.Title = product.translations[0].name;
-            CategoryListar.Title = product.translations[1].name;
+            CategoryListar.Title = product.catname;
+            CategoryListar.Title = product.catname;
+            //if (product.expiration_date.Value.DateTime != null)
+            //{
+            //    Datepicker.Date = product.expiration_date.Value.DateTime;
+            //}
+            //else
+            //{
+            //    Datepicker.Date = DateTime.Now;
+            //}
+            //   Datepicker.Date = product.expiration_date.Value.DateTime != null ? product.expiration_date.Value.DateTime : DateTime.Now;
+
             productimg.Source = "https://ittezanmobilepos.com/dashboard_files/imgss/"+ product.image;
             product_Id = product.id;
-            EnglishNameEntry.Text = product.namee;
+            EnglishEnnamentry.Text = product.Enname;
             
 
         }
@@ -321,7 +331,7 @@ namespace IttezanPos.Views.InventoryPages
                 Product product = new Product
                 {
                     name = EntryName.Text,    
-                    namee=EnglishNameEntry.Text,
+                    Enname=EnglishEnnamentry.Text,
                     category_id = category_Id,
                     description = NotesEntry.Text,
                     sale_price = int.Parse(SellEntry.Text),
@@ -330,7 +340,7 @@ namespace IttezanPos.Views.InventoryPages
                     stock = 35  , user_id="2"            
                 };
                 StringContent name = new StringContent(product.name);
-                StringContent namee = new StringContent(product.namee);
+                StringContent Enname = new StringContent(product.Enname);
                 StringContent category_id = new StringContent(product.category_id.ToString());
                 StringContent description = new StringContent(product.description);
                 StringContent sale_price = new StringContent(product.sale_price.ToString());
@@ -340,7 +350,7 @@ namespace IttezanPos.Views.InventoryPages
                 StringContent stock = new StringContent(product.stock.ToString());
                 var content = new MultipartFormDataContent();
                 content.Add(name, "name");
-                content.Add(namee, "namee");
+                content.Add(Enname, "Enname");
                 content.Add(category_id, "category_id");
                 content.Add(description, "description");
                 content.Add(sale_price, "sale_price");
@@ -413,7 +423,7 @@ namespace IttezanPos.Views.InventoryPages
             {
                 product_id= product_Id,
                 name = EntryName.Text,
-                namee=EnglishNameEntry.Text,
+                Enname=EnglishEnnamentry.Text,
                 category_id = category_Id,
                 description = NotesEntry.Text,
                 sale_price = int.Parse(SellEntry.Text),
@@ -424,7 +434,7 @@ namespace IttezanPos.Views.InventoryPages
             };
             StringContent product_id = new StringContent(product.product_id.ToString());
             StringContent name = new StringContent(product.name);
-            StringContent namee = new StringContent(product.namee);
+            StringContent Enname = new StringContent(product.Enname);
             StringContent category_id = new StringContent(product.category_id.ToString());
             StringContent description = new StringContent(product.description);
             StringContent sale_price = new StringContent(product.sale_price.ToString());
@@ -435,7 +445,7 @@ namespace IttezanPos.Views.InventoryPages
             var content = new MultipartFormDataContent();
             content.Add(product_id, "product_id");
             content.Add(name, "name");
-            content.Add(namee, "namee");
+            content.Add(Enname, "Enname");
             content.Add(category_id, "category_id");
             content.Add(description, "description");
             content.Add(sale_price, "sale_price");

@@ -80,6 +80,9 @@
     <PackageReference Include="Plugin.Permissions">
       <Version>6.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Plugin.Toast">
+      <Version>2.1.2</Version>
+    </PackageReference>
     <PackageReference Include="PropertyChanged.Fody">
       <Version>3.2.8</Version>
     </PackageReference>
@@ -109,6 +112,9 @@
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Media">
       <Version>5.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.4.11.982</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
@@ -420,20 +426,9 @@
     <AndroidResource Include="Resources\drawable\waitwhit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <Target Name="_ResolveSatellitePaths"
-    DependsOnTargets="_ResolveAssemblies">
-    <ResolveAssemblyReference
-        AllowedAssemblyExtensions="$(AllowedReferenceAssemblyFileExtensions)"
-        AssemblyFiles="@(ResolvedUserAssemblies)"
-        AutoUnify="$(AutoUnifyAssemblyReferences)"
-        FindDependencies="True"
-        FindRelatedFiles="False"
-        FindSatellites="True"
-        SearchPaths="$(AssemblySearchPaths)"
-        TargetFrameworkMoniker="$(TargetFrameworkMoniker)"
-        TargetFrameworkMonikerDisplayName="$(TargetFrameworkMonikerDisplayName)"
-        TargetFrameworkDirectories="$(TargetFrameworkDirectory)">
-      <Output TaskParameter="SatelliteFiles" ItemName="_AndroidResolvedSatellitePaths"/>
+  <Target Name="_ResolveSatellitePaths" DependsOnTargets="_ResolveAssemblies">
+    <ResolveAssemblyReference AllowedAssemblyExtensions="$(AllowedReferenceAssemblyFileExtensions)" AssemblyFiles="@(ResolvedUserAssemblies)" AutoUnify="$(AutoUnifyAssemblyReferences)" FindDependencies="True" FindRelatedFiles="False" FindSatellites="True" SearchPaths="$(AssemblySearchPaths)" TargetFrameworkMoniker="$(TargetFrameworkMoniker)" TargetFrameworkMonikerDisplayName="$(TargetFrameworkMonikerDisplayName)" TargetFrameworkDirectories="$(TargetFrameworkDirectory)">
+      <Output TaskParameter="SatelliteFiles" ItemName="_AndroidResolvedSatellitePaths" />
     </ResolveAssemblyReference>
   </Target>
 </Project>

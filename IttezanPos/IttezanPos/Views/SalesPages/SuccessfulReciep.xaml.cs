@@ -40,7 +40,7 @@ namespace IttezanPos.Views.SalesPages
             Purchasestk.IsVisible = true;
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private  void Button_Clicked(object sender, EventArgs e)
         {
             Application.Current.MainPage =new NavigationPage( new MainSalesPage());
         }

@@ -71,7 +71,7 @@
                     <BoxView HeightRequest="1" Color="Gray" />
 
                     <Entry
-                        x:Name="UsernameEntry"
+                        x:Name="UserEnnamentry"
                         Placeholder="{x:Static resource:AppResources.CategoryName}"
                         Style="{StaticResource EntryStyle}" />
 

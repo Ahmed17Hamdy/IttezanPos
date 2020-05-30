@@ -168,7 +168,20 @@ namespace IttezanPos.Resources {
                 return ResourceManager.GetString("AddClientName", resourceCulture);
             }
         }
-        
+        internal static string Added
+        {
+            get
+            {
+                return ResourceManager.GetString("Added", resourceCulture);
+            }
+        }
+        internal static string Stockerror
+        {
+            get
+            {
+                return ResourceManager.GetString("Stockerror", resourceCulture);
+            }
+        }
         /// <summary>
         ///   Looks up a localized string similar to Operation Added Successfully !.
         /// </summary>
@@ -595,9 +608,9 @@ namespace IttezanPos.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Client Name in English.
         /// </summary>
-        internal static string ClientNameEn {
+        internal static string ClientEnnamen {
             get {
-                return ResourceManager.GetString("ClientNameEn", resourceCulture);
+                return ResourceManager.GetString("ClientEnnamen", resourceCulture);
             }
         }
         
@@ -1347,7 +1360,14 @@ namespace IttezanPos.Resources {
                 return ResourceManager.GetString("OrderType", resourceCulture);
             }
         }
-        
+        internal static string Addsaleserror
+        {
+            get
+            {
+                return ResourceManager.GetString("Addsaleserror", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Payment.
         /// </summary>
@@ -1964,9 +1984,9 @@ namespace IttezanPos.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Supplier Name in English.
         /// </summary>
-        internal static string SupplierNameEn {
+        internal static string SupplierEnnamen {
             get {
-                return ResourceManager.GetString("SupplierNameEn", resourceCulture);
+                return ResourceManager.GetString("SupplierEnnamen", resourceCulture);
             }
         }
         
@@ -2363,6 +2383,13 @@ namespace IttezanPos.Resources {
         internal static string ZeroText {
             get {
                 return ResourceManager.GetString("ZeroText", resourceCulture);
+            }
+        }
+        internal static string EnterQuantity
+        {
+            get
+            {
+                return ResourceManager.GetString("EnterQuantity", resourceCulture);
             }
         }
     }

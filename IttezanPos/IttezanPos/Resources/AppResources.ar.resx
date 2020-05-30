@@ -291,7 +291,7 @@
   <data name="ClientNameAr" xml:space="preserve">
     <value>إسم العميل بالعربية</value>
   </data>
-  <data name="ClientNameEn" xml:space="preserve">
+  <data name="ClientEnnamen" xml:space="preserve">
     <value>إسم العميل بالإنجليزية</value>
   </data>
   <data name="Clientpaymentmovement" xml:space="preserve">
@@ -750,7 +750,7 @@
   <data name="SupplierName" xml:space="preserve">
     <value>إسم المورد</value>
   </data>
-  <data name="SupplierNameEn" xml:space="preserve">
+  <data name="SupplierEnnamen" xml:space="preserve">
     <value>إسم المورد بالإنجليزية</value>
   </data>
   <data name="Supplieropeningbalances" xml:space="preserve">
@@ -884,5 +884,17 @@
   </data>
   <data name="ZeroText" xml:space="preserve">
     <value>صفر</value>
+  </data>
+  <data name="Added" xml:space="preserve">
+    <value>أضيفت بنجاح للسلة</value>
+  </data>
+  <data name="Stockerror" xml:space="preserve">
+    <value>مخزون المنتج غير كافي</value>
+  </data>
+  <data name="Addsaleserror" xml:space="preserve">
+    <value>قيمة المدفوع أقل من الإجمالي</value>
+  </data>
+  <data name="EnterQuantity" xml:space="preserve">
+    <value>من فضلك أدخل كمية</value>
   </data>
 </root>

@@ -8,6 +8,7 @@
     xmlns:customcontrols="clr-namespace:IttezanPos.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:resource="clr-namespace:IttezanPos.Resources"
@@ -294,28 +295,18 @@
                                                             FontSize="Micro"
                                                             HorizontalOptions="FillAndExpand"
                                                             Text="{Binding sale_price, StringFormat='{0:N}'}"
-                                                            TextColor="#33b54b">
-                                                            <Label.FontSize>
-                                                                <OnIdiom
-                                                                    Default="Micro"
-                                                                    Phone="Small"
-                                                                    Tablet="Medium" />
-                                                            </Label.FontSize>
-                                                        </Label>
+                                                            TextColor="#33b54b" />
+
+
                                                         <Label
                                                             Grid.Row="1"
                                                             Grid.Column="0"
                                                             FontSize="Micro"
                                                             HorizontalOptions="Start"
                                                             Text="ريال سعودي"
-                                                            TextColor="#33b54b">
-                                                            <Label.FontSize>
-                                                                <OnIdiom
-                                                                    Default="Micro"
-                                                                    Phone="Micro"
-                                                                    Tablet="Small" />
-                                                            </Label.FontSize>
-                                                        </Label>
+                                                            TextColor="#33b54b" />
+
+
 
                                                         <Grid
                                                             Grid.Row="0"
@@ -331,14 +322,100 @@
                                                                 Source="tags.png"
                                                                 VerticalOptions="Center" />
                                                         </Grid>
-                                                        <!--<Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                            </Grid.GestureRecognizers>-->
+                                                        <Grid.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                                        </Grid.GestureRecognizers>
                                                     </Grid>
-                                                    <Image
+                                                    <ffimageloading:CachedImage
                                                         Grid.Row="1"
                                                         Margin="10,0"
                                                         Aspect="AspectFit"
+                                                        ErrorPlaceholder="ic_launcher.png"
+                                                        LoadingPlaceholder="ic_launcher.png"
+                                                        Source="{Binding image, StringFormat='https://ittezanmobilepos.com/dashboard_files/imgss/{0}'}" />
+                                                    <Label
+                                                        Grid.Row="2"
+                                                        HorizontalOptions="Center"
+                                                        Text="{Binding Enname}"
+                                                        TextColor="#33b54b" />
+                                                </Grid>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </flv:FlowListView.FlowColumnTemplate>
+                                </flv:FlowListView>
+                                <flv:FlowListView
+                                    x:Name="ProductsListAr"
+                                    FlowColumnCount="3"
+                                    FlowItemTapped="ProductsListAr_FlowItemTapped"
+                                    HasUnevenRows="true"
+                                    IsVisible="false"
+                                    VerticalOptions="Center">
+                                    <flv:FlowListView.FlowColumnTemplate>
+                                        <DataTemplate>
+                                            <Frame
+                                                Padding="2"
+                                                BorderColor="LightGray"
+                                                CornerRadius="3"
+                                                HasShadow="False"
+                                                HeightRequest="150">
+                                                <Grid Padding="5" RowSpacing="0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="1.5*" />
+                                                        <RowDefinition Height="2*" />
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0" Margin="2.5">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="2*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            FontSize="Micro"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Text="{Binding sale_price, StringFormat='{0:N}'}"
+                                                            TextColor="#33b54b" />
+
+
+                                                        <Label
+                                                            Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            FontSize="Micro"
+                                                            HorizontalOptions="Start"
+                                                            Text="ريال سعودي"
+                                                            TextColor="#33b54b" />
+
+
+
+                                                        <Grid
+                                                            Grid.Row="0"
+                                                            Grid.RowSpan="2"
+                                                            Grid.Column="1"
+                                                            ef:Border.Radius="20"
+                                                            BackgroundColor="#33b54b"
+                                                            ColumnSpacing="0"
+                                                            HorizontalOptions="Center"
+                                                            VerticalOptions="Center">
+                                                            <Image
+                                                                Margin="5"
+                                                                Source="tags.png"
+                                                                VerticalOptions="Center" />
+                                                        </Grid>
+                                                        <Grid.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                                        </Grid.GestureRecognizers>
+                                                    </Grid>
+                                                    <ffimageloading:CachedImage
+                                                        Grid.Row="1"
+                                                        Margin="10,0"
+                                                        Aspect="AspectFit"
+                                                        ErrorPlaceholder="ic_launcher.png"
+                                                        LoadingPlaceholder="ic_launcher.png"
                                                         Source="{Binding image, StringFormat='https://ittezanmobilepos.com/dashboard_files/imgss/{0}'}" />
                                                     <Label
                                                         Grid.Row="2"
@@ -352,9 +429,11 @@
                                 </flv:FlowListView>
                             </StackLayout>
                         </StackLayout>
+
+
                         <ListView
                             x:Name="SalesList"
-                            Margin="0"
+                            Margin="2,0"
                             AbsoluteLayout.LayoutBounds="0,0,1,1"
                             AbsoluteLayout.LayoutFlags="All"
                             HasUnevenRows="True"
@@ -363,6 +442,137 @@
                             <ListView.Header>
                                 <Grid
                                     x:Name="listheaderlistv"
+                                    Padding="5"
+                                    ef:Border.Color="Black"
+                                    ef:Border.Radius="1"
+                                    ef:Border.Width="1"
+                                    ColumnSpacing="0"
+                                    HeightRequest="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*" />
+                                        <ColumnDefinition Width="0.5*" />
+                                        <ColumnDefinition Width="0.5*" />
+                                        <ColumnDefinition Width="*" />
+
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        FontSize="Micro"
+                                        HorizontalOptions="Start"
+                                        Text="{x:Static resource:AppResources.Product}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Column="1"
+                                        FontSize="Micro"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static resource:AppResources.Quantity}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Column="2"
+                                        FontSize="Micro"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static resource:AppResources.Price}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Column="3"
+                                        FontSize="Micro"
+                                        HorizontalOptions="Start"
+                                        Text="{x:Static resource:AppResources.total}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="50">
+                                        <Frame
+                                            Padding="2"
+                                            BorderColor="LightGray"
+                                            CornerRadius="3"
+                                            HasShadow="False">
+                                            <Grid ColumnSpacing="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="0.5*" />
+                                                    <ColumnDefinition Width="0.5*" />
+                                                    <ColumnDefinition Width="0.5*" />
+                                                    <ColumnDefinition Width="*" />
+
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Text="{Binding name, Mode=TwoWay}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center" />
+                                                <Frame
+                                                    Grid.Column="1"
+                                                    Padding="0"
+                                                    BackgroundColor="#33b54b">
+                                                    <Label
+                                                        Grid.Column="1"
+                                                        BackgroundColor="#33b54b"
+                                                        HorizontalOptions="Center"
+                                                        Text="{Binding quantity, Mode=TwoWay}"
+                                                        TextColor="Black"
+                                                        VerticalOptions="Center" />
+
+
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+
+
+                                                <Label
+                                                    Grid.Column="2"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="Center"
+                                                    Text="{Binding sale_price, Mode=TwoWay, StringFormat='{0:N}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center" />
+
+                                                <Grid Grid.Column="3" HorizontalOptions="FillAndExpand">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label
+                                                        Grid.Column="0"
+                                                        FontSize="Micro"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Text="{Binding total_price, Mode=TwoWay, StringFormat='{0:N}'}"
+                                                        TextColor="Black"
+                                                        VerticalOptions="Center" />
+                                                    <Button
+                                                        Grid.Column="1"
+                                                        Clicked="delete_Clicked"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Text="♼" />
+                                                </Grid>
+
+
+
+
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <ListView
+                            x:Name="SalesListen"
+                            Margin="2,0"
+                            AbsoluteLayout.LayoutBounds="0,0,1,0.9"
+                            AbsoluteLayout.LayoutFlags="All"
+                            HasUnevenRows="True"
+                            IsVisible="False"
+                            Visual="Material">
+                            <ListView.Header>
+                                <Grid
                                     Padding="5"
                                     ef:Border.Color="Black"
                                     ef:Border.Radius="1"
@@ -405,16 +615,13 @@
                             </ListView.Header>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell Height="100">
+                                    <ViewCell Height="50">
                                         <Frame
                                             Padding="2"
                                             BorderColor="LightGray"
                                             CornerRadius="3"
                                             HasShadow="False">
-                                            <Grid
-                                                Margin="5,0"
-                                                ColumnSpacing="0"
-                                                VerticalOptions="Center">
+                                            <Grid ColumnSpacing="0">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="0.5*" />
                                                     <ColumnDefinition Width="0.5*" />
@@ -425,24 +632,29 @@
                                                 <Label
                                                     Grid.Column="0"
                                                     FontSize="Micro"
-                                                    HorizontalOptions="Start"
-                                                    Text="{Binding name, Mode=TwoWay}"
-                                                    TextColor="Black" />
-                                                <Entry
-                                                    Grid.Column="1"
-                                                    BackgroundColor="#33b54b"
-                                                    FontSize="Micro"
-                                                    HorizontalOptions="Center"
-                                                    HorizontalTextAlignment="Center"
-                                                    Keyboard="Telephone"
-                                                    Text="{Binding quantity, Mode=TwoWay}"
-                                                    TextChanged="CustomEntry_TextChanged"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Text="{Binding Enname, Mode=TwoWay}"
                                                     TextColor="Black"
-                                                    VerticalOptions="Center">
-                                                    <Entry.Behaviors>
-                                                        <Behaviors:NumberValidationBehavior />
-                                                    </Entry.Behaviors>
-                                                </Entry>
+                                                    VerticalOptions="Center" />
+
+
+                                                <Frame
+                                                    Grid.Column="1"
+                                                    Padding="0"
+                                                    BackgroundColor="#33b54b">
+                                                    <Label
+                                                        Grid.Column="1"
+                                                        BackgroundColor="#33b54b"
+                                                        HorizontalOptions="Center"
+                                                        Text="{Binding quantity, Mode=TwoWay}"
+                                                        TextColor="Black"
+                                                        VerticalOptions="Center" />
+
+
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
                                                 <Label
                                                     Grid.Column="2"
                                                     FontSize="Micro"
@@ -451,7 +663,7 @@
                                                     TextColor="Black"
                                                     VerticalOptions="Center" />
 
-                                                <Grid Grid.Column="3">
+                                                <Grid Grid.Column="3" HorizontalOptions="FillAndExpand">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="*" />
@@ -479,6 +691,8 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+
+
                     </AbsoluteLayout>
                 </StackLayout>
                 <Grid AbsoluteLayout.LayoutBounds="0,1,1,.09" AbsoluteLayout.LayoutFlags="All">

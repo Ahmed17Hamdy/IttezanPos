@@ -9,7 +9,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Content>
 
@@ -83,21 +83,17 @@
                                 <TapGestureRecognizer Tapped="Customer_Tapped" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <StackLayout Grid.Row="1">
-                            <StackLayout Orientation="Horizontal">
-                                <Label HorizontalOptions="Start" Text="{x:Static resource:AppResources.ClientName}" />
-                                <Label HorizontalOptions="StartAndExpand" Text=":" />
-                                <Label
-                                    x:Name="CustName"
-                                    HorizontalOptions="FillAndExpand"
-                                    Text="" />
-                            </StackLayout>
+
+                        <StackLayout Grid.Row="1" Orientation="Horizontal">
+                            <Label HorizontalOptions="Start" Text="{x:Static resource:AppResources.ClientName}" />
+                            <Label HorizontalOptions="StartAndExpand" Text=":" />
                             <Label
-                                HorizontalOptions="Center"
-                                Text="{x:Static resource:AppResources.Skip}"
-                                TextDecorations="Strikethrough"
-                                VerticalOptions="Center" />
+                                x:Name="CustName"
+                                HorizontalOptions="FillAndExpand"
+                                Text="" />
                         </StackLayout>
+
+
 
 
                     </Grid>
@@ -154,7 +150,7 @@
                                 FontSize="Small"
                                 HorizontalOptions="FillAndExpand"
                                 IsVisible="False"
-                                ItemDisplayBinding="{Binding en_name}"
+                                ItemDisplayBinding="{Binding PaymentTypeEnname}"
                                 SelectedIndexChanged="PaymentList_SelectedIndexChanged"
                                 TextColor="White"
                                 TitleColor="White" />
@@ -166,7 +162,7 @@
                                 FontSize="Small"
                                 HorizontalOptions="FillAndExpand"
                                 IsVisible="False"
-                                ItemDisplayBinding="{Binding name}"
+                                ItemDisplayBinding="{Binding PaymentType}"
                                 SelectedIndexChanged="PaymentListar_SelectedIndexChanged"
                                 TextColor="White"
                                 TitleColor="White" />

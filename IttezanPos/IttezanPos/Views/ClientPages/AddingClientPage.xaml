@@ -42,9 +42,9 @@
 
                         </customcontrols:CustomEntry.Behaviors>
                     </customcontrols:CustomEntry>
-                    <Label Text="{x:Static resource:AppResources.ClientNameEn}" VerticalOptions="End" />
+                    <Label Text="{x:Static resource:AppResources.ClientEnnamen}" VerticalOptions="End" />
                     <customcontrols:CustomEntry
-                        x:Name="ClientNameEnentry"
+                        x:Name="ClientEnnamenentry"
                         Margin="0"
                         ef:Border.Color="#33b54b"
                         ef:Border.Radius="25"
