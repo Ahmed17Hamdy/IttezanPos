@@ -898,4 +898,7 @@
   <data name="EnterQuantity" xml:space="preserve">
     <value>Please Enter Quantity</value>
   </data>
+  <data name="Valuediscerror" xml:space="preserve">
+    <value>Discount is more that Sale Price</value>
+  </data>
 </root>

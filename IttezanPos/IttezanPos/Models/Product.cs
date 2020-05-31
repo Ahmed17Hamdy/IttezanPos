@@ -19,7 +19,7 @@ namespace IttezanPos.Models
         public string  product_name { get; set; }
         public int product_id { get; set; }
         public double quantity { get; set; }
-        public string discount { get; set; }
+        public double discount { get; set; }
         public string user { get; set; }
         public string name { get; set; }
         public string Enname { get; set; }

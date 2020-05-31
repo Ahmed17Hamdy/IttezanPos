@@ -112,12 +112,10 @@ namespace IttezanPos.Views.SalesPages
                             {
                                 amount_paid = Amountpaidentry.Text;                              
                             }
-
                             else
                             {
                                 amount_paid = "0";
                             //    CrossToastPopUp.Current.ShowToastWarning(AppResources.SelectProduct, Plugin.Toast.Abstractions.ToastLength.Long);
-
                             }
                             OrderItem products = new OrderItem
                             {
@@ -246,22 +244,34 @@ namespace IttezanPos.Views.SalesPages
                             if (Amountpaidentry.Text != "" &&  double.Parse(Amountpaidentry.Text) >= double.Parse(text2.ToString()))
                             {
                                 amount_paid = Amountpaidentry.Text;
-                                OrderItem products = new OrderItem
-                                {
-                                    discount = text1,
-                                    products = saleproducts,
-                                    total_price = text2,
-                                    amount_paid = amount_paid,
-                                    client_id = clienttid,
-                                    user_id = 3,
-                                    payment_type = paymentid
-                                };
-                                var content = new MultipartFormDataContent();
-                                var js = JsonConvert.SerializeObject(products);
+                                OrderItem orderItem = new OrderItem();
+                                orderItem.amount_paid = amount_paid;
+                                orderItem.client_id = clienttid;
+                                orderItem.created_at = DateTime.Now;
+                                orderItem.discount = text1;
+                                orderItem.products = saleproducts;
+                                orderItem.total_price = text2;
+
+
+                                orderItem.user_id = 3;
+                                orderItem.payment_type = paymentid;
+                                //OrderItem products = new OrderItem
+                                //{
+                                //    discount = text1,
+                                //    products = saleproducts,
+                                //    total_price = text2,
+                                //    amount_paid = amount_paid,
+                                //    client_id = clienttid,
+                                //    user_id = 3,
+                                //    payment_type = paymentid
+                                //};
+                                MultipartFormDataContent content = new MultipartFormDataContent();
+                                var js = JsonConvert.SerializeObject(orderItem);
                                 content.Add(new StringContent(js, Encoding.UTF8, "text/json"), "products");
                                 var response = await client.PostAsync("https://ittezanmobilepos.com/api/makeOrder", content);
                                 if (response.IsSuccessStatusCode)
                                 {
+
                                     var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
                                     ActiveIn.IsRunning = false;
                                     var json = JsonConvert.DeserializeObject<SaleObject>(serverResponse);
@@ -292,18 +302,29 @@ namespace IttezanPos.Views.SalesPages
                         if (Amountpaidentry.Text != "" && double.Parse(Amountpaidentry.Text) >= double.Parse(text2.ToString()))
                         {
                             amount_paid = Amountpaidentry.Text;
-                            OrderItem product = new OrderItem
-                            {
-                                created_at = DateTime.Now,
-                                discount = text1,
-                                products = saleproducts,
-                                total_price = text2,
-                                amount_paid = amount_paid,
-                                client_id = clienttid,
-                                user_id = 3,
-                                payment_type = paymentid
+                            OrderItem orderItem = new OrderItem();
+                            orderItem.amount_paid = amount_paid;
+                            orderItem.client_id = clienttid;
+                            orderItem.created_at = DateTime.Now;
+                            orderItem.discount = text1;
+                            orderItem.products = saleproducts;
+                            orderItem.total_price = text2;
 
-                            };
+
+                            orderItem.user_id = 3;
+                            orderItem.payment_type = paymentid;
+                            //OrderItem product = new OrderItem
+                            //{
+                            //    created_at = DateTime.Now,
+                            //    discount = text1,
+                            //    products = saleproducts,
+                            //    total_price = text2,
+                            //    amount_paid = amount_paid,
+                            //    client_id = clienttid,
+                            //    user_id = 3,
+                            //    payment_type = paymentid
+
+                            //};
                             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                             var db = new SQLiteConnection(dbpath);
                             var info = db.GetTableInfo("SaleObject");
@@ -312,11 +333,11 @@ namespace IttezanPos.Views.SalesPages
                             {
                                 db.CreateTable<OrderItem>();
 
-                                db.Insert(product);
+                                db.Insert(orderItem);
                             }
                             else
                             {
-                                db.Insert(product);
+                                db.Insert(orderItem);
                             }
                             orderitems = (db.Table<OrderItem>().ToList());
                             if (clienttid != null)
@@ -350,6 +371,7 @@ namespace IttezanPos.Views.SalesPages
                         }
                         else
                         {
+                            ActiveIn.IsRunning = false;
                             await DisplayAlert(AppResources.Alert, AppResources.Addsaleserror, AppResources.Ok);
 
                             Amountpaidentry.Focus();

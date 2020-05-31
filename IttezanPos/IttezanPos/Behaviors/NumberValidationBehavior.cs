@@ -21,9 +21,9 @@ namespace IttezanPos.Behaviors
 
         void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            int result;
+            double result;
 
-            bool isValid = int.TryParse(args.NewTextValue, out result);
+            bool isValid = double.TryParse(args.NewTextValue, out result);
 
             ((Entry)sender).TextColor = isValid ? Color.Default : Color.Red;
         }

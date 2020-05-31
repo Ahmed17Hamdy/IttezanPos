@@ -62,14 +62,14 @@ namespace IttezanPos.Views.PurchasingPages
             }
             MessagingCenter.Subscribe<ValuePercent>(this, "PopUpData", (value) =>
             {
-                if (value.Value != "")
+                if (value.Value != 0)
                 {
-                    Disclbl.Text = value.Value;
+                    Disclbl.Text = value.Value.ToString("0.00");
                     totallbl.Text = (double.Parse(totallbl.Text) - double.Parse(Disclbl.Text)).ToString();
                 }
                 else
                 {
-                    Disclbl.Text = (double.Parse(value.Percentage) * double.Parse(totallbl.Text)).ToString();
+                    Disclbl.Text = (value.Percentage * double.Parse(totallbl.Text)).ToString();
                     totallbl.Text = (double.Parse(totallbl.Text) - double.Parse(Disclbl.Text)).ToString();
 
                 }

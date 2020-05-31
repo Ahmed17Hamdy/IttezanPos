@@ -897,4 +897,7 @@
   <data name="EnterQuantity" xml:space="preserve">
     <value>من فضلك أدخل كمية</value>
   </data>
+  <data name="Valuediscerror" xml:space="preserve">
+    <value>قيمة الخصم أكبر من قيمة المنتج</value>
+  </data>
 </root>

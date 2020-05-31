@@ -339,8 +339,8 @@ namespace IttezanPos.Views.PurchasingPages
                 await Navigation.PushPopupAsync(new purchasePopUpPage(_selectedro));
                 MessagingCenter.Subscribe<ValuePercent>(this, "PopUpData", (value) =>
                 {
-                    _selectedro.sale_price = double.Parse(value.Value);
-                    _selectedro.purchase_price = double.Parse(value.Percentage);
+                    _selectedro.sale_price = value.Value;
+                    _selectedro.purchase_price = value.Percentage;
                     _selectedro.total_price = _selectedro.purchase_price * _selectedro.quantity;
                     purchasero = new ObservableCollection<Product>(PurchaseProducts);
                     SalesList.ItemsSource = purchasero;

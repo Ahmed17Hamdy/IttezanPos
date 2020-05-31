@@ -6,13 +6,20 @@ namespace IttezanPos.Models
 {
    public class ValuePercent
     {
-        public string Value { get; set; }
-        public string Percentage { get; set; }
+        public double Value { get; set; }
+        public double Percentage { get; set; }
+        public double alldisc { get; set; }
         public DateTime expiredate { get; set; }
+    }
+    public class ValuePercentitem
+    {
+        public double Value { get; set; }
+        public double Percentage { get; set; }
+        public Product product { get; set; }
     }
     public class ValueQuantity
     {
-        public Double Quantity { get; set; }
+        public double Quantity { get; set; }
         public Product product { get; set; }
     }
 }

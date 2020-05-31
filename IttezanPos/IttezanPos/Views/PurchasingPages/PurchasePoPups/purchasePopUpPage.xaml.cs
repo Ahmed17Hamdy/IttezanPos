@@ -39,7 +39,7 @@ namespace IttezanPos.Views.PurchasingPages
         {
             if (expire_date != null)
             {
-                MessagingCenter.Send(new ValuePercent() { Value = New_salelbl.Text, Percentage = New_Purchaselbl.Text, expiredate = expire_date }, "PopUpData");
+                MessagingCenter.Send(new ValuePercent() { Value = Double.Parse(New_salelbl.Text), Percentage = Double.Parse(New_Purchaselbl.Text), expiredate = expire_date }, "PopUpData");
                 await Navigation.PopPopupAsync();
             }
             else

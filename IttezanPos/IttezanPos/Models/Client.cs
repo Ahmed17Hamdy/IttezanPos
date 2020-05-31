@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,13 +8,12 @@ namespace IttezanPos.Models
 {
  public   class Client
     {
-        public Client()
-        {
-        }
+       
 
         [JsonProperty("client_id")]
         public int client_id { get; set; }
         [JsonProperty("id")]
+        [PrimaryKey,AutoIncrement]
         public int id { get; set; }
         [JsonProperty("name")]
         public string name { get; set; }

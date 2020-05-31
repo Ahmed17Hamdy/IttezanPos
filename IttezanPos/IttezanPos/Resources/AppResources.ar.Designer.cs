@@ -2396,5 +2396,12 @@ namespace IttezanPos.Resources {
                 return ResourceManager.GetString("Stockerror", resourceCulture);
             }
         }
+        internal static string Valuediscerror
+        {
+            get
+            {
+                return ResourceManager.GetString("Valuediscerror", resourceCulture);
+            }
+        }
     }
 }

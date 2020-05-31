@@ -291,23 +291,12 @@
                                                         </Grid.ColumnDefinitions>
                                                         <Label
                                                             Grid.Row="0"
+                                                            Grid.RowSpan="2"
                                                             Grid.Column="0"
                                                             FontSize="Micro"
                                                             HorizontalOptions="FillAndExpand"
                                                             Text="{Binding sale_price, StringFormat='{0:N}'}"
                                                             TextColor="#33b54b" />
-
-
-                                                        <Label
-                                                            Grid.Row="1"
-                                                            Grid.Column="0"
-                                                            FontSize="Micro"
-                                                            HorizontalOptions="Start"
-                                                            Text="ريال سعودي"
-                                                            TextColor="#33b54b" />
-
-
-
                                                         <Grid
                                                             Grid.Row="0"
                                                             Grid.RowSpan="2"
@@ -375,23 +364,12 @@
                                                         </Grid.ColumnDefinitions>
                                                         <Label
                                                             Grid.Row="0"
+                                                            Grid.RowSpan="2"
                                                             Grid.Column="0"
                                                             FontSize="Micro"
                                                             HorizontalOptions="FillAndExpand"
                                                             Text="{Binding sale_price, StringFormat='{0:N}'}"
                                                             TextColor="#33b54b" />
-
-
-                                                        <Label
-                                                            Grid.Row="1"
-                                                            Grid.Column="0"
-                                                            FontSize="Micro"
-                                                            HorizontalOptions="Start"
-                                                            Text="ريال سعودي"
-                                                            TextColor="#33b54b" />
-
-
-
                                                         <Grid
                                                             Grid.Row="0"
                                                             Grid.RowSpan="2"
@@ -450,7 +428,7 @@
                                     HeightRequest="20">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.5*" />
-                                        <ColumnDefinition Width="0.5*" />
+                                        <ColumnDefinition Width="0.4*" />
                                         <ColumnDefinition Width="0.5*" />
                                         <ColumnDefinition Width="*" />
 
@@ -496,7 +474,7 @@
                                             <Grid ColumnSpacing="0">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="0.5*" />
-                                                    <ColumnDefinition Width="0.5*" />
+                                                    <ColumnDefinition Width="0.4*" />
                                                     <ColumnDefinition Width="0.5*" />
                                                     <ColumnDefinition Width="*" />
 
@@ -510,6 +488,7 @@
                                                     VerticalOptions="Center" />
                                                 <Frame
                                                     Grid.Column="1"
+                                                    Margin="5"
                                                     Padding="0"
                                                     BackgroundColor="#33b54b">
                                                     <Label
@@ -537,16 +516,43 @@
 
                                                 <Grid Grid.Column="3" HorizontalOptions="FillAndExpand">
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="2*" />
                                                         <ColumnDefinition Width="*" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Label
+                                                    <StackLayout
                                                         Grid.Column="0"
-                                                        FontSize="Micro"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Text="{Binding total_price, Mode=TwoWay, StringFormat='{0:N}'}"
-                                                        TextColor="Black"
-                                                        VerticalOptions="Center" />
+                                                        HorizontalOptions="Start"
+                                                        Orientation="Horizontal">
+                                                        <StackLayout
+                                                            Padding="0"
+                                                            HorizontalOptions="EndAndExpand"
+                                                            Spacing="0">
+                                                            <Label
+                                                                FontSize="Micro"
+                                                                HorizontalOptions="Center"
+                                                                Text="{x:Static resource:AppResources.Discount}"
+                                                                TextColor="Gray" />
+                                                            <Frame Padding="5" BackgroundColor="#33b54b">
+                                                                <Label
+                                                                    FontSize="Micro"
+                                                                    HorizontalOptions="Center"
+                                                                    Text="{Binding discount, Mode=TwoWay, StringFormat='{0:N}'}"
+                                                                    TextColor="Black" />
+                                                                <Frame.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="discountitem_Tapped" />
+                                                                </Frame.GestureRecognizers>
+                                                            </Frame>
+                                                        </StackLayout>
+                                                        <Label
+                                                            FontSize="Micro"
+                                                            HorizontalOptions="Center"
+                                                            Text="{Binding total_price, Mode=TwoWay, StringFormat='{0:N}'}"
+                                                            TextColor="Black"
+                                                            VerticalOptions="Center" />
+
+
+                                                    </StackLayout>
+
                                                     <Button
                                                         Grid.Column="1"
                                                         Clicked="delete_Clicked"
@@ -581,7 +587,7 @@
                                     HeightRequest="20">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.5*" />
-                                        <ColumnDefinition Width="0.5*" />
+                                        <ColumnDefinition Width="0.4*" />
                                         <ColumnDefinition Width="0.5*" />
                                         <ColumnDefinition Width="*" />
 
@@ -624,7 +630,7 @@
                                             <Grid ColumnSpacing="0">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="0.5*" />
-                                                    <ColumnDefinition Width="0.5*" />
+                                                    <ColumnDefinition Width="0.4*" />
                                                     <ColumnDefinition Width="0.5*" />
                                                     <ColumnDefinition Width="*" />
 
@@ -665,16 +671,42 @@
 
                                                 <Grid Grid.Column="3" HorizontalOptions="FillAndExpand">
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="2*" />
                                                         <ColumnDefinition Width="*" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Label
+                                                    <StackLayout
                                                         Grid.Column="0"
-                                                        FontSize="Micro"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Text="{Binding total_price, Mode=TwoWay, StringFormat='{0:N}'}"
-                                                        TextColor="Black"
-                                                        VerticalOptions="Center" />
+                                                        HorizontalOptions="Start"
+                                                        Orientation="Horizontal">
+                                                        <StackLayout
+                                                            Padding="0"
+                                                            HorizontalOptions="EndAndExpand"
+                                                            Spacing="0">
+                                                            <Label
+                                                                FontSize="Micro"
+                                                                HorizontalOptions="Center"
+                                                                Text="{x:Static resource:AppResources.Discount}"
+                                                                TextColor="Gray" />
+                                                            <Frame Padding="5" BackgroundColor="#33b54b">
+                                                                <Label
+                                                                    FontSize="Micro"
+                                                                    HorizontalOptions="Center"
+                                                                    Text="{Binding discount, Mode=TwoWay, StringFormat='{0:N}'}"
+                                                                    TextColor="Black" />
+                                                                <Frame.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="discountitem_Tapped" />
+                                                                </Frame.GestureRecognizers>
+                                                            </Frame>
+                                                        </StackLayout>
+                                                        <Label
+                                                            FontSize="Micro"
+                                                            HorizontalOptions="Center"
+                                                            Text="{Binding total_price, Mode=TwoWay, StringFormat='{0:N}'}"
+                                                            TextColor="Black"
+                                                            VerticalOptions="Center" />
+
+
+                                                    </StackLayout>
                                                     <Button
                                                         Grid.Column="1"
                                                         Clicked="delete_Clicked"

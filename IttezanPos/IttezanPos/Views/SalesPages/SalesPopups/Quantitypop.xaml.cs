@@ -28,9 +28,13 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
 
         private async void Next_Tapped(object sender, EventArgs e)
         {
-            Quantity = double.Parse(Resultlbl.Text);
-            MessagingCenter.Send(new ValueQuantity() { Quantity = Quantity,product= selectedprp }, "PopUpData1");
-            await Navigation.PopPopupAsync();
+            if (Resultlbl.Text != "")
+            {
+                Quantity = double.Parse(Resultlbl.Text);
+           
+                MessagingCenter.Send(new ValueQuantity() { Quantity = Quantity, product = selectedprp }, "PopUpData1");
+                await Navigation.PopPopupAsync();
+            }
         }
         private async void Closelbl_Tapped(object sender, EventArgs e)
         {
@@ -84,7 +88,10 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
 
         private void Clear_Tapped(object sender, EventArgs e)
         {
-            Resultlbl.Text = Resultlbl.Text.Remove(Resultlbl.Text.Length - 1, 1);
+            if (Resultlbl.Text.Length != 0)
+            {
+                Resultlbl.Text = Resultlbl.Text.Remove(Resultlbl.Text.Length - 1, 1);
+            }
         }
     }
 }

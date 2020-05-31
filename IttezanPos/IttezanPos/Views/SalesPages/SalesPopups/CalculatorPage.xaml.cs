@@ -15,10 +15,11 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CalculatorPage : PopupPage
     {
-        private string percent;
-        private string value;
+        private double percent;
+        private double value;
         private bool check;
         private Product selectedprp;
+        private double alldisc;
 
         public CalculatorPage()
         {
@@ -26,10 +27,23 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
             check = true;
         }
 
-      
+        public CalculatorPage(Product selectedprp)
+        {
+            InitializeComponent();
+            check = true;
+            this.selectedprp = selectedprp;
+        }
+
+        public CalculatorPage(double alldisc)
+        {
+            InitializeComponent();
+            check = true;
+            this.alldisc = alldisc;
+        }
 
         private async void Closelbl_Tapped(object sender, EventArgs e)
         {
+           
             await Navigation.PopPopupAsync();
         }
 
@@ -80,23 +94,63 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
 
         private void Clear_Tapped(object sender, EventArgs e)
         {
-            Resultlbl.Text = Resultlbl.Text.Remove(Resultlbl.Text.Length - 1, 1);
+            if (Resultlbl.Text.Length != 0)
+            {
+                Resultlbl.Text = Resultlbl.Text.Remove(Resultlbl.Text.Length - 1, 1);
+            }
+           
         }
 
         private async void Next_Tapped(object sender, EventArgs e)
         {
-            if (check == true)
+            if (Resultlbl.Text!="")
             {
-                value = Resultlbl.Text;
-                percent = "";
+                if (selectedprp == null)
+                {
+                    if (check == true)
+                    {
+                        value = Double.Parse(Resultlbl.Text);
+                        percent = 0;
+                    }
+                    else
+                    {
+                        value = 0;
+                        percent = (double.Parse(Resultlbl.Text) / 100);
+                    }
+
+                    MessagingCenter.Send(new ValuePercent() { Value = value, Percentage = percent, alldisc = alldisc },
+                        "PopUpData");
+                    await Navigation.PopPopupAsync();
+
+
+                }
+                else
+                {
+                    if (Resultlbl.Text != "")
+                    {
+                        if (check == true)
+                        {
+                            value = Double.Parse(Resultlbl.Text);
+                            percent = 0;
+                        }
+                        else
+                        {
+                            value = 0;
+                            percent = (double.Parse(Resultlbl.Text) / 100);
+                        }
+
+                        MessagingCenter.Send(new ValuePercentitem()
+                        {
+                            Value = value,
+                            Percentage = percent
+                        ,
+                            product = selectedprp
+                        }, "PopUpDataitem");
+                        await Navigation.PopPopupAsync();
+                    }
+                }
             }
-            else
-            {
-                value = "";
-                percent = (double.Parse(Resultlbl.Text) / 100).ToString();
-            }
-            MessagingCenter.Send(new ValuePercent() { Value = value ,Percentage=percent}, "PopUpData");
-            await Navigation.PopPopupAsync();
+
         }
 
         private void Valuebtn_Clicked(object sender, EventArgs e)

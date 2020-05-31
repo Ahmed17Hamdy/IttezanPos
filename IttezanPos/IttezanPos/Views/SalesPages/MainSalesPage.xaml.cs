@@ -33,7 +33,7 @@ namespace IttezanPos.Views.SalesPages
     public partial class MainSalesPage : ContentPage
     {
 
-        string discountt;
+        double Alldisc;
         private ObservableCollection<Category> categories = new ObservableCollection<Category>();
         public ObservableCollection<Category> Categories
         {
@@ -104,6 +104,7 @@ namespace IttezanPos.Views.SalesPages
                 OnPropertyChanged(nameof(payments));
             }
         }
+        double discount = 0;
         public MainSalesPage()
         {
             InitializeComponent();
@@ -127,25 +128,106 @@ namespace IttezanPos.Views.SalesPages
             FlowDirectionPage();
             MessagingCenter.Subscribe<ValuePercent>(this, "PopUpData", (value) =>
             {
-                if (value.Value != "")
+                if (value.Value != 0)
                 {
-                    Disclbl.Text = value.Value;
-                    totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString();
+                    Alldisc = value.alldisc;
+                    Disclbl.Text = (double.Parse(Disclbl.Text) - value.alldisc).ToString("0.00");
+                    Disclbl.Text = (double.Parse(Disclbl.Text) + value.Value).ToString("0.00");
+                    Alldisc = value.Value;
+                    totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString("0.00");
 
                 }
                 else
                 {
-                    Disclbl.Text = (double.Parse(value.Percentage)*double.Parse(subtotallbl.Text)).ToString();
-                    totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString();
+                    Alldisc = value.alldisc;
+                    Disclbl.Text = (double.Parse(Disclbl.Text) - value.alldisc).ToString("0.00");
+                    Disclbl.Text = ((value.Percentage*double.Parse(subtotallbl.Text))+ double.Parse(Disclbl.Text)).ToString("0.00");
+                    Alldisc = value.Percentage * double.Parse(subtotallbl.Text);
+                    totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString("0.00");
                 }
 
             });
             MessagingCenter.Subscribe<ValueQuantity>(this, "PopUpData1", (value) =>
             {
             checkquantity(value);
-                
+            });
+            MessagingCenter.Subscribe<ValuePercentitem>(this, "PopUpDataitem", (value) =>
+            {
+                checkdiscount(value);
+
 
             });
+
+        }
+
+        private void checkdiscount(ValuePercentitem value)
+        {
+            if (value.Value!=0)
+            {
+
+                    if (value.product.sale_price > value.Value)
+                    {
+                    Disclbl.Text = (double.Parse(Disclbl.Text) - value.product.discount).ToString("0.00");
+                    value.product.discount = 0;
+                    discount = value.Value;
+                    value.product.discount = value.product.discount + discount;
+                    Disclbl.Text = (double.Parse(Disclbl.Text) + value.product.discount).ToString("0.00");
+                    totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString("0.00");
+                        value.product.total_price = value.product.sale_price * value.product.quantity;
+                        foreach (var item in SaleProducts)
+                        {
+                            if (item.id == value.product.id)
+                            {
+                                item.discount = value.product.discount;
+                                item.total_price = value.product.total_price- item.discount;
+                            }
+                        }
+                        Salesro = new ObservableCollection<Product>(SaleProducts);
+                        SalesList.ItemsSource =  Salesro;
+                    SalesListen.ItemsSource = Salesro;
+
+                    }
+                    else
+                    {
+                        CrossToastPopUp.Current.ShowToastError(AppResources.Valuediscerror, Plugin.Toast.Abstractions.ToastLength.Long);
+                        //Disclbl.Text = (double.Parse(value.Percentage) * double.Parse(subtotallbl.Text)).ToString();
+                        //totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString();
+                    }
+                
+            }
+            else
+            {
+               // discount = value.Percentage* value.product.sale_price;
+                if (value.product.sale_price > value.Percentage)
+                {
+
+                    Disclbl.Text = (double.Parse(Disclbl.Text) - value.product.discount).ToString("0.00");
+                    value.product.discount = 0;
+                    discount = value.Percentage * value.product.total_price;
+                    value.product.discount = value.product.discount + discount;
+                    Disclbl.Text = (double.Parse(Disclbl.Text) + value.product.discount).ToString("0.00");
+                    totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString("0.00");
+                    value.product.total_price = value.product.sale_price * value.product.quantity;
+                    foreach (var item in SaleProducts)
+                    {
+                        if (item.id == value.product.id)
+                        {
+                            item.discount = value.product.discount;
+                            item.total_price = value.product.total_price - item.discount;
+                        }
+                    }
+                    Salesro = new ObservableCollection<Product>(SaleProducts);
+                    SalesList.ItemsSource = Salesro;
+                    SalesListen.ItemsSource = Salesro;
+
+                }
+                else
+                {
+                    CrossToastPopUp.Current.ShowToastError(AppResources.Valuediscerror, Plugin.Toast.Abstractions.ToastLength.Long);
+                    //Disclbl.Text = (double.Parse(value.Percentage) * double.Parse(subtotallbl.Text)).ToString();
+                    //totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString();
+                }
+            }
            
         }
 
@@ -178,6 +260,7 @@ namespace IttezanPos.Views.SalesPages
                     }
                     Salesro = new ObservableCollection<Product>(SaleProducts);
                     SalesList.ItemsSource = Salesro;
+                    SalesListen.ItemsSource = Salesro;
 
 
                 }
@@ -236,32 +319,55 @@ namespace IttezanPos.Views.SalesPages
                                 item2.product_id = item2.id;
                             }
                             Products.AddRange(item.category.list_of_products);
-                            Categories1.Add(item.category);
+                       
+                        Categories1.Add(item.category);
                         }
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                    Category2 all = new Category2();
+                    all.name = "الكل";
+                    all.enname = "All";
+                    all.id = 0;
+                    all.list_of_products = Products;
+                    Categories1.Insert(0,all);
+                    Category allL = new Category();
+                    allL.category = all;
+                    allL.Id = 0;
+                    allL.category2Id = all.id;
+                    
+                    Categories.Insert(0, allL);
+                    var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Product");
                         var info2 = db.GetTableInfo("Category");
                     var info5 = db.GetTableInfo("Category2");
                     var info3 = db.GetTableInfo("Payment");
-                        if (!info.Any() && !info2.Any() && !info3.Any() && !info5.Any())
+                    var info4 = db.GetTableInfo("Client");
+                    if (!info.Any() && !info2.Any() && !info3.Any() && !info5.Any() && !info4.Any())
                         {
                             db.CreateTable<Product>();
-                            db.CreateTable<Payment>();
+                        db.CreateTable<Client>();
+                        db.CreateTable<Payment>();
                             db.CreateTable<Category>();
                         db.CreateTable<Category2>();
+                        db.InsertAll(Clients);
                         db.InsertAll(Products);
-                            db.InsertAll(Payments);
+                        db.InsertAll(Payments);
                         db.InsertAll(Categories1);
                         db.InsertAllWithChildren(Categories);
-
                         }
                         else
                         {
-                            db.UpdateAll(Products);
-                            db.UpdateAll(Payments);
-                            db.InsertOrReplaceAllWithChildren(Categories);
-                        db.UpdateAll(Categories1);
+                        db.DeleteAll(Clients);
+                        db.DeleteAll(Products);
+                        db.DeleteAll(Payments);
+                         db.DropTable<Category>();
+                       
+                        db.InsertAll(Clients);
+                        db.InsertAll(Products);
+                        db.InsertAll(Payments);
+                        db.CreateTable<Category>();
+                       
+
+                        db.InsertAllWithChildren(Categories);
                     }
                        
                     }
@@ -322,7 +428,7 @@ namespace IttezanPos.Views.SalesPages
             Scanner();
         }
 
-        [Obsolete]
+       
         public async void Scanner()
         {
             var ScannerPage = new ZXingScannerPage();
@@ -392,7 +498,8 @@ namespace IttezanPos.Views.SalesPages
             if (saleproduct.stock!=0)
             {
                 saleproduct.quantity++;
-                saleproduct.total_price = saleproduct.sale_price * saleproduct.quantity;
+                saleproduct.discount = saleproduct.discount + 0;
+                saleproduct.total_price = (saleproduct.sale_price * saleproduct.quantity);
                 if (SaleProducts.Count() == 0)
                 {
 
@@ -402,11 +509,12 @@ namespace IttezanPos.Views.SalesPages
 
                     double subtotal = (double.Parse(subtotallbl.Text) +
                         double.Parse(saleproduct.sale_price.ToString()));
+                    Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
                     double total = subtotal -
                         double.Parse(Disclbl.Text);
                     totallbl.Text = total.ToString("0.00");
                     subtotallbl.Text = subtotal.ToString("0.00");
-
+                   
                 }
                 else
                 {
@@ -417,21 +525,25 @@ namespace IttezanPos.Views.SalesPages
                         cartnolbl.Text = (int.Parse(cartnolbl.Text) + 1).ToString();
                         double subtotal = (double.Parse(subtotallbl.Text) +
                             double.Parse(saleproduct.sale_price.ToString()));
+                        Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
                         double total = subtotal -
                        double.Parse(Disclbl.Text);
                         totallbl.Text = total.ToString("0.00");
                         subtotallbl.Text = subtotal.ToString("0.00");
+                       
                     }
                     else
                     {
                         cartnolbl.Text = (int.Parse(cartnolbl.Text) + 1).ToString();
                         double subtotal = (double.Parse(subtotallbl.Text) +
                             double.Parse(saleproduct.sale_price.ToString()));
+                        Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
                         double total = subtotal -
                       double.Parse(Disclbl.Text);
                         totallbl.Text = total.ToString("0.00");
                         subtotallbl.Text = subtotal.ToString("0.00");
                         SaleProducts.Add(saleproduct);
+
                     }
                 }
                 CrossToastPopUp.Current.ShowToastSuccess(saleproduct.Enname + " " + AppResources.Added, Plugin.Toast.Abstractions.ToastLength.Short);
@@ -452,7 +564,8 @@ namespace IttezanPos.Views.SalesPages
             if (saleproduct.stock != 0)
             {
                 saleproduct.quantity++;
-                saleproduct.total_price = saleproduct.sale_price * saleproduct.quantity;
+                saleproduct.discount = saleproduct.discount + 0;
+                saleproduct.total_price = (saleproduct.sale_price * saleproduct.quantity);
                 if (SaleProducts.Count() == 0)
                 {
 
@@ -462,6 +575,7 @@ namespace IttezanPos.Views.SalesPages
 
                     double subtotal = (double.Parse(subtotallbl.Text) +
                         double.Parse(saleproduct.sale_price.ToString()));
+                    Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
                     double total = subtotal -
                         double.Parse(Disclbl.Text);
                     totallbl.Text = total.ToString("0.00");
@@ -477,24 +591,28 @@ namespace IttezanPos.Views.SalesPages
                         cartnolbl.Text = (int.Parse(cartnolbl.Text) + 1).ToString();
                         double subtotal = (double.Parse(subtotallbl.Text) +
                             double.Parse(saleproduct.sale_price.ToString()));
+                        Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
                         double total = subtotal -
                        double.Parse(Disclbl.Text);
                         totallbl.Text = total.ToString("0.00");
                         subtotallbl.Text = subtotal.ToString("0.00");
+
                     }
                     else
                     {
                         cartnolbl.Text = (int.Parse(cartnolbl.Text) + 1).ToString();
                         double subtotal = (double.Parse(subtotallbl.Text) +
                             double.Parse(saleproduct.sale_price.ToString()));
+                        Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
                         double total = subtotal -
                       double.Parse(Disclbl.Text);
                         totallbl.Text = total.ToString("0.00");
                         subtotallbl.Text = subtotal.ToString("0.00");
                         SaleProducts.Add(saleproduct);
+
                     }
                 }
-                CrossToastPopUp.Current.ShowToastSuccess(saleproduct.name +" "+ AppResources.Added, Plugin.Toast.Abstractions.ToastLength.Short);
+                CrossToastPopUp.Current.ShowToastSuccess(saleproduct.name + " " + AppResources.Added, Plugin.Toast.Abstractions.ToastLength.Short);
 
             }
             else
@@ -789,6 +907,12 @@ namespace IttezanPos.Views.SalesPages
                 var action = await DisplayAlert(AppResources.Alert, AppResources.SureTodiscard, AppResources.Yes, AppResources.No);
                 if (action)
                 {
+                    foreach (var item in SaleProducts)
+                    {
+                        item.quantity = 0;
+                        item.total_price = 0;
+                        item.discount = 0;
+                    }
                     SaleProducts.Clear();
                     Salesro.Clear();
                     totallbl.Text = AppResources.Zero;
@@ -796,7 +920,8 @@ namespace IttezanPos.Views.SalesPages
                     Disclbl.Text = AppResources.Zero;
                     cartnolbl.Text = AppResources.Zero;
                     Salesro = new ObservableCollection<Product>(SaleProducts);
-                    SalesList.ItemsSource = SalesListen.ItemsSource = Salesro;
+                    SalesList.ItemsSource = Salesro;
+                    SalesListen.ItemsSource = Salesro;
                 }
             }
         }
@@ -809,11 +934,15 @@ namespace IttezanPos.Views.SalesPages
                
                 cartnolbl.Text = (int.Parse(cartnolbl.Text) - _selectedro.quantity).ToString();
                 subtotallbl.Text = (double.Parse(subtotallbl.Text) - _selectedro.total_price).ToString("0.00");
+                Disclbl.Text = (double.Parse(Disclbl.Text)- _selectedro.discount).ToString("0.00");
                 totallbl.Text = (double.Parse(subtotallbl.Text) - (double.Parse(Disclbl.Text))).ToString("0.00");
                 _selectedro.quantity = 0;
+                _selectedro.total_price = 0;
+                _selectedro.discount = 0;
                 saleproducts.Remove(obj);
                 Salesro = new ObservableCollection<Product>(SaleProducts);
-                SalesList.ItemsSource = SalesListen.ItemsSource= Salesro;
+                SalesList.ItemsSource =  Salesro;
+                SalesListen.ItemsSource = Salesro;
             }
 
         }
@@ -827,7 +956,7 @@ namespace IttezanPos.Views.SalesPages
             }
             else
             {
-                await Navigation.PushPopupAsync(new CalculatorPage());
+                await Navigation.PushPopupAsync(new CalculatorPage(Alldisc));
             }
 
         }
@@ -837,6 +966,14 @@ namespace IttezanPos.Views.SalesPages
             if (((sender as Frame).BindingContext is Product _selectedprp))
             {
                 await Navigation.PushPopupAsync(new Quantitypop(_selectedprp));
+            }
+        }
+
+        private async void discountitem_Tapped(object sender, EventArgs e)
+        {
+            if (((sender as Frame).BindingContext is Product _selectedprp))
+            {
+                await Navigation.PushPopupAsync(new CalculatorPage(_selectedprp));
             }
         }
     }
