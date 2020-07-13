@@ -4,25 +4,96 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
+    CloseWhenBackgroundIsClicked="True"
     mc:Ignorable="d">
     <pages:PopupPage.Content>
-        <ScrollView>
-            <Frame
-                Margin="5,10,50,20"
-                HorizontalOptions="StartAndExpand"
-                VerticalOptions="StartAndExpand">
+
+        <Frame
+            Margin="5,10,10,70"
+            BackgroundColor="DarkGray"
+            HorizontalOptions="EndAndExpand"
+            VerticalOptions="EndAndExpand">
+            <ScrollView>
                 <StackLayout>
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
+                    <StackLayout
+                        Padding="5"
+                        ef:Border.Radius="10"
+                        BackgroundColor="#33b54b"
+                        Orientation="Horizontal">
+
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            Source="bill.png"
+                            VerticalOptions="Center"
+                            WidthRequest="50" />
+                        <Label
+                            Grid.Column="0"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:AppResources.PreviosReciept}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ViewPastReciepts_Tapped" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout
+                        Padding="5"
+                        ef:Border.Radius="10"
+                        BackgroundColor="#33b54b"
+                        Orientation="Horizontal">
+
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            Source="ordertype.png"
+                            VerticalOptions="Center"
+                            WidthRequest="50" />
+                        <Label
+                            Grid.Column="0"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:AppResources.ViewHoldReciepts}"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ViewHold_Tapped" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout
+                        Padding="5"
+                        ef:Border.Radius="10"
+                        BackgroundColor="#33b54b"
+                        Orientation="Horizontal">
+
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            Source="ordertype.png"
+                            VerticalOptions="Center"
+                            WidthRequest="50" />
+                        <Label
+                            Grid.Column="0"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:AppResources.sync}"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="sync_Tapped" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
                 </StackLayout>
-            </Frame>
-        </ScrollView>
+            </ScrollView>
+        </Frame>
+
     </pages:PopupPage.Content>
 </pages:PopupPage>

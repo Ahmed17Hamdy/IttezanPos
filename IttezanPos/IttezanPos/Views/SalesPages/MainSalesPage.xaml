@@ -785,6 +785,9 @@
                             HorizontalOptions="Center"
                             Text="{x:Static resource:AppResources.OrderType}"
                             TextColor="White" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Hold_Tapped" />
+                        </Grid.GestureRecognizers>
                     </Grid>
                     <Grid
                         Grid.Column="2"
@@ -863,6 +866,9 @@
                             HorizontalOptions="Center"
                             Text="{x:Static resource:AppResources.Extra}"
                             TextColor="White" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Extra_Tapped" />
+                        </Grid.GestureRecognizers>
                     </Grid>
                 </Grid>
                 <Frame

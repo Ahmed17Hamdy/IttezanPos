@@ -10,7 +10,7 @@
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     Title="{x:Static resource:AppResources.Reservoir}"
     mc:Ignorable="d">
     <ContentPage.Resources>
@@ -30,7 +30,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <Grid Margin="10,10,10,5" RowSpacing="0">
+            <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.1*" />
                     <RowDefinition Height="0.8*" />
@@ -44,7 +44,7 @@
                     <Image
                         Aspect="AspectFit"
                         HorizontalOptions="Center"
-                        Source="Box.png"
+                        Source="box.png"
                         VerticalOptions="Center"
                         WidthRequest="50" />
                     <Label
@@ -74,7 +74,7 @@
                             TextColor="#33b54b" />
                     </StackLayout>
                 </Frame>
-                <ScrollView Grid.Row="1">
+                <ScrollView Grid.Row="1" Margin="5,0">
                     <StackLayout>
                         <StackLayout
                             HorizontalOptions="StartAndExpand"

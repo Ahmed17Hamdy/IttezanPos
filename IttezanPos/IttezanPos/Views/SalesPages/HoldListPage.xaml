@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IttezanPos.Views.SalesPages.HoldListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+    Title="{x:Static resource:AppResources.ViewHoldReciepts}"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <ListView
+                x:Name="listhold"
+                HasUnevenRows="True"
+                SeparatorVisibility="Default"
+                Visual="Material">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="10"
+                                BorderColor="#33b54b"
+                                CornerRadius="20"
+                                HasShadow="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="0"
+                                        Margin="10,30"
+                                        Padding="10"
+                                        ef:Border.Color="#33b54b"
+                                        ef:Border.On="True"
+                                        ef:Border.Radius="100"
+                                        ef:Border.Width="3"
+                                        HorizontalOptions="Center"
+                                        InputTransparent="True"
+                                        VerticalOptions="Center">
+                                        <Image Source="bill.png" />
+                                    </Grid>
+
+                                    <StackLayout
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="0,10"
+                                        HorizontalOptions="Center">
+                                        <Label Text="{Binding created_at}" TextColor="Black" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{x:Static resource:AppResources.NOProduct}" TextColor="#33b54b" />
+
+                                            <Label Text="{Binding saleProducts.Count}" TextColor="#33b54b" />
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                    <Grid
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Frame
+                                            Grid.Column="0"
+                                            Padding="10"
+                                            BackgroundColor="Orange"
+                                            CornerRadius="20">
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Text="{x:Static resource:AppResources.Edite}"
+                                                VerticalOptions="Center" />
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="Edite_Tapped" />
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                        <Frame
+                                            Grid.Column="1"
+                                            Padding="10"
+                                            BackgroundColor="Red"
+                                            CornerRadius="20">
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Text="{x:Static resource:AppResources.Delete}"
+                                                VerticalOptions="Center" />
+                                            <Frame.GestureRecognizers>
+
+                                                <TapGestureRecognizer Tapped="Delete_Tapped" />
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

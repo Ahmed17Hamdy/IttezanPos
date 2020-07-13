@@ -2403,5 +2403,48 @@ namespace IttezanPos.Resources {
                 return ResourceManager.GetString("Valuediscerror", resourceCulture);
             }
         }
+        internal static string NOProduct
+        {
+            get
+            {
+                return ResourceManager.GetString("NOProduct", resourceCulture);
+            }
+        }
+        internal static string RecieptNo
+        {
+            get
+            {
+                return ResourceManager.GetString("RecieptNo", resourceCulture);
+            }
+        }
+        internal static string RecieptDate
+        {
+            get
+            {
+                return ResourceManager.GetString("RecieptDate", resourceCulture);
+            }
+        }
+        internal static string PreviosReciept
+        {
+            get
+            {
+                return ResourceManager.GetString("PreviosReciept", resourceCulture);
+            }
+        }
+
+        internal static string AddedtoHold
+        {
+            get
+            {
+                return ResourceManager.GetString("AddedtoHold", resourceCulture);
+            }
+        }
+        internal static string sync
+        {
+            get
+            {
+                return ResourceManager.GetString("sync", resourceCulture);
+            }
+        }
     }
 }

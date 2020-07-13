@@ -1,32 +1,33 @@
-﻿using System;
+﻿using IttezanPos.Helpers;
+using IttezanPos.Resources;
+using IttezanPos.Views.Master;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using IttezanPos.Helpers;
-using IttezanPos.Resources;
-using Plugin.Connectivity;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace IttezanPos.Views.Master
+namespace IttezanPos.Views.SalesPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MasterPage : MasterDetailPage
+    public partial class SalesMaster : MasterDetailPage
     {
-        public MasterPage()
+        public SalesMaster()
         {
             InitializeComponent();
+            
             if (Device.Idiom == TargetIdiom.Tablet)
                 MasterBehavior = MasterBehavior.Popover;
-            
-            FlowDirectionPage();          
-            masterPage.listView.ItemSelected += OnItemSelected;
-            masterPage.newlist.ItemSelected += OnItemSelected;
-            masterPage.listhelp.ItemSelected += OnItemSelected;
+
+            FlowDirectionPage();
+            SaleNewMenu.listView.ItemSelected += OnItemSelected;
+            SaleNewMenu.newlist.ItemSelected += OnItemSelected;
+            SaleNewMenu.listhelp.ItemSelected += OnItemSelected;
         }
         private void FlowDirectionPage()
         {
@@ -43,9 +44,10 @@ namespace IttezanPos.Views.Master
             if (item != null)
             {
                 Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
-                masterPage.listView.SelectedItem = null;
-                masterPage.newlist.SelectedItem = null;
-                masterPage.listhelp.SelectedItem = null;
+                SaleNewMenu.listView.SelectedItem = null;
+                SaleNewMenu.newlist.SelectedItem = null;
+                SaleNewMenu.listhelp.SelectedItem = null;
+                SaleNewMenu.listhelp.SelectedItem = null;
                 IsPresented = false;
             }
         }

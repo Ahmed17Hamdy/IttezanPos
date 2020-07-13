@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IttezanPos.Views.SalesPages.SalePreviousReciepts"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
+    Title="{x:Static resource:AppResources.PreviosReciept}"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <ListView
+                x:Name="listpreview"
+                HasUnevenRows="True"
+                ItemSelected="listpreview_ItemSelected"
+                SeparatorVisibility="Default"
+                Visual="Material">
+                <ListView.Header>
+                    <Grid
+                        x:Name="Header"
+                        Padding="1"
+                        ef:Border.Color="#33b54b"
+                        ef:Border.On="True"
+                        ef:Border.Radius="2"
+                        ef:Border.Width="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Column="0"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:AppResources.RecieptNo}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="1"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:AppResources.RecieptDate}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="2"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static resource:AppResources.ChoosePaymentType}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="3"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static resource:AppResources.Amountpaid}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding id}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="1"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding created_at}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="2"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding amount_paid}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="3"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding amount_paid}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -31,7 +31,7 @@ namespace IttezanPos.Views.SettingsPages
                     .First(element => element.EnglishName.Contains("English"));
                 AppResources.Culture = Thread.CurrentThread.CurrentUICulture;
                 Settings.LastUserGravity = "English";
-            Application.Current.MainPage = new MasterPage();
+            Application.Current.MainPage = new NavigationPage(new MasterPage());
           
 
         }
@@ -47,8 +47,7 @@ namespace IttezanPos.Views.SettingsPages
                 Settings.LastUserGravity = "Arabic";
                 GravityClass.Grav();
 
-            Application.Current.MainPage = new MasterPage();
-            
+            Application.Current.MainPage = new NavigationPage(new MasterPage());
         }
     }
 }

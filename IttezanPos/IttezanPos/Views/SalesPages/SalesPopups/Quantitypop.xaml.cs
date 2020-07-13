@@ -15,10 +15,10 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Quantitypop : PopupPage
     {
-        private Product selectedprp;
+        private SaleProduct selectedprp;
         private Double Quantity;
 
-        public Quantitypop(Product selectedprp)
+        public Quantitypop(SaleProduct selectedprp)
         {
             InitializeComponent();
             this.selectedprp = selectedprp;

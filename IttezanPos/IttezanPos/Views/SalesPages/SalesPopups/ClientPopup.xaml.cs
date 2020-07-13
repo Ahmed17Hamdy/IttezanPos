@@ -1,4 +1,5 @@
-﻿using IttezanPos.Models;
+﻿using IttezanPos.Helpers;
+using IttezanPos.Models;
 using IttezanPos.Resources;
 using IttezanPos.Services;
 using IttezanPos.Views.ClientPages;
@@ -9,9 +10,11 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -35,7 +38,19 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
         public ClientPopup()
         {
             InitializeComponent();
+            FlowDirectionPage();
 
+        }
+        private void FlowDirectionPage()
+        {
+
+
+            FlowDirection = (Helpers.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
+         : FlowDirection.LeftToRight;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList().
+         First(element => element.EnglishName.Contains(Helpers.Settings.LastUserGravity));
+            AppResources.Culture = Thread.CurrentThread.CurrentUICulture;
+            GravityClass.Grav();
         }
         protected override void OnAppearing()
         {

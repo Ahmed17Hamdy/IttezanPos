@@ -23,8 +23,16 @@ namespace IttezanPos.ViewModels
 
             [Post("/api/delsupplier")]
             Task<DelResponse> DeleteSupplier(int supplier_id);
-
+            [Post("/api/offlineOrder")]
+            Task<Orderoffline> AddOrder([Body] string orders);
+            
         }
       
     }
+}
+public class Orderoffline
+{
+    public bool success { get; set; }
+    public string data { get; set; }
+    public List<int> message { get; set; }
 }

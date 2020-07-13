@@ -8,10 +8,11 @@ namespace IttezanPos.Models
 {
  public   class Product
     {
-        [PrimaryKey]
+        [PrimaryKey,AutoIncrement]
         public int id { get; set; }
         [ForeignKey(typeof(Category2))]
-        public int category2Id { get; set; }      
+        public int category2Id { get; set; }
+       
         public string user_id { get; set; }
         public string catname { get; set; }
         public int category_id { get; set; }
@@ -47,12 +48,31 @@ namespace IttezanPos.Models
     }
    public class SaleProduct : Product
     {
-        public int order_id { get; set; }
-       
+        [ForeignKey(typeof(OrderItem))]
+        public int orderId { get; set; }
+        [ForeignKey(typeof(HoldProduct))]
+        public int holdrId { get; set; }
         public int client_id { get; set; }
         public string payment_type { get; set; }
-        public string total_price { get; set; }
+       
         public string amount_paid { get; set; }
         public int remaining_amount { get; set; }
+    }
+    public class HoldProduct 
+    {
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
+
+        [ForeignKey(typeof(SaleProduct))]
+        public int saleproductid { get; set; }
+        public string total { get; set; }
+        public string subtotal { get; set; }
+        public string discount { get; set; }
+        public string number { get; set; }
+        public DateTimeOffset? created_at { get; set; }
+        public DateTimeOffset? updated_at { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All), Ignore]
+        public List<SaleProduct> saleProducts { get; set; }
+       
     }
 }

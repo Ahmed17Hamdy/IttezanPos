@@ -64,8 +64,8 @@ namespace IttezanPos.Views.SalesPages
                 OnPropertyChanged(nameof(products));
             }
         }
-        private List<Product> saleproducts = new List<Product>();
-        public List<Product> SaleProducts
+        private List<SaleProduct> saleproducts = new List<SaleProduct>();
+        public List<SaleProduct> SaleProducts
         {
             get { return saleproducts; }
             set
@@ -74,8 +74,8 @@ namespace IttezanPos.Views.SalesPages
                 OnPropertyChanged(nameof(saleproducts));
             }
         }
-        private ObservableCollection<Product> salesro = new ObservableCollection<Product>();
-        public ObservableCollection<Product> Salesro
+        private ObservableCollection<SaleProduct> salesro = new ObservableCollection<SaleProduct>();
+        public ObservableCollection<SaleProduct> Salesro
         {
             get { return salesro; }
             set
@@ -104,6 +104,9 @@ namespace IttezanPos.Views.SalesPages
                 OnPropertyChanged(nameof(payments));
             }
         }
+
+        public List<HoldProduct> HoldList { get; private set; }
+
         double discount = 0;
         public MainSalesPage()
         {
@@ -126,7 +129,35 @@ namespace IttezanPos.Views.SalesPages
                 CategoryListen.IsVisible = true;
             }
             FlowDirectionPage();
-            MessagingCenter.Subscribe<ValuePercent>(this, "PopUpData", (value) =>
+            MessagingCenter.Subscribe<SaleHold>(this, "SaleHold", (value) =>
+            {
+                if (SaleProducts.Count()!=0)
+                {
+                    foreach (var item in SaleProducts)
+                    {
+                        item.quantity = 0;
+                        item.total_price = 0;
+                        item.discount = 0;
+                    }
+                    SaleProducts.Clear();
+                    Salesro.Clear();
+                }
+               
+                totallbl.Text = AppResources.Zero;
+                subtotallbl.Text = AppResources.Zero;
+                Disclbl.Text = AppResources.Zero;
+                cartnolbl.Text = AppResources.Zero;
+                SaleProducts.AddRange(value.product.saleProducts);
+                
+                subtotallbl.Text = value.product.subtotal;
+                totallbl.Text = value.product.total;
+                Disclbl.Text = value.product.discount;
+                cartnolbl.Text = value.product.number;
+                Salesro = new ObservableCollection<SaleProduct>(SaleProducts);
+                SalesList.ItemsSource = Salesro;
+                SalesListen.ItemsSource = Salesro;
+            });
+           MessagingCenter.Subscribe<ValuePercent>(this, "PopUpData", (value) =>
             {
                 if (value.Value != 0)
                 {
@@ -154,8 +185,6 @@ namespace IttezanPos.Views.SalesPages
             MessagingCenter.Subscribe<ValuePercentitem>(this, "PopUpDataitem", (value) =>
             {
                 checkdiscount(value);
-
-
             });
 
         }
@@ -182,7 +211,7 @@ namespace IttezanPos.Views.SalesPages
                                 item.total_price = value.product.total_price- item.discount;
                             }
                         }
-                        Salesro = new ObservableCollection<Product>(SaleProducts);
+                        Salesro = new ObservableCollection<SaleProduct>(SaleProducts);
                         SalesList.ItemsSource =  Salesro;
                     SalesListen.ItemsSource = Salesro;
 
@@ -216,7 +245,7 @@ namespace IttezanPos.Views.SalesPages
                             item.total_price = value.product.total_price - item.discount;
                         }
                     }
-                    Salesro = new ObservableCollection<Product>(SaleProducts);
+                    Salesro = new ObservableCollection<SaleProduct>(SaleProducts);
                     SalesList.ItemsSource = Salesro;
                     SalesListen.ItemsSource = Salesro;
 
@@ -238,7 +267,7 @@ namespace IttezanPos.Views.SalesPages
 
                 if (Convert.ToDouble(value.product.stock) > value.Quantity)
                 {
-
+                    Disclbl.Text = (double.Parse(Disclbl.Text) - value.product.discount).ToString();
                     cartnolbl.Text = (double.Parse(cartnolbl.Text) - value.product.quantity).ToString();
                     subtotallbl.Text = (double.Parse(subtotallbl.Text) - value.product.total_price).ToString("0.00");
                     totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString("0.00");
@@ -249,16 +278,14 @@ namespace IttezanPos.Views.SalesPages
 
                     subtotallbl.Text = (double.Parse(subtotallbl.Text) + value.product.total_price).ToString("0.00");
                     totallbl.Text = (double.Parse(subtotallbl.Text) - double.Parse(Disclbl.Text)).ToString("0.00"); ;
-
-                    foreach (var item in SaleProducts)
-                    {
-                        if (item.id == value.product.id)
-                        {
+                    value.product.discount = 0;
+                    foreach (var item in SaleProducts.Where(w => w.id == value.product.id))
+                    {                       
                             item.quantity = value.product.quantity;
                             item.total_price = value.product.total_price;
-                        }
+                        item.discount = value.product.discount;
                     }
-                    Salesro = new ObservableCollection<Product>(SaleProducts);
+                    Salesro = new ObservableCollection<SaleProduct>(SaleProducts);
                     SalesList.ItemsSource = Salesro;
                     SalesListen.ItemsSource = Salesro;
 
@@ -289,6 +316,28 @@ namespace IttezanPos.Views.SalesPages
         }
         protected override bool OnBackButtonPressed()
         {
+            MessagingCenter.Unsubscribe<SaleHold>(this, "SaleHold");
+            MessagingCenter.Unsubscribe<ValuePercentitem>(this, "PopUpDataitem");
+            MessagingCenter.Unsubscribe<ValueQuantity>(this, "PopUpData1");
+            MessagingCenter.Unsubscribe<ValuePercent>(this, "PopUpData");
+            if (SaleProducts.Count() != 0)
+            {
+                foreach (var item in SaleProducts)
+                {
+                    item.quantity = 0;
+                    item.total_price = 0;
+                    item.discount = 0;
+                }
+                SaleProducts.Clear();
+                Salesro.Clear();
+                totallbl.Text = AppResources.Zero;
+                subtotallbl.Text = AppResources.Zero;
+                Disclbl.Text = AppResources.Zero;
+                cartnolbl.Text = AppResources.Zero;
+                Salesro = new ObservableCollection<SaleProduct>(SaleProducts);
+                SalesList.ItemsSource = Salesro;
+                SalesListen.ItemsSource = Salesro;
+            }
             CategoryListen.Unfocus();
             CategoryListar.Unfocus();
             return base.OnBackButtonPressed();
@@ -346,7 +395,7 @@ namespace IttezanPos.Views.SalesPages
                             db.CreateTable<Product>();
                         db.CreateTable<Client>();
                         db.CreateTable<Payment>();
-                            db.CreateTable<Category>();
+                        db.CreateTable<Category>();
                         db.CreateTable<Category2>();
                         db.InsertAll(Clients);
                         db.InsertAll(Products);
@@ -356,17 +405,21 @@ namespace IttezanPos.Views.SalesPages
                         }
                         else
                         {
-                        db.DeleteAll(Clients);
-                        db.DeleteAll(Products);
-                        db.DeleteAll(Payments);
-                         db.DropTable<Category>();
                        
+                        db.DropTable<Category>();
+                        db.DropTable<Category2>();
+                        db.DropTable<Product>();
+                        db.DropTable<Client>();
+                        db.DropTable<Payment>();
+                        db.CreateTable<Product>();
+                        db.CreateTable<Category2>();
+                        db.InsertAll(Categories1);
+                        db.CreateTable<Client>();
+                        db.CreateTable<Payment>();
+                        db.CreateTable<Category>();
                         db.InsertAll(Clients);
                         db.InsertAll(Products);
                         db.InsertAll(Payments);
-                        db.CreateTable<Category>();
-                       
-
                         db.InsertAllWithChildren(Categories);
                     }
                        
@@ -495,87 +548,142 @@ namespace IttezanPos.Views.SalesPages
         private   void ProductsList_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
             var saleproduct = ProductsList.FlowLastTappedItem as Product;
-            if (saleproduct.stock!=0)
+            SaleProduct sale = new SaleProduct
             {
-                saleproduct.quantity++;
-                saleproduct.discount = saleproduct.discount + 0;
-                saleproduct.total_price = (saleproduct.sale_price * saleproduct.quantity);
+                id = saleproduct.id,
+                catname = saleproduct.catname,
+                category_id = saleproduct.category_id,
+                category2Id = saleproduct.category2Id,
+                created_at = saleproduct.created_at,
+                description = saleproduct.description,
+                discount = saleproduct.discount,
+                Enname = saleproduct.Enname,
+                expiration_date = saleproduct.expiration_date,
+                image = saleproduct.image,
+                locale = saleproduct.locale,
+                product_id = saleproduct.product_id,
+                profit_percent = saleproduct.profit_percent,
+                quantity = saleproduct.quantity,
+                sale_price = saleproduct.sale_price,
+                stock = saleproduct.stock,
+                total_price = saleproduct.total_price,
+                updated_at = saleproduct.updated_at,
+                translations = saleproduct.translations,
+                user = saleproduct.user,
+                user_id = saleproduct.user_id,
+                name = saleproduct.name,
+            };
+            if (sale.stock != 0)
+            {
+                sale.quantity++;
+                sale.total_price = (sale.sale_price * sale.quantity);
                 if (SaleProducts.Count() == 0)
                 {
 
-                    SaleProducts.Add(saleproduct);
+                    SaleProducts.Add(sale);
 
                     cartnolbl.Text = (int.Parse(cartnolbl.Text) + 1).ToString();
 
                     double subtotal = (double.Parse(subtotallbl.Text) +
-                        double.Parse(saleproduct.sale_price.ToString()));
-                    Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
+                        double.Parse(sale.sale_price.ToString()));
+                    Disclbl.Text = (double.Parse(Disclbl.Text) - sale.discount).ToString("0.00");
                     double total = subtotal -
                         double.Parse(Disclbl.Text);
                     totallbl.Text = total.ToString("0.00");
                     subtotallbl.Text = subtotal.ToString("0.00");
-                   
+
                 }
                 else
                 {
-                    var obj = SaleProducts.Find(x => x.id == saleproduct.id);
+                    var obj = SaleProducts.Find(x => x.id == sale.id);
                     if (obj != null)
                     {
 
                         cartnolbl.Text = (int.Parse(cartnolbl.Text) + 1).ToString();
                         double subtotal = (double.Parse(subtotallbl.Text) +
-                            double.Parse(saleproduct.sale_price.ToString()));
-                        Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
+                            double.Parse(sale.sale_price.ToString()));
+                        Disclbl.Text = (double.Parse(Disclbl.Text) - obj.discount).ToString("0.00");
                         double total = subtotal -
                        double.Parse(Disclbl.Text);
                         totallbl.Text = total.ToString("0.00");
                         subtotallbl.Text = subtotal.ToString("0.00");
-                       
+                        sale.discount = 0;
+                        foreach (var tom in SaleProducts.Where(w => w.id == obj.id))
+                        {
+                            tom.discount = sale.discount;
+                            tom.quantity = tom.quantity + sale.quantity;
+                            tom.total_price = tom.total_price + sale.total_price;
+                        }
+
                     }
                     else
                     {
                         cartnolbl.Text = (int.Parse(cartnolbl.Text) + 1).ToString();
                         double subtotal = (double.Parse(subtotallbl.Text) +
-                            double.Parse(saleproduct.sale_price.ToString()));
-                        Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
+                            double.Parse(sale.sale_price.ToString()));
+                        Disclbl.Text = (double.Parse(Disclbl.Text) - sale.discount).ToString("0.00");
                         double total = subtotal -
                       double.Parse(Disclbl.Text);
                         totallbl.Text = total.ToString("0.00");
                         subtotallbl.Text = subtotal.ToString("0.00");
-                        SaleProducts.Add(saleproduct);
+                        SaleProducts.Add(sale);
 
                     }
                 }
-                CrossToastPopUp.Current.ShowToastSuccess(saleproduct.Enname + " " + AppResources.Added, Plugin.Toast.Abstractions.ToastLength.Short);
+                CrossToastPopUp.Current.ShowToastSuccess(sale.name + " " + AppResources.Added, Plugin.Toast.Abstractions.ToastLength.Short);
 
             }
             else
             {
                 CrossToastPopUp.Current.ShowToastError(AppResources.Stockerror, Plugin.Toast.Abstractions.ToastLength.Long);
             }
-            Salesro = new ObservableCollection<Product>(SaleProducts);
-            SalesList.ItemsSource = SalesListen.ItemsSource= Salesro;
-           
+            Salesro = new ObservableCollection<SaleProduct>(SaleProducts);
+            SalesList.ItemsSource = Salesro;
+            SalesListen.ItemsSource = Salesro;
         }
         private void ProductsListAr_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
            
-                var saleproduct = ProductsListAr.FlowLastTappedItem as Product;
-            if (saleproduct.stock != 0)
+            var saleproduct = ProductsListAr.FlowLastTappedItem as Product;
+            SaleProduct sale = new SaleProduct
             {
-                saleproduct.quantity++;
-                saleproduct.discount = saleproduct.discount + 0;
-                saleproduct.total_price = (saleproduct.sale_price * saleproduct.quantity);
+                id = saleproduct.id,
+                catname = saleproduct.catname,
+                category_id = saleproduct.category_id,
+                category2Id = saleproduct.category2Id,
+                created_at = saleproduct.created_at,
+                description = saleproduct.description,
+                discount = saleproduct.discount,
+                Enname = saleproduct.Enname,
+                expiration_date = saleproduct.expiration_date,
+                image = saleproduct.image,
+                locale = saleproduct.locale,
+                product_id = saleproduct.product_id,
+                profit_percent = saleproduct.profit_percent,
+                quantity = saleproduct.quantity,
+                sale_price = saleproduct.sale_price,
+                stock = saleproduct.stock,
+                total_price = saleproduct.total_price,
+                updated_at = saleproduct.updated_at,
+                translations = saleproduct.translations,
+                user = saleproduct.user,
+                user_id = saleproduct.user_id,
+                name = saleproduct.name,
+            };
+            if (sale.stock != 0)
+            {
+                sale.quantity++;
+                sale.total_price = (sale.sale_price * sale.quantity);
                 if (SaleProducts.Count() == 0)
                 {
-
-                    SaleProducts.Add(saleproduct);
+                    
+                    SaleProducts.Add(sale);
 
                     cartnolbl.Text = (int.Parse(cartnolbl.Text) + 1).ToString();
 
                     double subtotal = (double.Parse(subtotallbl.Text) +
-                        double.Parse(saleproduct.sale_price.ToString()));
-                    Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
+                        double.Parse(sale.sale_price.ToString()));
+                    Disclbl.Text = (double.Parse(Disclbl.Text) - sale.discount).ToString("0.00");
                     double total = subtotal -
                         double.Parse(Disclbl.Text);
                     totallbl.Text = total.ToString("0.00");
@@ -584,43 +692,51 @@ namespace IttezanPos.Views.SalesPages
                 }
                 else
                 {
-                    var obj = SaleProducts.Find(x => x.id == saleproduct.id);
+                    var obj = SaleProducts.Find(x => x.id == sale.id);
                     if (obj != null)
                     {
 
                         cartnolbl.Text = (int.Parse(cartnolbl.Text) + 1).ToString();
                         double subtotal = (double.Parse(subtotallbl.Text) +
-                            double.Parse(saleproduct.sale_price.ToString()));
-                        Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
+                            double.Parse(sale.sale_price.ToString()));
+                        Disclbl.Text = (double.Parse(Disclbl.Text) - obj.discount).ToString("0.00");
                         double total = subtotal -
                        double.Parse(Disclbl.Text);
                         totallbl.Text = total.ToString("0.00");
                         subtotallbl.Text = subtotal.ToString("0.00");
+                        sale.discount = 0;
+                        foreach (var tom in SaleProducts.Where(w => w.id == obj.id))
+                        {
+                            tom.discount = sale.discount;
+                            tom.quantity = tom.quantity+ sale.quantity;
+                            tom.total_price = tom.total_price+ sale.total_price;
+                        }
 
                     }
                     else
                     {
                         cartnolbl.Text = (int.Parse(cartnolbl.Text) + 1).ToString();
                         double subtotal = (double.Parse(subtotallbl.Text) +
-                            double.Parse(saleproduct.sale_price.ToString()));
-                        Disclbl.Text = double.Parse(Disclbl.Text) + saleproduct.discount.ToString("0.00");
+                            double.Parse(sale.sale_price.ToString()));
+                        Disclbl.Text = (double.Parse(Disclbl.Text) - sale.discount).ToString("0.00");
                         double total = subtotal -
                       double.Parse(Disclbl.Text);
                         totallbl.Text = total.ToString("0.00");
                         subtotallbl.Text = subtotal.ToString("0.00");
-                        SaleProducts.Add(saleproduct);
+                        SaleProducts.Add(sale);
 
                     }
                 }
-                CrossToastPopUp.Current.ShowToastSuccess(saleproduct.name + " " + AppResources.Added, Plugin.Toast.Abstractions.ToastLength.Short);
+                CrossToastPopUp.Current.ShowToastSuccess(sale.name + " " + AppResources.Added, Plugin.Toast.Abstractions.ToastLength.Short);
 
             }
             else
             {
                 CrossToastPopUp.Current.ShowToastError(AppResources.Stockerror, Plugin.Toast.Abstractions.ToastLength.Long);
             }
-            Salesro = new ObservableCollection<Product>(SaleProducts);
-            SalesList.ItemsSource = SalesListen.ItemsSource = Salesro;
+            Salesro = new ObservableCollection<SaleProduct>(SaleProducts);
+            SalesList.ItemsSource  = Salesro;
+            SalesListen.ItemsSource = Salesro;
         }
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
@@ -704,7 +820,9 @@ namespace IttezanPos.Views.SalesPages
 
         private void Master_Tapped(object sender, EventArgs e)
         {
-            (App.Current.MainPage as MasterDetailPage).IsPresented = true;
+           
+            var page = (App.Current.MainPage as NavigationPage).CurrentPage;
+            (page as MasterDetailPage).IsPresented = true;
         }
 
         private async void BAck_Tapped(object sender, EventArgs e)
@@ -919,7 +1037,7 @@ namespace IttezanPos.Views.SalesPages
                     subtotallbl.Text = AppResources.Zero;
                     Disclbl.Text = AppResources.Zero;
                     cartnolbl.Text = AppResources.Zero;
-                    Salesro = new ObservableCollection<Product>(SaleProducts);
+                    Salesro = new ObservableCollection<SaleProduct>(SaleProducts);
                     SalesList.ItemsSource = Salesro;
                     SalesListen.ItemsSource = Salesro;
                 }
@@ -940,7 +1058,7 @@ namespace IttezanPos.Views.SalesPages
                 _selectedro.total_price = 0;
                 _selectedro.discount = 0;
                 saleproducts.Remove(obj);
-                Salesro = new ObservableCollection<Product>(SaleProducts);
+                Salesro = new ObservableCollection<SaleProduct>(SaleProducts);
                 SalesList.ItemsSource =  Salesro;
                 SalesListen.ItemsSource = Salesro;
             }
@@ -963,17 +1081,140 @@ namespace IttezanPos.Views.SalesPages
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            if (((sender as Frame).BindingContext is Product _selectedprp))
+            if (((sender as Frame).BindingContext is Product saleproduct))
             {
-                await Navigation.PushPopupAsync(new Quantitypop(_selectedprp));
+                SaleProduct sale = new SaleProduct
+                {
+                    id = saleproduct.id,
+                    catname = saleproduct.catname,
+                    category_id = saleproduct.category_id,
+                    category2Id = saleproduct.category2Id,
+                    created_at = saleproduct.created_at,
+                    description = saleproduct.description,
+                    discount = saleproduct.discount,
+                    Enname = saleproduct.Enname,
+                    expiration_date = saleproduct.expiration_date,
+                    image = saleproduct.image,
+                    locale = saleproduct.locale,
+                    product_id = saleproduct.product_id,
+                    profit_percent = saleproduct.profit_percent,
+                    quantity = saleproduct.quantity,
+                    sale_price = saleproduct.sale_price,
+                    stock = saleproduct.stock,
+                    total_price = saleproduct.total_price,
+                    updated_at = saleproduct.updated_at,
+                    translations = saleproduct.translations,
+                    user = saleproduct.user,
+                    user_id = saleproduct.user_id,
+                    name = saleproduct.name,
+                };
+                await Navigation.PushPopupAsync(new Quantitypop(sale));
             }
         }
 
         private async void discountitem_Tapped(object sender, EventArgs e)
         {
-            if (((sender as Frame).BindingContext is Product _selectedprp))
+            if (((sender as Frame).BindingContext is Product saleproduct))
             {
-                await Navigation.PushPopupAsync(new CalculatorPage(_selectedprp));
+                SaleProduct sale = new SaleProduct
+                {
+                    id = saleproduct.id,
+                    catname = saleproduct.catname,
+                    category_id = saleproduct.category_id,
+                    category2Id = saleproduct.category2Id,
+                    created_at = saleproduct.created_at,
+                    description = saleproduct.description,
+                    discount = saleproduct.discount,
+                    Enname = saleproduct.Enname,
+                    expiration_date = saleproduct.expiration_date,
+                    image = saleproduct.image,
+                    locale = saleproduct.locale,
+                    product_id = saleproduct.product_id,
+                    profit_percent = saleproduct.profit_percent,
+                    quantity = saleproduct.quantity,
+                    sale_price = saleproduct.sale_price,
+                    stock = saleproduct.stock,
+                    total_price = saleproduct.total_price,
+                    updated_at = saleproduct.updated_at,
+                    translations = saleproduct.translations,
+                    user = saleproduct.user,
+                    user_id = saleproduct.user_id,
+                    name = saleproduct.name,
+                };
+                await Navigation.PushPopupAsync(new CalculatorPage(sale));
+            }
+        }
+
+        private async void Extra_Tapped(object sender, EventArgs e)
+        {
+            await  Navigation.PushPopupAsync(new ExtraPopupPage());
+        }
+
+        private  void Hold_Tapped(object sender, EventArgs e)
+        {
+            if (SaleProducts.Count() == 0)
+            {
+                CrossToastPopUp.Current.ShowToastWarning(AppResources.SelectProduct, Plugin.Toast.Abstractions.ToastLength.Long);
+
+            }
+            else
+            {
+                HoldProduct Holdsale = new HoldProduct
+                {
+                    saleProducts = SaleProducts,
+                    created_at = DateTime.Now,
+                    total = totallbl.Text,
+                    subtotal = subtotallbl.Text,
+                    discount = Disclbl.Text,
+                    number = cartnolbl.Text
+                };
+            //    HoldList.Add(Holdsale);
+                var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                var db = new SQLiteConnection(dbpath);
+                var info = db.GetTableInfo("HoldProduct");
+                var info1 = db.GetTableInfo("SaleProduct");
+
+                if (!info.Any()&& !info1.Any())
+                {
+                    db.CreateTable<HoldProduct>();
+                    db.CreateTable<SaleProduct>();
+                    //   db.InsertAll(saleproducts);
+                    db.InsertWithChildren(Holdsale);
+                }
+                else if (!info.Any())
+                {
+                    db.CreateTable<HoldProduct>();
+                    db.InsertWithChildren(Holdsale);
+                }
+                else if (!info1.Any())
+                {
+                    db.CreateTable<SaleProduct>();
+                    //   db.InsertAll(saleproducts);
+                    db.InsertWithChildren(Holdsale);
+                }
+                else
+                {   
+                    db.InsertWithChildren(Holdsale);
+                }
+                foreach (var item in SaleProducts)
+                {
+                    item.quantity = 0;
+                    item.total_price = 0;
+                    item.discount = 0;
+                }
+               
+                SaleProducts.Clear();
+                Salesro.Clear();
+                totallbl.Text = AppResources.Zero;
+                subtotallbl.Text = AppResources.Zero;
+                Disclbl.Text = AppResources.Zero;
+                cartnolbl.Text = AppResources.Zero;
+                Salesro = new ObservableCollection<SaleProduct>(SaleProducts);
+                SalesList.ItemsSource = Salesro;
+                SalesListen.ItemsSource = Salesro;
+                CrossToastPopUp.Current.ShowToastSuccess(AppResources.AddedtoHold, Plugin.Toast.Abstractions.ToastLength.Long);
+
+                //   await Navigation.PushAsync(new  HoldListPage(HoldList));
             }
         }
     }

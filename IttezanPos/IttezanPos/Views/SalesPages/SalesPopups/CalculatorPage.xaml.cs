@@ -1,10 +1,14 @@
-﻿using IttezanPos.Models;
+﻿using IttezanPos.Helpers;
+using IttezanPos.Models;
+using IttezanPos.Resources;
 using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -18,18 +22,20 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
         private double percent;
         private double value;
         private bool check;
-        private Product selectedprp;
+        private SaleProduct selectedprp;
         private double alldisc;
 
         public CalculatorPage()
         {
             InitializeComponent();
+            FlowDirectionPage();
             check = true;
         }
 
-        public CalculatorPage(Product selectedprp)
+        public CalculatorPage(SaleProduct selectedprp)
         {
             InitializeComponent();
+            FlowDirectionPage();
             check = true;
             this.selectedprp = selectedprp;
         }
@@ -37,10 +43,21 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
         public CalculatorPage(double alldisc)
         {
             InitializeComponent();
+            FlowDirectionPage();
             check = true;
             this.alldisc = alldisc;
         }
+        private void FlowDirectionPage()
+        {
 
+
+            FlowDirection = (Helpers.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
+         : FlowDirection.LeftToRight;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList().
+         First(element => element.EnglishName.Contains(Helpers.Settings.LastUserGravity));
+            AppResources.Culture = Thread.CurrentThread.CurrentUICulture;
+            GravityClass.Grav();
+        }
         private async void Closelbl_Tapped(object sender, EventArgs e)
         {
            

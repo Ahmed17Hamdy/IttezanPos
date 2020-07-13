@@ -900,4 +900,25 @@
   <data name="Valuediscerror" xml:space="preserve">
     <value>قيمة الخصم أكبر من قيمة المنتج</value>
   </data>
+  <data name="NOProduct" xml:space="preserve">
+    <value>عدد المنتجات :</value>
+  </data>
+  <data name="PreviosReciept" xml:space="preserve">
+    <value>إظهار الفواتير السابقة</value>
+  </data>
+  <data name="ViewHoldReciepts" xml:space="preserve">
+    <value>إظهار فواتير الإنتظار</value>
+  </data>
+  <data name="AddedtoHold" xml:space="preserve">
+    <value>تمت الإضافة إلى قائمة الإنتظار</value>
+  </data>
+  <data name="RecieptDate" xml:space="preserve">
+    <value>تاريخ الفاتورة</value>
+  </data>
+  <data name="RecieptNo" xml:space="preserve">
+    <value>رقم الفاتورة</value>
+  </data>
+  <data name="Sync" xml:space="preserve">
+    <value>تزامن</value>
+  </data>
 </root>

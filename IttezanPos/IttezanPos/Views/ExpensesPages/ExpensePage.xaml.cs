@@ -1,6 +1,7 @@
 ﻿using IttezanPos.Helpers;
 using IttezanPos.Models;
 using IttezanPos.Resources;
+using Newtonsoft.Json;
 using Plugin.Connectivity;
 using Refit;
 using SQLite;
@@ -21,6 +22,8 @@ namespace IttezanPos.Views.ExpensesPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExpensePage : ContentPage
     {
+        public List<addexpense> Expenses { get; private set; }
+
         public ExpensePage()
         {
             InitializeComponent();
@@ -51,82 +54,66 @@ namespace IttezanPos.Views.ExpensesPages
             try
             {
                 ActiveIn.IsRunning = true;
-                if (CrossConnectivity.Current.IsConnected)
+             
+
+
+                addexpense expense = new addexpense
                 {
-                    addexpense client = new addexpense
-                    {
-                        date = DatePicker.Date.ToShortDateString(),
-                        statement = Statmententry.Text,
-                        user_id = 3,
-                      
-                        amount = double.Parse(amountentry.Text)
+                    date = DatePicker.Date.ToShortDateString(),
+                    statement = Statmententry.Text,
+                    user_id = 3,
 
-                    };
-                    var nsAPI = RestService.For<IUpdateService>("https://ittezanmobilepos.com");
-                    try
-                    {
-                        var data = await nsAPI.addexpense(client);
-                        if (data.success == true)
-                        {
-                            ActiveIn.IsRunning = false;
-                            await DisplayAlert(AppResources.Alert, AppResources.ExpnseAdded, AppResources.Ok);
-                            await Navigation.PopAsync();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        ActiveIn.IsRunning = false;
-                        //     var data = await nsAPI.AddClientError(client);
-                        // await Navigation.PushPopupAsync(new ClientAdded(data));
-                        //  Emailentry.Focus();
-                    }
-                }
-                else
-                {
-                    // ActiveIn.IsRunning = false;
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        addexpense client = new addexpense
-                        {
-                            date = DatePicker.Date.ToShortDateString(),
-                            statement = Statmententry.Text,
-                            user_id = 3,
+                    amount = double.Parse(amountentry.Text)
 
-                            amount = double.Parse(amountentry.Text)
+                };
+                var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                var db = new SQLiteConnection(dbpath);
+                var info = db.GetTableInfo("addexpense");
+                if (!info.Any())
+                    db.CreateTable<addexpense>();
 
-                        };
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("addexpense");
-                        if (!info.Any())
-                            db.CreateTable<addexpense>();
+                db.Insert(expense);
+                ActiveIn.IsRunning = false;
+                Expenses = (db.Table<addexpense>().ToList());
+                var jsoncategoryArray = JsonConvert.SerializeObject(Expenses);
+                //if (CrossConnectivity.Current.IsConnected)
+                //{
+                //    addexpense expense = new addexpense
+                //    {
+                //        date = DatePicker.Date.ToShortDateString(),
+                //        statement = Statmententry.Text,
+                //        user_id = 3,
 
-                        db.Insert(client);
-                     
-                    }
-                    else
-                    {
-                        addexpense client = new addexpense
-                        {
-                            date = DatePicker.Date.ToShortDateString(),
-                            statement = Statmententry.Text,
-                            user_id = 3,
+                //        amount = double.Parse(amountentry.Text)
 
-                            amount = double.Parse(amountentry.Text)
+                //    };
+                //    var nsAPI = RestService.For<IUpdateService>("https://ittezanmobilepos.com");
+                //    try
+                //    {
+                //        var data = await nsAPI.addexpense(expense);
+                //        if (data.success == true)
+                //        {
+                //            ActiveIn.IsRunning = false;
+                //            await DisplayAlert(AppResources.Alert, AppResources.ExpnseAdded, AppResources.Ok);
+                //            await Navigation.PopAsync();
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        ActiveIn.IsRunning = false;
+                //        //     var data = await nsAPI.AddClientError(client);
+                //        // await Navigation.PushPopupAsync(new ClientAdded(data));
+                //        //  Emailentry.Focus();
+                //    }
+                //}
+                //else
+                //{
 
-                        };
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Box");
-                        if (!info.Any())
-                            db.CreateTable<Box>();
 
-                        db.Insert(client);
+                //        //   Suppliers = new ObservableCollection<Supplier>(db.Table<Supplier>().ToList());
 
-                        //   Suppliers = new ObservableCollection<Supplier>(db.Table<Supplier>().ToList());
-                    }
-                    //    listviewwww.ItemsSource = Suppliers;
-                }
+                //    //    listviewwww.ItemsSource = Suppliers;
+                //}
 
             }
             catch (ValidationApiException validationException)

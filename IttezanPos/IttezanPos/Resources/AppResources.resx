@@ -901,4 +901,25 @@
   <data name="Valuediscerror" xml:space="preserve">
     <value>Discount is more that Sale Price</value>
   </data>
+  <data name="NOProduct" xml:space="preserve">
+    <value>No.Product :</value>
+  </data>
+  <data name="PreviosReciept" xml:space="preserve">
+    <value>Show Previous Reciepts</value>
+  </data>
+  <data name="ViewHoldReciepts" xml:space="preserve">
+    <value>View Hold Reciepts</value>
+  </data>
+  <data name="AddedtoHold" xml:space="preserve">
+    <value>Reciept added to Hold</value>
+  </data>
+  <data name="RecieptDate" xml:space="preserve">
+    <value>Reciept Date</value>
+  </data>
+  <data name="RecieptNo" xml:space="preserve">
+    <value>RecieptNo</value>
+  </data>
+  <data name="Sync" xml:space="preserve">
+    <value>Sync</value>
+  </data>
 </root>

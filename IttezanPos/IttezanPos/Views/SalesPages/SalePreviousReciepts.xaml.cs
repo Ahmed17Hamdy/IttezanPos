@@ -1,7 +1,18 @@
-﻿using System;
+﻿using IttezanPos.DependencyServices;
+using IttezanPos.Helpers;
+using IttezanPos.Models;
+using IttezanPos.Resources;
+using SQLite;
+using SQLiteNetExtensions.Extensions;
+using Syncfusion.Drawing;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Pdf.Grid;
+using Syncfusion.Pdf.Interactive;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -9,55 +20,30 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using IttezanPos.DependencyServices;
-using IttezanPos.Helpers;
-using IttezanPos.Models;
-using IttezanPos.Resources;
-using IttezanPos.Views.Master;
-using IttezanPos.Views.PurchasingPages;
-using SQLite;
-using Syncfusion.Drawing;
-using Syncfusion.Pdf;
-using Syncfusion.Pdf.Graphics;
-using Syncfusion.Pdf.Grid;
-using Syncfusion.Pdf.Interactive;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Color = Syncfusion.Drawing.Color;
-using Font = Syncfusion.Drawing.Font;
 
 namespace IttezanPos.Views.SalesPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SuccessfulReciep : ContentPage
+    public partial class SalePreviousReciepts : ContentPage
     {
-      
-        private OrderItem products;
-        private Purchaseitem products1;
-      
-        private string paymentname;
-
-
-        public SuccessfulReciep(OrderItem products, string paymentname)
+        private ObservableCollection<OrderItem> ordersList = new ObservableCollection<OrderItem>();
+        public ObservableCollection<OrderItem> OrdersList
         {
-            InitializeComponent();
-            FlowDirectionPage();
-            this.products = products;
-          
-            this.paymentname = paymentname;
-            Totallbl.Text = products.total_price;
-            Salestk.IsVisible = true;
-            Purchasestk.IsVisible = false;
+            get { return ordersList; }
+            set
+            {
+                ordersList = value;
+                OnPropertyChanged(nameof(ordersList));
+            }
         }
-
-        public SuccessfulReciep(Purchaseitem products1)
+        public SalePreviousReciepts()
         {
             InitializeComponent();
             FlowDirectionPage();
-            this.products1 = products1;
-            Totallbl.Text = products1.total_price;
-            Salestk.IsVisible = false;
-            Purchasestk.IsVisible = true;
+            GetData();
         }
         private void FlowDirectionPage()
         {
@@ -67,35 +53,38 @@ namespace IttezanPos.Views.SalesPages
          : FlowDirection.LeftToRight;
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList().
          First(element => element.EnglishName.Contains(Helpers.Settings.LastUserGravity));
+            Header.FlowDirection = (Helpers.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
+         : FlowDirection.LeftToRight;
             AppResources.Culture = Thread.CurrentThread.CurrentUICulture;
             GravityClass.Grav();
         }
-        private   void Button_Clicked(object sender, EventArgs e)
+
+        private void GetData()
         {
-            //  var mas=    App.Current.MainPage as MasterDetailPage;
-            //  Navigation.();
-            //  Application.Current.MainPage = new NavigationPage((Page)Activator.CreateInstance(master.TargetType));
-             Application.Current.MainPage = new NavigationPage(new SalesMaster());
-            //  await Navigation.PushModalAsync(new NavigationPage(new MainSalesPage()));
-           // await ((App.Current.MainPage as MasterDetailPage).Detail as NavigationPage).Navigation.PushAsync(new MainSalesPage());
+            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+            var db = new SQLiteConnection(dbpath);
+            var info = db.GetTableInfo("OrderItem");
+            if (!info.Any())
+            {
+                db.CreateTable<OrderItem>();
+            }
+
+            OrdersList = new ObservableCollection<OrderItem>(db.GetAllWithChildren<OrderItem>().ToList());
+            listpreview.ItemsSource = OrdersList;
         }
 
-        private async void Button_Clicked_1(object sender, EventArgs e)
+        private async void listpreview_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-           await Navigation.PushModalAsync( new NavigationPage( new PurchasePage()));
-        }
-
-        private async void ViewReciept_Clicked(object sender, EventArgs e)
-        {
+            var Orderproduct = listpreview.SelectedItem as OrderItem;
             //  await Navigation.PushAsync(new NavigationPage(new RecieptPage(products,saleproducts,  paymentname)) );
             #region Fields
             //Create border color
-            PdfColor borderColor = new PdfColor(Color.FromArgb(255, 51, 181, 75));
-            PdfBrush lightGreenBrush = new PdfSolidBrush(new PdfColor(Color.FromArgb(255, 218, 218, 221)));
+            PdfColor borderColor = new PdfColor(Syncfusion.Drawing.Color.FromArgb(255, 51, 181, 75));
+            PdfBrush lightGreenBrush = new PdfSolidBrush(new PdfColor(Syncfusion.Drawing.Color.FromArgb(255, 218, 218, 221)));
 
-            PdfBrush darkGreenBrush = new PdfSolidBrush(new PdfColor(Color.FromArgb(255, 51, 181, 75)));
+            PdfBrush darkGreenBrush = new PdfSolidBrush(new PdfColor(Syncfusion.Drawing.Color.FromArgb(255, 51, 181, 75)));
 
-            PdfBrush whiteBrush = new PdfSolidBrush(new PdfColor(Color.FromArgb(255, 255, 255, 255)));
+            PdfBrush whiteBrush = new PdfSolidBrush(new PdfColor(Syncfusion.Drawing.Color.FromArgb(255, 255, 255, 255)));
             PdfPen borderPen = new PdfPen(borderColor, 1f);
             Stream fontStream = typeof(App).GetTypeInfo().Assembly.GetManifestResourceStream("IttezanPos.Assets.arial.ttf");
             //Create TrueType font
@@ -138,18 +127,18 @@ namespace IttezanPos.Views.SalesPages
             PdfBitmap image = new PdfBitmap(imageStream);
 
             //Draw the image    
-            graphics.DrawImage(image, new PointF(margin +90, headerAmountBounds.Height / 2));
+            graphics.DrawImage(image, new PointF(margin + 90, headerAmountBounds.Height / 2));
             graphics.DrawRectangle(darkGreenBrush, headerAmountBounds);
-            
+
             graphics.DrawString("Amount", arialRegularFont, whiteBrush, headerAmountBounds,
                 new PdfStringFormat(PdfTextAlignment.Center, PdfVerticalAlignment.Middle));
-            graphics.DrawString("$" + products.amount_paid.ToString(), arialBoldFont, whiteBrush,
+            graphics.DrawString("$" + Orderproduct.amount_paid.ToString(), arialBoldFont, whiteBrush,
                 new RectangleF(400, lineSpace, pageWidth - 400, headerHeight + 15), new
                 PdfStringFormat(PdfTextAlignment.Center, PdfVerticalAlignment.Middle));
 
-         
 
-            PdfTextElement textElement = new PdfTextElement("Invoice Number: " + products.id.ToString(), arialRegularFont);
+
+            PdfTextElement textElement = new PdfTextElement("Invoice Number: " + Orderproduct.id.ToString(), arialRegularFont);
 
             PdfLayoutResult layoutResult = textElement.Draw(page, new PointF(headerAmountBounds.X - margin, 120));
 
@@ -157,9 +146,9 @@ namespace IttezanPos.Views.SalesPages
             textElement.Draw(page, new PointF(layoutResult.Bounds.X, layoutResult.Bounds.Bottom + lineSpace));
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
             var db = new SQLiteConnection(dbpath);
-            if (products.client_id != null)
+            if (Orderproduct.client_id != null)
             {
-                var client = (db.Table<Client>().ToList().Where(clien => clien.id == int.Parse(products.client_id)).FirstOrDefault());
+                var client = (db.Table<Client>().ToList().Where(clien => clien.id == int.Parse(Orderproduct.client_id)).FirstOrDefault());
                 textElement.Text = "Bill To:";
                 layoutResult = textElement.Draw(page, new PointF(margin, 120));
 
@@ -172,7 +161,7 @@ namespace IttezanPos.Views.SalesPages
                 textElement.Text = client.phone;
                 layoutResult = textElement.Draw(page, new PointF(margin, layoutResult.Bounds.Bottom + lineSpace));
             }
-           
+
             #endregion
 
             #region Invoice data
@@ -188,10 +177,10 @@ namespace IttezanPos.Views.SalesPages
             dataTable.Columns.Add("Total");
 
             //Add rows to the DataTable.
-            foreach (var item in products.products)
+            foreach (var item in Orderproduct.products)
             {
                 Product customer = new Product();
-                customer.id = products.products.IndexOf(item) + 1;
+                customer.id = Orderproduct.products.IndexOf(item)+1;
                 customer.Enname = item.Enname;
                 customer.sale_price = item.sale_price;
                 customer.quantity = item.quantity;
@@ -204,7 +193,7 @@ namespace IttezanPos.Views.SalesPages
 
             //Assign data source.
             grid.DataSource = dataTable;
-          
+
 
             grid.Columns[1].Width = 150;
             grid.Style.Font = arialRegularFont;
@@ -219,7 +208,7 @@ namespace IttezanPos.Views.SalesPages
             layoutResult = textElement.Draw(page, new PointF(headerAmountBounds.X - 40, layoutResult.Bounds.Bottom +
                 lineSpace));
 
-            float totalAmount = float.Parse(products.total_price);
+            float totalAmount = float.Parse(Orderproduct.total_price);
             textElement.Text = "$" + totalAmount.ToString();
             layoutResult = textElement.Draw(page, new PointF(layoutResult.Bounds.Right + 4, layoutResult.Bounds.Y));
 
@@ -231,7 +220,7 @@ namespace IttezanPos.Views.SalesPages
             layoutResult = textElement.Draw(page, new PointF(headerAmountBounds.X - 40, layoutResult.Bounds.Bottom +
                 lineSpace));
 
-            float totalDisc = float.Parse(products.discount);
+            float totalDisc = float.Parse(Orderproduct.discount);
             textElement.Text = "$" + totalDisc.ToString();
             layoutResult = textElement.Draw(page, new PointF(layoutResult.Bounds.Right + 4, layoutResult.Bounds.Y));
 
@@ -256,7 +245,7 @@ namespace IttezanPos.Views.SalesPages
             layoutResult = textElement.Draw(page, new PointF(margin, layoutResult.Bounds.Bottom + lineSpace));
             textElement.Text = "Any Questions? ittezan.com";
             layoutResult = textElement.Draw(page, new PointF(margin, layoutResult.Bounds.Bottom + lineSpace));
-            
+
             #endregion
 
             //#region Create ZUGFeRD XML
@@ -316,7 +305,7 @@ namespace IttezanPos.Views.SalesPages
             #endregion
             //Creates an attachment 
             MemoryStream stream = new MemoryStream();
-        //    Stream invoiceStream = typeof(MainPage).GetTypeInfo().Assembly.GetManifestResourceStream("Sample.Assets.Data.ZUGFeRD-invoice.xml");
+            //    Stream invoiceStream = typeof(MainPage).GetTypeInfo().Assembly.GetManifestResourceStream("Sample.Assets.Data.ZUGFeRD-invoice.xml");
 
             PdfAttachment attachment = new PdfAttachment("ZUGFeRD-invoice.xml", stream);
 
@@ -332,16 +321,15 @@ namespace IttezanPos.Views.SalesPages
 
             //Save the document into memory stream
 
-           
+
 
             document.Save(stream);
 
             //Close the document
 
             document.Close(true);
-          
+
             await Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView("تقرير العملاء.pdf", "application/pdf", stream);
         }
-
     }
 }

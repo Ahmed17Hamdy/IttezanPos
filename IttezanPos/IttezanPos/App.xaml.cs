@@ -20,7 +20,7 @@ namespace IttezanPos
 
 FlowListView.Init();
             FlowDirectionPage();
-            MainPage = new MasterPage();
+            MainPage = new NavigationPage( new MasterPage());
         }
         private void FlowDirectionPage()
         {

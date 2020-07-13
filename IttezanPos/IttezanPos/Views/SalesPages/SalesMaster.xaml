@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage
-    x:Class="IttezanPos.Views.Master.MasterPage"
+    x:Class="IttezanPos.Views.SalesPages.SalesMaster"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Menu="clr-namespace:IttezanPos.Views.Master"
+    xmlns:Menu1="clr-namespace:IttezanPos.Views.SalesPages.SalesPopups"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:locals="clr-namespace:IttezanPos.Views.MainPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:pages="clr-namespace:IttezanPos.Views.SalesPages"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <MasterDetailPage.Master>
-        <Menu:SideMenuPage x:Name="masterPage" />
+        <Menu:SideMenuPage x:Name="SaleNewMenu" />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage FlowDirection="MatchParent">
+        <NavigationPage>
             <x:Arguments>
-                <locals:HomePage Title="{x:Static resource:AppResources.MainPage}" />
+                <pages:MainSalesPage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

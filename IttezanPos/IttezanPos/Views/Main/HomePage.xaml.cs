@@ -73,7 +73,7 @@ namespace IttezanPos.Views.MainPage
 
         private async void Sales_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainSalesPage());
+            await Navigation.PushAsync(new SalesMaster());
         }
 
         private async void Reports_Tapped(object sender, EventArgs e)

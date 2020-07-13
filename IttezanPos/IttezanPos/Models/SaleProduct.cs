@@ -14,24 +14,18 @@ namespace IttezanPos.Models
         [PrimaryKey,AutoIncrement]
         public int id { get; set; }
         public string total_price { get; set; }
-       
-        public string amount_paid { get; set; }
-     
-        public string discount { get; set; }
-        
-        public string total_price_after_discount { get; set; }
-    
+        public string amount_paid { get; set; }   
+        public string discount { get; set; }        
+        public string total_price_after_discount { get; set; }   
         public string client_id { get; set; }
-       
-        public int user_id { get; set; }
-        
-        public DateTimeOffset? created_at { get; set; }
-       
+        public int user_id { get; set; }        
+        public DateTimeOffset? created_at { get; set; }       
         public DateTimeOffset? updated_at { get; set; }
         public string payment_type { get; set; }
-
+        [ForeignKey(typeof(SaleProduct))]      
+        public int productId { get; set; }
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Product> products { get; set; }
+        public List<SaleProduct> products { get; set; }
     }
     public class Purchaseitem
     {

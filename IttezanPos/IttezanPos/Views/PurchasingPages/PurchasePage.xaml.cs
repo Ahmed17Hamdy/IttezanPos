@@ -121,7 +121,8 @@ namespace IttezanPos.Views.PurchasingPages
         }
         private void Master_Tapped(object sender, EventArgs e)
         {
-            (App.Current.MainPage as MasterDetailPage).IsPresented = true;
+            var page = (App.Current.MainPage as NavigationPage).CurrentPage;
+            (page as MasterDetailPage).IsPresented = true;
         }
         protected override void OnAppearing()
         {

@@ -15,11 +15,16 @@ namespace IttezanPos.Models
     {
         public double Value { get; set; }
         public double Percentage { get; set; }
-        public Product product { get; set; }
+        public SaleProduct product { get; set; }
     }
     public class ValueQuantity
     {
         public double Quantity { get; set; }
-        public Product product { get; set; }
+        public SaleProduct product { get; set; }
+    }
+    public class SaleHold
+    {
+      
+        public HoldProduct product { get; set; }
     }
 }

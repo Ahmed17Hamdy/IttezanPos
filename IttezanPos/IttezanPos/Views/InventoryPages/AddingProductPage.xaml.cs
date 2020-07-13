@@ -421,7 +421,7 @@ namespace IttezanPos.Views.InventoryPages
         {
             Product product = new Product
             {
-                product_id= product_Id,
+                id= product_Id,
                 name = EntryName.Text,
                 Enname=EnglishEnnamentry.Text,
                 category_id = category_Id,
@@ -432,7 +432,7 @@ namespace IttezanPos.Views.InventoryPages
                 stock = 35,
                 user_id = "2"
             };
-            StringContent product_id = new StringContent(product.product_id.ToString());
+            StringContent product_id = new StringContent(product.id.ToString());
             StringContent name = new StringContent(product.name);
             StringContent Enname = new StringContent(product.Enname);
             StringContent category_id = new StringContent(product.category_id.ToString());

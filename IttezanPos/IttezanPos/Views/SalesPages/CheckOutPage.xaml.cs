@@ -20,6 +20,9 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using IttezanPos.Resources;
 using Plugin.Toast;
+using SQLiteNetExtensions.Extensions;
+using System.Threading;
+using System.Globalization;
 
 namespace IttezanPos.Views.SalesPages
 {
@@ -28,21 +31,23 @@ namespace IttezanPos.Views.SalesPages
     {
        
        
-        public List<Product> saleproducts;
+        public List<SaleProduct> saleproducts;
         private string text1;
         private string text2;
         private string text3;
         private string paymentid = "1";
         private string paymentname= "cash";
+        private string paymentarname = "كاش";
         private string clienttid = null;
         private string amount_paid;
         public ObservableCollection<Payment> payments;
         private List<OrderItem> orderitems;
         private List<Product> Products;
 
-        public CheckOutPage(List<Product> saleproducts, string text1, string text2, string text3, ObservableCollection<Payment> payments, List<Product> Products)
+        public CheckOutPage(List<SaleProduct> saleproducts, string text1, string text2, string text3, ObservableCollection<Payment> payments, List<Product> Products)
         {
             InitializeComponent();
+            FlowDirectionPage();
             PaymentListar.ItemsSource = PaymentListen.ItemsSource = payments;
             Amountpaidentry.Text = text2;
             if (IttezanPos.Helpers.Settings.LastUserGravity == "Arabic")
@@ -67,8 +72,18 @@ namespace IttezanPos.Views.SalesPages
           this.text3=  subtotallbl.Text = text3;
             this.Products = Products;
         }
-       
-     
+
+        private void FlowDirectionPage()
+        {
+
+
+            FlowDirection = (Helpers.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
+         : FlowDirection.LeftToRight;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList().
+         First(element => element.EnglishName.Contains(Helpers.Settings.LastUserGravity));
+            AppResources.Culture = Thread.CurrentThread.CurrentUICulture;
+            GravityClass.Grav();
+        }
 
 
         private async void Customer_Tapped(object sender, EventArgs e)
@@ -100,205 +115,84 @@ namespace IttezanPos.Views.SalesPages
             }
             else if (paymentid == "3" && clienttid != null)
             {
-                try
+
+                ActiveIn.IsRunning = true;
+
+
+                if (Amountpaidentry.Text != "")
                 {
-                    ActiveIn.IsRunning = true;
-                    if (CrossConnectivity.Current.IsConnected)
+                    amount_paid = Amountpaidentry.Text;
+                }
+                else
+                {
+                    amount_paid = "0";
+                }
+
+                OrderItem product = new OrderItem
+                {
+                    discount = text1,
+                    products = saleproducts,
+                    total_price = text2,
+                    amount_paid = amount_paid,
+                    client_id = clienttid,
+                    user_id = 3,
+
+                    payment_type = paymentid
+                };
+                var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                var db = new SQLiteConnection(dbpath);
+                var info = db.GetTableInfo("OrderItem");
+
+                if (!info.Any())
+                {
+                    db.CreateTable<OrderItem>();
+                    db.CreateTable<SaleProduct>();
+                    db.InsertAll(saleproducts);
+                    db.InsertWithChildren(product);
+                }
+                else
+                {
+                    db.DeleteAll(saleproducts);
+                    db.InsertAll(saleproducts);
+                    db.InsertWithChildren(product);
+                }
+                orderitems = (db.GetAllWithChildren<OrderItem>().ToList());
+
+                var client = (db.Table<Client>().ToList().Where(clien => clien.id == int.Parse(clienttid)).FirstOrDefault());
+                client.paid_amount = client.paid_amount + double.Parse(amount_paid);
+                var amount = (double.Parse(text2) - double.Parse(amount_paid));
+                if (amount >= 0)
+                {
+                    client.remaining = client.remaining + amount;
+                }
+                else
+                {
+                    client.creditorit = client.creditorit + amount;
+                }
+
+                client.total_amount = client.total_amount + double.Parse(text2);
+                client.updated_at = DateTime.Now.ToString();
+                foreach (var item in Products)
+                {
+                    foreach (var itemp in saleproducts)
                     {
-                        using (var client = new HttpClient())
+                        if (item.id == itemp.id)
                         {
-
-                            if (Amountpaidentry.Text != "" )
-                            {
-                                amount_paid = Amountpaidentry.Text;                              
-                            }
-                            else
-                            {
-                                amount_paid = "0";
-                            //    CrossToastPopUp.Current.ShowToastWarning(AppResources.SelectProduct, Plugin.Toast.Abstractions.ToastLength.Long);
-                            }
-                            OrderItem products = new OrderItem
-                            {
-                                discount = text1,
-                                products = saleproducts,
-                                total_price = text2,
-                                amount_paid = amount_paid,
-                                client_id = clienttid,
-                                user_id = 3,
-                                payment_type = paymentid
-                            };
-                            var content = new MultipartFormDataContent();
-                            var js = JsonConvert.SerializeObject(products);
-                            content.Add(new StringContent(js, Encoding.UTF8, "text/json"), "products");
-                            var response = await client.PostAsync("https://ittezanmobilepos.com/api/makeOrder", content);
-                            if (response.IsSuccessStatusCode)
-                            {
-                                var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
-                                ActiveIn.IsRunning = false;
-                                var json = JsonConvert.DeserializeObject<SaleObject>(serverResponse);
-
-                                await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
-
-                            }
-                            else
-                            {
-                                ActiveIn.IsRunning = false;
-                                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-                            }
-
+                            item.stock = item.stock - int.Parse(itemp.quantity.ToString());
                         }
-
-                    }
-                    else
-                    {
-                        if (Amountpaidentry.Text != "")
-                        {
-                            amount_paid = Amountpaidentry.Text;
-                        }
-                        else
-                        {
-                            amount_paid = "0";
-                        }
-
-                        OrderItem product = new OrderItem
-                        {
-                            discount = text1,
-                            products = saleproducts,
-                            total_price = text2,
-                            amount_paid = amount_paid,
-                            client_id = clienttid,
-                            user_id = 3,
-
-                            payment_type = paymentid
-                        };
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("SaleObject");
-
-                        if (!info.Any())
-                        {
-                            db.CreateTable<OrderItem>();
-
-                            db.Insert(product);
-                        }
-                        else
-                        {
-                            db.Insert(product);
-                        }
-                        orderitems = (db.Table<OrderItem>().ToList());
-                        
-                        var client = (db.Table<Client>().ToList().Where(clien => clien.id == int.Parse(clienttid)).FirstOrDefault());
-                        client.paid_amount = client.paid_amount + double.Parse(amount_paid);
-                        var amount = (double.Parse(text2) - double.Parse(amount_paid));
-                        if (amount >= 0)
-                        {
-                            client.remaining = client.remaining + amount;
-                        }
-                        else
-                        {
-                            client.creditorit = client.creditorit + amount;
-                        }
-                      
-                        client.total_amount = client.total_amount + double.Parse(text2);   
-                        client.updated_at = DateTime.Now.ToString();
-                        foreach (var item in Products)
-                        {
-                            foreach (var itemp in saleproducts)
-                            {
-                                if (item.id == itemp.id)
-                                {
-                                    item.stock = item.stock - int.Parse(itemp.quantity.ToString());
-                                }
-                            }
-                        }
-                        db.Update(client);
-                        db.UpdateAll(Products);
-                        await Navigation.PushAsync(new SuccessfulReciep(orderitems, saleproducts, paymentname));
-
                     }
                 }
-                catch (ValidationApiException validationException)
-                {
-                    ActiveIn.IsRunning = false;
-                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-                    // handle validation here by using validationException.Content, 
-                    // which is type of ProblemDetails according to RFC 7807
-                }
-                catch (ApiException exception)
-                {
-                    ActiveIn.IsRunning = false;
-                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-                    // other exception handling
-                }
+                db.Update(client);
+                db.UpdateAll(Products);
+                await Navigation.PushAsync(new SuccessfulReciep(product, paymentname));
+
+
             }
             else
             {
-                try
-                {
+                
                     ActiveIn.IsRunning = true;
-                    if (CrossConnectivity.Current.IsConnected)
-                    {
-                        using (var client = new HttpClient())
-                        {
-
-                            if (Amountpaidentry.Text != "" &&  double.Parse(Amountpaidentry.Text) >= double.Parse(text2.ToString()))
-                            {
-                                amount_paid = Amountpaidentry.Text;
-                                OrderItem orderItem = new OrderItem();
-                                orderItem.amount_paid = amount_paid;
-                                orderItem.client_id = clienttid;
-                                orderItem.created_at = DateTime.Now;
-                                orderItem.discount = text1;
-                                orderItem.products = saleproducts;
-                                orderItem.total_price = text2;
-
-
-                                orderItem.user_id = 3;
-                                orderItem.payment_type = paymentid;
-                                //OrderItem products = new OrderItem
-                                //{
-                                //    discount = text1,
-                                //    products = saleproducts,
-                                //    total_price = text2,
-                                //    amount_paid = amount_paid,
-                                //    client_id = clienttid,
-                                //    user_id = 3,
-                                //    payment_type = paymentid
-                                //};
-                                MultipartFormDataContent content = new MultipartFormDataContent();
-                                var js = JsonConvert.SerializeObject(orderItem);
-                                content.Add(new StringContent(js, Encoding.UTF8, "text/json"), "products");
-                                var response = await client.PostAsync("https://ittezanmobilepos.com/api/makeOrder", content);
-                                if (response.IsSuccessStatusCode)
-                                {
-
-                                    var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
-                                    ActiveIn.IsRunning = false;
-                                    var json = JsonConvert.DeserializeObject<SaleObject>(serverResponse);
-
-                                    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
-
-                                }
-                                else
-                                {
-                                    ActiveIn.IsRunning = false;
-                                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-                                }
-                            }
-                          
-                            else
-                            {
-                            //    amount_paid = "0";
-                                CrossToastPopUp.Current.ShowToastWarning(AppResources.Addsaleserror, Plugin.Toast.Abstractions.ToastLength.Long);
-                                Amountpaidentry.Focus();
-                            }
-
-
-                        }
-
-                    }
-                    else
-                    {
+                   
                         if (Amountpaidentry.Text != "" && double.Parse(Amountpaidentry.Text) >= double.Parse(text2.ToString()))
                         {
                             amount_paid = Amountpaidentry.Text;
@@ -313,18 +207,7 @@ namespace IttezanPos.Views.SalesPages
 
                             orderItem.user_id = 3;
                             orderItem.payment_type = paymentid;
-                            //OrderItem product = new OrderItem
-                            //{
-                            //    created_at = DateTime.Now,
-                            //    discount = text1,
-                            //    products = saleproducts,
-                            //    total_price = text2,
-                            //    amount_paid = amount_paid,
-                            //    client_id = clienttid,
-                            //    user_id = 3,
-                            //    payment_type = paymentid
 
-                            //};
                             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                             var db = new SQLiteConnection(dbpath);
                             var info = db.GetTableInfo("SaleObject");
@@ -332,14 +215,15 @@ namespace IttezanPos.Views.SalesPages
                             if (!info.Any())
                             {
                                 db.CreateTable<OrderItem>();
-
-                                db.Insert(orderItem);
+                                db.CreateTable<SaleProduct>();
+                                //   db.InsertAll(saleproducts);
+                                db.InsertWithChildren(orderItem);
                             }
                             else
                             {
-                                db.Insert(orderItem);
+                                db.InsertWithChildren(orderItem);
                             }
-                            orderitems = (db.Table<OrderItem>().ToList());
+                            orderitems = (db.GetAllWithChildren<OrderItem>().ToList());
                             if (clienttid != null)
                             {
                                 var client = (db.Table<Client>().ToList().Where(clien => clien.id == int.Parse(clienttid)).FirstOrDefault());
@@ -353,21 +237,23 @@ namespace IttezanPos.Views.SalesPages
                                     db.Update(client);
                                 }
                             }
-                           
-                           
+
                             foreach (var item in Products)
                             {
                                 foreach (var itemp in saleproducts)
                                 {
-                                    if (item.id == itemp.id)
+                                    if (item.product_id == itemp.product_id)
                                     {
                                         item.stock = item.stock - int.Parse(itemp.quantity.ToString());
+                                        item.quantity = 0;
+                                        item.discount = 0;
+                                        item.total_price = 0;
                                     }
                                 }
-                            } 
-                          
+                            }
+
                             db.UpdateAll(Products);
-                            await Navigation.PushAsync(new SuccessfulReciep(orderitems, saleproducts, paymentname));
+                            App.Current.MainPage = new NavigationPage(new SuccessfulReciep(orderItem, paymentname));
                         }
                         else
                         {
@@ -376,24 +262,6 @@ namespace IttezanPos.Views.SalesPages
 
                             Amountpaidentry.Focus();
                         }
-
-                       
-
-                    }
-                }
-                catch (ValidationApiException validationException)
-                {
-                    ActiveIn.IsRunning = false;
-                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-                    // handle validation here by using validationException.Content, 
-                    // which is type of ProblemDetails according to RFC 7807
-                }
-                catch (ApiException exception)
-                {
-                    ActiveIn.IsRunning = false;
-                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-                    // other exception handling
-                }
             }
           
         }
