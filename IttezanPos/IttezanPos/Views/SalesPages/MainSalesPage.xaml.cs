@@ -550,6 +550,7 @@ namespace IttezanPos.Views.SalesPages
             var saleproduct = ProductsList.FlowLastTappedItem as Product;
             SaleProduct sale = new SaleProduct
             {
+                
                 id = saleproduct.id,
                 catname = saleproduct.catname,
                 category_id = saleproduct.category_id,
@@ -1119,6 +1120,7 @@ namespace IttezanPos.Views.SalesPages
                 SaleProduct sale = new SaleProduct
                 {
                     id = saleproduct.id,
+                    
                     catname = saleproduct.catname,
                     category_id = saleproduct.category_id,
                     category2Id = saleproduct.category2Id,

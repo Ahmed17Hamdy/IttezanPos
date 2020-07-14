@@ -13,7 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static IttezanPos.Helpers.CurrencyInfo;
@@ -182,10 +182,12 @@ namespace IttezanPos.Views.ReservoirPages
             if (stateName == "ON")
             {
                 add_sales_clients = 1;
+                Preferences.Set("add_sales_clients", 1);
             }
             else
             {
                 add_sales_clients = 0;
+                Preferences.Set("add_sales_clients", 0);
             }
         }
 
@@ -195,10 +197,12 @@ namespace IttezanPos.Views.ReservoirPages
             if (stateName == "ON")
             {
                 disc_purchasing_suppliers = 1;
+                Preferences.Set("disc_purchasing_suppliers", 1);
             }
             else
             {
                 disc_purchasing_suppliers = 0;
+                Preferences.Set("disc_purchasing_suppliers", 0);
             }
         }
 
@@ -208,10 +212,12 @@ namespace IttezanPos.Views.ReservoirPages
             if (stateName == "ON")
             {
                 disc_expenses = 1;
+                Preferences.Set("disc_expenses", 1);
             }
             else
             {
                 disc_expenses = 0;
+                Preferences.Set("disc_expenses", 0);
             }
         }
 

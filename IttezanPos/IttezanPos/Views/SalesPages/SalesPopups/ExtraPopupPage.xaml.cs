@@ -91,7 +91,7 @@ namespace IttezanPos.Views.SalesPages.SalesPopups
                             {
                                 SaleProductoff sale = new SaleProductoff();
 
-                                sale.id = item1.id;
+                                sale.id = item1.product_id;
                                 //   sale.expiration_date = item1.expiration_date;
                                 sale.expiration_date = DateTime.Now;
                                 sale.purchase_price = item1.purchase_price;

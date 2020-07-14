@@ -7,7 +7,7 @@ namespace IttezanPos.Models
 {
  public   class addexpense
     {
-        [PrimaryKey]
+        [PrimaryKey,AutoIncrement]
         public int id { get; set; }
         public double amount { get; set; }
         public string date { get; set; }
