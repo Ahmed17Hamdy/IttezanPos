@@ -1,4 +1,5 @@
 ﻿using IttezanPos.Models;
+using IttezanPos.Models.OfflineModel;
 using IttezanPos.Resources;
 using IttezanPos.Services;
 using IttezanPos.Views.InventoryPages.InventoryPopups;
@@ -39,7 +40,7 @@ namespace IttezanPos.Views.ClientPages
             InitializeComponent();
             this.content = content;
             ClientNameArentry.Text = content.name;
-            ClientNameArentry.Text = content.enname;
+            ClientEnnamenentry.Text = content.enname;
             ClientAddressentry.Text = content.address;
             Emailentry.Text = content.email;
             phoneentry.Text = content.phone;
@@ -95,51 +96,14 @@ namespace IttezanPos.Views.ClientPages
                 }
                 else
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Client");
-                        if (!info.Any())
-                            db.CreateTable<Client>();
-                        Client client = new Client
-                        {
-                            name = ClientNameArentry.Text,
-                            enname = ClientEnnamenentry.Text,
-                            address = ClientAddressentry.Text,
-                            email = Emailentry.Text,
-                            phone = phoneentry.Text,
-                            note = Notesentry.Text,
-                            limitt = limit,
-                            created_at= DateTime.Now.ToString()
-                            
-                        };
-
-                        var udatedclient = db.Table<Client>().Where(i => i.email == client.email).First();
-
-
-                        if (udatedclient == null)
-                        {
-                            ActiveIn.IsVisible = false;
-                            await Navigation.PushPopupAsync(new ClientAdded());
-                            await Navigation.PopAsync();
-                            db.Insert(client);
-                        }
-                        else
-                        {
-                            ActiveIn.IsVisible = false;
-
-                            await Navigation.PushPopupAsync(new ClientAdded("قيمة البريد الالكتروني مُستخدمة من قبل"));
-                            Emailentry.Focus();
-                        }
-                    }
-                    else
-                    {
+                    
+                 
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Client");
                         if (!info.Any())
                             db.CreateTable<Client>();
+                        db.CreateTable<AddClientOffline>();
                         Client client = new Client
                         {
                             name = ClientNameArentry.Text,
@@ -151,15 +115,29 @@ namespace IttezanPos.Views.ClientPages
                             limitt = limit,
                             created_at = DateTime.Now.ToString()
                         };
-                        var udatedclient = db.Table<Client>().Where(i => i.email == client.email).First();
+                        var udatedclient = db.Table<Client>().Where(i => i.email == client.email).ToList();
                        
                        
-                            if (udatedclient == null)
+                            if (udatedclient.Count== 0)
                             {
                                 ActiveIn.IsVisible = false;
-                                await Navigation.PushPopupAsync(new ClientAdded());
+                            AddClientOffline clientOffline = new AddClientOffline
+                            {
+                                name = ClientNameArentry.Text,
+                                enname = ClientEnnamenentry.Text,
+                                address = ClientAddressentry.Text,
+                                email = Emailentry.Text,
+                                phone = phoneentry.Text,
+                                note = Notesentry.Text,
+                                limitt = limit,
+                                created_at = DateTime.Now.ToString()
+                            };
+                            db.Insert(clientOffline);
+                            db.Insert(client);
+                            await Navigation.PushPopupAsync(new ClientAdded());
                                 await Navigation.PopAsync();
-                                db.Insert(client);
+                            
+                            
                             }
                             else
                             {
@@ -169,7 +147,7 @@ namespace IttezanPos.Views.ClientPages
                                 Emailentry.Focus();
                             }
                        
-                    }
+                  
                 }
                
             }
@@ -204,7 +182,7 @@ namespace IttezanPos.Views.ClientPages
                 {
                     Client client = new Client
                     {
-                        client_id = content.id,
+                        client_id = content.client_id,
                         name = ClientNameArentry.Text,
                         enname = ClientEnnamenentry.Text,
                         address = ClientAddressentry.Text,
@@ -227,18 +205,18 @@ namespace IttezanPos.Views.ClientPages
                 }
                 else
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
+               
+                   
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Client");
                         if (!info.Any())
                             db.CreateTable<Client>();
-                        if (!info.Any())
-                            db.CreateTable<Client>();
-                        Client client = new Client
+                    db.CreateTable<UpdateClientOffline>();
+                    Client client = new Client
                         {
-                            id = content.id,
+                        client_id = content.client_id,
+                        id = content.client_id,
                             name = ClientNameArentry.Text,
                             enname = ClientEnnamenentry.Text,
                             address = ClientAddressentry.Text,
@@ -248,37 +226,27 @@ namespace IttezanPos.Views.ClientPages
                             limitt = limit,
                             updated_at = DateTime.Now.ToString()
                         };
-                        var udatedclient = db.Table<Client>().Where(i => i.id == client.id).First();
-                        db.Update(client);
-                        ActiveIn.IsVisible = false;
-                        await Navigation.PushPopupAsync(new ClientAdded(edite));
-                        await Navigation.PopAsync();
-                    }
-                    else
+                       var udatedclient= db.Table<Client>().Where(i => i.email == client.email).First();
+                    UpdateClientOffline clientOffline = new UpdateClientOffline
                     {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Client");
-                        if (!info.Any())
-                            db.CreateTable<Client>();
-                        Client client = new Client
-                        {
-                            id=content.id,
-                            name = ClientNameArentry.Text,
-                            enname = ClientEnnamenentry.Text,
-                            address = ClientAddressentry.Text,
-                            email = Emailentry.Text,
-                            phone = phoneentry.Text,
-                            note = Notesentry.Text,
-                            limitt = limit,
-                            updated_at = DateTime.Now.ToString()
-                        };
-                       var udatedclient= db.Table<Client>().Where(i => i.id == client.id).First();
-                        db.Update(client);
+                        id = content.client_id,
+                        client_id= content.client_id,
+                        name = ClientNameArentry.Text,
+                        enname = ClientEnnamenentry.Text,
+                        address = ClientAddressentry.Text,
+                        email = Emailentry.Text,
+                        phone = phoneentry.Text,
+                        note = Notesentry.Text,
+                        limitt = limit,
+                     
+                    };
+                  
+                    db.Insert(clientOffline);
+                    db.Update(client);
                         ActiveIn.IsVisible = false;
                         await Navigation.PushPopupAsync(new ClientAdded(edite));
                         await Navigation.PopAsync();
-                    }
+                  
                    
                 }
             }
@@ -311,7 +279,7 @@ namespace IttezanPos.Views.ClientPages
 
                     var nsAPI = RestService.For<IClientService>("https://ittezanmobilepos.com");
 
-                    var data = await nsAPI.DeleteClient(content.id);
+                    var data = await nsAPI.DeleteClient(content.client_id);
                     if (data.success == true)
                     {
 
@@ -322,18 +290,18 @@ namespace IttezanPos.Views.ClientPages
                 }
                 else
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
+                    
+                   
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Client");
                         if (!info.Any())
                             db.CreateTable<Client>();
-                        if (!info.Any())
-                            db.CreateTable<Client>();
-                        Client client = new Client
+                    db.CreateTable<DeleteClientOffline>();
+                    Client client = new Client
                         {
-                            id = content.id,
+                        client_id = content.client_id,
+                        id = content.id,
                             name = ClientNameArentry.Text,
                             enname = ClientEnnamenentry.Text,
                             address = ClientAddressentry.Text,
@@ -343,35 +311,26 @@ namespace IttezanPos.Views.ClientPages
                             limitt = limit
                         };
                         var udatedclient = db.Table<Client>().Where(i => i.id == client.id).First();
-                        db.Update(client);
-                        ActiveIn.IsVisible = false;
-                        await Navigation.PushPopupAsync(new ClientAdded(content.id));
-                        await Navigation.PopAsync();
-                    }
-                    else
+                    DeleteClientOffline clientOffline = new DeleteClientOffline
                     {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Client");
-                        if (!info.Any())
-                            db.CreateTable<Client>();
-                        Client client = new Client
-                        {
-                            id = content.id,
-                            name = ClientNameArentry.Text,
-                            enname = ClientEnnamenentry.Text,
-                            address = ClientAddressentry.Text,
-                            email = Emailentry.Text,
-                            phone = phoneentry.Text,
-                            note = Notesentry.Text,
-                            limitt = limit
-                        };
-                        var udatedclient = db.Table<Client>().Where(i => i.id == client.id).First();
-                        db.Delete(client);
+                        id = content.client_id,
+                        client_id = content.client_id,
+                        name = ClientNameArentry.Text,
+                        enname = ClientEnnamenentry.Text,
+                        address = ClientAddressentry.Text,
+                        email = Emailentry.Text,
+                        phone = phoneentry.Text,
+                        note = Notesentry.Text,
+                        limitt = limit,
+                        created_at = DateTime.Now.ToString()
+                    };
+                    db.Insert(clientOffline);
+                    db.Delete(client);
                         ActiveIn.IsVisible = false;
+
                         await Navigation.PushPopupAsync(new ClientAdded(content.id));
                         await Navigation.PopAsync();
-                    }
+                    
                 }
             }
             catch (ValidationApiException validationException)

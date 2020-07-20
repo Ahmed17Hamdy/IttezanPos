@@ -159,7 +159,7 @@ namespace IttezanPos.Views.SalesPages
                 orderitems = (db.GetAllWithChildren<OrderItem>().ToList());
 
                 var client = (db.Table<Client>().ToList().Where(clien => clien.id == int.Parse(clienttid)).FirstOrDefault());
-                client.paid_amount = client.paid_amount + double.Parse(amount_paid);
+                client.paidtotal = client.paidtotal + double.Parse(amount_paid);
                 var amount = (double.Parse(text2) - double.Parse(amount_paid));
                 if (amount >= 0)
                 {
@@ -229,7 +229,7 @@ namespace IttezanPos.Views.SalesPages
                                 var client = (db.Table<Client>().ToList().Where(clien => clien.id == int.Parse(clienttid)).FirstOrDefault());
                                 if (client != null)
                                 {
-                                    client.paid_amount = client.paid_amount + double.Parse(amount_paid);
+                                    client.paidtotal = client.paidtotal + double.Parse(amount_paid);
                                     //  client.remaining = client.remaining+ 0;
                                     client.total_amount = client.total_amount + double.Parse(text2);
                                     //  client.creditorit = client.creditorit

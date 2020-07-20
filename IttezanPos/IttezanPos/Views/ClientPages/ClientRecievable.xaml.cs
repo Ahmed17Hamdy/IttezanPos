@@ -89,7 +89,7 @@ namespace IttezanPos.Views.ClientPages
                 customer.name = item.name;
                 customer.remaining = item.remaining;
                 customer.total_amount = item.total_amount;
-                customer.paid_amount = item.paid_amount;
+                customer.paid_amount = item.paidtotal;
                 customerDetails.Add(customer);
                 dataTable.Rows.Add(new string[] { customer.remaining.ToString(), customer.paid_amount.ToString(), customer.total_amount.ToString(), customer.name });
             }

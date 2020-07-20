@@ -43,7 +43,8 @@ namespace IttezanPos.Views.ClientPages
         {
             InitializeComponent();
             this.Clients = clients;
-            ArabicListView.ItemsSource = Englishlistview.ItemsSource = Clients;
+            ArabicListView.ItemsSource  = Clients;
+            Englishlistview.ItemsSource = Clients;
             if (IttezanPos.Helpers.Settings.LastUserGravity == "Arabic")
             {
                // listheaderlistv.FlowDirection = FlowDirection.RightToLeft;

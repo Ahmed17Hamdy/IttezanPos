@@ -43,31 +43,59 @@ namespace IttezanPos.Views.SupplierPages
         public SuppliersPage()
         {
             InitializeComponent();
-            listheaderlistv.FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
-            : FlowDirection.LeftToRight;
+            ArabicListView.ItemsSource = Suppliers;
+            Englishlistview.ItemsSource = Suppliers;
+            if (IttezanPos.Helpers.Settings.LastUserGravity == "Arabic")
+            {
+                // listheaderlistv.FlowDirection = FlowDirection.RightToLeft;
+                ArabicListView.IsVisible = true;
+                Englishlistview.IsVisible = false;
+            }
+            else
+            {
+                //   listheaderlistv.FlowDirection = FlowDirection.LeftToRight;
+                ArabicListView.IsVisible = false;
+                Englishlistview.IsVisible = true;
+            }
         }
 
         public SuppliersPage(ObservableCollection<Supplier> suppliers)
         {
             InitializeComponent();
-            listheaderlistv.FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft
-            : FlowDirection.LeftToRight;
+            ArabicListView.ItemsSource = suppliers;
+            Englishlistview.ItemsSource = suppliers;
+            if (IttezanPos.Helpers.Settings.LastUserGravity == "Arabic")
+            {
+                // listheaderlistv.FlowDirection = FlowDirection.RightToLeft;
+                ArabicListView.IsVisible = true;
+                Englishlistview.IsVisible = false;
+            }
+            else
+            {
+                //   listheaderlistv.FlowDirection = FlowDirection.LeftToRight;
+                ArabicListView.IsVisible = false;
+                Englishlistview.IsVisible = true;
+            }
             this.suppliers = suppliers;
-            listviewwww.ItemsSource = suppliers;
+           
         }
 
         private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             var keyword = SearchBar.Text;
-            listviewwww.ItemsSource = Suppliers.Where(product => product.name.ToLower().Contains(keyword.ToLower()));
-
+            Englishlistview.ItemsSource =
+                           suppliers.Where(product => product.enname.ToLower().Contains(keyword.ToLower()));
+            ArabicListView.ItemsSource =
+                suppliers.Where(product => product.name.ToLower().Contains(keyword.ToLower()));
         }
         void OnTextChanged(object sender, EventArgs e)
         {
             SearchBar searchBar = (SearchBar)sender;
             var keyword = SearchBar.Text;
-            listviewwww.ItemsSource = Suppliers.Where(product => product.name.ToLower().Contains(keyword.ToLower()));
-
+            Englishlistview.ItemsSource =
+                                      suppliers.Where(product => product.enname.ToLower().Contains(keyword.ToLower()));
+            ArabicListView.ItemsSource =
+                suppliers.Where(product => product.name.ToLower().Contains(keyword.ToLower()));
         }
         private async void Listviewwww_ItemTapped(object sender, ItemTappedEventArgs e)
         {

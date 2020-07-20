@@ -35,12 +35,16 @@
                     <RowDefinition Height="0.1*" />
                     <RowDefinition Height="0.8*" />
                 </Grid.RowDefinitions>
+                <Grid.Behaviors>
+                    <Validators:ValidationGroupBehavior x:Name="form" />
+                </Grid.Behaviors>
                 <StackLayout
                     Grid.Row="0"
                     Margin="10,0"
                     Padding="5"
                     HorizontalOptions="Center"
                     Orientation="Horizontal">
+
                     <Image
                         Aspect="AspectFit"
                         HorizontalOptions="Center"
@@ -119,12 +123,13 @@
                                 PlaceholderColor="Red"
                                 TextChanged="CustomEntry_TextChanged">
                                 <customcontrols:CustomEntry.Behaviors>
-                                    <Behaviors:NumberValidationBehavior />
-                                    <Behaviors:ValidationBehavior PropertyName="Text">
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                         <Behaviors:ValidationBehavior.Validators>
                                             <Validators:RequiredValidator />
                                         </Behaviors:ValidationBehavior.Validators>
                                     </Behaviors:ValidationBehavior>
+                                    <Behaviors:NumberValidationBehavior />
+
                                 </customcontrols:CustomEntry.Behaviors>
                             </customcontrols:CustomEntry>
                             <Label
@@ -157,7 +162,7 @@
                                 HorizontalTextAlignment="Center"
                                 IsTextPredictionEnabled="True">
                                 <customcontrols:CustomEntry.Behaviors>
-                                    <Behaviors:ValidationBehavior PropertyName="Text">
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                         <Behaviors:ValidationBehavior.Validators>
                                             <Validators:RequiredValidator />
                                         </Behaviors:ValidationBehavior.Validators>
@@ -227,6 +232,7 @@
                                     BackgroundColor="#33b54b"
                                     Clicked="Addingbtn_Clicked"
                                     CornerRadius="10"
+                                    IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                                     Text="{x:Static resource:AppResources.AddToFund}"
                                     TextColor="Black" />
                                 <Button
@@ -235,6 +241,7 @@
                                     BackgroundColor="Red"
                                     Clicked="Deductionbtn_Clicked"
                                     CornerRadius="10"
+                                    IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                                     IsVisible="False"
                                     Text="{x:Static resource:AppResources.DeductOfFund}"
                                     TextColor="Black" />

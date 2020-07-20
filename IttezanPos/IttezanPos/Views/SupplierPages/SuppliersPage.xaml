@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Content>
         <AbsoluteLayout>
@@ -53,12 +53,12 @@
                             Text="{x:Static resource:AppResources.Report}" />
                     </StackLayout>
                 </StackLayout>
-                <StackLayout
+                <Grid
                     ef:Border.Color="Black"
                     ef:Border.Radius="1"
                     ef:Border.Width="1">
                     <ListView
-                        x:Name="listviewwww"
+                        x:Name="Englishlistview"
                         Margin="0"
                         HasUnevenRows="True"
                         ItemTapped="Listviewwww_ItemTapped"
@@ -66,7 +66,6 @@
                         Visual="Material">
                         <ListView.Header>
                             <Grid
-                                x:Name="listheaderlistv"
                                 Padding="0,10"
                                 ef:Border.Color="Black"
                                 ef:Border.Radius="1"
@@ -94,7 +93,63 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                    <Grid Margin="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="Small"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding enname}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding phone}"
+                                            TextColor="Black" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ListView
+                        x:Name="ArabicListView"
+                        Margin="0"
+                        HasUnevenRows="True"
+                        ItemTapped="Listviewwww_ItemTapped"
+                        ItemsSource="{Binding Suppliers}"
+                        Visual="Material">
+                        <ListView.Header>
+                            <Grid
+                                Padding="0,10"
+                                ef:Border.Color="Black"
+                                ef:Border.Radius="1"
+                                ef:Border.Width="1"
+                                ColumnSpacing="0"
+                                FlowDirection="RightToLeft">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="5,0,5,0"
+                                    FontSize="Small"
+                                    HorizontalOptions="Start"
+                                    Text="{x:Static resource:AppResources.SupplierData}"
+                                    TextColor="Black" />
 
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Small"
+                                    Text="{x:Static resource:AppResources.PhoneNumber}"
+                                    TextColor="Black" />
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="2*" />
@@ -110,16 +165,12 @@
                                             Grid.Column="1"
                                             Text="{Binding phone}"
                                             TextColor="Black" />
-
                                     </Grid>
-
                                 </ViewCell>
-
-
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </StackLayout>
+                </Grid>
             </StackLayout>
             <ActivityIndicator
                 x:Name="ActiveIn"

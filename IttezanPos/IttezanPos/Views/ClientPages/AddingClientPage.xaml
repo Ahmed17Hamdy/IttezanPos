@@ -9,7 +9,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <Style TargetType="Label">
@@ -33,7 +33,7 @@
                         FontSize="Small"
                         HorizontalTextAlignment="Center">
                         <customcontrols:CustomEntry.Behaviors>
-                            <Behaviors:ValidationBehavior PropertyName="Text">
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                 <Behaviors:ValidationBehavior.Validators>
                                     <Validators:RequiredValidator />
 
@@ -52,7 +52,7 @@
                         FontSize="Small"
                         HorizontalTextAlignment="Center">
                         <customcontrols:CustomEntry.Behaviors>
-                            <Behaviors:ValidationBehavior PropertyName="Text">
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                 <Behaviors:ValidationBehavior.Validators>
                                     <Validators:RequiredValidator />
 
@@ -73,7 +73,7 @@
                         HorizontalTextAlignment="Center"
                         IsTextPredictionEnabled="True">
                         <customcontrols:CustomEntry.Behaviors>
-                            <Behaviors:ValidationBehavior PropertyName="Text">
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                 <Behaviors:ValidationBehavior.Validators>
                                     <Validators:RequiredValidator />
 
@@ -92,7 +92,7 @@
                         Keyboard="Telephone"
                         MaxLength="10">
                         <customcontrols:CustomEntry.Behaviors>
-                            <Behaviors:ValidationBehavior PropertyName="Text">
+                            <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                 <Behaviors:ValidationBehavior.Validators>
                                     <Validators:RequiredValidator />
                                 </Behaviors:ValidationBehavior.Validators>
@@ -154,6 +154,7 @@
                             Clicked="Update_Clicked"
                             CornerRadius="25"
                             HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                             Text="{x:Static resource:AppResources.Update}"
                             TextColor="White" />
                         <Button
@@ -164,6 +165,7 @@
                             Clicked="Deletebtn_Clicked"
                             CornerRadius="25"
                             HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                             Text="{x:Static resource:AppResources.Delete}"
                             TextColor="White" />
                     </StackLayout>

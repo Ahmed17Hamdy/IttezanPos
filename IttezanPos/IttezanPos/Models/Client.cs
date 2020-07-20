@@ -26,11 +26,11 @@ namespace IttezanPos.Models
         [JsonProperty("note")]
         public string note { get; set; }
         [JsonProperty("limitt")]
-        public int? limitt { get; set; }
+        public double limitt { get; set; }
         [JsonProperty("total_amount")]
         public double total_amount { get; set; }
-        [JsonProperty("paid_amount")]
-        public double paid_amount { get; set; }
+        [JsonProperty("paidtotal")]
+        public double paidtotal { get; set; }
         [JsonProperty("remaining")]
         public double remaining { get; set; }
         [JsonProperty("creditorit")]

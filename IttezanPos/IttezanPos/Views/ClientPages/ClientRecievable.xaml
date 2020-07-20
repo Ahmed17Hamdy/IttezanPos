@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Content>
         <Grid Margin="5" RowSpacing="0">
@@ -122,7 +122,7 @@
                                         TextColor="Black" />
                                     <Label
                                         Grid.Column="2"
-                                        Text="{Binding paid_amount}"
+                                        Text="{Binding paidtotal}"
                                         TextColor="Black" />
                                 </Grid>
                             </ViewCell>

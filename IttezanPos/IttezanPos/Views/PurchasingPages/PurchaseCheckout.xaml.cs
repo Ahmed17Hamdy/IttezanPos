@@ -27,7 +27,7 @@ namespace IttezanPos.Views.PurchasingPages
     public partial class PurchaseCheckout : ContentPage
     {
         private ObservableCollection<Payment> payments = new ObservableCollection<Payment>();
-        private ObservableCollection<Product> purchasero;
+        private List<Products> purchasero= new List<Products>();
         private string text;
         private string supplier_id= null;
         private string paymentid="1";
@@ -101,26 +101,9 @@ namespace IttezanPos.Views.PurchasingPages
                     RootObject data = await nsAPI.GetSettings();
 
                     Payments = new ObservableCollection<Payment>(data.message.payments);
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
+                  
+                   
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Payment");
-                        if (!info.Any())
-                        {
-                            db.CreateTable<Payment>();
-                        }
-                        else
-                        {
-                            db.DropTable<Payment>();
-                            db.CreateTable<Payment>();
-                        }
-
-                        db.InsertAll(Payments);
-                    }
-                    else
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Payment");
                         if (!info.Any())
@@ -135,7 +118,7 @@ namespace IttezanPos.Views.PurchasingPages
                         //    Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
                         // db.CreateTable<Client>();
                         db.InsertAll(Payments);
-                    }
+                  
                     PaymentListen.ItemsSource = Payments;
                     PaymentListar.ItemsSource = Payments;
                     //  ActiveIn.IsRunning = false;
@@ -143,23 +126,14 @@ namespace IttezanPos.Views.PurchasingPages
                 else
                 {
                     //   ActiveIn.IsRunning = false;
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
+                    
+                    
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Payment");
-                        if (!info.Any())
-                            db.CreateTable<Payment>();
-
-                        Payments = new ObservableCollection<Payment>(db.Table<Payment>().ToList());
-                    }
-                    else
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Payment");
-                        Payments = new ObservableCollection<Payment>(db.Table<Payment>().ToList());
-                    }
+                    db.CreateTable<Payment>();
+                    Payments = new ObservableCollection<Payment>(db.Table<Payment>().ToList());
+                   
                     PaymentListen.ItemsSource = Payments;
                     PaymentListar.ItemsSource = Payments;
                     //  await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
@@ -229,22 +203,49 @@ namespace IttezanPos.Views.PurchasingPages
                         //        quantity = item2.quantity
                         //    });
                         //}
+                        foreach (var item in purchaseProducts)
+                        {
+                            Products productss = new Products
+                            {
+
+                                expiration_date = item.expiration_date.ToString(),
+                                id= item.id,
+                                purchase_price = item.purchase_price,
+                                
+                                quantity = item.quantity,
+                                sale_price = item.sale_price,
+                                total_price = item.total_price
+                                //payment_type = paymentid
+
+                            };
+                            purchasero.Add(productss);
+                        }
                         Purchaseitem products = new Purchaseitem
                         {
 
                             discount = Disclbl.Text,
-                            products = purchaseProducts,
+                            products = purchasero,
                             total_price = totallbl.Text,
                           
-                            supplier_id = supplier_id,
+                            supplier_id = supplier_id!=null? supplier_id:"0",
                             user_id = 3,
-                            payment_type = paymentid
+                            //payment_type = paymentid
 
                         };
                         var content = new MultipartFormDataContent();
-                        var js = JsonConvert.SerializeObject(products);
+                        //var jsoncategoryArray = JsonConvert.SerializeObject(products);
+                        //var values = new Dictionary<string, string>
+                        //{
+                        //    {"purchasing_Order",jsoncategoryArray }
+                        //};
+
+                        //var req = new HttpRequestMessage(HttpMethod.Post, 
+                        //    "https://ittezanmobilepos.com/api/make_purchasing_Order")
+                        //{ Content = new FormUrlEncodedContent(values) };
+                        //var response = await client.SendAsync(req);
+                       var js = JsonConvert.SerializeObject(products);
                         content.Add(new StringContent(js, Encoding.UTF8, "text/json"), "purchasing_Order");
-                        var response = await client.PostAsync("https://ittezanmobilepos.com/api/make_purchasing_Order", content);
+                      var response = await client.PostAsync("https://ittezanmobilepos.com/api/make_purchasing_Order", content);
                         if (response.IsSuccessStatusCode)
                         {
                             var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();

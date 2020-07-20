@@ -8,7 +8,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ef="clr-namespace:AiForms.Effects;assembly=AiForms.Effects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     mc:Ignorable="d">
     <ContentPage.Content>
 
@@ -153,7 +153,7 @@
                             FontSize="Small"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="False"
-                            ItemDisplayBinding="{Binding en_name}"
+                            ItemDisplayBinding="{Binding PaymentTypeEnname}"
                             SelectedIndexChanged="PaymentList_SelectedIndexChanged"
                             TextColor="White"
                             TitleColor="White" />
@@ -165,7 +165,7 @@
                             FontSize="Small"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="False"
-                            ItemDisplayBinding="{Binding name}"
+                            ItemDisplayBinding="{Binding PaymentType}"
                             SelectedIndexChanged="PaymentListar_SelectedIndexChanged"
                             TextColor="White"
                             TitleColor="White" />

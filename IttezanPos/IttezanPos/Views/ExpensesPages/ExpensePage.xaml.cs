@@ -35,7 +35,7 @@ namespace IttezanPos.Views.ExpensesPages
 
         private async void GetExpenses()
         {
-            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
             var db = new SQLiteConnection(dbpath);
             var info = db.GetTableInfo("addexpense");
             if (!info.Any())

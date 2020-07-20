@@ -29,18 +29,36 @@ namespace IttezanPos.Models
     }
     public class Purchaseitem
     {
-        [PrimaryKey]
-        public int purchasing_order { get; set; }
-        public string payment_type { get; set; }
+        //[PrimaryKey]
+        //public int purchasing_order { get; set; }
+     //   public string payment_type { get; set; }
 
         public int user_id { get; set; }
         public string supplier_id { get; set; }
         public string discount { get; set; }
         public string total_price { get; set; }
-        public int total_price_after_discount { get; set; }
+      //  public int total_price_after_discount { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Product> products { get; set; }
+        public List<Products> products { get; set; }
+    }
+    public class Products
+    {
+        //[PrimaryKey]
+        //public int purchasing_order { get; set; }
+        //   public string payment_type { get; set; }
+
+        public int id { get; set; }
+        public double quantity { get; set; }
+        public double total_price { get; set; }
+        public double sale_price { get; set; }
+        public double purchase_price { get; set; }
+      
+        public string expiration_date { get; set; }
+      
+        //  public int total_price_after_discount { get; set; }
+
+       
     }
     public class sub
     {

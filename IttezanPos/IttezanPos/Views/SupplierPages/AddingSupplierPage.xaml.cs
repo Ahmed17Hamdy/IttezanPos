@@ -1,4 +1,5 @@
 ﻿using IttezanPos.Models;
+using IttezanPos.Models.OfflineModel;
 using IttezanPos.Resources;
 using IttezanPos.Services;
 using Plugin.Connectivity;
@@ -8,6 +9,7 @@ using Rg.Plugins.Popup.Services;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,6 +26,8 @@ namespace IttezanPos.Views.SupplierPages
     {
         private Supplier content;
         private string edite;
+
+        public ObservableCollection<Supplier> Suppliers { get; private set; }
 
         public AddingSupplierPage()
         {
@@ -81,14 +85,15 @@ namespace IttezanPos.Views.SupplierPages
                 }
                 else
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
+                    
+                   
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Supplier");
                         if (!info.Any())
                             db.CreateTable<Supplier>();
-                        Supplier client = new Supplier
+                    db.CreateTable<AddSupplierOffline>();
+                    Supplier client = new Supplier
                         {
                             name = SupplierNameArentry.Text,
                             enname = SupplierEnnamenentry.Text,
@@ -99,32 +104,15 @@ namespace IttezanPos.Views.SupplierPages
                             created_at = DateTime.Now.ToString()
 
                         };
+                    Suppliers = new ObservableCollection<Supplier>(db.Table<Supplier>().ToList());
+                 var   udatedclient = Suppliers. Where(i => i.email == client.email).ToList();
+                    //           var udatedclient = db.Table<Supplier>().Where(i => i.email == client.email).First();
 
-                        var udatedclient = db.Table<Supplier>().Where(i => i.email == client.email).First();
-                        if (udatedclient == null)
+
+                    if (udatedclient .Count== 0)
                         {
                             ActiveIn.IsVisible = false;
-                            ActiveIn.IsVisible = false;
-                            await Navigation.PushPopupAsync(new SupplierAddedPopup());
-                            db.Insert(client);
-                        }
-                        else
-                        {
-                            ActiveIn.IsVisible = false;
-                           
-                            await Navigation.PushPopupAsync(new SupplierAddedPopup("قيمة البريد الالكتروني مُستخدمة من قبل"));
-                    
-                            SupplierEmailentry.Focus();
-                        }
-                    }
-                    else
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Supplier");
-                        if (!info.Any())
-                            db.CreateTable<Supplier>();
-                        Supplier client = new Supplier
+                        AddSupplierOffline supplierOffline = new AddSupplierOffline
                         {
                             name = SupplierNameArentry.Text,
                             enname = SupplierEnnamenentry.Text,
@@ -135,16 +123,13 @@ namespace IttezanPos.Views.SupplierPages
                             created_at = DateTime.Now.ToString()
 
                         };
-                        var udatedclient = db.Table<Supplier>().Where(i => i.email == client.email).First();
-
-
-                        if (udatedclient == null)
-                        {
-                            ActiveIn.IsVisible = false;
-                            await Navigation.PushPopupAsync(new SupplierAddedPopup());
+                        db.Insert(supplierOffline);
+                        db.Insert(client);
+                        await Navigation.PushPopupAsync(new SupplierAddedPopup());
                             await Navigation.PopAsync();
-                            db.Insert(client);
-                        }
+                           
+                       
+                    }
                         else
                         {
                             ActiveIn.IsVisible = false;
@@ -153,7 +138,7 @@ namespace IttezanPos.Views.SupplierPages
                             SupplierEmailentry.Focus();
                         }
 
-                    }
+                    
                 }
             }
             catch (ValidationApiException validationException)
@@ -205,40 +190,15 @@ namespace IttezanPos.Views.SupplierPages
                 }
                 else
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
+                   
+                    
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
-                       
                         var info = db.GetTableInfo("Supplier");
                         if (!info.Any())
                             db.CreateTable<Supplier>();
-                        Supplier client = new Supplier
-                        { 
-                            id = content.id,
-                            name = SupplierNameArentry.Text,
-                            enname = SupplierEnnamenentry.Text,
-                            address = SupplierAddressentry.Text,
-                            email = SupplierEmailentry.Text,
-                            phone = SupplierPhoneentry.Text,
-                            note = SupplierNotesentry.Text,
-                            updated_at = DateTime.Now.ToString()
-
-                        };
-                        var udatedclient = db.Table<Supplier>().Where(i => i.id == client.id).First();
-                        db.Update(client);
-                        ActiveIn.IsVisible = false;
-                        await Navigation.PushPopupAsync(new SupplierAddedPopup(edite));
-                        await Navigation.PopAsync();
-                    }
-                    else
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Supplier");
-                        if (!info.Any())
-                            db.CreateTable<Supplier>();
-                        Supplier client = new Supplier
+                    db.CreateTable<UpdateSupplierOffline>();
+                    Supplier client = new Supplier
                         {
                             id = content.id,
                             name = SupplierNameArentry.Text,
@@ -250,12 +210,24 @@ namespace IttezanPos.Views.SupplierPages
                             updated_at = DateTime.Now.ToString()
 
                         };
-                        var udatedclient = db.Table<Supplier>().Where(i => i.id == client.id).First();
-                        db.Update(client);
+                        var udatedclient = db.Table<Supplier>().Where(i => i.email == client.email).First();
+                    UpdateSupplierOffline supplierOffline = new UpdateSupplierOffline
+                    {
+                        supplier_id= content.supplier_id,
+                        name = SupplierNameArentry.Text,
+                        enname = SupplierEnnamenentry.Text,
+                        address = SupplierAddressentry.Text,
+                        email = SupplierEmailentry.Text,
+                        phone = SupplierPhoneentry.Text,
+                        note = SupplierNotesentry.Text,
+                       
+                    };
+                    db.Insert(supplierOffline);
+                    db.Update(client);
                         ActiveIn.IsVisible = false;
                         await Navigation.PushPopupAsync(new SupplierAddedPopup(edite));
                         await Navigation.PopAsync();
-                    }
+                   
 
                 }
             }
@@ -300,14 +272,15 @@ namespace IttezanPos.Views.SupplierPages
                 }
                 else
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
+                    
+                    
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Supplier");
                         if (!info.Any())
                             db.CreateTable<Supplier>();
-                        Supplier client = new Supplier
+                    db.CreateTable<DeleteSupplierOffline>();
+                    Supplier client = new Supplier
                         {
                             id = content.id,
                             name = SupplierNameArentry.Text,
@@ -318,36 +291,24 @@ namespace IttezanPos.Views.SupplierPages
                             note = SupplierNotesentry.Text,
 
                         };
-                        var udatedclient = db.Table<Client>().Where(i => i.id == client.id).First();
-                        db.Update(client);
-                        ActiveIn.IsVisible = false;
-                        await Navigation.PushPopupAsync(new SupplierAddedPopup(content.id));
-                        await Navigation.PopAsync();
-                    }
-                    else
+                    //       var udatedclient = db.Table<Client>().Where(i => i.email == client.email).First();
+                    DeleteSupplierOffline supplierOffline = new DeleteSupplierOffline
                     {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Supplier");
-                        if (!info.Any())
-                            db.CreateTable<Supplier>();
-                        Supplier client = new Supplier
-                        {
-                            id = content.id,
-                            name = SupplierNameArentry.Text,
-                            enname = SupplierEnnamenentry.Text,
-                            address = SupplierAddressentry.Text,
-                            email = SupplierEmailentry.Text,
-                            phone = SupplierPhoneentry.Text,
-                            note = SupplierNotesentry.Text,
-
-                        };
-                        var udatedclient = db.Table<Client>().Where(i => i.id == client.id).First();
-                        db.Delete(client);
+                        name = SupplierNameArentry.Text,
+                        enname = SupplierEnnamenentry.Text,
+                        address = SupplierAddressentry.Text,
+                        email = SupplierEmailentry.Text,
+                        phone = SupplierPhoneentry.Text,
+                        note = SupplierNotesentry.Text,
+                        created_at = DateTime.Now.ToString(),
+                        updated_at = DateTime.Now.ToString(),
+                    };
+                    db.Insert(supplierOffline);
+                    db.Delete(client);
                         ActiveIn.IsVisible = false;
                         await Navigation.PushPopupAsync(new SupplierAddedPopup(content.id));
                         await Navigation.PopAsync();
-                    }
+                    
                 }
             }
             catch (ValidationApiException validationException)

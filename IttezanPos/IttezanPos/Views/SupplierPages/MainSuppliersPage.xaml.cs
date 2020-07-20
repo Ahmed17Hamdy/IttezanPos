@@ -24,6 +24,9 @@ using IttezanPos.Helpers;
 using Syncfusion.Drawing;
 using IttezanPos.DependencyServices;
 using IttezanPos.Resources;
+using System.Net.Http;
+using Newtonsoft.Json;
+using IttezanPos.Models.OfflineModel;
 
 namespace IttezanPos.Views.SupplierPages
 {
@@ -40,11 +43,177 @@ namespace IttezanPos.Views.SupplierPages
                 OnPropertyChanged(nameof(suppliers));
             }
         }
+
+        public ObservableCollection<AddSupplierOffline> AddedSuppliers { get; private set; }
+        private List<int> supplier_ids = new List<int>();
+        public ObservableCollection<UpdateSupplierOffline> UpdatedSuppliers { get; private set; }
+        public ObservableCollection<DeleteSupplierOffline> DeletedClients { get; private set; }
+
         public MainSuppliersPage()
         {
             InitializeComponent();
+            _ = GetOffline();
+            _ = GetOfflineUpdate();
+            _ = GetOfflineDelete();
             _ = GetData();
             Commandss();
+        }
+        async Task GetOfflineUpdate()
+        {
+            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+            var db = new SQLiteConnection(dbpath);
+            var info = db.GetTableInfo("UpdateSupplierOffline");
+            if (!info.Any())
+                db.CreateTable<UpdateSupplierOffline>();
+
+            UpdatedSuppliers = new ObservableCollection<UpdateSupplierOffline>(db.Table<UpdateSupplierOffline>().ToList());
+            if (UpdatedSuppliers.Count != 0)
+            {
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    using (var client = new HttpClient())
+                    {
+                        //    var products = orderitems.ToArray();
+                        var content = new MultipartFormDataContent();
+
+
+                        var jsoncategoryArray = JsonConvert.SerializeObject(UpdatedSuppliers);
+                        var values = new Dictionary<string, string>
+                        {
+                            {"suppliers",jsoncategoryArray }
+                        };
+
+                        var req = new HttpRequestMessage(HttpMethod.Post, "https://ittezanmobilepos.com/api/off-updatesupplier")
+                        { Content = new FormUrlEncodedContent(values) };
+                        var response = await client.SendAsync(req);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+
+                            ActiveIn.IsVisible = false;
+                             var json = JsonConvert.DeserializeObject<RootObject>(serverResponse);
+                            Suppliers = new ObservableCollection<Supplier>(json.message.suppliers);
+
+                            UpdatedSuppliers.Clear();
+                            db.DropTable<UpdateSupplierOffline>();
+                            //    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
+
+                        }
+                        else
+                        {
+                            ActiveIn.IsVisible = false;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                        }
+
+                    }
+
+                }
+            }
+        }
+        async Task GetOfflineDelete()
+        {
+            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+            var db = new SQLiteConnection(dbpath);
+            var info = db.GetTableInfo("DeleteClientOffline");
+            if (!info.Any())
+                db.CreateTable<DeleteClientOffline>();
+
+            DeletedClients = new ObservableCollection<DeleteSupplierOffline>(db.Table<DeleteSupplierOffline>().ToList());
+            if (DeletedClients.Count != 0)
+            {
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    using (var client = new HttpClient())
+                    {
+                        //    var products = orderitems.ToArray();
+                        var content = new MultipartFormDataContent();
+                        foreach (var item in DeletedClients)
+                        {
+                            supplier_ids.Add(item.id);
+                        }
+
+                        var jsoncategoryArray = JsonConvert.SerializeObject(supplier_ids);
+                        var values = new Dictionary<string, string>
+                        {
+                            {"supplier_ids",jsoncategoryArray }
+                        };
+
+                        var req = new HttpRequestMessage(HttpMethod.Post, "https://ittezanmobilepos.com/api/off-delsupplier")
+                        { Content = new FormUrlEncodedContent(values) };
+                        var response = await client.SendAsync(req);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+                            ActiveIn.IsVisible = false;
+                            // var json = JsonConvert.DeserializeObject<OfflineClientAdded>(serverResponse);
+
+                            DeletedClients.Clear();
+                            db.DropTable<DeleteSupplierOffline>();
+                            //    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
+
+                        }
+                        else
+                        {
+                            ActiveIn.IsVisible = false;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                        }
+
+                    }
+
+                }
+            }
+        }
+        async Task GetOffline()
+        {
+            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+            var db = new SQLiteConnection(dbpath);
+            var info = db.GetTableInfo("AddSupplierOffline");
+            if (!info.Any())
+                db.CreateTable<AddSupplierOffline>();
+
+            AddedSuppliers = new ObservableCollection<AddSupplierOffline>(db.Table<AddSupplierOffline>().ToList());
+            if (AddedSuppliers.Count != 0)
+            {
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    using (var client = new HttpClient())
+                    {
+                        //    var products = orderitems.ToArray();
+                        var content = new MultipartFormDataContent();
+
+
+                        var jsoncategoryArray = JsonConvert.SerializeObject(AddedSuppliers);
+                        var values = new Dictionary<string, string>
+                        {
+                            {"suppliers",jsoncategoryArray }
+                        };
+
+                        var req = new HttpRequestMessage(HttpMethod.Post, "https://ittezanmobilepos.com/api/off-addsupplier")
+                        { Content = new FormUrlEncodedContent(values) };
+                        var response = await client.SendAsync(req);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+                            ActiveIn.IsVisible = false;
+                            //     var json = JsonConvert.DeserializeObject<OfflineBox>(serverResponse);
+                            AddedSuppliers.Clear();
+                            db.DropTable<AddSupplierOffline>();
+                            //    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
+
+                        }
+                        else
+                        {
+                            ActiveIn.IsVisible = false;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                        }
+
+                    }
+
+                }
+            }
         }
         async Task GetData()
         {
@@ -56,26 +225,12 @@ namespace IttezanPos.Views.SupplierPages
                     var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
                     RootObject data = await nsAPI.GetSettings();
                     Suppliers = new ObservableCollection<Supplier>(data.message.suppliers);
-                    if (Device.RuntimePlatform == Device.iOS)
+                    foreach (var item in Suppliers)
                     {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Supplier");
-                        if (!info.Any())
-                        {
-                            db.CreateTable<Supplier>();
-                        }
-                        else
-                        {
-                            db.DropTable<Supplier>();
-                            db.CreateTable<Supplier>();
-                        }
-
-                        db.InsertAll(Suppliers);
+                        item.supplier_id = item.id;
                     }
-                    else
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
+                  
+                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Supplier");
                         if (!info.Any())
@@ -90,30 +245,24 @@ namespace IttezanPos.Views.SupplierPages
                         //    Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
                         // db.CreateTable<Client>();
                         db.InsertAll(Suppliers);
-                    }
+                   
                   //  listviewwww.ItemsSource = Suppliers;
                     ActiveIn.IsVisible = false;
                 }
                 else
                 {
                   
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
+                    
+                   
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Supplier");
-                        if (!info.Any())
-                            db.CreateTable<Supplier>();
-
-                        Suppliers = new ObservableCollection<Supplier>(db.Table<Supplier>().ToList());
-                    }
-                    else
+                    if (!info.Any())
                     {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Supplier");
-                        Suppliers = new ObservableCollection<Supplier>(db.Table<Supplier>().ToList());
+                        db.CreateTable<Supplier>();
                     }
+                    Suppliers = new ObservableCollection<Supplier>(db.Table<Supplier>().ToList());
+                   
                     ActiveIn.IsVisible = false;
                     //    listviewwww.ItemsSource = Suppliers;
                 }
