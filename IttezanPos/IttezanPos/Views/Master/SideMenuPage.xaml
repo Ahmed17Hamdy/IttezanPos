@@ -15,9 +15,10 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:local="clr-namespace:IttezanPos.Views.Master"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     Title="Title"
     mc:Ignorable="d">
+   
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="0">
@@ -164,7 +165,7 @@
                             <local:MasterPageItem
                                 Title="{x:Static resource:AppResources.Printer}"
                                 IconSource="printer.png"
-                                TargetType="{x:Type Pages:HomePage}" />
+                                TargetType="{x:Type SettingPages:PrintersPages}" />
                             <local:MasterPageItem
                                 Title="{x:Static resource:AppResources.BackOffice}"
                                 IconSource="backoffice.png"

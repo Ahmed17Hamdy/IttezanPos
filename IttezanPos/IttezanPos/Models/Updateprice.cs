@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,8 @@ namespace IttezanPos.Models
 {
   public  class Updateprice
     {
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
         public int up_down { get; set; }
         public int purchase_sale { get; set; }
         public int value_ratio { get; set; }

@@ -17,12 +17,16 @@ using Settings = IttezanPos.Helpers.Settings;
 using SQLite;
 using System.IO;
 using IttezanPos.Resources;
+using IttezanPos.Models.OfflineModel;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace IttezanPos.Views.InventoryPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewProductsPage : ContentPage
     {
+        private List<int> client_ids = new List<int>();
         private List<Product> products = new List<Product>();
         public List<Product> Products
         {
@@ -33,6 +37,11 @@ namespace IttezanPos.Views.InventoryPages
                 OnPropertyChanged(nameof(products));
             }
         }
+
+        public ObservableCollection<UpdateOfflineProduct> UpdatedClients { get; private set; }
+        public ObservableCollection<DeleteOfflineProduct> DeletedClients { get; private set; }
+        public ObservableCollection<OfflineProduct> AddedClients { get; private set; }
+
         public ViewProductsPage()
         {
             InitializeComponent();
@@ -45,6 +54,164 @@ namespace IttezanPos.Views.InventoryPages
         private void Scan_Tapped(object sender, EventArgs e)
         {
             Scanner();
+        }
+        async Task GetOffline()
+        {
+            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+            var db = new SQLiteConnection(dbpath);
+            var info = db.GetTableInfo("OfflineProduct");
+            if (!info.Any())
+                db.CreateTable<OfflineProduct>();
+
+            AddedClients = new ObservableCollection<OfflineProduct>(db.Table<OfflineProduct>().ToList());
+            if (AddedClients.Count != 0)
+            {
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    using (var client = new HttpClient())
+                    {
+                        //    var products = orderitems.ToArray();
+                        var content = new MultipartFormDataContent();
+
+
+                        var jsoncategoryArray = JsonConvert.SerializeObject(AddedClients);
+                        var values = new Dictionary<string, string>
+                        {
+                            {"products",jsoncategoryArray }
+                        };
+
+                        var req = new HttpRequestMessage(HttpMethod.Post, "https://ittezanmobilepos.com/api/off-addproduct")
+                        { Content = new FormUrlEncodedContent(values) };
+                        var response = await client.SendAsync(req);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+                            ActiveIn.IsVisible = false;
+                            //             var json = JsonConvert.DeserializeObject<OfflineClientAdded>(serverResponse);
+
+                            AddedClients.Clear();
+                            db.DropTable<OfflineProduct>();
+                            //    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
+
+                        }
+                        else
+                        {
+                            ActiveIn.IsVisible = false;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                        }
+
+                    }
+
+                }
+            }
+        }
+        async Task GetOfflineUpdate()
+        {
+            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+            var db = new SQLiteConnection(dbpath);
+            var info = db.GetTableInfo("UpdateOfflineProduct");
+            if (!info.Any())
+                db.CreateTable<UpdateOfflineProduct>();
+
+            UpdatedClients = new ObservableCollection<UpdateOfflineProduct>(db.Table<UpdateOfflineProduct>().ToList());
+
+            if (UpdatedClients.Count != 0)
+            {
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    using (var client = new HttpClient())
+                    {
+                        //    var products = orderitems.ToArray();
+                        var content = new MultipartFormDataContent();
+
+
+                        var jsoncategoryArray = JsonConvert.SerializeObject(UpdatedClients);
+                        var values = new Dictionary<string, string>
+                        {
+                            {"products",jsoncategoryArray }
+                        };
+
+                        var req = new HttpRequestMessage(HttpMethod.Post, "https://ittezanmobilepos.com/api/off-updateproduct")
+                        { Content = new FormUrlEncodedContent(values) };
+                        var response = await client.SendAsync(req);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+                            ActiveIn.IsVisible = false;
+                            var json = JsonConvert.DeserializeObject<RootObject>(serverResponse);
+
+                            UpdatedClients.Clear();
+                          //  Clients = new ObservableCollection<Product>(json.message.pr);
+                            db.DropTable<UpdateOfflineProduct>();
+                            //    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
+                        //    await Navigation.PopModalAsync();
+                        }
+                        else
+                        {
+                            ActiveIn.IsVisible = false;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                        }
+
+                    }
+
+                }
+            }
+        }
+        async Task GetOfflineDelete()
+        {
+            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+            var db = new SQLiteConnection(dbpath);
+            var info = db.GetTableInfo("DeleteOfflineProduct");
+            if (!info.Any())
+                db.CreateTable<DeleteOfflineProduct>();
+
+            DeletedClients = new ObservableCollection<DeleteOfflineProduct>(db.Table<DeleteOfflineProduct>().ToList());
+            if (DeletedClients.Count != 0)
+            {
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    using (var client = new HttpClient())
+                    {
+                        //    var products = orderitems.ToArray();
+                        var content = new MultipartFormDataContent();
+                        foreach (var item in DeletedClients)
+                        {
+                            client_ids.Add(item.product_id);
+                        }
+
+                        var jsoncategoryArray = JsonConvert.SerializeObject(client_ids);
+                        var values = new Dictionary<string, string>
+                        {
+                            {"product_ids",jsoncategoryArray }
+                        };
+
+                        var req = new HttpRequestMessage(HttpMethod.Post, "https://ittezanmobilepos.com/api/off-delproduct")
+                        { Content = new FormUrlEncodedContent(values) };
+                        var response = await client.SendAsync(req);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+                            ActiveIn.IsVisible = false;
+                            // var json = JsonConvert.DeserializeObject<OfflineClientAdded>(serverResponse);
+
+                            DeletedClients.Clear();
+                            db.DropTable<DeleteOfflineProduct>();
+                            //    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
+
+                        }
+                        else
+                        {
+                            ActiveIn.IsVisible = false;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                        }
+
+                    }
+
+                }
+            }
         }
         public async void Scanner()
         {
@@ -94,7 +261,10 @@ namespace IttezanPos.Views.InventoryPages
         }
         protected override void OnAppearing()
         {
-            GetData();
+            _ = GetOfflineUpdate();
+            _ = GetOfflineDelete();
+            _ = GetData();
+
             base.OnAppearing();
         }
         async Task GetData()
@@ -112,26 +282,9 @@ namespace IttezanPos.Views.InventoryPages
                       //  Products = item.category.list_of_products;
                        Products.AddRange(item.category.list_of_products);                       
                     }
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
+                    
+                   
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        var info = db.GetTableInfo("Product");
-                        if (!info.Any())
-                        {
-                            db.CreateTable<Product>();
-                        }
-                        else
-                        {
-                            db.DeleteAll<Product>();
-                            db.CreateTable<Product>();
-                        }
-                        db.CreateTable<Product>();
-                        db.InsertAll(Products);
-                    }
-                    else
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
                         var info = db.GetTableInfo("Product");
                        
@@ -139,12 +292,13 @@ namespace IttezanPos.Views.InventoryPages
                             db.CreateTable<Product>();
                         foreach (var item in Products)
                         {
+                        item.product_id = item.id;
                             db.InsertOrReplace(item);
                         }
                         //    Clients = new ObservableCollection<Client>(db.Table<Client>().ToList());
                         // db.CreateTable<Client>();
                        
-                    }
+                  
                     ProductsList.ItemsSource = products;
 
                     ActiveIn.IsRunning = false;

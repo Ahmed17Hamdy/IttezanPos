@@ -96,7 +96,7 @@ namespace IttezanPos.Views.ClientPages
                             ActiveIn.IsVisible = false;
                            var json = JsonConvert.DeserializeObject<RootObject>(serverResponse);
 
-                            AddedClients.Clear();
+                            UpdatedClients.Clear();
                             Clients = new ObservableCollection<Client>( json.message.clients);
                             db.DropTable<UpdateClientOffline>();
                             //    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
@@ -149,9 +149,9 @@ namespace IttezanPos.Views.ClientPages
                         {
                             var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
                             ActiveIn.IsVisible = false;
-                           // var json = JsonConvert.DeserializeObject<OfflineClientAdded>(serverResponse);
+                            // var json = JsonConvert.DeserializeObject<OfflineClientAdded>(serverResponse);
 
-                            AddedClients.Clear();
+                            DeletedClients.Clear();
                             db.DropTable<DeleteClientOffline>();
                             //    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
 

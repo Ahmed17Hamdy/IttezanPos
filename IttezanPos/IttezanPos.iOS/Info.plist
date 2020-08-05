@@ -43,6 +43,10 @@
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>Need access to bluetooth</string>
+  <key>NSBluetoothPeripheralUsageDescription</key>
+  <string>YOUR CUSTOM MESSAGE</string>
 	<key>CFBundleName</key>
 	<string>IttezanPos</string>
 	<key>XSAppIconAssets</key>

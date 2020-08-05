@@ -12,7 +12,7 @@ namespace IttezanPos.Models
         public int id { get; set; }
         [ForeignKey(typeof(Category2))]
         public int category2Id { get; set; }
-       
+        public string barcode { get; set; }
         public string user_id { get; set; }
         public string catname { get; set; }
         public int category_id { get; set; }

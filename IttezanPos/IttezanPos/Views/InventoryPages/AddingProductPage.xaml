@@ -181,7 +181,7 @@
                                     BackgroundColor="#33b54b"
                                     FontSize="Small"
                                     HorizontalOptions="FillAndExpand"
-                                    ItemDisplayBinding="{Binding category.translations[0].name}"
+                                    ItemDisplayBinding="{Binding category.name}"
                                     SelectedIndexChanged="CategoryList_SelectedIndexChanged"
                                     TitleColor="White" />
                                 <customcontrols:CustomPicker
@@ -191,7 +191,7 @@
                                     BackgroundColor="#33b54b"
                                     FontSize="Small"
                                     HorizontalOptions="FillAndExpand"
-                                    ItemDisplayBinding="{Binding category.translations[1].name}"
+                                    ItemDisplayBinding="{Binding category.ename}"
                                     SelectedIndexChanged="CategoryListen_SelectedIndexChanged"
                                     TitleColor="White" />
                                 <Image
@@ -270,8 +270,7 @@
                                     ef:Border.Radius="10"
                                     ef:Border.Width="1"
                                     FontSize="Small"
-                                    HorizontalTextAlignment="Center"
-                                    Keyboard="Numeric">
+                                    HorizontalTextAlignment="Center">
                                     <customcontrols:CustomEntry.Behaviors>
                                         <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                             <Behaviors:ValidationBehavior.Validators>
@@ -298,7 +297,6 @@
                                     ef:Border.Width="1"
                                     FontSize="Small"
                                     HorizontalTextAlignment="Center"
-                                    Keyboard="Numeric"
                                     TextChanged="SellEntry_TextChanged">
                                     <customcontrols:CustomEntry.Behaviors>
                                         <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
@@ -332,7 +330,6 @@
                                     FontSize="Small"
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Center"
-                                    Keyboard="Numeric"
                                     Placeholder="{x:Static resource:AppResources.NumberORQuantity}"
                                     TextChanged="SellEntry_TextChanged">
                                     <customcontrols:CustomEntry.Behaviors>

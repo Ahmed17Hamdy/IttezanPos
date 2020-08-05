@@ -38,13 +38,8 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
-            <Frame
-                Margin="10"
-                Padding="2"
-                AbsoluteLayout.LayoutBounds="0,0,1,1"
-                AbsoluteLayout.LayoutFlags="All"
-                Visual="Material">
+        <ScrollView Margin="10" Padding="2">
+            <Frame Visual="Material">
                 <StackLayout Visual="Material">
                     <StackLayout.Behaviors>
                         <Validators:ValidationGroupBehavior x:Name="form" />
@@ -129,7 +124,7 @@
                                 BackgroundColor="#33b54b"
                                 FontSize="Small"
                                 HorizontalOptions="FillAndExpand"
-                                ItemDisplayBinding="{Binding category.translations[0].name}"
+                                ItemDisplayBinding="{Binding category.name}"
                                 SelectedIndexChanged="CategoryList_SelectedIndexChanged"
                                 TitleColor="White" />
                             <CustomControls:CustomPicker
@@ -139,7 +134,7 @@
                                 BackgroundColor="#33b54b"
                                 FontSize="Small"
                                 HorizontalOptions="FillAndExpand"
-                                ItemDisplayBinding="{Binding category.translations[1].name}"
+                                ItemDisplayBinding="{Binding category.enname}"
                                 SelectedIndexChanged="CategoryListen_SelectedIndexChanged"
                                 TitleColor="White" />
                             <Image

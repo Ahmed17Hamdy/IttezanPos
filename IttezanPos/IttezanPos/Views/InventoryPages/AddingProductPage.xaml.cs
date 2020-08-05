@@ -1,4 +1,5 @@
 ﻿using IttezanPos.Models;
+using IttezanPos.Models.OfflineModel;
 using IttezanPos.Resources;
 using IttezanPos.Services;
 using IttezanPos.Views.InventoryPages.InventoryPopups;
@@ -11,6 +12,7 @@ using Refit;
 using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Services;
 using SQLite;
+using SQLiteNetExtensions.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -37,7 +39,10 @@ namespace IttezanPos.Views.InventoryPages
         private Product product;
         private int product_Id;
         private string text;
-
+        private string barcode;
+        public ObservableCollection<AddClientOffline> AddedClients { get; private set; }
+        public ObservableCollection<UpdateOfflineProduct> UpdatedClients { get; private set; }
+        public ObservableCollection<DeleteClientOffline> DeletedClients { get; private set; }
         public ObservableCollection<Category> Categories
         {
             get { return categories; }
@@ -79,10 +84,12 @@ namespace IttezanPos.Views.InventoryPages
             NotesEntry.Text = product.description;
             category_Id = product.category_id;
             PurchaseEntry.Text = product.purchase_price.ToString();
-            SellEntry.Text = product.sale_price.ToString();
+            SellEntry.SetBinding(Entry.TextProperty, new Binding(product.sale_price.ToString(), stringFormat: "{0.00}"));
+         //   SellEntry.Text = product.sale_price.ToString();
+
             StockQuantity.Text = product.stock.ToString();
-            CategoryListar.Title = product.catname;
-            CategoryListar.Title = product.catname;
+      //      CategoryListar.Title = product.catname;
+       //     CategoryListen.Title = product.catname;
             //if (product.expiration_date.Value.DateTime != null)
             //{
             //    Datepicker.Date = product.expiration_date.Value.DateTime;
@@ -111,55 +118,128 @@ namespace IttezanPos.Views.InventoryPages
             GetData();
             base.OnAppearing();
         }
+      
+        //async Task GetOfflineDelete()
+        //{
+        //    var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+        //    var db = new SQLiteConnection(dbpath);
+        //    var info = db.GetTableInfo("DeleteClientOffline");
+        //    if (!info.Any())
+        //        db.CreateTable<DeleteClientOffline>();
+
+        //    DeletedClients = new ObservableCollection<DeleteClientOffline>(db.Table<DeleteClientOffline>().ToList());
+        //    if (DeletedClients.Count != 0)
+        //    {
+        //        if (CrossConnectivity.Current.IsConnected)
+        //        {
+        //            using (var client = new HttpClient())
+        //            {
+        //                //    var products = orderitems.ToArray();
+        //                var content = new MultipartFormDataContent();
+        //                foreach (var item in DeletedClients)
+        //                {
+        //                    client_ids.Add(item.client_id);
+        //                }
+
+        //                var jsoncategoryArray = JsonConvert.SerializeObject(client_ids);
+        //                var values = new Dictionary<string, string>
+        //                {
+        //                    {"client_ids",jsoncategoryArray }
+        //                };
+
+        //                var req = new HttpRequestMessage(HttpMethod.Post, "https://ittezanmobilepos.com/api/off-delclient")
+        //                { Content = new FormUrlEncodedContent(values) };
+        //                var response = await client.SendAsync(req);
+
+        //                if (response.IsSuccessStatusCode)
+        //                {
+        //                    var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+        //                    ActiveIn.IsVisible = false;
+        //                    // var json = JsonConvert.DeserializeObject<OfflineClientAdded>(serverResponse);
+
+        //                    AddedClients.Clear();
+        //                    db.DropTable<DeleteClientOffline>();
+        //                    //    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
+
+        //                }
+        //                else
+        //                {
+        //                    ActiveIn.IsVisible = false;
+        //                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+        //                }
+
+        //            }
+
+        //        }
+        //    }
+        //}
+        async Task GetOffline()
+        {
+            var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+            var db = new SQLiteConnection(dbpath);
+            var info = db.GetTableInfo("AddClientOffline");
+            if (!info.Any())
+                db.CreateTable<AddClientOffline>();
+
+            AddedClients = new ObservableCollection<AddClientOffline>(db.Table<AddClientOffline>().ToList());
+            if (AddedClients.Count != 0)
+            {
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    using (var client = new HttpClient())
+                    {
+                        //    var products = orderitems.ToArray();
+                        var content = new MultipartFormDataContent();
+
+
+                        var jsoncategoryArray = JsonConvert.SerializeObject(AddedClients);
+                        var values = new Dictionary<string, string>
+                        {
+                            {"clients",jsoncategoryArray }
+                        };
+
+                        var req = new HttpRequestMessage(HttpMethod.Post, "https://ittezanmobilepos.com/api/off-addclient")
+                        { Content = new FormUrlEncodedContent(values) };
+                        var response = await client.SendAsync(req);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+                            ActiveIn.IsVisible = false;
+                            //             var json = JsonConvert.DeserializeObject<OfflineClientAdded>(serverResponse);
+
+                            AddedClients.Clear();
+                            db.DropTable<AddClientOffline>();
+                            //    await Navigation.PushAsync(new SuccessfulReciep(json.message, saleproducts, paymentname));
+
+                        }
+                        else
+                        {
+                            ActiveIn.IsVisible = false;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                        }
+
+                    }
+
+                }
+            }
+        }
         async Task GetData()
         {
             try
             {
-              
-                if (CrossConnectivity.Current.IsConnected)
-                {
-                    var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
-                    RootObject data = await nsAPI.GetSettings();
-                    var eachCategories = new ObservableCollection<Category>(data.message.categories);
-                    Categories = eachCategories;
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        db.CreateTable<Category>();
-                        db.DeleteAll<Category>();
-                        db.InsertAll(Categories);
-                    }
-                    else
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        
-                        db.DeleteAll<Category>();
-                       
-                        db.CreateTable<Category>();
-                       
-                        db.InsertAll(Categories);
-                    }
-                    CategoryListar.ItemsSource = Categories;
-                    CategoryListar.ItemsSource = Categories;
-                }
-                else
-                {
-                    ActiveIn.IsRunning = false;
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        Categories = new ObservableCollection<Category>(db.Table<Category>().ToList());
-                    }
-                    else
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        Categories = new ObservableCollection<Category>(db.Table<Category>().ToList());
-                    }
-                }
+
+                ActiveIn.IsRunning = true;
+
+                var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                var db = new SQLiteConnection(dbpath);
+                Categories = new ObservableCollection<Category>(db.GetAllWithChildren<Category>().ToList());
+
+                CategoryListar.ItemsSource = Categories;
+                CategoryListen.ItemsSource = Categories;
+                ActiveIn.IsRunning = false;
+               
+            
             }
             catch (ValidationApiException validationException)
             {
@@ -277,6 +357,7 @@ namespace IttezanPos.Views.InventoryPages
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
+                            barcode = result.Text;
                             _ = Navigation.PopAsync();
                         });
                     };
@@ -336,9 +417,145 @@ namespace IttezanPos.Views.InventoryPages
                     description = NotesEntry.Text,
                     sale_price = int.Parse(SellEntry.Text),
                     purchase_price = int.Parse(PurchaseEntry.Text),
+                    barcode = barcode,
                     locale = "ar",
-                    stock = 35  , user_id="2"            
+                    stock = int.Parse(PurchaseEntry.Text), user_id="2"            
                 };
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    StringContent name = new StringContent(product.name);
+                    StringContent Enname = new StringContent(product.Enname);
+                    StringContent category_id = new StringContent(product.category_id.ToString());
+                    StringContent description = new StringContent(product.description);
+                    StringContent sale_price = new StringContent(product.sale_price.ToString());
+                    StringContent purchase_price = new StringContent(product.purchase_price.ToString());
+                    StringContent locale = new StringContent(product.locale);
+                    StringContent barcode = new StringContent(product.barcode);
+                   
+                    StringContent user_id = new StringContent(product.user_id);
+                    StringContent stock = new StringContent(product.stock.ToString());
+                    var content = new MultipartFormDataContent();
+                    content.Add(name, "name");
+                    content.Add(Enname, "Enname");
+                    content.Add(category_id, "category_id");
+                    content.Add(description, "description");
+                    content.Add(sale_price, "sale_price");
+                    content.Add(purchase_price, "purchase_price");
+                    content.Add(locale, "locale");
+                    content.Add(user_id, "user_id");
+                    content.Add(stock, "stock");
+                    content.Add(barcode, "barcode");
+                    content.Add(new StreamContent(image.GetStream()), "image", $"{image.Path}");
+                    HttpClient httpClient = new HttpClient();
+                    try
+                    {
+                        var httpResponseMessage = await httpClient.PostAsync("https://ittezanmobilepos.com/api/addproduct",
+                            content);
+                        var serverResponse = httpResponseMessage.Content.ReadAsStringAsync().Result.ToString();
+                        if (serverResponse == "false")
+                        {
+                            ActiveIn.IsRunning = false;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                        }
+                        else
+                        {
+                            try
+                            {
+                                try
+                                {
+                                    ActiveIn.IsRunning = false;
+                                    var JsonResponse = JsonConvert.DeserializeObject<AddProduct>(serverResponse);
+                                    if (JsonResponse.success == true)
+                                    {
+                                        await PopupNavigation.Instance.PushAsync(new ProductAddedPage());
+                                        await Navigation.PushAsync(new InventoryMainPage());
+                                    }
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    ActiveIn.IsRunning = false;
+                                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                                    //var JsonResponse = JsonConvert.DeserializeObject<RegisterResponse>(serverResponse);
+                                    //if (JsonResponse.success == false)
+                                    //{
+                                    //    ActiveIn.IsRunning = false;
+                                    //    await PopupNavigation.Instance.PushAsync(new RegisterPopup(JsonResponse.data));
+                                    //}
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ActiveIn.IsRunning = false;
+                                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                                return;
+                            }
+
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                    }
+                }
+                else
+                {
+                    var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                    var db = new SQLiteConnection(dbpath);
+                    var info = db.GetTableInfo("OfflineProduct");
+                    if (!info.Any())
+
+                        db.CreateTable<OfflineProduct>();
+                    OfflineProduct supplierOffline = new OfflineProduct
+                    {
+                       
+                        name = product.name,
+                        enname = product.Enname,
+                        barcode = product.barcode,
+                        category_id = product.category_id,
+                        description = product.description,
+                        expiredate = product.expiration_date.ToString(),
+                        image = product.image,
+                        notes = product.description,
+                        purchase_price = product.purchase_price,
+                        sale_price = product.sale_price,
+                        stock = product.stock,
+                        trackinstore = 1,
+                        type = 1,
+                        user_id = 2,
+
+
+                    };
+                    db.Insert(supplierOffline);
+                    ActiveIn.IsRunning = false;
+                    await PopupNavigation.Instance.PushAsync(new ProductAddedPage());
+                    await Navigation.PopModalAsync();
+                }
+            }
+
+
+        }
+
+        private async void Updatebtn_Clicked(object sender, EventArgs e)
+        {
+            Product product = new Product
+            {
+                id = product_Id,
+                name = EntryName.Text,
+                Enname = EnglishEnnamentry.Text,
+                category_id = category_Id,
+                description = NotesEntry.Text,
+                sale_price = int.Parse(SellEntry.Text),
+                purchase_price = int.Parse(PurchaseEntry.Text),
+                barcode = barcode,
+                locale = "ar",
+                stock = int.Parse(StockQuantity.Text),
+                user_id = "2"
+            };
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                StringContent product_id = new StringContent(product.id.ToString());
                 StringContent name = new StringContent(product.name);
                 StringContent Enname = new StringContent(product.Enname);
                 StringContent category_id = new StringContent(product.category_id.ToString());
@@ -349,6 +566,7 @@ namespace IttezanPos.Views.InventoryPages
                 StringContent user_id = new StringContent(product.user_id);
                 StringContent stock = new StringContent(product.stock.ToString());
                 var content = new MultipartFormDataContent();
+                content.Add(product_id, "product_id");
                 content.Add(name, "name");
                 content.Add(Enname, "Enname");
                 content.Add(category_id, "category_id");
@@ -358,18 +576,21 @@ namespace IttezanPos.Views.InventoryPages
                 content.Add(locale, "locale");
                 content.Add(user_id, "user_id");
                 content.Add(stock, "stock");
-                content.Add(new StreamContent(image.GetStream()), "image", $"{image.Path}");                      
+                if (image != null)
+                {
+                    content.Add(new StreamContent(image.GetStream()), "image", $"{image.Path}");
+                }
                 HttpClient httpClient = new HttpClient();
                 try
                 {
-                    var httpResponseMessage = await httpClient.PostAsync("https://ittezanmobilepos.com/api/addproduct",
+                    var httpResponseMessage = await httpClient.PostAsync("https://ittezanmobilepos.com/api/updateproduct",
                         content);
                     var serverResponse = httpResponseMessage.Content.ReadAsStringAsync().Result.ToString();
                     if (serverResponse == "false")
                     {
                         ActiveIn.IsRunning = false;
-                    await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-                }
+                        await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                    }
                     else
                     {
                         try
@@ -377,10 +598,10 @@ namespace IttezanPos.Views.InventoryPages
                             try
                             {
                                 ActiveIn.IsRunning = false;
-                                var JsonResponse = JsonConvert.DeserializeObject<AddProduct>(serverResponse);
+                                var JsonResponse = JsonConvert.DeserializeObject<RootObject>(serverResponse);
                                 if (JsonResponse.success == true)
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new ProductAddedPage() );
+                                    await PopupNavigation.Instance.PushAsync(new ProductAddedPage(text));
                                     await Navigation.PushAsync(new InventoryMainPage());
                                 }
 
@@ -400,8 +621,8 @@ namespace IttezanPos.Views.InventoryPages
                         catch (Exception ex)
                         {
                             ActiveIn.IsRunning = false;
-                        await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-                        return;
+                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
+                            return;
                         }
 
                     }
@@ -409,107 +630,48 @@ namespace IttezanPos.Views.InventoryPages
                 }
                 catch (Exception ex)
                 {
-                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-            }
-
-            }
-
-
-        }
-
-        private async void Updatebtn_Clicked(object sender, EventArgs e)
-        {
-            Product product = new Product
-            {
-                id= product_Id,
-                name = EntryName.Text,
-                Enname=EnglishEnnamentry.Text,
-                category_id = category_Id,
-                description = NotesEntry.Text,
-                sale_price = int.Parse(SellEntry.Text),
-                purchase_price = int.Parse(PurchaseEntry.Text),
-                locale = "ar",
-                stock = 35,
-                user_id = "2"
-            };
-            StringContent product_id = new StringContent(product.id.ToString());
-            StringContent name = new StringContent(product.name);
-            StringContent Enname = new StringContent(product.Enname);
-            StringContent category_id = new StringContent(product.category_id.ToString());
-            StringContent description = new StringContent(product.description);
-            StringContent sale_price = new StringContent(product.sale_price.ToString());
-            StringContent purchase_price = new StringContent(product.purchase_price.ToString());
-            StringContent locale = new StringContent(product.locale);
-            StringContent user_id = new StringContent(product.user_id);
-            StringContent stock = new StringContent(product.stock.ToString());
-            var content = new MultipartFormDataContent();
-            content.Add(product_id, "product_id");
-            content.Add(name, "name");
-            content.Add(Enname, "Enname");
-            content.Add(category_id, "category_id");
-            content.Add(description, "description");
-            content.Add(sale_price, "sale_price");
-            content.Add(purchase_price, "purchase_price");
-            content.Add(locale, "locale");
-            content.Add(user_id, "user_id");
-            content.Add(stock, "stock");
-            if (image != null)
-            {
-                content.Add(new StreamContent(image.GetStream()), "image", $"{image.Path}");
-            }           
-            HttpClient httpClient = new HttpClient();
-            try
-            {
-                var httpResponseMessage = await httpClient.PostAsync("https://ittezanmobilepos.com/api/updateproduct",
-                    content);
-                var serverResponse = httpResponseMessage.Content.ReadAsStringAsync().Result.ToString();
-                if (serverResponse == "false")
-                {
-                    ActiveIn.IsRunning = false;
                     await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 }
-                else
-                {
-                    try
-                    {
-                        try
-                        {
-                            ActiveIn.IsRunning = false;
-                            var JsonResponse = JsonConvert.DeserializeObject<RootObject>(serverResponse);
-                            if (JsonResponse.success == true)
-                            {
-                                await PopupNavigation.Instance.PushAsync(new ProductAddedPage(text));
-                                await Navigation.PushAsync(new InventoryMainPage());
-                            }
-
-                        }
-                        catch (Exception ex)
-                        {
-                            ActiveIn.IsRunning = false;
-                            await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-                            //var JsonResponse = JsonConvert.DeserializeObject<RegisterResponse>(serverResponse);
-                            //if (JsonResponse.success == false)
-                            //{
-                            //    ActiveIn.IsRunning = false;
-                            //    await PopupNavigation.Instance.PushAsync(new RegisterPopup(JsonResponse.data));
-                            //}
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        ActiveIn.IsRunning = false;
-                        await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-                        return;
-                    }
-
-                }
-
             }
-            catch (Exception ex)
+            else
             {
-                await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
-            }
+                var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                var db = new SQLiteConnection(dbpath);
+                var info = db.GetTableInfo("UpdateOfflineProduct");
+                if (!info.Any())
+                
+                db.CreateTable<UpdateOfflineProduct>();
+               
+                var udatedclient = db.Table<Product>().Where(i => i.id == product.id).First();
+                UpdateOfflineProduct supplierOffline = new UpdateOfflineProduct
+                {
+                    product_id = product.product_id,
+                    name = product.name,
+                    enname = product.Enname,
+                    barcode = product.barcode,
+                    category_id = product.category_id,
+                    description = product.description,
+                    expiredate = product.expiration_date.ToString(),
+                    image = product.image,
+                    notes = product.description,
+                    purchase_price = product.purchase_price,
+                    sale_price = product.sale_price,
+                    stock =product.stock,
+                    trackinstore = 1,
+                    type=1,
+                    user_id =2,
 
+
+                };
+                db.Insert(supplierOffline);
+                db.Update(product);
+                ActiveIn.IsVisible = false;
+                await PopupNavigation.Instance.PushAsync(new ProductAddedPage(text));
+                await Navigation.PopAsync();
+
+
+
+            }
         }
 
         private async void Deletebtn_Clicked(object sender, EventArgs e)
@@ -530,6 +692,42 @@ namespace IttezanPos.Views.InventoryPages
                         await Navigation.PushPopupAsync(new ProductAddedPage(product.id));
                         await Navigation.PopAsync();
                     }
+                }
+                else
+                {
+                    var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                    var db = new SQLiteConnection(dbpath);
+                    var info = db.GetTableInfo("Product");
+                    if (!info.Any())
+                        db.CreateTable<Product>();
+                    db.CreateTable<DeleteOfflineProduct>();
+                    //Product client = new Product
+                    //{
+                    //    id = product.id,
+                    //    name = product.name,
+                    //    Enname = SupplierEnnamenentry.Text,
+                    //    address = SupplierAddressentry.Text,
+                    //    email = SupplierEmailentry.Text,
+                    //    phone = SupplierPhoneentry.Text,
+                    //    note = SupplierNotesentry.Text,
+
+                    //};
+                    var udatedclient = db.Table<Product>().Where(i => i.id == product.id).First();
+                    DeleteOfflineProduct supplierOffline = new DeleteOfflineProduct
+                    {
+                        id = udatedclient.id,
+                        product_id = udatedclient.product_id,
+                        name = udatedclient.name,
+                        Enname = udatedclient.Enname,
+                       
+                        created_at = DateTime.Now,
+                        updated_at = DateTime.Now,
+                    };
+                    db.Insert(supplierOffline);
+                    db.Delete(udatedclient);
+                    ActiveIn.IsVisible = false;
+                    await Navigation.PushPopupAsync(new ProductAddedPage(product.id));
+                    await Navigation.PopAsync();
                 }
             }
             catch (ValidationApiException validationException)

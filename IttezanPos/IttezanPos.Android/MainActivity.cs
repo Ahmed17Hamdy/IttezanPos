@@ -43,6 +43,7 @@ namespace IttezanPos.Droid
             XamEffects.Droid.Effects.Init();
             CachedImageRenderer.Init(true);
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+
        //     Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
             //PdfSharp.Xamarin.Forms.Droid.Platform.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
@@ -82,6 +83,7 @@ namespace IttezanPos.Droid
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
+            Shiny.AndroidShinyHost.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);

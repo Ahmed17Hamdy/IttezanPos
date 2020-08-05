@@ -4,6 +4,7 @@ using IttezanPos.Services;
 using Plugin.Connectivity;
 using Refit;
 using SQLite;
+using SQLiteNetExtensions.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -53,11 +54,11 @@ namespace IttezanPos.Views.InventoryPages
             up_down = 1;
             purchase_sale = 1;
             value_ratio = 1;
-            category_Id = 1;
+            category_Id = 0;
         }
         protected override void OnAppearing()
         {
-            GetData();
+            _ = GetData();
             base.OnAppearing();
         }
         async Task GetData()
@@ -65,67 +66,33 @@ namespace IttezanPos.Views.InventoryPages
             try
             {
 
-                if (CrossConnectivity.Current.IsConnected)
-                {
-                    var nsAPI = RestService.For<IApiService>("https://ittezanmobilepos.com/");
-                    RootObject data = await nsAPI.GetSettings();
-                    var eachCategories = new ObservableCollection<Category>(data.message.categories);
-                    Categories = eachCategories;
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
+             
+                    ActiveIn.IsRunning = true;
+                   
                         var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
                         var db = new SQLiteConnection(dbpath);
-                        db.CreateTable<Category>();
-                        db.DeleteAll<Category>();
-                        db.InsertAll(Categories);
-                    }
-                    else
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
+                Categories = new ObservableCollection<Category>(db.GetAllWithChildren<Category>().ToList());
 
-                        db.DeleteAll<Category>();
-
-                        db.CreateTable<Category>();
-
-                        db.InsertAll(Categories);
-                    }
-                    CategoryListar.ItemsSource = Categories;
-                    CategoryListar.ItemsSource = Categories;
-                }
-                else
-                {
-                    ActiveIn.IsRunning = false;
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        Categories = new ObservableCollection<Category>(db.Table<Category>().ToList());
-                    }
-                    else
-                    {
-                        var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "MyDb.db");
-                        var db = new SQLiteConnection(dbpath);
-                        Categories = new ObservableCollection<Category>(db.Table<Category>().ToList());
-                    }
-                }
+                CategoryListar.ItemsSource = Categories;
+                CategoryListar.ItemsSource = Categories;
+                ActiveIn.IsRunning = false;
             }
             catch (ValidationApiException validationException)
             {
                 // handle validation here by using validationException.Content, 
                 // which is type of ProblemDetails according to RFC 7807
-
+                ActiveIn.IsRunning = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
             }
             catch (ApiException exception)
             {
-
+                ActiveIn.IsRunning = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
                 // other exception handling
             }
             catch (Exception ex)
             {
-
+                ActiveIn.IsRunning = false;
                 await DisplayAlert(AppResources.Alert, AppResources.ConnectionNotAvailable, AppResources.Ok);
             }
         }
@@ -176,17 +143,18 @@ namespace IttezanPos.Views.InventoryPages
             try
             {
                 ActiveIn.IsRunning = true;
+                Updateprice client = new Updateprice
+                {
+                    category_id = category_Id,
+                    purchase_sale = purchase_sale,
+                    up_down = up_down,
+                    value_ratio = value_ratio,
+                    amount = double.Parse(amountentry.Text)
+
+                };
                 if (CrossConnectivity.Current.IsConnected)
                 {
-                    Updateprice client = new Updateprice
-                    {
-                         category_id =category_Id,
-                         purchase_sale = purchase_sale,
-                        up_down = up_down,
-                        value_ratio = value_ratio,
-                        amount = double.Parse(amountentry.Text)
-                       
-                    };
+                   
                     var nsAPI = RestService.For<IUpdateService>("https://ittezanmobilepos.com");
                     try
                     {
@@ -206,7 +174,19 @@ namespace IttezanPos.Views.InventoryPages
                       //  Emailentry.Focus();
                     }
                 }
-
+                else
+                {
+                    var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyDb.db");
+                    var db = new SQLiteConnection(dbpath);
+                    var info = db.GetTableInfo("Updateprice");
+                    if (!info.Any())
+                      
+                    db.CreateTable<Updateprice>();
+                    db.Insert(client);
+                    ActiveIn.IsRunning = false;
+                    await DisplayAlert(AppResources.Alert, AppResources.Productsmodified, AppResources.Ok);
+                    await Navigation.PopAsync();
+                }
             }
             catch (ValidationApiException validationException)
             {

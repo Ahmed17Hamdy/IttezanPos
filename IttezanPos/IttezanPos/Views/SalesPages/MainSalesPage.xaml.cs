@@ -359,6 +359,7 @@ namespace IttezanPos.Views.SalesPages
                         RootObject data = await nsAPI.GetSettings();
                         Categories = new ObservableCollection<Category>(data.message.categories);
                         Clients = data.message.clients;
+                   
                         Payments = new ObservableCollection<Payment>(data.message.payments);
                         foreach (var item in Categories)
                         {
@@ -367,7 +368,11 @@ namespace IttezanPos.Views.SalesPages
                             {
                                 item2.product_id = item2.id;
                             }
+                        if (item.category.list_of_products.Count!=0)
+                        {
                             Products.AddRange(item.category.list_of_products);
+                        }
+                           
                        
                         Categories1.Add(item.category);
                         }

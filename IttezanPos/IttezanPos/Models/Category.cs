@@ -49,7 +49,7 @@ namespace IttezanPos.Models
     public class Category2
     {
 
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]

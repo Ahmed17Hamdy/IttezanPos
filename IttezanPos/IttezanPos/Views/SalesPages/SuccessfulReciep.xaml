@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:resource="clr-namespace:IttezanPos.Resources"
+    xmlns:resource="clr-namespace:IttezanPos.Resources"
     NavigationPage.HasBackButton="False"
     mc:Ignorable="d">
     <ContentPage.Content>
@@ -33,7 +33,11 @@
                 x:Name="Salestk"
                 Grid.Row="1"
                 IsVisible="False">
-
+                <Button
+                    BackgroundColor="#33b54b"
+                    Clicked="Print_Clicked"
+                    ImageSource="bill.png"
+                    Text="{x:Static resource:AppResources.Printer}" />
                 <Button
                     BackgroundColor="#33b54b"
                     Clicked="ViewReciept_Clicked"
