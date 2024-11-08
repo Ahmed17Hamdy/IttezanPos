@@ -25,7 +25,7 @@
     <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
     <PackageReference Include="Plugin.Toast" Version="2.1.2" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.8" />
-    <PackageReference Include="Refit" Version="5.1.67" />
+    <PackageReference Include="Refit" Version="7.2.22" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.2" />
     <PackageReference Include="Shiny.BluetoothLE" Version="1.1.0.1473-beta" />
     <PackageReference Include="SqlExecuteXY-ASP.NETCORE" Version="1.0.2" />
